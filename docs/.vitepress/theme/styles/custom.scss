@@ -1,0 +1,23 @@
+// 头像圆形
+.VPImage {
+  border-radius: 50% !important;
+}
+
+// 头像·转圈圈
+.VPImage.image-src:hover {
+  transform: translate(-50%, -50%) rotate(666turn);
+  transition: transform 59s 1s cubic-bezier(0.3, 0, 0.8, 1);
+}
+
+// 导航栏微微模糊背景
+.VPNav .VPNavBar {
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(20px) !important;
+  .divider {
+    display: none;
+  }
+}
+
+.VPFooter {
+  padding: 20px !important;
+}
