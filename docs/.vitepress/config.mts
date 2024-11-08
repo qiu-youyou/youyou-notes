@@ -1,6 +1,6 @@
 import { defineConfig } from "vitepress";
 import { markdown } from "./config/markdown";
-import { themeConfig } from "./config/themeConfig";
+import { themeConfig } from "./config/theme-config";
 import MarkdownPreview from "vite-plugin-markdown-preview";
 
 export default defineConfig({

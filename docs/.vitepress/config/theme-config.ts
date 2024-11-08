@@ -20,7 +20,7 @@ export const themeConfig: DefaultTheme.Config = {
     formatOptions: { dateStyle: "short", timeStyle: "medium" },
     text: "上次更新时间",
   },
-  
+
   search: {
     provider: "local",
     options: {
