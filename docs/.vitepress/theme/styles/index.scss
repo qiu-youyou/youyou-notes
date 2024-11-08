@@ -1,3 +1,4 @@
-@import './var.scss';
-@import './custom.scss';
-@import './rainbow.scss';
+@use './var.scss';
+@use './marker.scss';
+@use './custom.scss';
+@use './rainbow.scss';
