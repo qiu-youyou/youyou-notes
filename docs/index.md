@@ -56,3 +56,5 @@ features:
     linkText: ✍️
     icon: 🚀
 ---
+
+<HomeComponent />
