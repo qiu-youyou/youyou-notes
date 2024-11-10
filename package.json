@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "busuanzi.pure.js": "^1.0.3",
+    "canvas-confetti": "^1.9.3",
     "sass": "^1.80.6",
     "vitepress": "^1.5.0",
     "vue": "^3.5.12"
