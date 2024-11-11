@@ -3,13 +3,15 @@ import confetti from "canvas-confetti";
 import { inBrowser } from "vitepress";
 
 if (inBrowser) {
-  var duration = 15 * 1000;
+  var duration = 1 * 1000;
   var animationEnd = Date.now() + duration;
   var skew = 1;
 
   function randomInRange(min, max) {
     return Math.random() * (max - min) + min;
   }
+
+  var unicorn = confetti.shapeFromText({ text: "❄️", scalar: 2 });
 
   (function frame() {
     var timeLeft = animationEnd - Date.now();
@@ -25,12 +27,12 @@ if (inBrowser) {
         // since particles fall down, skew start toward the top
         y: Math.random() * skew - 0.2,
       },
-      colors: ["#20a8a6"],
-      shapes: ["circle"],
-      gravity: randomInRange(0.4, 0.6),
-      scalar: randomInRange(0.4, 1),
-      drift: randomInRange(-0.4, 0.4),
-    });
+      shapes: [unicorn],
+      gravity: randomInRange(0.3, 0.5),
+      scalar: randomInRange(0.6, 1.8),
+      drift: randomInRange(-0, 0),
+      flat: true,
+    } as any);
 
     if (timeLeft > 0) {
       requestAnimationFrame(frame);
