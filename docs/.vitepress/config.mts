@@ -6,7 +6,7 @@ export default defineConfig({
   lang: "zh-CN",
   title: "Yòu Yòu",
   outDir: "../dist",
-  base: "/ouyou-notes/",
+  base: "/youyou-notes/",
   description: "Yòu Yòu 的文档站",
   cleanUrls: true, // url中删除.html后缀
   lastUpdated: true, // 显示最后更新时间
