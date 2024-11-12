@@ -1,6 +1,6 @@
 # TypeScript-相关概念
 
-## TypeScript
+## typescript 介绍
 
 [TypeScript](https://www.typescriptlang.org/)：是 JavaScript 的超集，拥有类型机制，不能在浏览器直接执行，而是编译成 JavaScript 后才会运行。
 
@@ -116,8 +116,10 @@ foo.toString();
 
 TypeScript 允许你覆盖它的推断，并且能以你任何你想要的方式分析它，这种机制被称为「类型断言」
 
-> 类型断言 之所以不被称为「类型转换」，是因为转换通常意味着某种运行时的支持。
-> 但是，类型断言纯粹是一个编译时语法，同时，它也是一种为编译器提供关于如何分析代码的方法。
+::: tip
+类型断言 之所以不被称为「类型转换」，是因为转换通常意味着某种运行时的支持。
+但是，类型断言纯粹是一个编译时语法，同时，它也是一种为编译器提供关于如何分析代码的方法。
+:::
 
 ```ts
 const foo = {};
@@ -125,7 +127,7 @@ foo.a = 123; // Error 类型“{}”上不存在属性“a”。
 foo.b = "hello"; // Error 类型“{}”上不存在属性“b”
 ```
 
-#### `as` 运算符
+#### as 运算符
 
 ```ts
 // 可以通过类型断言来避免此问题：
@@ -148,8 +150,8 @@ foo.b = "hello";
 ```
 
 ::: tip
-当你在 JSX 中使用 <foo> 的断言语法时，这会与 JSX 的语法存在歧义。
-因此，为了一致性， 建议使用 as 的语法来为类型断言。
+当你在 `JSX` 中使用 `<foo>` 的断言语法时，这会与 `JSX` 的语法存在歧义。
+因此，为了一致性， 建议使用 `as` 的语法来为类型断言。
 
 ```ts
 const getStrLength = (target: string | number): number => {
@@ -267,11 +269,11 @@ if (typeof item === "string") {
 ```
 
 ::: tip
-TS 中，对 typeof 的处理还有些特殊要求：
+`TS` 中，对 `typeof` 的处理还有些特殊要求：
 
-- 只能使用 = 和 ! 两种形式来比较，比如使用(typeof item).includes('string')也能做判断，但是不准确；
-- type 只能是 number、string、boolean 和 symbol 四种类型;
-- typeof 的缺点：typeof xxx 的结果还有 object、function 和 undefined，像数组与对象就不能很好的区分;
+- 只能使用 `=` 和 `!` 两种形式来比较，比如使用`(typeof item).includes('string')`也能做判断，但是不准确；
+- `type` 只能是 `number`、`string`、`boolean` 和 `symbol` 四种类型;
+- `typeof` 的缺点：`typeof xxx` 的结果还有 `object`、`function` 和 `undefined`，像数组与对象就不能很好的区分;
 
 :::
 

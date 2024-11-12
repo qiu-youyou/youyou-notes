@@ -43,7 +43,6 @@ str = undefined; // 不能将类型“undefined”分配给类型“string | nul
 ```
 
 ::: tip undefined 和 null
-
 在 JavaScript 中，undefined 和 null 是两个基本数据类型。
 
 在 TypeScript 中，这两者都有各自的类型，即 undefined 和 null，也就是说它们既是实际的值，也是类型。
@@ -78,13 +77,11 @@ s1 === s2; // This condition will always return 'false' since the types 'typeof 
 
 // 使用Symbol作为属性名
 let name = Symbol();
-// let obj = { [name]: "walawala" };
+let obj = { [name]: "walawala" };
 console.log(obj); // { Symbol(): 'walawala' }
-
 ```
 
 ::: tip symbol
-
 symbol 类型值作为属性名，这个属性不会被 for…in 遍历到,
 也不会被 Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()获取到;
 
@@ -127,7 +124,7 @@ ES6 提供了 11 个内置的 Symbol 值，可自行搜索查看。
 
 > `{}` 或者 `object`, `[]` 或者 `Array<any>`, 和 `function`, `Class` 类型
 
-## Array<any> 或 []
+## `Array<any>` 或 []
 
 ```ts
 // 字面量创建
