@@ -9,7 +9,13 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
   {
     text: "JavaScript",
     collapsed: false,
-    items: [],
+    items: [
+      {
+        text: "JS-转换数字金额为大写",
+        link: "/note/javascript/convert-amount-to-capital",
+        collapsed: false,
+      },
+    ],
   },
   {
     text: "TypeScript",

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs && scf deploy",
+    "build": "vitepress build docs",
     "preview": "vitepress preview docs"
   },
   "dependencies": {
