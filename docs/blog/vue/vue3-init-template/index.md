@@ -970,7 +970,7 @@ export default router;
 - `npm-check -u` 进入交互终端
   就可以看到 版本信息：`Patch Update`、`Minor Update`、`Major Update`
 
-关于版本号 可以阅读 👉[这里](http://localhost:8080/coffee/%E5%89%8D%E7%AB%AF/%E8%AF%AD%E4%B9%89%E5%8C%96%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%B7.html)
+关于版本号 可以阅读 👉[这里](/note/semantic-version/)
 
 #### [npm-check-updates](https://www.npmjs.com/package/npm-check-updates)
 
