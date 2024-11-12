@@ -4,7 +4,7 @@
 
 [（BraftEditor）](https://www.npmjs.com/package/braft-editor)一个基于 draft-js 的 Web 富文本编辑器，适用于 React 框架，兼容主流现代浏览器。
 
-![](../image/2024-04-02/react+braftteEditor-1.jpg)
+![](./assets/react+braftte-editor-1.jpg)
 
 ## 😊 安装 BraftEditor
 

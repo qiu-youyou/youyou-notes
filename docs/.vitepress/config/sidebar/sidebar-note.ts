@@ -93,7 +93,7 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
       },
       {
         text: "React + BraftEditor 实现基础富文本编辑器",
-        link: "/note/react/react-braft-editor",
+        link: "/note/react/react-braft-editor/",
         collapsed: false,
       },
       {
