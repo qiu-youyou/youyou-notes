@@ -12,7 +12,9 @@ export default {
   Layout,
   extends: DefaultTheme,
   enhanceApp({ app, router }) {
-    createMediumZoom(app, router);
+    if (typeof window !== "undefined") {
+      createMediumZoom(app, router);
+    }
     app.component("HomeComponent", HomeComponent);
     app.component("ArticleMeta", ArticleMeta);
     watch(
