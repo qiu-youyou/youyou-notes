@@ -11,6 +11,10 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       {
+        text: "理解作用域",
+        link: "/note/javascript/get-scope/",
+      },
+      {
         text: "JS-转换数字金额到大写",
         link: "/note/javascript/convert-amount-to-capital",
         collapsed: false,
@@ -76,11 +80,42 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
   {
     text: "React",
     collapsed: false,
-    items: [],
+    items: [
+      {
+        text: "React + Antd Mentions 实现艾特(@)功能",
+        link: "/note/react/react-ant-mentions",
+        collapsed: false,
+      },
+      {
+        text: "React + Antd Upload 头像上传功能",
+        link: "/note/react/react-ant-upload-avatar",
+        collapsed: false,
+      },
+      {
+        text: "React + BraftEditor 实现基础富文本编辑器",
+        link: "/note/react/react-braft-editor",
+        collapsed: false,
+      },
+      {
+        text: "React + FortuneSheet Excel上传预览",
+        link: "/note/react/react-fortune-sheet",
+        collapsed: false,
+      },
+    ],
   },
   {
     text: "Vue",
     collapsed: false,
     items: [],
+  },
+  {
+    text: "语义化的版本号/",
+    link: "/note/semantic-version",
+    collapsed: false,
+  },
+  {
+    text: "NPM 的发包过程",
+    link: "/note/npm-publish-process",
+    collapsed: false,
   },
 ];
