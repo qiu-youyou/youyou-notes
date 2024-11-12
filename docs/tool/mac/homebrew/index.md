@@ -56,7 +56,7 @@ brew services restart redis
 
 如果存在旧版本，会弹出删除旧版本提示，输入"Y"，回车。
 
-![](./images/homebrew/homebrew-install.jpg)
+![](./assets/homebrew-install.jpg)
 
 #### 无 Git 环境配置
 
@@ -66,13 +66,13 @@ brew services restart redis
 
 - 安装完成 `git` 后，再次执行 `Homebrew` 安装指令，直到安装完成。
 
-![](./images/homebrew/homebrew-git.jpg)
+![](./assets/homebrew-git.jpg)
 
 #### 安装完成
 
 使用 `brew --version` 看到版本信息。
 
-![](./images/homebrew/homebrew-version.jpg)
+![](./assets/homebrew-version.jpg)
 
 #### 卸载 Homebrew
 

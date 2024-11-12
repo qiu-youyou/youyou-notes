@@ -18,13 +18,13 @@
 /usr/libexec/java_home -V
 ```
 
-![](./images/jdk/jdk-version.jpg)
+![](./assets/jdk-version.jpg)
 
 - 也可以通过 `Finder` 来转至其安装目录
 
 使用快捷键 `Command + Shift + G` 来前往文件夹
 
-![](./images/jdk/jdk-finder.jpg)
+![](./assets/jdk-finder.jpg)
 
 ## 配置环境变量
 
@@ -82,7 +82,7 @@ java --version
 - 设置本机环境中的 JDK 版本
 
 - 这时就可以方便的使用设置的 `alias` 来进行版本切换
-  ![](./images/jdk/jdk-alias.jpg)
+  ![](./assets/jdk-alias.jpg)
 
 - 当然，也可以通过编辑 `shell配置文件`，保存后重新加载
 

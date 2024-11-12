@@ -109,8 +109,8 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
     items: [],
   },
   {
-    text: "语义化的版本号/",
-    link: "/note/semantic-version",
+    text: "语义化的版本号",
+    link: "/note/semantic-version/",
     collapsed: false,
   },
   {
