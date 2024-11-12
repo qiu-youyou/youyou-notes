@@ -47,11 +47,6 @@
   border-left: 6px solid var(--vp-c-green-2);
 }
 
-// 缩小边距
-.vp-doc code {
-  padding: 0 10px !important;
-}
-
 /* 代码块：增加留空边距 增加阴影 */
 .vp-doc div[class*=language-] {
   box-shadow: 0 10px 20px 0 rgb(0 0 0 / 20%);
