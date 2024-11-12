@@ -15,6 +15,21 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
         link: "/note/javascript/convert-amount-to-capital",
         collapsed: false,
       },
+      {
+        text: "cos-js-sdk-v5 上传函数",
+        link: "/note/javascript/upload-by-cos-js-sdk-v5",
+        collapsed: false,
+      },
+      {
+        text: "浏览器预览 PDF 文件流",
+        link: "/note/javascript/browser-preview-pdf",
+        collapsed: false,
+      },
+      {
+        text: "浏览器清除所有 cookie",
+        link: "/note/javascript/browser-clear-all-cookie",
+        collapsed: false,
+      },
     ],
   },
   {

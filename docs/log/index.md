@@ -16,4 +16,8 @@ next: false
 
 ## 2024-11-12
 
+- 迁移了文档库 [rspress](https://rspress.dev/zh/) 到 [vitepress](https://vitepress.dev/)。以后访问均到这个新站。
+
+## 2024-11-12
+
 - 发表了一篇笔记，快来瞅瞅 👀 [JS-转换数字金额为大写-完整代码](/note/javascript/convert-amount-to-capital#完整代码)
