@@ -2,6 +2,7 @@
 import { useData } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import { nextTick, provide } from "vue";
+import BackTop from "./BackTop.vue";
 
 const { isDark } = useData();
 
@@ -41,7 +42,10 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
 
 <template>
   <DefaultTheme.Layout>
-    <!-- 这里可以插入其他插槽组件 -->
+    <!-- 插槽1 -->
+    <template #doc-footer-before>
+      <BackTop />
+    </template>
   </DefaultTheme.Layout>
 </template>
 

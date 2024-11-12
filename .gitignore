@@ -3,6 +3,8 @@
 # editor directories and files
 .idea
 .vscode
+.env
+serverless.yml
 
 # dependencies
 node_modules

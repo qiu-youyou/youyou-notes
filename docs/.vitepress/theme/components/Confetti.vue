@@ -40,3 +40,5 @@ if (inBrowser) {
   })();
 }
 </script>
+
+<template></template>
