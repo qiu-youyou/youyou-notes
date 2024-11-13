@@ -3,6 +3,7 @@ import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import { updateRainbowStyle } from "./utils/rainbow";
 import { createMediumZoom } from "./utils/medium";
+import { createGiscus } from "./utils/giscus";
 import HomeComponent from "./components/HomeComponent.vue";
 import ArticleMeta from "./components/ArticleMeta.vue";
 import Layout from "./components/Layout.vue";
@@ -23,4 +24,7 @@ export default {
       { immediate: true }
     );
   },
+  setup() {
+    createGiscus()
+  }
 } satisfies Theme;
