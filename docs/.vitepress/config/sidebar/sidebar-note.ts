@@ -4,6 +4,7 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
   {
     text: "HTML/CSS",
     collapsed: false,
+    link: "/note/html-css/",
     items: [],
   },
   {
@@ -106,6 +107,7 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
   {
     text: "Vue",
     collapsed: false,
+    link: '/note/vue/',
     items: [],
   },
   {

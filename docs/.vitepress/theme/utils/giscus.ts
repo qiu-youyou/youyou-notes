@@ -1,9 +1,8 @@
 import giscusTalk from "vitepress-plugin-comment-with-giscus";
 import { useData, useRoute } from "vitepress";
-import { toRefs } from "vue";
 
 export const createGiscus = () => {
-  const { frontmatter } = toRefs(useData());
+  const { frontmatter } = useData();
   const route = useRoute();
 
   // giscus配置

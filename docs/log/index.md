@@ -1,7 +1,7 @@
 ---
 sidebar: false
 outline: false
-editLink: false
+comment: false
 prev: false
 next: false
 ---
@@ -14,9 +14,13 @@ next: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
+## 2024-11-13
+
+- 新站支持评论啦，快来试一试吧！[👉](/wala/#测试-markdown-1)
+
 ## 2024-11-12
 
-- 迁移了文档库 [rspress](https://rspress.dev/zh/) 到 [vitepress](https://vitepress.dev/)。以后访问均到这个新站。
+- 迁移了文档库 [rspress](https://rspress.dev/zh/) 到 [vitepress](https://vitepress.dev/)。以后访问均到这个[新站](https://sqius.github.io/youyou-notes/)。
 
 ## 2024-11-12
 

@@ -1,31 +1,19 @@
 # walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
-### walawala
+
+## walawala
+
 ### walawala
 
-### 测试图片是否可以放大查看
+#### walawala
+
+##### walawala
+
+## 测试图片是否可以放大查看
+
 ![medium-zoom](/images/logo.png)
 
-### 测试 markdown
+## 测试 markdown
+
 ::: code-group
 
 ```sh [pnpm]
@@ -42,9 +30,9 @@ yarn -v
 
 ### 测试 markdown
 
-``` js
-console.log(111)
-console.log(111)
-console.log(111)
-console.log(111)
+```js
+console.log(111);
+console.log(111);
+console.log(111);
+console.log(111);
 ```
