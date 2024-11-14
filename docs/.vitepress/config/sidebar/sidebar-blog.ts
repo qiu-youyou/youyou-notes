@@ -2,6 +2,17 @@ import { DefaultTheme } from "vitepress";
 
 export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   {
+    text: "Vue",
+    collapsed: false,
+    items: [
+      {
+        text: "Vue3-初始化项目通用模板",
+        link: "/blog/vue/vue3-init-template/",
+        collapsed: false,
+      },
+    ],
+  },
+  {
     text: "React",
     collapsed: false,
     items: [
@@ -27,13 +38,19 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
       },
     ],
   },
+
   {
-    text: "Vue",
+    text: "NPM 相关",
     collapsed: false,
     items: [
       {
-        text: "Vue3-初始化项目通用模板",
-        link: "/blog/vue/vue3-init-template/",
+        text: "语义化的版本号",
+        link: "/blog/npm/semantic-version/",
+        collapsed: false,
+      },
+      {
+        text: "NPM 的发包过程",
+        link: "/blog/npm/npm-publish-process",
         collapsed: false,
       },
     ],

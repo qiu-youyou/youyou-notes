@@ -99,14 +99,4 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
     link: "/note/vue/",
     items: [],
   },
-  {
-    text: "语义化的版本号",
-    link: "/note/semantic-version/",
-    collapsed: false,
-  },
-  {
-    text: "NPM 的发包过程",
-    link: "/note/npm-publish-process",
-    collapsed: false,
-  },
 ];
