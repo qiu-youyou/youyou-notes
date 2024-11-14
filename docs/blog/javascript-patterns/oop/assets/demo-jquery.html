@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <p>继承继承继承继承继承继承继承继承继承</p>
+  <p>封装封装封装封装封装封装封装封装封装</p>
+  <p>多态多态多态多态多态多态多态多态多态</p>
+
+</body>
+<script src="./demo-jquery.js"></script>
+
+<script>
+  $('p').addClass('active') // 这将调用重写后的addClass方法，并打印日志
+    .on('click', () => {
+      alert('Element clicked!');
+    })
+</script>
+
+</html>
