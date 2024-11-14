@@ -970,7 +970,7 @@ export default router;
 - `npm-check -u` 进入交互终端
   就可以看到 版本信息：`Patch Update`、`Minor Update`、`Major Update`
 
-关于版本号 可以阅读 👉[这里](/note/semantic-version/)
+关于版本号 可以阅读 👉[这里](/blog/npm/semantic-version/)
 
 #### [npm-check-updates](https://www.npmjs.com/package/npm-check-updates)
 
