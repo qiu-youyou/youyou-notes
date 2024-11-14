@@ -40,16 +40,24 @@ brew services stop redis
 brew services restart redis
 ```
 
-## MacOS 安装 Homebrew
+## 安装 Homebrew
 
-在[Homebrew](https://brew.sh/)官网中，已经给出了安装命令；(当然需要魔法)。
+### 官方源安装
 
-#### 无魔法安装
+魔法安装哦，有条件的推荐优先使用官方安装脚本。
 
-使用国内镜像的自动安装脚本（`gitee`某开发者开源安装脚本）
+在[Homebrew](https://brew.sh/)官网中，已经给出了安装命令。
 
 ```bash
-/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### 无魔法安装
+
+使用国内镜像的自动安装脚本（`gitee`某开发者开源安装脚本）[👉 传送门](https://gitee.com/cunkai/HomebrewCN)
+
+```bash
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 ```
 
 #### 选择镜像源
@@ -58,7 +66,7 @@ brew services restart redis
 
 ![](./assets/homebrew-install.jpg)
 
-#### 无 Git 环境配置
+#### 无 Git 环境
 
 如果你的电脑环境中没有配置 `git`，会停止 `Homebrew` 的安装，请先安装 `git`
 
@@ -81,6 +89,8 @@ brew services restart redis
 ```
 
 ## 让 Homebrew 加速起飞
+
+使用魔法的可以跳过了。有条件推荐优先使用官方源。
 
 使用 `brew` 的速度是真的感人，以下有两个办法加速。
 
@@ -124,18 +134,18 @@ source ~/.zshrc
 
 ```bash
 # 查找包
-brew search name
+brew search <package>
 # 安装默认最新版
-brew install name
+brew install <package>
 # 安装指定版本
-brew install name@版本号
+brew install <package>@版本号
 ```
 
 #### 更新软件
 
 ```bash
 # 指定包名卸载
-brew upgrade name
+brew upgrade <package>
 # 更新 brew 所有包
 brew upgrade
 ```
@@ -144,7 +154,7 @@ brew upgrade
 
 ```bash
 # 指定包名卸载
-brew uninstall name
+brew uninstall <package>
 ```
 
 #### 服务相关
@@ -164,6 +174,8 @@ brew services stop mysql
 #### 更多常用命令
 
 ```bash
+# 更新 Homebrew
+brew update
 # 查看已安装软件
 brew list
 # 查看已安装软件版本号
