@@ -8,7 +8,6 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
       {
         text: "Vue3-初始化项目通用模板",
         link: "/blog/vue/vue3-init-template/",
-        collapsed: false,
       },
     ],
   },
@@ -19,26 +18,39 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
       {
         text: "React-快速上手",
         link: "/blog/react/react-quick-start/",
-        collapsed: false,
       },
       {
         text: "React-Router(V6.4)-快速上手",
         link: "/blog/react/react-router-quick-start/",
-        collapsed: false,
       },
       {
         text: "Redux&Redux Toolkit-快速上手",
         link: "/blog/react/redux-tootik-quick-start/",
-        collapsed: false,
       },
       {
-        text: "CreateReactApp初始化项目记录",
+        text: "create-react-app 初始化项目",
         link: "/blog/react/create-react-app-init/",
-        collapsed: false,
       },
     ],
   },
-
+  {
+    text: "JavaScript 设计模式",
+    collapsed: false,
+    items: [
+      {
+        text: "JavaScript设计模式-面向对象",
+        link: "/blog/javascript-patterns/oop/",
+      },
+      // {
+      //   text: "JavaScript设计模式-设计原则",
+      //   link: "/blog/javascript-patterns/principles/",
+      // },
+      // {
+      //   text: "JavaScript设计模式-工厂模式",
+      //   link: "/blog/javascript-patterns/factory-pattern/",
+      // },
+    ],
+  },
   {
     text: "NPM 相关",
     collapsed: false,
@@ -46,12 +58,10 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
       {
         text: "语义化的版本号",
         link: "/blog/npm/semantic-version/",
-        collapsed: false,
       },
       {
         text: "NPM 的发包过程",
         link: "/blog/npm/npm-publish-process",
-        collapsed: false,
       },
     ],
   },

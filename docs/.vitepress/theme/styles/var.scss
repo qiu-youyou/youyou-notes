@@ -78,7 +78,7 @@
 .browser-safari,
 .browser-firefox {
   --vp-home-hero-image-background-image: transparent;
-  --vp-home-hero-image-filter: '';
+  --vp-home-hero-image-filter: "";
 }
 
 /**
@@ -101,3 +101,9 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
+
+// siderbar 宽度
+// :root {
+//   --vp-layout-max-width: 1440px + 100px;
+//   --vp-sidebar-width: 272px + 50px;
+// }

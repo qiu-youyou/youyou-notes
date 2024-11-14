@@ -14,6 +14,10 @@ next: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
+## 2024-11-14
+
+- 发表了一篇文章，快来瞅瞅 👀 [JavaScript-面向对象](/blog/javascript-patterns/oop/)
+
 ## 2024-11-13
 
 - 新站支持评论啦，快来试一试吧！[👉](/wala/#测试-markdown-1)
