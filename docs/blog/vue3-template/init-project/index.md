@@ -136,15 +136,12 @@ pnpm install -D unplugin-vue-router
 
 ::: code-group
 
-```ts{9,13} [vite.config.ts]
+```ts{6,10,11} [vite.config.ts]
 import { fileURLToPath, URL } from "node:url";
-
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import vueDevTools from "vite-plugin-vue-devtools";
 
-// 引入 unplugin-vue-router/vite
 import VueRouter from "unplugin-vue-router/vite"; // [!code focus]
 
 export default defineConfig({
@@ -152,7 +149,6 @@ export default defineConfig({
     VueRouter({ routesFolder: 'src/views' }), // [!code focus]
     vue(), // Vue() 必须放在 VueRouter() 之后 // [!code focus]
     vueJsx(),
-    vueDevTools(),
   ],
   resolve: {
     alias: {
@@ -191,7 +187,7 @@ export default router;
 
 :::
 
-::: warning 模块“"vue-router/auto"”没有导出的成员“createRouter”。。
+::: warning 模块“"vue-router/auto"”没有导出的成员“createRouter”。
 
 如果你遇到了这个问题：
 
@@ -256,6 +252,182 @@ export default router;
 
 ![](./images/auto-route-example.jpg)
 
+## 全局布局
+
+[vite-plugin-vue-layouts](https://github.com/johncampionjr/vite-plugin-vue-layouts) : 在我们的项目中，除了一级路由 在项目中还涉及嵌套路由的情况，也就是不同层级使用同一组布局 。该插件允许开发者为不同页面指定布局，从而实现更灵活的页面结构管理。
+
+安装并配置 [vite-plugin-vue-layouts](https://github.com/johncampionjr/vite-plugin-vue-layouts) :
+
+```bash
+pnpm install -D vite-plugin-vue-layouts
+```
+
+::: code-group
+
+```ts{8,16-20} [vite.config.ts]
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+
+import VueRouter from 'unplugin-vue-router/vite'
+
+import Layouts from 'vite-plugin-vue-layouts' // [!code focus]
+
+export default defineConfig({
+  plugins: [
+    VueRouter({ routesFolder: 'src/views' }),
+    vue(), // Vue() 必须放在 VueRouter() 之后
+    vueJsx(),
+    // [!code focus:6]
+    Layouts({
+      layoutsDirs: 'src/layouts', // 指定布局文件
+      defaultLayout: 'default', // 指定默认布局
+      pagesDirs: 'src/views', // 指定页面文件
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+})
+
+```
+
+:::
+
+::: tip
+布局文件通常存储在 `/src/layouts` 文件夹中（默认设置，但可配置）。
+:::
+
+::: code-group
+
+```ts [src/router/index.ts]
+import { createRouter, createWebHistory } from "vue-router/auto";
+import { routes } from "vue-router/auto-routes";
+import { setupLayouts } from "virtual:generated-layouts"; // [!code focus]
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: setupLayouts(routes), // [!code focus]
+});
+
+export default router;
+```
+
+:::
+
+::: warning 找不到模块“virtual:generated-layouts”或其相应的类型声明。
+
+如果你遇到了这个问题：
+
+![](./images/layouts-ts-error.jgp.jpg)
+
+和上个问题一样在这里向 `env.d.ts` 文件中添加类型：
+
+```ts{3}
+/// <reference types="vite/client" />
+/// <reference types="unplugin-vue-router/client" />
+/// <reference types="vite-plugin-vue-layouts/client" /> // [!code focus]
+```
+
+:::
+
+在 `src` 创建 `layouts` 文件夹以及 `default.vue` 文件:
+
+::: code-group
+
+```vue [src/layouts/default.vue]
+<template>
+  <h1 style="font-size: 20px; margin: 10px">this is default layout</h1>
+  <header style="font-size: 18px; color: red; margin: 10px">
+    this is default header
+  </header>
+
+  <div style="margin: 10px; color: blue">
+    <router-link to="/">index</router-link>
+    |
+    <router-link to="/about">about</router-link>
+    |
+    <router-link to="/more">more</router-link>
+  </div>
+
+  <div style="margin: 10px">
+    <router-view></router-view>
+  </div>
+
+  <footer style="font-size: 18px; color: red; margin: 10px">
+    this is default footer
+  </footer>
+</template>
+```
+
+:::
+
+在 `src/layouts` 文件夹创建 `home.vue` 文件:
+
+::: code-group
+
+```vue [src/layouts/home.vue]
+<template>
+  <h1 style="font-size: 20px; margin: 10px">this is home layout</h1>
+  <header style="font-size: 18px; color: red; margin: 10px">
+    this is home header
+  </header>
+
+  <div style="margin: 10px">
+    <router-view></router-view>
+  </div>
+
+  <footer style="font-size: 18px; color: red; margin: 10px">
+    this is home footer
+  </footer>
+</template>
+```
+
+:::
+
+指定 `index.vue` 的布局 为 `home`，`about.vue` `more.vue` 为 `default`：
+
+::: code-group
+
+```vue{5-8} [src/views/index.vue]
+<template>
+  <div>this is index</div>
+</template>
+
+<route lang="yaml"> // [!code focus:5]
+meta:
+  layout: home
+</route>
+```
+
+```vue{5-8} [src/views/about.vue]
+<template>
+  <div>this is about</div>
+</template>
+
+<route lang="yaml"> // [!code focus:5]
+meta:
+  layout: default
+</route>
+```
+
+```vue{5} [src/views/more.vue]
+<template>
+  <div>this is more</div>
+</template>
+
+// 默认布局可以不指定 // [!code focus]
+```
+
+:::
+
+![](./images/layout-example.jpg)
+
+> 还可以配置过渡效果、参数传递等。阅读 🫱 [官方文档](https://github.com/johncampionjr/vite-plugin-vue-layouts?tab=readme-ov-file#transitions)
+
 ## CSS 方案
 
 这里采用 CSS 框架 [unocss](https://github.com/unocss/unocss)
@@ -318,32 +490,36 @@ pnpm add -D unocss @unocss/preset-wind
 
 ::: code-group
 
-```ts{10,18} [vite.config.ts]
-import { fileURLToPath, URL } from "node:url";
+```ts{8,21} [vite.config.ts]
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import VueRouter from 'unplugin-vue-router/vite'
+import Layouts from 'vite-plugin-vue-layouts'
 
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import vueJsx from "@vitejs/plugin-vue-jsx";
-import vueDevTools from "vite-plugin-vue-devtools";
-
-// 引入 unplugin-vue-router/vite
-import VueRouter from "unplugin-vue-router/vite";
-import UnoCSS from "unocss/vite"; // [!code focus]
+import UnoCSS from 'unocss/vite' // [!code focus]
 
 export default defineConfig({
   plugins: [
-    VueRouter({ routesFolder: "src/views" }),
+    VueRouter({ routesFolder: 'src/views' }),
     vue(), // Vue() 必须放在 VueRouter() 之后
     vueJsx(),
-    vueDevTools(),
+    Layouts({
+      layoutsDirs: 'src/layouts', // 指定布局文件
+      defaultLayout: 'default', // 指定默认布局
+      pagesDirs: 'src/views', // 指定
+    }),
+
     UnoCSS(), // [!code focus]
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-});
+})
+
 ```
 
 :::
@@ -367,7 +543,8 @@ export default defineConfig({
 
 ::: code-group
 
-```ts{7} [src/main.ts]
+```ts{8} [src/main.ts]
+import '@unocss/reset/tailwind-compat.css'
 import "./assets/main.css";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -375,7 +552,6 @@ import router from "./router";
 import App from "./App.vue";
 
 import "virtual:uno.css"; // [!code focus]
-import "reset-css";
 
 const app = createApp(App);
 
@@ -465,8 +641,6 @@ export default defineConfig({
 
 ![](./images/unocss-icon-example.jpg)
 
-:::
-
 ## 自动导入依赖
 
 > [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)：在项目中，频繁引入依赖包是一个常见的操作，但手动引入依赖包往往繁琐。可以通过自动导入的插件，就可以自动导入我们的 API。
@@ -487,27 +661,32 @@ pnpm i @vueuse/core
 
 ::: code-group
 
-```ts{11-14,23-39} [vite.config.ts]
-import { fileURLToPath, URL } from "node:url";
+```ts{10-13,28-46} [vite.config.ts]
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import VueRouter from 'unplugin-vue-router/vite'
+import Layouts from 'vite-plugin-vue-layouts'
 
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import vueJsx from "@vitejs/plugin-vue-jsx";
-
-// 引入 unplugin-vue-router/vite
-import VueRouter from "unplugin-vue-router/vite";
-import UnoCSS from "unocss/vite";
+import UnoCSS from 'unocss/vite'
 
 // 自动导入 // [!code focus:4]
-import AutoImport from "unplugin-auto-import/vite";
+import AutoImport from 'unplugin-auto-import/vite'
 // 这里使用的是 unplugin-vue-router 而不是 vue-router
-import { VueRouterAutoImports } from "unplugin-vue-router";
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 export default defineConfig({
   plugins: [
-    VueRouter({ routesFolder: "src/views" }),
+    VueRouter({ routesFolder: 'src/views' }),
     vue(), // Vue() 必须放在 VueRouter() 之后
     vueJsx(),
+    Layouts({
+      layoutsDirs: 'src/layouts', // 指定布局文件
+      defaultLayout: 'default', // 指定默认布局
+      pagesDirs: 'src/views', // 指定
+    }),
+
     UnoCSS(),
     // [!code focus:20]
     AutoImport({
@@ -521,21 +700,22 @@ export default defineConfig({
 
       // global imports to register (全局需要注册的内容)
       imports: [
-        "vue",
+        'vue',
         // 这里使用的是 unplugin-vue-router 而不是 vue-router
         // 要使用我们选择的自动路由方案
         VueRouterAutoImports,
         // VueUse 配置自动导入
-        "@vueuse/core",
+        '@vueuse/core',
       ],
     }),
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-});
+})
+
 ```
 
 :::
@@ -621,28 +801,36 @@ pnpm i -D unplugin-vue-components
 
 ::: code-group
 
-```ts{14,41} [vite.config.ts]
-import { fileURLToPath, URL } from "node:url";
+```ts{15,50} [vite.config.ts]
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import VueRouter from 'unplugin-vue-router/vite'
+import Layouts from 'vite-plugin-vue-layouts'
 
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import vueJsx from "@vitejs/plugin-vue-jsx";
+import UnoCSS from 'unocss/vite'
 
-// 引入 unplugin-vue-router/vite
-import VueRouter from "unplugin-vue-router/vite";
-import UnoCSS from "unocss/vite";
+// 自动导入
+import AutoImport from 'unplugin-auto-import/vite'
+// 这里使用的是 unplugin-vue-router 而不是 vue-router
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 
-import AutoImport from "unplugin-auto-import/vite";
-import { VueRouterAutoImports } from "unplugin-vue-router";
-
-import Components from "unplugin-vue-components/vite"; // [!code focus]
+import Components from 'unplugin-vue-components/vite' // [!code focus]
 
 export default defineConfig({
   plugins: [
-    VueRouter({ routesFolder: "src/views" }),
+    VueRouter({ routesFolder: 'src/views' }),
     vue(), // Vue() 必须放在 VueRouter() 之后
     vueJsx(),
+    Layouts({
+      layoutsDirs: 'src/layouts', // 指定布局文件
+      defaultLayout: 'default', // 指定默认布局
+      pagesDirs: 'src/views', // 指定
+    }),
+
     UnoCSS(),
+
     AutoImport({
       // targets to transform (哪些文件需要解析)
       include: [
@@ -654,22 +842,24 @@ export default defineConfig({
 
       // global imports to register (全局需要注册的内容)
       imports: [
-        "vue",
+        'vue',
         // 这里使用的是 unplugin-vue-router 而不是 vue-router
         // 要使用我们选择的自动路由方案
         VueRouterAutoImports,
         // VueUse 配置自动导入
-        "@vueuse/core",
+        '@vueuse/core',
       ],
     }),
+
     Components(), // [!code focus]
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-});
+})
+
 ```
 
 :::
