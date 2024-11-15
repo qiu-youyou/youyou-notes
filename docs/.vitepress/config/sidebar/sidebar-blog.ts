@@ -6,7 +6,7 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       {
-        text: "JavaScript设计模式-面向对象",
+        text: "JavaScript 设计模式-面向对象",
         link: "/blog/javascript-patterns/oop/",
       },
       // {
@@ -17,6 +17,17 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
       //   text: "JavaScript设计模式-工厂模式",
       //   link: "/blog/javascript-patterns/factory-pattern/",
       // },
+    ],
+  },
+
+  {
+    text: "Vue3 通用项目模板搭建",
+    collapsed: false,
+    items: [
+      {
+        text: "创建并初始化 Vue3 前端项目",
+        link: "/blog/vue3-template/init-project/",
+      },
     ],
   },
 
