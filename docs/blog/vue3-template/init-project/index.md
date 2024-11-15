@@ -84,7 +84,7 @@ pnpm install reset-css
 
 ::: code-group
 
-```ts{9} [src/main.ts]
+```ts{7} [src/main.ts]
 import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
