@@ -14,6 +14,10 @@ next: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
+## 2024-11-15
+
+- 发表了一篇文章，快来瞅瞅 👀 [创建并初始化 Vue3 前端项目](/blog/vue3-template/init-project/)
+
 ## 2024-11-14
 
 - 发表了一篇文章，快来瞅瞅 👀 [JavaScript-面向对象](/blog/javascript-patterns/oop/)

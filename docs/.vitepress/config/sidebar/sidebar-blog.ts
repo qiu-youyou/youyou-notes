@@ -55,17 +55,6 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   },
 
   {
-    text: "Vue",
-    collapsed: false,
-    items: [
-      {
-        text: "Vue3-初始化项目通用模板",
-        link: "/blog/vue/vue3-init-template/",
-      },
-    ],
-  },
-
-  {
     text: "NPM 相关",
     collapsed: false,
     items: [

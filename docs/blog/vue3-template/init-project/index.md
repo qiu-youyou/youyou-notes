@@ -20,7 +20,6 @@ pnpm install
 删除不必要的文件:
 
 ```bash
-
 rm -rf src/components/icons
 
 rm src/components/HelloWorld.vue src/components/TheWelcome.vue src/components/WelcomeItem.vue
@@ -39,7 +38,7 @@ rm src/views/AboutView.vue src/stores/counter.ts src/assets/base.css
 
 ```vue [HomeView.vue]
 <template>
-  <main>this is home view</main>
+  <div>this is home view</div>
 </template>
 ```
 
@@ -106,6 +105,9 @@ app.mount('#app')
 
 ::: tip
 除了 [reset.css](https://www.npmjs.com/package/reset-css) 外，还有很多类似的库，比如 [normalize.css](https://necolas.github.io/normalize.css/)，自行选择。
+
+其实后面的我们使用的 CSS 框架都有 重置样式表 的预设。[CSS 框架方案](/blog/vue3-template/init-project/#css-方案) 中会提到。
+
 :::
 
 ## 路由方案
@@ -228,7 +230,7 @@ export default router;
 
 :::
 
-多创建几个文件来测试自动路由效果：
+创建几个文件来测试自动路由效果：
 
 ::: code-group
 
@@ -256,4 +258,549 @@ export default router;
 
 ## CSS 方案
 
+这里采用 CSS 框架 [unocss](https://github.com/unocss/unocss)
+
+UI 库：UI 库有特定的场景, UI 库中把样式都已写好，如果你想定制样式，需要修改自定义的样式文件或定制主题、并熟悉该 UI 框架的文档。按要求进行修改。
+
+CSS 框架：搭建一个通用的框架 推荐使用 CSS 框架(原子化 CSS 引擎)。可以按照自己的想法来书写。当实现一些定制性强的需求 (如首页、很难去复用各 UI 库的样式)。
+
+::: tip [tailwindcss](https://github.com/tailwindlabs/tailwindcss) 与 [unocss](https://github.com/unocss/unocss)
+
+这里官方文档说明了不同: [How is UnoCSS Different from X?](https://unocss.dev/guide/why#how-is-unocss-different-from-x)
+
+其实 Windi CSS 和 UnoCSS 都从 Tailwind CSS 中汲取了很多灵感。
+
+如果对于项目提及有要求或新能有要求 推荐 unocss，unocss 的特点就是速度快、体积小。
+
+如果追求稳定性，以及后续的更新支持 和完整的文档 推荐 tailwindcss。
+
+当然 unocss 使用 Wind Preset 是个不错的方案！🎉
+
+:::
+
+::: tip 关于重置样式表
+其实 `tailwindcss / unocss` 都自带了 `reset css`。
+
+可以移除掉上文 [创建项目](/blog/vue3-template/init-project/#创建项目) 中的`reset-css` 使用框架的 `reset`。
+
+具体可以看：在 `tailwindcss` 中关于 [base style](https://tailwindcss.com/docs/preflight) 和 在 `unocss` 中关于 [style-reset](https://unocss.dev/guide/style-reset)
+
+根据需求选择合适的重置样式表、以确保网页的一致性和可靠性 (比如选择 [Tailwind compat](https://unocss.dev/guide/style-reset#tailwind-compat))。
+
+```bash
+pnpm add @unocss/reset
+```
+
+::: code-group
+
+```ts [src/main.ts]
+import "@unocss/reset/tailwind-compat.css";
+```
+
+:::
+
+安装 [unocss](https://github.com/unocss/unocss) 并配置 [Presets](https://unocss.dev/guide/presets) ：
+
+::: tip 预设 Presets
+
+看看 [官方文档](https://unocss.dev/guide/presets)
+
+预设是 UnoCSS 的核心。它们可让您在几分钟内创建自己的自定义框架。
+
+`UnoCSS` 提供了很多 `Presets`，这样就可以在 `UnoCSS` 中使用 `tailwindcss` 的类和写法。
+
+文档也提供了更多 Presets [官方 Presets](https://unocss.dev/presets/#official-packages) 和 [社区 Presets](https://unocss.dev/presets/community#community-presets)
+:::
+
+```bash
+pnpm add -D unocss @unocss/preset-wind
+```
+
+::: code-group
+
+```ts{10,18} [vite.config.ts]
+import { fileURLToPath, URL } from "node:url";
+
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import vueDevTools from "vite-plugin-vue-devtools";
+
+// 引入 unplugin-vue-router/vite
+import VueRouter from "unplugin-vue-router/vite";
+import UnoCSS from "unocss/vite"; // [!code focus]
+
+export default defineConfig({
+  plugins: [
+    VueRouter({ routesFolder: "src/views" }),
+    vue(), // Vue() 必须放在 VueRouter() 之后
+    vueJsx(),
+    vueDevTools(),
+    UnoCSS(), // [!code focus]
+  ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});
+```
+
+:::
+
+在根目录创建 `uno.config.ts` :
+
+::: code-group
+
+```ts [uno.config.ts]
+import { defineConfig } from "unocss";
+
+import presetWind from "@unocss/preset-wind"; // Preset
+
+export default defineConfig({
+  // ...UnoCSS options
+  presets: [presetWind()], // Preset
+});
+```
+
+:::
+
+::: code-group
+
+```ts{7} [src/main.ts]
+import "./assets/main.css";
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import router from "./router";
+import App from "./App.vue";
+
+import "virtual:uno.css"; // [!code focus]
+import "reset-css";
+
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(router);
+
+app.mount("#app");
+```
+
+:::
+
+::: code-group
+
+```vue{3,4} [src/views/index.vue]
+<template>
+  <div>Hello Index</div>
+  <div class="p-4">Hello UnoCSS</div> // [!code focus]
+  <h1 class="text-3xl font-bold underline">Hello world!</h1> // [!code focus]
+</template>
+
+```
+
+:::
+
+![](./images/unocss-example.jpg)
+
 ## 图标方案
+
+[Iconify](https://iconify.design/) : unocss 中使用 Iconify 作为图标数据源 🫱 [文档](https://unocss.dev/presets/icons#install)
+
+::: tip
+使用 @iconify-json/(图标集) 下载相应的图标集。
+
+也可以一次安装 Iconify 上所有可用的图标集 (@iconify/json 数据量大 建议选择常用合集下载)
+:::
+
+`unocss` 配置 `iconify` :
+
+::: code-group
+
+```ts [uno.config.ts]
+import { defineConfig } from "unocss";
+import { presetWind, presetIcons } from "unocss"; // presets // [!code focus]
+
+export default defineConfig({
+  // ...UnoCSS options
+  presets: [
+    presetWind(),
+    // [!code focus:9]
+    presetIcons({
+      prefix: "i-", // 设置前缀
+      // 设置额外的css属性
+      extraProperties: {
+        display: "inline-block",
+        "vertical-align": "middle",
+      },
+    }),
+  ],
+});
+```
+
+:::
+
+遵循约定来使用图标: `<prefix><collection>-<icon>`、`<prefix><collection>:<icon>`:
+
+检查所有可用 [图标](https://icones.js.org/)
+
+::: code-group
+
+```vue [src/views/index.vue]
+<template>
+  <!-- A basic anchor icon from Phosphor icons -->
+  <div class="i-ph-anchor-simple-thin" />
+  <!-- An orange alarm from Material Design Icons -->
+  <div class="i-mdi-alarm text-orange-400" />
+  <!-- Twemoji of laugh, turns to tear on hovering -->
+  <div
+    class="i-twemoji-grinning-face-with-smiling-eyes hover:i-twemoji-face-with-tears-of-joy"
+  />
+
+  <!-- 前缀 图标集:图标名称。 也可以设置style -->
+  <div class="i-carbon:4k-filled" style="color: green; font-size: 60px"></div>
+</template>
+```
+
+:::
+
+![](./images/unocss-icon-example.jpg)
+
+:::
+
+## 自动导入依赖
+
+> [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)：在项目中，频繁引入依赖包是一个常见的操作，但手动引入依赖包往往繁琐。可以通过自动导入的插件，就可以自动导入我们的 API。
+
+安装配置 [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)：
+
+```bash
+pnpm i -D unplugin-auto-import
+```
+
+安装 [VueUse](https://vueuse.org/) 并配置 `AutoImport` :
+
+`AutoImport` 更多配置请阅读 [官方文档](https://github.com/unplugin/unplugin-auto-import?tab=readme-ov-file#configuration)。
+
+```bash
+pnpm i @vueuse/core
+```
+
+::: code-group
+
+```ts{11-14,23-39} [vite.config.ts]
+import { fileURLToPath, URL } from "node:url";
+
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+
+// 引入 unplugin-vue-router/vite
+import VueRouter from "unplugin-vue-router/vite";
+import UnoCSS from "unocss/vite";
+
+// 自动导入 // [!code focus:4]
+import AutoImport from "unplugin-auto-import/vite";
+// 这里使用的是 unplugin-vue-router 而不是 vue-router
+import { VueRouterAutoImports } from "unplugin-vue-router";
+
+export default defineConfig({
+  plugins: [
+    VueRouter({ routesFolder: "src/views" }),
+    vue(), // Vue() 必须放在 VueRouter() 之后
+    vueJsx(),
+    UnoCSS(),
+    // [!code focus:20]
+    AutoImport({
+      // targets to transform (哪些文件需要解析)
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
+
+      // global imports to register (全局需要注册的内容)
+      imports: [
+        "vue",
+        // 这里使用的是 unplugin-vue-router 而不是 vue-router
+        // 要使用我们选择的自动路由方案
+        VueRouterAutoImports,
+        // VueUse 配置自动导入
+        "@vueuse/core",
+      ],
+    }),
+  ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});
+```
+
+:::
+
+重启后生成了类型文件 `auto-imports.d`。并导入了上面我们 `imports` 的所有内容。
+
+增加 `auto-imports.d.ts` 到 `tsconfig.app.json > include`:
+
+::: code-group
+
+```json{4-10} [tsconfig.app.json]
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  // [!code focus:8]
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "typed-router.d.ts",
+    "auto-imports.d.ts"
+  ],
+
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+:::
+
+::: code-group
+
+```vue{10-13} [src/views/index.vue]
+<template>
+  <div>Hello Index</div>
+  <div class="p-4">Hello UnoCSS</div>
+  <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <div>{{ msg }}</div>
+  <div>pos: {{ x }}, {{ y }}</div>
+</template>
+
+<script setup lang="ts">
+// 这里可以不在vue的核心库中进行引入 ref 了 // [!code focus:4]
+const msg = ref("hello auto import");
+// 可以不在vueuse的核心库中进行引入 useMouse
+const { x, y } = useMouse();
+</script>
+```
+
+:::
+
+::: warning 权衡
+并非所以依赖都适合自动导入，项目内的代码就不一定适合。
+
+自动引入后，从开发的角度就会丢失依赖链路，虽然另外生成了 Typescript 声明文件，IDE 能够正常识别， 但对于新加入项目的同学来说，他们不一定知道是自动引入，因此可能会降低了一些可读性。
+
+:::
+
+## 自动注册组件
+
+> [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components)：解决的是在 vue 项目中自动导入以 .vue、.ts、.tsx 这些组件。使用插件结合 setup 语法糖，让编写变得更加方便。
+
+::: tip
+DRY 原则是编写程序中，经常会用到的概念。
+
+DRY (Don't Repeat Yourself 不要重复你自己)
+
+程序员可以让程序帮我们做很多重复的事情。大大提高效率。
+:::
+
+安装配置 [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) ：
+
+```bash
+pnpm i -D unplugin-vue-components
+```
+
+::: code-group
+
+```ts{14,41} [vite.config.ts]
+import { fileURLToPath, URL } from "node:url";
+
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+
+// 引入 unplugin-vue-router/vite
+import VueRouter from "unplugin-vue-router/vite";
+import UnoCSS from "unocss/vite";
+
+import AutoImport from "unplugin-auto-import/vite";
+import { VueRouterAutoImports } from "unplugin-vue-router";
+
+import Components from "unplugin-vue-components/vite"; // [!code focus]
+
+export default defineConfig({
+  plugins: [
+    VueRouter({ routesFolder: "src/views" }),
+    vue(), // Vue() 必须放在 VueRouter() 之后
+    vueJsx(),
+    UnoCSS(),
+    AutoImport({
+      // targets to transform (哪些文件需要解析)
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
+
+      // global imports to register (全局需要注册的内容)
+      imports: [
+        "vue",
+        // 这里使用的是 unplugin-vue-router 而不是 vue-router
+        // 要使用我们选择的自动路由方案
+        VueRouterAutoImports,
+        // VueUse 配置自动导入
+        "@vueuse/core",
+      ],
+    }),
+    Components(), // [!code focus]
+  ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});
+```
+
+:::
+
+这时重启调试进程后在根目录同样会生成一个类型文件 `components.d.ts`.
+
+也是同样样把它加入到 `tsconfig.app.json`，让 `ts` 程序能够识别:
+
+::: code-group
+
+```json [tsconfig.app.json]
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "typed-router.d.ts",
+    "auto-imports.d.ts",
+    "components.d.ts" // [!code focus]
+  ],
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+:::
+
+在 [官方文档-默认配置](https://github.com/unplugin/unplugin-vue-components?tab=readme-ov-file#configuration) 中可以看到，默认它的组件找寻路径是 `src/components` 。
+
+我们在项目中新建两个组件：
+
+```bash
+touch src/components/HelloWorld.vue
+# 同样也支持子目录的组件
+mkdir src/components/user
+touch src/components/user/UserComponent.vue
+```
+
+::: code-group
+
+```vue [src/views/index.vue]
+<template>
+  <!-- 不需要引入就可以使用 组件 -->
+  <HelloWorld></HelloWorld>
+  <UserComponent></UserComponent>
+</template>
+```
+
+:::
+
+::: tip
+在 [官方文档-默认配置](https://github.com/unplugin/unplugin-vue-components?tab=readme-ov-file#configuration) 中 同名组件 是不会进行覆盖 默认 `false`：
+
+```ts
+// Allow for components to override other components with the same name
+// (允许组件覆盖同名的其他组件)
+allowOverrides: false,
+```
+
+在我们创建组件时一般会规避出现同名组件的情况。但如果有这种情况。我们通常也会加上组件的 私缀 来处理：
+在默认配置中：
+
+```ts
+// Allow subdirectories as namespace prefix for components.
+// (允许子目录作为组件的命名空间前缀。)
+directoryAsNamespace: false,
+```
+
+可以更改为 `true`：
+
+```ts title="vite.config.ts"
+// ......
+Components({ directoryAsNamespace: true,}),
+```
+
+```ts title="src/pages/index.vue"
+<UserUserComponent></<UserUserComponent>
+```
+
+可以发现 在 `components.d.ts` 中的变化：
+
+```ts
+// before
+UserComponent: typeof import("./src/components/user/UserComponent.vue")[
+  "default"
+];
+
+// after：增加了一个并带上了文件夹最为前缀
+UserComponent: typeof import("./src/components/user/UserComponent.vue")[
+  "default"
+];
+UserUserComponent: typeof import("./src/components/user/UserComponent.vue")[
+  "default"
+];
+
+// 这时如果有一个文件夹中也有 UserComponent.vue。比如：admin/UserComponent.vue
+// 同样也会带上 文件的前缀
+AdminUserComponent: typeof import("./src/components/admin/UserComponent.vue")[
+  "default"
+];
+```
+
+当然也可以省略问与组件相同的前缀: `collapseSamePrefixes: true,`
+
+```ts
+// before
+UserComponent: typeof import("./src/components/user/UserComponent.vue")[
+  "default"
+];
+UserUserComponent: typeof import("./src/components/user/UserComponent.vue")[
+  "default"
+];
+
+// after：与 user 文件夹 相同名称的前缀，前缀会被省略：
+// UserUserComponent 从 components.d.ts 中删除了
+UserComponent: typeof import("./src/components/user/UserComponent.vue")[
+  "default"
+];
+```
+
+:::
+
+::: warning
+如果你在测试时 `components.d.ts` 文件没变化。可以删除该文件。然后重启程序。
+:::
