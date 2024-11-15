@@ -2,15 +2,24 @@ import { DefaultTheme } from "vitepress";
 
 export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   {
-    text: "Vue",
+    text: "JavaScript 设计模式",
     collapsed: false,
     items: [
       {
-        text: "Vue3-初始化项目通用模板",
-        link: "/blog/vue/vue3-init-template/",
+        text: "JavaScript设计模式-面向对象",
+        link: "/blog/javascript-patterns/oop/",
       },
+      // {
+      //   text: "JavaScript设计模式-设计原则",
+      //   link: "/blog/javascript-patterns/principles/",
+      // },
+      // {
+      //   text: "JavaScript设计模式-工厂模式",
+      //   link: "/blog/javascript-patterns/factory-pattern/",
+      // },
     ],
   },
+
   {
     text: "React",
     collapsed: false,
@@ -33,24 +42,18 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
       },
     ],
   },
+
   {
-    text: "JavaScript 设计模式",
+    text: "Vue",
     collapsed: false,
     items: [
       {
-        text: "JavaScript设计模式-面向对象",
-        link: "/blog/javascript-patterns/oop/",
+        text: "Vue3-初始化项目通用模板",
+        link: "/blog/vue/vue3-init-template/",
       },
-      // {
-      //   text: "JavaScript设计模式-设计原则",
-      //   link: "/blog/javascript-patterns/principles/",
-      // },
-      // {
-      //   text: "JavaScript设计模式-工厂模式",
-      //   link: "/blog/javascript-patterns/factory-pattern/",
-      // },
     ],
   },
+
   {
     text: "NPM 相关",
     collapsed: false,

@@ -43,7 +43,7 @@ onMounted(() => {
 
 <template>
   <div class="word">
-    <p>
+    <p style="margin: 20px 0 -20px 0">
       <svg
         t="1731324884448"
         class="icon"

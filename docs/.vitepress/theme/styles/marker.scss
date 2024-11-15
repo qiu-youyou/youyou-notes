@@ -81,6 +81,14 @@
   z-index: 1;
 }
 
+/** 代码块: 代码块边距 */
+.vp-doc [class*="language-"] code {
+  padding: 0 10px;
+}
+.vp-doc [class*="language-"] pre {
+  padding: 10px 0;
+}
+
 /* 代码块：下移行号 隐藏右侧竖线 */
 .vp-doc .line-numbers-wrapper {
   padding-top: 40px;
@@ -117,7 +125,7 @@
 
 /* 代码组：修正tab高度 */
 .vp-code-group .tabs label {
-  line-height: 44px;
+  line-height: 36px;
 }
 
 /* 代码组：添加macOS风格的小圆点 */
