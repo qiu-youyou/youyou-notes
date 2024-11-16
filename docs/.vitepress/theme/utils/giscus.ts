@@ -8,7 +8,7 @@ export const createGiscus = () => {
   // giscus配置
   giscusTalk(
     {
-      repo: "sqius/youyou-notes",
+      repo: "qiu-youyou/youyou-notes",
       repoId: "R_kgDONNCZuQ",
       category: "Announcements",
       categoryId: "DIC_kwDONNCZuc4CkN07",

@@ -29,7 +29,7 @@ next: false
 
 ## 2024-11-12
 
-- 迁移了文档库 [rspress](https://rspress.dev/zh/) 到 [vitepress](https://vitepress.dev/)。以后访问均到这个[新站](https://sqius.github.io/youyou-notes/)。
+- 迁移了文档库 [rspress](https://rspress.dev/zh/) 到 [vitepress](https://vitepress.dev/)。以后访问均到这个[新站](https://qiu-youyou.github.io/youyou-notes/)。
 
 ## 2024-11-12
 

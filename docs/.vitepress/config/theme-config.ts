@@ -42,5 +42,5 @@ export const themeConfig: DefaultTheme.Config = {
     },
   },
 
-  socialLinks: [{ icon: "github", link: "https://github.com/sqius" }], // GitHub
+  socialLinks: [{ icon: "github", link: "https://github.com/qiu-youyou" }], // GitHub
 };
