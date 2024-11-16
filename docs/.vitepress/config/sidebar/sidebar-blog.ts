@@ -25,8 +25,12 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       {
-        text: "创建并初始化 Vue3 前端项目",
+        text: "创建并初始化 Vue3 项目",
         link: "/blog/vue3-template/init-project/",
+      },
+      {
+        text: "PWA (渐进式Web应用) 集成",
+        link: "/blog/vue3-template/pwa/",
       },
     ],
   },

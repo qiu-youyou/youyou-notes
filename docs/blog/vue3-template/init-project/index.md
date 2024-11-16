@@ -20,7 +20,7 @@ pnpm install
 删除不必要的文件:
 
 ```bash
-rm -rf src/components/icons
+rm -rf src/components/icons src/components/__tests__
 
 rm src/components/HelloWorld.vue src/components/TheWelcome.vue src/components/WelcomeItem.vue
 
@@ -303,7 +303,7 @@ export default defineConfig({
 
 ::: code-group
 
-```ts [src/router/index.ts]
+```ts{3,7} [src/router/index.ts]
 import { createRouter, createWebHistory } from "vue-router/auto";
 import { routes } from "vue-router/auto-routes";
 import { setupLayouts } from "virtual:generated-layouts"; // [!code focus]
@@ -722,11 +722,11 @@ export default defineConfig({
 
 重启后生成了类型文件 `auto-imports.d`。并导入了上面我们 `imports` 的所有内容。
 
-增加 `auto-imports.d.ts` 到 `tsconfig.app.json > include`:
+增加 `auto-imports.d.ts` 到 `tsconfig.app.json `，让 `ts` 程序能够识别:
 
 ::: code-group
 
-```json{4-10} [tsconfig.app.json]
+```json{9} [tsconfig.app.json]
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   // [!code focus:8]
@@ -993,4 +993,76 @@ UserComponent: typeof import("./src/components/user/UserComponent.vue")[
 
 ::: warning
 如果你在测试时 `components.d.ts` 文件没变化。可以删除该文件。然后重启程序。
+:::
+
+## 接口 MOCK
+
+在前端项目的开发过程中，有时候我们会需要一些模拟数据。这样我们的开发可以优先于后端的接口。可以先调试本地的数据和一些交互。
+
+[vite-plugin-mock](https://github.com/vbenjs/vite-plugin-mock) : 一款针对 vite 的 mock 插件，基于 mockjs 开发。并且同时支持本地环境和生产环境。本地使用 connect 服务中间件，线上使用 mockjs。
+
+安装并配置 [vite-plugin-mock](https://github.com/vbenjs/vite-plugin-mock) :
+
+```bash
+pnpm add mockjs vite-plugin-mock  -D
+```
+
+::: warning
+这里如果你想在线上使用的话那就把 `mockjs` 安装到 `dependencies`。
+
+我们这里安装到 `devDependencies`。
+
+更多配置请参考 [文档](https://github.com/vbenjs/vite-plugin-mock?tab=readme-ov-file#options)
+:::
+
+::: code-group
+
+```ts{2,7-10} [vite.config.ts]
+...
+import { viteMockServe } from "vite-plugin-mock"; // [!code focus]
+
+export default defineConfig({
+  plugins: [
+    ...
+    viteMockServe({ // default // [!code focus:4]
+      mockPath: "mock",
+      enable: true,
+    }),
+  ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});
+```
+
+:::
+
+在项目根目录中新建一个 `mock` 文件夹，并创建一个 `test.ts` :
+
+启动调试进程就可以通过浏览器或者接口测试工具来测试 mock：
+
+::: code-group
+
+```ts [mock/test.ts]
+import { MockMethod } from "vite-plugin-mock";
+
+export default [
+  {
+    url: "/api/get",
+    method: "get",
+    response: ({ query }) => {
+      return { code: 0, data: { name: "vben" } };
+    },
+  },
+  {
+    url: "/api/post",
+    method: "post",
+    timeout: 2000,
+    response: { code: 0, data: { name: "vben" } },
+  },
+] as MockMethod[];
+```
+
 :::
