@@ -1066,3 +1066,6 @@ export default [
 ```
 
 :::
+
+::: tip 完整项目在：[这里](https://github.com/qiu-youyou/youyou-vue3-template)
+:::
