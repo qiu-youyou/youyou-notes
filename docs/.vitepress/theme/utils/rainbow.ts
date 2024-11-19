@@ -2,12 +2,12 @@
 let rainbowStyle: HTMLStyleElement | undefined;
 export const updateRainbowStyle = () => {
   if (typeof window !== "undefined") {
-    if (location.pathname === "/") {
+    if (location.pathname === "/youyou-notes/") {
       if (rainbowStyle) return;
       rainbowStyle = document.createElement("style");
       rainbowStyle.innerHTML = `
     :root {
-      animation: rainbow 14s linear infinite;
+      animation: rainbow 20s linear infinite;
     }`;
       document.body.appendChild(rainbowStyle);
     } else {

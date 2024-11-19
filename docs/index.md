@@ -3,11 +3,11 @@ layout: home
 
 hero:
   name: "秋又又"
-  text: "Yòu Yòu 的技术知识库"
+  text: "Yòuyou 的技术知识库"
   tagline: 没有记录就没有发生 进而没有活过
   image:
     src: /images/logo.png
-    alt: YòuYòu
+    alt: Yòuyou
   actions:
     - theme: brand
       text: 知识小记
