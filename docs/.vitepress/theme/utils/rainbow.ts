@@ -2,7 +2,7 @@
 let rainbowStyle: HTMLStyleElement | undefined;
 export const updateRainbowStyle = () => {
   if (typeof window !== "undefined") {
-    if (location.pathname === "/youyou-notes/") {
+    if (location.pathname === "/") {
       if (rainbowStyle) return;
       rainbowStyle = document.createElement("style");
       rainbowStyle.innerHTML = `

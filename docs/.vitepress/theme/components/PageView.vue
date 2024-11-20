@@ -27,6 +27,7 @@ if (inBrowser) {
 .panel {
   margin-top: 12px;
   margin-bottom: 8px;
+  opacity: 0;
 }
 
 .container {
