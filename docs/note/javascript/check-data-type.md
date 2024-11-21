@@ -19,8 +19,8 @@ typeof "10"; // 'String'
 typeof 10; // 'Number'
 typeof false; // 'Boolean'
 typeof Symbol(); // 'Symbol'
-typeof Function; // ‘function'
-typeof null; // ‘Object’
+typeof Function; // 'function'
+typeof null; // 'Object'
 typeof []; // 'Object'
 typeof {}; // 'Object'
 ```
@@ -29,7 +29,7 @@ typeof {}; // 'Object'
 
 ::: tip `typeof null` 为什么是 `Object` ?
 
-因为在 `JavaScript` 中，不同的对象都是使用二进制存储的，如果二进制前三位都是 `0` 的话，系统会判断为是 `Object` 类型，而 `null` 的二进制全是 `0`，自然也就判断为 `Object。`
+因为在 `JavaScript` 中，不同的对象都是使用二进制存储的，如果二进制前三位都是 `0` 的话，系统会判断为是 `Object` 类型，而 `null` 的二进制全是 `0`，自然也就判断为 `Object`。
 
 ```js
 000 对象
