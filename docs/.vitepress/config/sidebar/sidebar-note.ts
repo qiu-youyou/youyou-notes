@@ -7,7 +7,7 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
     link: "/note/html-css/",
     items: [
       {
-        text: "clear-float",
+        text: "CSS-清除浮动",
         link: "/note/html-css/clear-float",
       },
     ],
@@ -17,10 +17,6 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       {
-        text: "理解作用域",
-        link: "/note/javascript/get-scope/",
-      },
-      {
         text: "JS-防抖与节流",
         link: "/note/javascript/debounce-throttle",
       },
@@ -28,7 +24,6 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
         text: "JS-数组排序的三种方法",
         link: "/note/javascript/sort-array",
       },
-
       {
         text: "JS-转换数字金额到大写",
         link: "/note/javascript/convert-amount-to-capital",
@@ -36,6 +31,10 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
       {
         text: "JS-手写call、apply、bind",
         link: "/note/javascript/call-apply-bind",
+      },
+      {
+        text: "JS-判断数据类型的四种方法",
+        link: "/note/javascript/check-data-type",
       },
       {
         text: "cos-js-sdk-v5 上传函数",
@@ -48,6 +47,10 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
       {
         text: "浏览器清除所有 cookie",
         link: "/note/javascript/browser-clear-all-cookie",
+      },
+      {
+        text: "理解作用域",
+        link: "/note/javascript/get-scope/",
       },
     ],
   },

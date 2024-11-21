@@ -14,6 +14,12 @@ next: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
+> 迁移了文档库 [rspress](https://rspress.dev/zh/) 到 [vitepress](https://vitepress.dev/)。以后访问到这个[新站](https://notes.qiuyouyou.cn)。
+
+## 2024-11-21
+
+- 发表了一篇文章，快来瞅瞅 👀 [JS-手写 call、apply、bind](/note/javascript/call-apply-bind)
+
 ## 2024-11-15
 
 - 发表了一篇文章，快来瞅瞅 👀 [创建并初始化 Vue3 前端项目](/blog/vue3-template/init-project/)
