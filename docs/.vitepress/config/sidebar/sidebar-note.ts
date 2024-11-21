@@ -37,6 +37,10 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
         link: "/note/javascript/check-data-type",
       },
       {
+        text: "JS-实现打字机效果代码片段",
+        link: "/note/javascript/typewriter-code/",
+      },
+      {
         text: "cos-js-sdk-v5 上传函数",
         link: "/note/javascript/upload-by-cos-js-sdk-v5",
       },
