@@ -5,7 +5,12 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
     text: "HTML/CSS",
     collapsed: false,
     link: "/note/html-css/",
-    items: [],
+    items: [
+      {
+        text: "clear-float",
+        link: "/note/html-css/clear-float",
+      },
+    ],
   },
   {
     text: "JavaScript",
@@ -20,8 +25,17 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
         link: "/note/javascript/debounce-throttle",
       },
       {
+        text: "JS-数组排序的三种方法",
+        link: "/note/javascript/sort-array",
+      },
+
+      {
         text: "JS-转换数字金额到大写",
         link: "/note/javascript/convert-amount-to-capital",
+      },
+      {
+        text: "JS-手写call、apply、bind",
+        link: "/note/javascript/call-apply-bind",
       },
       {
         text: "cos-js-sdk-v5 上传函数",

@@ -7,6 +7,7 @@ import { createGiscus } from "./utils/giscus";
 import HomeComponent from "./components/HomeComponent.vue";
 import ArticleMeta from "./components/ArticleMeta.vue";
 import Layout from "./components/Layout.vue";
+import "virtual:group-icons.css";
 import "./styles/index.scss";
 
 export default {
@@ -25,6 +26,6 @@ export default {
     );
   },
   setup() {
-    createGiscus()
-  }
+    createGiscus();
+  },
 } satisfies Theme;
