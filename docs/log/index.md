@@ -16,6 +16,10 @@ next: false
 
 > 迁移了文档库 [rspress](https://rspress.dev/zh/) 到 [vitepress](https://vitepress.dev/)。以后访问到这个[新站](https://notes.qiuyouyou.cn)。
 
+## 2024-12-12
+
+- 发表了一篇笔记，快来瞅瞅 👀 [JS-获取时间段内的所有日期](/note/javascript/get-dates-in-range)
+
 ## 2024-11-21
 
 - 发表了一篇文章，快来瞅瞅 👀 [Vue3 通用项目模板搭建- PWA 集成](/blog/vue3-template/pwa/)

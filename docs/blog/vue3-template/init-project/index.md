@@ -1068,4 +1068,8 @@ export default [
 :::
 
 ::: tip 完整项目在：[这里](https://github.com/qiu-youyou/youyou-vue3-template)
+
+可以使用 [degit](https://github.com/Rich-Harris/degit) 从 `Github` 仓库中获取模版。
+
+`degit` 是一个轻量级的 `CLI` 工具，用于从 `Git` 仓库快速克隆项目模板或存储库，而无需保留完整的 `Git` 历史记录。它的主要特点是简洁、快速，特别适合用来初始化项目时从模板仓库拉取代码。
 :::

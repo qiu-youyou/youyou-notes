@@ -68,7 +68,7 @@ onBeforeUnmount(() => window.removeEventListener("scroll", onScroll));
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #25a3ee;
+  background-color: var(--vp-c-brand-1);
   padding: 10px;
   box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.15);
 }
