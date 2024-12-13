@@ -74,7 +74,7 @@ onBeforeUnmount(() => window.removeEventListener("scroll", onScroll));
 }
 
 .vitepress-backTop-main:hover {
-  background-color: #47b3f1;
+  background-color: var(--vp-c-brand-light);
 }
 
 svg {

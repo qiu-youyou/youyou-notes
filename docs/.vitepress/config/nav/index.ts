@@ -25,14 +25,15 @@ export const nav: DefaultTheme.Config["nav"] = [
     items: getNavItemsBySidebar(sidebar?.["/algo"]),
   },
   {
+    text: "问题记录",
+    activeMatch: "/issue/",
+    items: getNavItemsBySidebar(sidebar?.["/issue"]),
+  },
+  {
     text: "软件工具",
     activeMatch: "/tool/",
     items: getNavItemsBySidebar(sidebar?.["/tool"]),
   },
-  {
-    text: "哇啦哇啦",
-    activeMatch: "/wala/",
-    items: getNavItemsBySidebar(sidebar?.["/wala"]),
-  },
+
   { text: "更新记录", link: "/log/", activeMatch: "/log/" },
 ];
