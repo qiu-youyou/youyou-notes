@@ -35,7 +35,6 @@ next: false
 
 ## 2024-11-13
 
-- 新站支持评论啦，快来试一试吧！[👉](/wala/#测试-markdown-1)
 - 发表了一篇笔记，快来瞅瞅 👀 [JS-防抖与节流](/note/javascript/debounce-throttle)
 
 ## 2024-11-12

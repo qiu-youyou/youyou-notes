@@ -10,7 +10,7 @@ const getNavItemsBySidebar = (siderbar: DefaultTheme.SidebarItem[]) => {
 
 export const nav: DefaultTheme.Config["nav"] = [
   {
-    text: "知识小记",
+    text: "芝士小记",
     activeMatch: "/note/",
     items: getNavItemsBySidebar(sidebar?.["/note"]),
   },
@@ -20,19 +20,19 @@ export const nav: DefaultTheme.Config["nav"] = [
     items: getNavItemsBySidebar(sidebar?.["/blog"]),
   },
   {
-    text: "每日算法",
-    activeMatch: "/algo/",
-    items: getNavItemsBySidebar(sidebar?.["/algo"]),
-  },
-  {
     text: "问题记录",
     activeMatch: "/issue/",
     items: getNavItemsBySidebar(sidebar?.["/issue"]),
   },
   {
-    text: "软件工具",
+    text: "常用配置",
     activeMatch: "/tool/",
     items: getNavItemsBySidebar(sidebar?.["/tool"]),
+  },
+  {
+    text: "每日算法",
+    activeMatch: "/algo/",
+    items: getNavItemsBySidebar(sidebar?.["/algo"]),
   },
 
   { text: "更新记录", link: "/log/", activeMatch: "/log/" },
