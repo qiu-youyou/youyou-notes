@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "秋又又"
+  name: "Turn Of A Page"
   text: "Yòuyou 的技术知识库"
-  tagline: 没有记录就没有发生 进而没有活过
+  tagline: 如果回忆能够誊写 光阴就有了副本
   image:
     src: /images/logo.png
     alt: Yòuyou
@@ -13,10 +13,10 @@ hero:
       text: 芝士小记
       link: /note/
     - theme: alt
-      text: 来杯咖啡
+      text: 技术笔记
       link: /blog/
     - theme: alt
-      text: 问题记录
+      text: 问题整理
       link: /issue/
     # - theme: alt
     #   text: 工具类库
@@ -28,12 +28,12 @@ features:
     link: /note/
     linkText: 👉
     icon: 🧀
-  - title: 来杯咖啡
+  - title: 技术笔记
     details: 总结一些项目实战经验、解决方案和学习中的心得。 <br /> 如有异议，你说的对！<small>(你要你觉得)</small>
     link: /blog/
     linkText: ✍️
     icon: ☕️
-  - title: 问题记录
+  - title: 问题整理
     details: 记录遇到的问题、踩过的坑、疑难杂症。<br /> 唉、我不想努力了。
     link: /issue/
     linkText: 👀

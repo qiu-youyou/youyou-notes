@@ -26,6 +26,9 @@ const formatTitle = computed(() => {
 </template>
 
 <style scoped>
+h2 {
+  margin: 30px 0 16px;
+}
 .nav-links {
   --nav-gap: 18px;
   display: grid;

@@ -15,12 +15,12 @@ export const nav: DefaultTheme.Config["nav"] = [
     items: getNavItemsBySidebar(sidebar?.["/note"]),
   },
   {
-    text: "来杯咖啡",
+    text: "技术笔记",
     activeMatch: "/blog/",
     items: getNavItemsBySidebar(sidebar?.["/blog"]),
   },
   {
-    text: "问题记录",
+    text: "问题整理",
     activeMatch: "/issue/",
     items: getNavItemsBySidebar(sidebar?.["/issue"]),
   },

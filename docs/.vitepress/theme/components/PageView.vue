@@ -9,51 +9,48 @@ if (inBrowser) {
 </script>
 
 <template>
-  <div class="panel">
-    <div class="container">
-      <section class="grid">
-        <span class="text">
-          本站总访问量 <span id="busuanzi_value_site_pv">--</span>
-        </span>
-        <span class="text">
-          本站访客数 <span id="busuanzi_value_site_uv">--</span>
-        </span>
-      </section>
+  <div class="stats-panel">
+    <div class="stats-container">
+      <div class="stats-item">
+        本站总访问量：<span id="busuanzi_value_site_pv">--</span>
+      </div>
+      <div class="stats-item">
+        本站访客数：<span id="busuanzi_value_site_uv">--</span>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.panel {
-  margin-top: 12px;
-  margin-bottom: 8px;
-  opacity: 0;
+.stats-panel {
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid var(--vp-c-divider);
+  text-align: center;
 }
 
-.container {
+.stats-container {
   background-color: var(--vp-c-bg-soft);
   border-radius: 8px;
-  width: 100%;
-  min-height: 32px;
-  max-width: 1152px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.grid {
-  font-weight: 500;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 12px;
-  padding-right: 12px;
-  justify-items: center;
-  align-items: center;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  display: grid;
-}
-
-.text {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 auto;
   font-size: 0.875rem;
-  line-height: 1.25rem;
+  color: var(--vp-c-text);
+}
+
+.stats-item {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap; /* 保证文字在一行内展示 */
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 </style>
