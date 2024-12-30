@@ -15,7 +15,7 @@ export const nav: DefaultTheme.Config["nav"] = [
     items: getNavItemsBySidebar(sidebar?.["/note"]),
   },
   {
-    text: "技术文章",
+    text: "来杯咖啡",
     activeMatch: "/blog/",
     items: getNavItemsBySidebar(sidebar?.["/blog"]),
   },
@@ -25,7 +25,7 @@ export const nav: DefaultTheme.Config["nav"] = [
     items: getNavItemsBySidebar(sidebar?.["/issue"]),
   },
   {
-    text: "常用配置",
+    text: "工具类库",
     activeMatch: "/tool/",
     items: getNavItemsBySidebar(sidebar?.["/tool"]),
   },

@@ -1,4 +1,5 @@
-import { watch } from "vue";
+import { h, watch } from "vue";
+import { useData } from "vitepress";
 import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import { updateRainbowStyle } from "./utils/rainbow";
