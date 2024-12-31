@@ -14,7 +14,9 @@ next: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
-> 迁移了文档库 [rspress](https://rspress.dev/zh/) 到 [vitepress](https://vitepress.dev/)。以后访问到这个[新站](https://notes.qiuyouyou.cn)。
+## 2024-12-31
+
+- 首页支持常用资源导航啦！
 
 ## 2024-12-12
 

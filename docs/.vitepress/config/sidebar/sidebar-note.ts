@@ -17,31 +17,31 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       {
-        text: "JS-防抖与节流",
+        text: "防抖与节流",
         link: "/note/javascript/debounce-throttle",
       },
       {
-        text: "JS-数组排序的三种方法",
+        text: "数组排序的三种方法",
         link: "/note/javascript/sort-array",
       },
       {
-        text: "JS-转换数字金额到大写",
+        text: "转换数字金额到大写",
         link: "/note/javascript/convert-amount-to-capital",
       },
       {
-        text: "JS-手写call、apply、bind",
+        text: "手写call、apply、bind",
         link: "/note/javascript/call-apply-bind",
       },
       {
-        text: "JS-判断数据类型的四种方法",
+        text: "判断数据类型的四种方法",
         link: "/note/javascript/check-data-type",
       },
       {
-        text: "JS-获取时间段内的所有日期",
+        text: "获取时间段内的所有日期",
         link: "/note/javascript/get-dates-in-range",
       },
       {
-        text: "JS-实现打字机效果代码片段",
+        text: "实现打字机效果代码片段",
         link: "/note/javascript/typewriter-code/",
       },
 
@@ -60,6 +60,10 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
       {
         text: "理解作用域",
         link: "/note/javascript/get-scope/",
+      },
+      {
+        text: "userAgent-获取设备类型",
+        link: "/note/javascript/navigator-user-agent",
       },
     ],
   },
