@@ -14,6 +14,10 @@ next: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
+## 2025-01-08
+
+- 发表了一篇文章，快来瞅瞅 👀 [Vue3 项目模板搭建- 配置 单元测试及 e2e 测试](/blog/vue3-template/unit-e2e-test/)
+
 ## 2024-12-31
 
 - 首页支持常用资源导航啦！
@@ -24,12 +28,12 @@ next: false
 
 ## 2024-11-21
 
-- 发表了一篇文章，快来瞅瞅 👀 [Vue3 通用项目模板搭建- PWA 集成](/blog/vue3-template/pwa/)
+- 发表了一篇文章，快来瞅瞅 👀 [Vue3 项目模板搭建- PWA 集成](/blog/vue3-template/pwa/)
 - 发表了一篇文章，快来瞅瞅 👀 [JS-手写 call、apply、bind](/note/javascript/call-apply-bind)
 
 ## 2024-11-15
 
-- 发表了一篇文章，快来瞅瞅 👀 [Vue3 通用项目模板搭建 - 初始化 Vue3 项目](/blog/vue3-template/init-project/)
+- 发表了一篇文章，快来瞅瞅 👀 [Vue3 项目模板搭建 - 初始化 Vue3 项目](/blog/vue3-template/init-project/)
 
 ## 2024-11-14
 

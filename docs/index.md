@@ -29,7 +29,7 @@ features:
     linkText: 👉
     icon: 🧀
   - title: 技术笔记
-    details: 总结一些项目实战经验、解决方案和学习中的心得。 <br /> 如有异议，你说的对！<small>(你要你觉得)</small>
+    details: 总结一些实战经验、解决方案和学习中的心得。 <br /> 如有异议，你说的对！<small>(你要你觉得)</small>
     link: /blog/
     linkText: ✍️
     icon: ☕️

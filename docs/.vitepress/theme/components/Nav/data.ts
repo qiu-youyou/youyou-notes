@@ -5,10 +5,10 @@ export const NAV_DATA: NavData[] = [
     title: "React 生态",
     items: [
       {
-        icon: "https://zh-hans.reactjs.org/favicon.ico",
         title: "React",
         desc: "用于构建用户界面的 JavaScript 库",
         link: "https://zh-hans.reactjs.org",
+        icon: "https://zh-hans.reactjs.org/favicon.ico",
       },
       {
         icon: "https://reactrouter.com/favicon-light.png",
@@ -17,28 +17,28 @@ export const NAV_DATA: NavData[] = [
         link: "https://reactrouter.com",
       },
       {
-        icon: "https://nextjs.org/static/favicon/safari-pinned-tab.svg",
-        title: "Next.js",
-        desc: "一个用于 Web 的 React 框架",
-        link: "https://nextjs.org",
-      },
-      {
-        icon: "https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg",
-        title: "UmiJS",
-        desc: "插件化的企业级前端应用框架",
-        link: "https://umijs.org",
-      },
-      {
         icon: "https://cn.redux.js.org/img/redux.svg",
         title: "Redux",
         desc: "JavaScript 应用的状态容器，提供可预测的状态管理",
         link: "https://cn.redux.js.org",
       },
       {
+        icon: "https://nextjs.org/static/favicon/safari-pinned-tab.svg",
+        title: "Next.js",
+        desc: "一个用于 Web 的 React 框架",
+        link: "https://nextjs.org",
+      },
+      {
         icon: "https://ahooks.js.org/simple-logo.svg",
         title: "ahooks",
         desc: "一套高质量可靠的 React Hooks 库",
         link: "https://ahooks.js.org/zh-CN",
+      },
+      {
+        icon: "https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg",
+        title: "UmiJS",
+        desc: "插件化的企业级前端应用框架",
+        link: "https://umijs.org",
       },
     ],
   },
@@ -51,12 +51,7 @@ export const NAV_DATA: NavData[] = [
         desc: "渐进式 JavaScript 框架",
         link: "https://cn.vuejs.org",
       },
-      {
-        icon: "https://cn.vuejs.org/logo.svg",
-        title: "Vue 2",
-        desc: "渐进式 JavaScript 框架",
-        link: "https://v2.cn.vuejs.org",
-      },
+
       {
         icon: "https://cn.vuejs.org/logo.svg",
         title: "Vue Router",
@@ -75,9 +70,54 @@ export const NAV_DATA: NavData[] = [
         desc: "一个基于 Vue.js 的通用应用框架",
         link: "https://nuxt.com",
       },
+      {
+        title: "Vue Test Utils",
+        link: "https://test-utils.vuejs.org/",
+        icon: "https://test-utils.vuejs.org/logo.svg",
+        desc: "Vue.js 3 官方测试套件工具",
+      },
     ],
   },
-
+  {
+    title: "单元测试工具",
+    items: [
+      {
+        title: "Vitest",
+        link: "https://cn.vitest.dev/",
+        icon: "https://cn.vitest.dev/logo.svg",
+        desc: "一个原生支持 Vite 的测试框架。非常快速！",
+      },
+      {
+        title: "Jest",
+        link: "https://jestjs.io/",
+        icon: "https://jestjs.io/img/favicon/favicon.ico",
+        desc: "Jest 是一款优雅、简洁的 JavaScript 测试框架。",
+      },
+      {
+        title: "Mocha",
+        link: "https://mochajs.org/",
+        icon: "https://mochajs.org/favicon.ico",
+        desc: "一个功能丰富的 JavaScript 测试框架，可在Node.js和浏览器中运行。",
+      },
+    ],
+  },
+  {
+    title: "e2e 测试工具",
+    items: [
+      {
+        title: "Cypress",
+        link: "https://www.cypress.io/",
+        icon: "https://www.cypress.io/favicon.svg",
+        desc: "使用 Cypress，以可视化方式调试它们，并在持续集成构建中自动运行它们。",
+      },
+      {
+        title: "Nightwatch",
+        link: "https://nightwatchjs.org/",
+        icon: "https://nightwatchjs.org/favicon.ico",
+        desc: "不妥协的测试自动化框架，可以在 Web 和本机移动应用程序中编写、运行和调试测试。",
+      },
+    ],
+  },
   {
     title: "常用类库",
     items: [

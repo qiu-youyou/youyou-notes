@@ -21,7 +21,7 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   },
 
   {
-    text: "Vue3 通用项目模板搭建",
+    text: "Vue3 项目模板搭建",
     collapsed: false,
     items: [
       {
@@ -29,8 +29,12 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
         link: "/blog/vue3-template/init-project/",
       },
       {
-        text: "PWA (渐进式Web应用) 集成",
+        text: "渐进式Web应用- PWA 集成",
         link: "/blog/vue3-template/pwa/",
+      },
+      {
+        text: "项目单元测试及e2e测试配置",
+        link: "/blog/vue3-template/unit-e2e-test/",
       },
     ],
   },
