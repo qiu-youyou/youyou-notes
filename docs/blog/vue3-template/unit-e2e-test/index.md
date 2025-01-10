@@ -15,7 +15,7 @@
 
 单元测试工具：`Vitest`、`Jest`、`Mocha`。
 
-e2e 测试工具：`Cypress`、`nightwatch`。
+e2e 测试工具：`Cypress`、`Nightwatch`。
 
 ## 单元测试-Vitest
 

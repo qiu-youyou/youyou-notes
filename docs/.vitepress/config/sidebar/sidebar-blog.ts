@@ -21,26 +21,26 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   },
 
   {
-    text: "Vue3 项目模板搭建",
+    text: "Vue3 基础项目搭建",
     collapsed: false,
     items: [
       {
-        text: "创建并初始化 Vue3 项目",
+        text: "初始化 Vue3 项目",
         link: "/blog/vue3-template/init-project/",
       },
       {
-        text: "渐进式Web应用- PWA 集成",
+        text: "渐进式Web应用- PWA",
         link: "/blog/vue3-template/pwa/",
       },
       {
-        text: "项目单元测试及e2e测试配置",
+        text: "单元测试及端到端测试配置",
         link: "/blog/vue3-template/unit-e2e-test/",
       },
     ],
   },
 
   {
-    text: "React",
+    text: "React 相关",
     collapsed: false,
     items: [
       {
@@ -63,7 +63,12 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   },
 
   {
-    text: "NPM 相关",
+    text: "Vue 相关",
+    link: "/",
+  },
+
+  {
+    text: "其他内容",
     collapsed: false,
     items: [
       {
