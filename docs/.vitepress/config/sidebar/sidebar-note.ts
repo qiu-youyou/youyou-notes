@@ -1,6 +1,6 @@
-import { DefaultTheme } from "vitepress";
+import type { SidebarItem } from "./";
 
-export const sidebarNote: DefaultTheme.SidebarItem[] = [
+export const sidebarNote: SidebarItem[] = [
   {
     text: "HTML/CSS",
     collapsed: false,
@@ -128,5 +128,17 @@ export const sidebarNote: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     link: "/note/vue/",
     items: [],
+  },
+  {
+    text: "Linux 常用命令",
+    collapsed: false,
+    link: "/note/linux/linux-command/",
+    navHidden: true,
+  },
+  {
+    text: "Docker 配置",
+    collapsed: false,
+    link: "/note/linux/docker-command/",
+    navHidden: true,
   },
 ];

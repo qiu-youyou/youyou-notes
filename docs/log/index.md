@@ -14,6 +14,11 @@ next: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
+## 2025-01-13
+
+- 发表了一篇笔记，快来瞅瞅 👀 [Docker 常用命令及配置](/note/linux/docker-command/)
+- 发表了一篇笔记，快来瞅瞅 👀 [Linux 常用命令及配置](/note/linux/linux-command/)
+
 ## 2025-01-08
 
 - 发表了一篇文章，快来瞅瞅 👀 [Vue3 项目模板搭建- 配置 单元测试及 e2e 测试](/blog/vue3-template/unit-e2e-test/)

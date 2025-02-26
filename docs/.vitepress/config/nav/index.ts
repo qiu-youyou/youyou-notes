@@ -1,11 +1,13 @@
 import { DefaultTheme } from "vitepress";
-import { sidebar } from "../sidebar";
+import { sidebar, SidebarItem } from "../sidebar";
 
-const getNavItemsBySidebar = (siderbar: DefaultTheme.SidebarItem[]) => {
-  return siderbar.map((item) => ({
-    text: item.text,
-    link: item?.items?.[0]?.link || item?.link || "",
-  })) as [];
+const getNavItemsBySidebar = (siderbar: SidebarItem[]) => {
+  return siderbar
+    .filter((item) => !item?.navHidden)
+    .map((item) => ({
+      text: item.text,
+      link: item?.items?.[0]?.link || item?.link || "",
+    })) as [];
 };
 
 export const nav: DefaultTheme.Config["nav"] = [
