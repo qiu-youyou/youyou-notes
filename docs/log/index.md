@@ -14,6 +14,10 @@ next: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
+## 2025-03-07
+
+- 记录了一个问题，快来瞅瞅 👀 [Vite 代理 Network 显示真实 URL](/issue/vite-proxy-real-url/)
+
 ## 2025-01-13
 
 - 发表了一篇笔记，快来瞅瞅 👀 [Docker 常用命令及配置](/note/linux/docker-command/)
