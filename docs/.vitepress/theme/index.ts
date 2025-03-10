@@ -1,7 +1,7 @@
-import { h, watch } from "vue";
-import { useData } from "vitepress";
-import type { Theme } from "vitepress";
+import { onMounted, watch } from "vue";
+import { type Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
+import { fixNavActiveRepeat } from "./utils/indirect";
 import { updateRainbowStyle } from "./utils/rainbow";
 import { createMediumZoom } from "./utils/medium";
 import { createGiscus } from "./utils/giscus";
@@ -28,5 +28,6 @@ export default {
   },
   setup() {
     createGiscus();
+    onMounted(() => fixNavActiveRepeat());
   },
 } satisfies Theme;
