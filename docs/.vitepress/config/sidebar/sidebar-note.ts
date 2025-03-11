@@ -44,7 +44,6 @@ export const sidebarNote: SidebarItem[] = [
         text: "实现打字机效果代码片段",
         link: "/note/javascript/typewriter-code/",
       },
-
       {
         text: "cos-js-sdk-v5 上传函数",
         link: "/note/javascript/upload-by-cos-js-sdk-v5",
@@ -70,36 +69,8 @@ export const sidebarNote: SidebarItem[] = [
   {
     text: "TypeScript",
     collapsed: false,
-    items: [
-      {
-        text: "TypeScript-相关概念",
-        link: "/note/typescript/typescript-concept",
-      },
-      {
-        text: "TypeScript-基本类型",
-        link: "/note/typescript/typescript-type",
-      },
-      {
-        text: "TypeScript-函数类型",
-        link: "/note/typescript/typescript-fun",
-      },
-      {
-        text: "TypeScript-特殊类型",
-        link: "/note/typescript/typescript-special",
-      },
-      {
-        text: "TypeScript-Class类",
-        link: "/note/typescript/typescript-class",
-      },
-      {
-        text: "TypeScript-Generics泛型",
-        link: "/note/typescript/typescript-generics",
-      },
-      {
-        text: "TypeScript-Interface接口",
-        link: "/note/typescript/typescript-interface",
-      },
-    ],
+    link: "/note/typescript/",
+    items: [],
   },
   {
     text: "React",
