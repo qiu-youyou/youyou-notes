@@ -2,6 +2,11 @@ import { DefaultTheme } from "vitepress";
 
 export const sidebarCoffee: DefaultTheme.SidebarItem[] = [
   {
+    text: "工作流-技术栈更新与维护",
+    link: "/coffee/technology-stack-maintenance/",
+  },
+
+  {
     text: "NPM 语义化的版本号",
     link: "/coffee/semantic-version/",
   },

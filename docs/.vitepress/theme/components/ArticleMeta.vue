@@ -31,8 +31,7 @@ function analyze() {
   );
   imageCount.value = imgs?.length || 0;
   const words =
-    docDomContainer?.querySelector(".content-container .main")?.textContent ||
-    "";
+    docDomContainer?.querySelector(".content-container .main")?.textContent || "";
   wordCount.value = wordcalc(words);
 }
 
@@ -43,7 +42,7 @@ onMounted(() => {
 
 <template>
   <div class="word">
-    <p style="margin: 20px 0 0px 0">
+    <p style="margin: 20px 0 30px 0">
       <svg
         t="1731324884448"
         class="icon"
