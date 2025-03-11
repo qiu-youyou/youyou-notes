@@ -171,6 +171,12 @@ export const NAV_DATA: NavData[] = [
         desc: "轻量、可定制的移动端 Vue 组件库",
         link: "https://vant-ui.github.io/vant",
       },
+      {
+        title: "Vue Test Utils",
+        link: "https://test-utils.vuejs.org/",
+        icon: "https://test-utils.vuejs.org/logo.svg",
+        desc: "Vue.js 3 官方测试套件工具",
+      },
     ],
   },
   {
@@ -351,6 +357,65 @@ export const NAV_DATA: NavData[] = [
         title: "Three.js",
         desc: "JavaScript 3d 库",
         link: "https://threejs.org",
+      },
+    ],
+  },
+
+  {
+    title: "单元测试工具",
+    items: [
+      {
+        title: "Vitest",
+        link: "https://cn.vitest.dev/",
+        icon: "https://cn.vitest.dev/logo.svg",
+        desc: "一个原生支持 Vite 的测试框架。非常快速！",
+      },
+      {
+        title: "Jest",
+        link: "https://jestjs.io/",
+        icon: "https://jestjs.io/img/favicon/favicon.ico",
+        desc: "Jest 是一款优雅、简洁的 JavaScript 测试框架。",
+      },
+      {
+        title: "Mocha",
+        link: "https://mochajs.org/",
+        icon: "https://mochajs.org/favicon.ico",
+        desc: "一个功能丰富的 JavaScript 测试框架，可在Node.js和浏览器中运行。",
+      },
+    ],
+  },
+  {
+    title: "e2e 测试工具",
+    items: [
+      {
+        title: "Cypress",
+        link: "https://www.cypress.io/",
+        icon: "https://www.cypress.io/favicon.svg",
+        desc: "使用 Cypress，以可视化方式调试它们，并在持续集成构建中自动运行它们。",
+      },
+      {
+        title: "Nightwatch",
+        link: "https://nightwatchjs.org/",
+        icon: "https://nightwatchjs.org/favicon.ico",
+        desc: "不妥协的测试自动化框架，可以在 Web 和本机移动应用程序中编写、运行和调试测试。",
+      },
+    ],
+  },
+  {
+    title: "常用类库",
+    items: [
+      {
+        title: "postcss-px-to-viewport-8-plugin",
+        desc: "将 px 单位转换为视口单位的 (vw, vh, vmin, vmax) 的 PostCSS 插件",
+        icon: "https://static-production.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png",
+        link: "https://www.npmjs.com/package/postcss-px-to-viewport-8-plugin",
+      },
+
+      {
+        title: "unplugin-vue-router",
+        desc: "在 Vue 中通过 TS 实现基于文件的自动路由",
+        icon: "https://static-production.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png",
+        link: "https://www.npmjs.com/package/unplugin-vue-router",
       },
     ],
   },
