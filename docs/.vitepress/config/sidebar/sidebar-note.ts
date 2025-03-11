@@ -12,6 +12,7 @@ export const sidebarNote: SidebarItem[] = [
       },
     ],
   },
+
   {
     text: "JavaScript",
     collapsed: false,
@@ -57,21 +58,23 @@ export const sidebarNote: SidebarItem[] = [
         link: "/note/javascript/browser-clear-all-cookie",
       },
       {
-        text: "理解作用域",
-        link: "/note/javascript/get-scope/",
-      },
-      {
         text: "userAgent-获取设备类型",
         link: "/note/javascript/navigator-user-agent",
       },
+      {
+        text: "理解作用域",
+        link: "/note/javascript/get-scope/",
+      },
     ],
   },
+
   {
     text: "TypeScript",
     collapsed: false,
     link: "/note/typescript/",
     items: [],
   },
+
   {
     text: "React",
     collapsed: false,
@@ -94,6 +97,7 @@ export const sidebarNote: SidebarItem[] = [
       },
     ],
   },
+
   {
     text: "Vue",
     collapsed: false,

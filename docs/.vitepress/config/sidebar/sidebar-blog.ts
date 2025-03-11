@@ -2,26 +2,26 @@ import { DefaultTheme } from "vitepress";
 
 export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   {
-    text: "JavaScript 设计模式",
+    text: "Vue3 基础项目模板搭建",
     collapsed: false,
     items: [
       {
-        text: "JavaScript 设计模式-面向对象",
-        link: "/blog/javascript-patterns/oop/",
+        text: "初始化 Vue3 项目",
+        link: "/blog/vue3-template/init-project/",
       },
-      // {
-      //   text: "JavaScript设计模式-设计原则",
-      //   link: "/blog/javascript-patterns/principles/",
-      // },
-      // {
-      //   text: "JavaScript设计模式-工厂模式",
-      //   link: "/blog/javascript-patterns/factory-pattern/",
-      // },
+      {
+        text: "渐进式Web应用- PWA",
+        link: "/blog/vue3-template/pwa/",
+      },
+      {
+        text: "单元测试及端到端测试配置",
+        link: "/blog/vue3-template/unit-e2e-test/",
+      },
     ],
   },
 
   {
-    text: "TypeScript 语法与用法",
+    text: "TypeScript 语法用法",
     collapsed: false,
     items: [
       {
@@ -56,21 +56,21 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   },
 
   {
-    text: "Vue3 基础项目搭建",
+    text: "JavaScript 设计模式",
     collapsed: false,
     items: [
       {
-        text: "初始化 Vue3 项目",
-        link: "/blog/vue3-template/init-project/",
+        text: "JavaScript 设计模式-面向对象",
+        link: "/blog/javascript-patterns/oop/",
       },
-      {
-        text: "渐进式Web应用- PWA",
-        link: "/blog/vue3-template/pwa/",
-      },
-      {
-        text: "单元测试及端到端测试配置",
-        link: "/blog/vue3-template/unit-e2e-test/",
-      },
+      // {
+      //   text: "JavaScript设计模式-设计原则",
+      //   link: "/blog/javascript-patterns/principles/",
+      // },
+      // {
+      //   text: "JavaScript设计模式-工厂模式",
+      //   link: "/blog/javascript-patterns/factory-pattern/",
+      // },
     ],
   },
 
@@ -93,21 +93,6 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
       {
         text: "create-react-app 初始化项目",
         link: "/blog/react-started/create-react-app-init/",
-      },
-    ],
-  },
-
-  {
-    text: "其他内容",
-    collapsed: false,
-    items: [
-      {
-        text: "语义化的版本号",
-        link: "/blog/npm/semantic-version/",
-      },
-      {
-        text: "NPM 的发包过程",
-        link: "/blog/npm/npm-publish-process",
       },
     ],
   },

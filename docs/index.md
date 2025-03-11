@@ -44,9 +44,9 @@ features:
   #   link: /tool/
   #   linkText: 👉
   #   icon: 🛠️
-  # - title: 每日算法
+  # - title: 一杯咖啡
   #   details: 有人相爱，有人夜里开车看海，有人 LeetCode 第一题做不出来。
-  #   link: /algo/
+  #   link: /coffee/
   #   linkText: ✍️
   #   icon: 💡
   # - title: 更新记录

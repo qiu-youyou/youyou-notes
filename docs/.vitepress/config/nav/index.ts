@@ -1,5 +1,5 @@
 import { DefaultTheme } from "vitepress";
-import { sidebar, SidebarItem } from "../sidebar";
+import { sidebar, SidebarItem } from "../sidebar/index";
 
 const getNavItemsBySidebar = (siderbar: SidebarItem[]) => {
   return siderbar
@@ -32,9 +32,9 @@ export const nav: DefaultTheme.Config["nav"] = [
     items: getNavItemsBySidebar(sidebar?.["/tool"]),
   },
   {
-    text: "每日算法",
-    activeMatch: "/algo/",
-    items: getNavItemsBySidebar(sidebar?.["/algo"]),
+    text: "一杯咖啡",
+    activeMatch: "/coffee/",
+    items: getNavItemsBySidebar(sidebar?.["/coffee"]),
   },
 
   { text: "更新记录", link: "/log/", activeMatch: "/log/" },

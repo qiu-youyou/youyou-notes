@@ -1,9 +1,9 @@
 import type { DefaultTheme } from "vitepress";
 import { sidebarNote } from "./sidebar-note";
 import { sidebarBlog } from "./sidebar-blog";
-import { sidebarAlgo } from "./sidebar-algo";
 import { sidebarTool } from "./sidebar-tool";
 import { sidebarIssue } from "./sidebar-issue";
+import { sidebarCoffee } from "./sidebar-coffee";
 
 export type SidebarItem = DefaultTheme.SidebarItem & {
   navHidden?: boolean; // navbar 中是否显示
@@ -12,7 +12,7 @@ export type SidebarItem = DefaultTheme.SidebarItem & {
 export const sidebar: DefaultTheme.Config["sidebar"] = {
   "/note": sidebarNote,
   "/blog": sidebarBlog,
-  "/algo": sidebarAlgo,
   "/tool": sidebarTool,
   "/issue": sidebarIssue,
+  "/coffee": sidebarCoffee,
 };
