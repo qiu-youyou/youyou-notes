@@ -75,24 +75,24 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   },
 
   {
-    text: "React 快速上手",
+    text: "快速上手系列",
     collapsed: false,
     items: [
       {
-        text: "React-快速上手",
-        link: "/blog/react-started/react-quick-start/",
-      },
-      {
         text: "React-Router(V6.4)-快速上手",
-        link: "/blog/react-started/react-router-quick-start/",
+        link: "/blog/get-started/react-router/",
       },
       {
         text: "Redux&Redux Toolkit-快速上手",
-        link: "/blog/react-started/redux-tootik-quick-start/",
+        link: "/blog/get-started/redux-tootik/",
       },
       {
         text: "create-react-app 初始化项目",
-        link: "/blog/react-started/create-react-app-init/",
+        link: "/blog/get-started/create-react-app/",
+      },
+      {
+        text: "React-快速上手",
+        link: "/blog/get-started/react/",
       },
     ],
   },
