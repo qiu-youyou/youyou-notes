@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "Turn Of A Page"
-  text: "Yòuyou 的技术知识库"
+  name: 'Turn Of A Page'
+  text: 'Yòuyou 的技术知识库'
   tagline: 如果回忆能够誊写 光阴就有了副本
   image:
     src: /images/logo.png
@@ -19,8 +19,8 @@ hero:
       text: 问题整理
       link: /issue/
     # - theme: alt
-    #   text: 工具类库
-    #   link: /tool/
+    #   text: 每日算法
+    #   link: /algorithm/
 
 features:
   - title: 芝士小记
@@ -39,9 +39,9 @@ features:
     linkText: 👀
     icon: 🐞
 
-  # - title: 工具类库
-  #   details: 记录日常使用的软件、插件、常用库的配置。<br /> 工欲善其事，必先利其器。
-  #   link: /tool/
+  # - title: 每日算法
+  #   details: 有人相爱，有人夜里开车看海，有人 LeetCode 第一题做不出来。
+  #   link: /algorithm/
   #   linkText: 👉
   #   icon: 🛠️
   # - title: 一杯咖啡
