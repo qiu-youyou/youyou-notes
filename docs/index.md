@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: 'Turn Of A Page'
-  text: 'Yòuyou 的技术知识库'
+  name: "Turn Of A Page"
+  text: "Yòuyou 的技术知识库"
   tagline: 如果回忆能够誊写 光阴就有了副本
   image:
     src: /images/logo.png
@@ -20,7 +20,7 @@ hero:
       link: /issue/
     # - theme: alt
     #   text: 每日算法
-    #   link: /algorithm/
+    #   link: /leetcode/
 
 features:
   - title: 芝士小记
@@ -41,7 +41,7 @@ features:
 
   # - title: 每日算法
   #   details: 有人相爱，有人夜里开车看海，有人 LeetCode 第一题做不出来。
-  #   link: /algorithm/
+  #   link: /leetcode/
   #   linkText: 👉
   #   icon: 🛠️
   # - title: 一杯咖啡

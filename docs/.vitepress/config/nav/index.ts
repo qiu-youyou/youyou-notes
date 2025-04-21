@@ -33,8 +33,8 @@ export const nav: DefaultTheme.Config['nav'] = [
   },
   {
     text: '每日算法',
-    activeMatch: '/algorithm/',
-    items: getNavItemsBySidebar(sidebar?.['/algorithm']),
+    activeMatch: '/leetcode/',
+    items: getNavItemsBySidebar(sidebar?.['/leetcode']),
   },
   { text: '更新记录', link: '/log/', activeMatch: '/log/' },
 ];
