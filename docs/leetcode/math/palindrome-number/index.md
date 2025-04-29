@@ -1,5 +1,7 @@
 # 回文数
 
+[🔗 leetcode 链接](https://leetcode.cn/problems/palindrome-number/description/?envType=problem-list-v2&envId=math)
+
 ### 题目
 
 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
