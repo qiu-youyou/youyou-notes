@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { useData } from "vitepress";
-import DefaultTheme from "vitepress/theme";
-import { nextTick, provide } from "vue";
-import BackTop from "./BackTop.vue";
+import { useData } from 'vitepress';
+import DefaultTheme from 'vitepress/theme';
+import { nextTick, provide } from 'vue';
+
+import MouseClick from './MouseClick.vue';
+import MouseMove from './MouseMove.vue';
+import BackTop from './BackTop.vue';
 
 const { isDark } = useData();
 
 const enableTransitions = () =>
-  "startViewTransition" in document &&
-  window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+  'startViewTransition' in document && window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
 
-provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
+provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
   if (!enableTransitions()) {
     isDark.value = !isDark.value;
     return;
@@ -18,10 +20,7 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
 
   const clipPath = [
     `circle(0px at ${x}px ${y}px)`,
-    `circle(${Math.hypot(
-      Math.max(x, innerWidth - x),
-      Math.max(y, innerHeight - y)
-    )}px at ${x}px ${y}px)`,
+    `circle(${Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))}px at ${x}px ${y}px)`,
   ];
 
   await document.startViewTransition(async () => {
@@ -33,8 +32,8 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
     { clipPath: isDark.value ? clipPath.reverse() : clipPath },
     {
       duration: 300,
-      easing: "ease-in",
-      pseudoElement: `::view-transition-${isDark.value ? "old" : "new"}(root)`,
+      easing: 'ease-in',
+      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`,
     }
   );
 });
@@ -42,6 +41,10 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
 
 <template>
   <DefaultTheme.Layout>
+    <template #layout-top>
+      <MouseMove />
+      <MouseClick />
+    </template>
     <!-- 插槽1 -->
     <template #doc-footer-before>
       <BackTop />
