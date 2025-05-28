@@ -36,7 +36,6 @@ function romanToInt(s: string): number {
   }
   let result = 0;
   const romanArr = s.split('');
-
   for (let i = 0; i < romanArr.length; i++) {
     let isSp = romanArr[i] + romanArr[i + 1];
     // 是否为特殊字符
@@ -47,7 +46,6 @@ function romanToInt(s: string): number {
       result += romanMap[romanArr[i]];
     }
   }
-
   return result;
 }
 //#endregion Solution1
