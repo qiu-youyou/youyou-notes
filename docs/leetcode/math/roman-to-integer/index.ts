@@ -5,6 +5,8 @@
  */
 
 // @lc code=start
+
+//#region Solution1
 const romanMap: Record<string, number> = {
   I: 1,
   V: 5,
@@ -26,15 +28,27 @@ const spRomanMap: Record<string, number> = {
 };
 
 function romanToInt(s: string): number {
+  const spRomanKeys = Object.keys(spRomanMap);
+
   // 处理特殊的罗马数字
-  if (Object.keys(spRomanMap).indexOf(s) !== -1) {
+  if (spRomanKeys.indexOf(s) !== -1) {
     return spRomanMap[s];
   }
   let result = 0;
-  s.split('').forEach((item) => {
-    result += romanMap[item];
-  });
+  const romanArr = s.split('');
+
+  for (let i = 0; i < romanArr.length; i++) {
+    let isSp = romanArr[i] + romanArr[i + 1];
+    // 是否为特殊字符
+    if (spRomanKeys.indexOf(isSp) !== -1) {
+      result += spRomanMap[isSp];
+      i++;
+    } else {
+      result += romanMap[romanArr[i]];
+    }
+  }
+
   return result;
 }
-
+//#endregion Solution1
 // @lc code=end
