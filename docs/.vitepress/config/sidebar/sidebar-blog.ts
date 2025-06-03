@@ -83,6 +83,10 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
         link: '/blog/get-started/node-server-started/',
       },
       {
+        text: 'Webpack5-官方文档快速上手',
+        link: '/blog/get-started/webpack5-started/',
+      },
+      {
         text: 'React-Router(V6.4)-快速上手',
         link: '/blog/get-started/react-router/',
       },
