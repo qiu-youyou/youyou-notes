@@ -60,7 +60,7 @@
   box-shadow: 0 10px 20px 0 rgb(0 0 0 / 20%);
   padding-top: 20px;
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 /* 代码块：添加macOS风格的小圆点 */
@@ -81,6 +81,9 @@
 /** 代码块: 代码块边距 */
 .vp-doc [class*='language-'] code {
   padding: 0 10px;
+}
+.vp-doc [class*='language-'] code .diff::before {
+  left: auto;
 }
 // .vp-doc [class*="language-"] pre {
 //   // padding: 10px 0;
