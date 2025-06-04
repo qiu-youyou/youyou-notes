@@ -16,7 +16,7 @@ next: false
 
 ## 2025-06-03
 
-- 发表了一篇文章，快来瞅瞅 👀 [Webpack5 跟随官方文档 快速上手 1](/blog/get-started/webpack5-started/)
+- 发表了一篇文章，快来瞅瞅 👀 [Webpack5 跟随官方文档 快速上手 1](/blog/get-started/webpack5-started/section1)
 
 ## 2025-03-11
 
