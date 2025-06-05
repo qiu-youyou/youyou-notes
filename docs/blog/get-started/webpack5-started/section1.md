@@ -97,6 +97,8 @@ module.exports = {
 
 `webpack` 最出色的功能之一就是 除了 `JavaScript` 之外，你还可以引入任何其他类型的文件，只要它们有加载器或内置的 `Asset Modules` 支持即可。
 
+- `webpack` 使用正则表达式来确定应该查找哪些文件并将其提供给特定的加载器。
+
 - 加载 CSS 、图像、字体、数据
 
 ```bash
@@ -105,8 +107,6 @@ npm install --save-dev style-loader css-loader
 # 导入 CSV、 TSV、 XML
 npm install --save-dev csv-loader xml-loader
 ```
-
-- `webpack` 使用正则表达式来确定应该查找哪些文件并将其提供给特定的加载器。
 
 ::: code-group
 

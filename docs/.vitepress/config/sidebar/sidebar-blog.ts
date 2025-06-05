@@ -82,10 +82,10 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
         text: 'Webpack5-官方文档 上手实践 1',
         link: '/blog/get-started/webpack5-started/section1',
       },
-      // {
-      //   text: 'Webpack5-官方文档 上手实践 2',
-      //   link: '/blog/get-started/webpack5-started/section2',
-      // },
+      {
+        text: 'Webpack5-官方文档 上手实践 2',
+        link: '/blog/get-started/webpack5-started/section2',
+      },
       // {
       //   text: 'Webpack5-官方文档 上手实践 3',
       //   link: '/blog/get-started/webpack5-started/section3',
