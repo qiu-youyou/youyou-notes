@@ -363,3 +363,27 @@ app.listen(3000, function () {
 :::
 
 现在启动浏览器并转到 `http://localhost:3000` ，应用可以正常运行！
+
+## 环境变量
+
+`webpack` 命令行 环境配置 的 `--env` 参数，可以允许你传入任意数量的环境变量：
+
+```bash
+npx webpack --env goal=local --env production --progress
+```
+
+而在 `webpack.config.js` 中可以访问到这些环境变量。需要将 `module.export` 转换为函数：
+
+::: code-group
+
+```javascript [webpack.config.js]
+module.exports = (env) => {
+  console.log('Goal: ', env.goal); // 'local'
+};
+```
+
+:::
+
+::: tip
+如果设置 env 变量，却没有赋值，--env production 默认表示将 env.production 设置为 true。
+:::
