@@ -31,10 +31,10 @@ export const nav: DefaultTheme.Config['nav'] = [
     activeMatch: '/coffee/',
     items: getNavItemsBySidebar(sidebar?.['/coffee']),
   },
-  {
-    text: '每日算法',
-    activeMatch: '/leetcode/',
-    items: getNavItemsBySidebar(sidebar?.['/leetcode']),
-  },
+  // {
+  //   text: '每日算法',
+  //   activeMatch: '/leetcode/',
+  //   items: getNavItemsBySidebar(sidebar?.['/leetcode']),
+  // },
   { text: '更新记录', link: '/log/', activeMatch: '/log/' },
 ];
