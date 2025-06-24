@@ -3,8 +3,6 @@ import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import { nextTick, provide } from 'vue';
 
-import MouseClick from './MouseClick.vue';
-import MouseMove from './MouseMove.vue';
 import BackTop from './BackTop.vue';
 
 const { isDark } = useData();
@@ -41,10 +39,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 
 <template>
   <DefaultTheme.Layout>
-    <template #layout-top>
-      <MouseMove />
-      <MouseClick />
-    </template>
+    <template #layout-top></template>
     <!-- 插槽1 -->
     <template #doc-footer-before>
       <BackTop />
