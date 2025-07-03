@@ -56,25 +56,6 @@ export const sidebarBlog: DefaultTheme.SidebarItem[] = [
   },
 
   {
-    text: 'JavaScript 设计模式',
-    collapsed: false,
-    items: [
-      {
-        text: 'JavaScript 设计模式-面向对象',
-        link: '/blog/javascript-patterns/oop/',
-      },
-      // {
-      //   text: "JavaScript设计模式-设计原则",
-      //   link: "/blog/javascript-patterns/principles/",
-      // },
-      // {
-      //   text: "JavaScript设计模式-工厂模式",
-      //   link: "/blog/javascript-patterns/factory-pattern/",
-      // },
-    ],
-  },
-
-  {
     text: '快速上手实践',
     collapsed: false,
     items: [
