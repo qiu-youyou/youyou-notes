@@ -6,7 +6,7 @@ tags:
 categories:
   - Linux
 
-description: 记录 linux 常用命令
+description: 记录 linux 常用命令及配置
 ---
 
 # Linux 常用命令及配置

@@ -8,14 +8,14 @@ export const sidebarNote: SidebarItem[] = [
     items: [],
   },
   {
-    text: 'TypeScript',
-    link: '/note/typescript/',
+    text: 'JavaScript',
+    link: '/note/javascript/',
     collapsed: false,
     items: [],
   },
   {
-    text: 'JavaScript',
-    link: '/note/javascript/',
+    text: 'TypeScript',
+    link: '/note/typescript/',
     collapsed: false,
     items: [],
   },

@@ -3,6 +3,8 @@ tag:
   - 芝士
 tags:
   - CSS
+
+description: CSS清除浮动 额外标签法、BFC、伪元素
 ---
 
 # CSS-清除浮动
