@@ -11,6 +11,7 @@ export default defineConfig({
   description: 'Yòuyou 的文档站',
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   themeConfig: pressTheme,
+  ignoreDeadLinks: true,
   lastUpdated: true,
   cleanUrls: true,
 });
