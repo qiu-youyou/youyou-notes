@@ -21,8 +21,8 @@ const customIcon: any = {
 export default {
   alert: {
     type: 'success',
-    title: '本站风格更新啦! 🎉🎉🎉',
-    duration: 30000,
+    title: '本站主题更新啦! 🎉🎉🎉',
+    duration: 10000,
   },
 
   // popover: {

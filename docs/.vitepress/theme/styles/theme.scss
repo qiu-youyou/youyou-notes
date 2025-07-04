@@ -89,6 +89,15 @@
   border-top: 1px solid var(--vp-c-divider);
 }
 
+.VPSidebar {
+  padding: 32px 32px 96px;
+  padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 20px)) / 2)) !important;
+}
+
+.VPSidebarItem.level-0 {
+  padding-bottom: 14px !important;
+}
+
 // 头像圆形
 .VPImage {
   border-radius: 50% !important;
@@ -104,8 +113,16 @@
   background-color: var(--vp-c-brand-1) !important;
 }
 
-.recommend-container li {
-  margin-top: 10px;
+.recommend-container {
+  padding: 0;
+  transform: translateX(-8px);
+  li {
+    margin-top: 4px;
+  }
+}
+
+.meta-des {
+  margin-top: 10px !important;
 }
 
 :root {
