@@ -84,6 +84,11 @@
   }
 }
 
+.VPPage {
+  width: 100%;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
 // 头像圆形
 .VPImage {
   border-radius: 50% !important;
@@ -97,6 +102,10 @@
 
 .blog-author img {
   background-color: var(--vp-c-brand-1) !important;
+}
+
+.recommend-container li {
+  margin-top: 10px;
 }
 
 :root {
