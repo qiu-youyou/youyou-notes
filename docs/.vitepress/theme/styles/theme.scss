@@ -1,0 +1,105 @@
+/* 浅色模式使用的变量 */
+// html[theme] {
+//   --vp-c-user-1: red;
+//   --vp-c-user-2: blue;
+//   --vp-c-user-3: green;
+//   --vp-c-user-soft: rgba(255, 0, 0, 0.5);
+// }
+
+// /* 深色模式使用的变量 */
+// html[theme].dark {
+//   --vp-c-user-1: yellow;
+//   --vp-c-user-2: purple;
+//   --vp-c-user-3: orange;
+//   --vp-c-user-soft: rgba(255, 255, 0, 0.5);
+// }
+
+// /* 覆盖默认变量 */
+// html[theme],
+// html[theme].dark {
+//   --vp-c-brand-1: var(--vp-c-user-1);
+//   --vp-c-brand-2: var(--vp-c-user-2);
+//   --vp-c-brand-3: var(--vp-c-user-3);
+//   --vp-c-brand-soft: var(--vp-c-user-soft);
+// }
+
+// 导航栏微微模糊背景
+:root {
+  /* 首页下滑后导航透明 */
+  .VPNavBar:not(.has-sidebar):not(.home.top) {
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(6px);
+  }
+
+  /* 搜索框透明 */
+  .blog-search > .nav-search-btn-wait {
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Feature透明 */
+  .VPFeature {
+    border: none;
+    box-shadow: 0 10px 30px 0 rgb(0 0 0 / 15%);
+    background-color: transparent;
+  }
+
+  /* 文档页侧边栏顶部透明 */
+  .curtain {
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(6px);
+  }
+
+  @media (min-width: 960px) {
+    /* 文档页导航中间透明 */
+    .VPNavBar:not(.home.top) .content-body {
+      background-color: rgba(255, 255, 255, 0);
+      backdrop-filter: blur(6px);
+    }
+  }
+
+  /* 移动端大纲栏透明 */
+  .VPLocalNav {
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(6px);
+  }
+}
+
+.VPNav .VPNavBar .divider {
+  display: none;
+}
+
+.VPFooter {
+  padding: 20px !important;
+}
+
+.VPHome {
+  // 定义遮罩样式
+  background: radial-gradient(ellipse, rgba(var(--bg-gradient-home), 1) 0%, rgba(var(--bg-gradient-home), 0) 150%);
+
+  // 自定义首页背景图
+  &::before {
+    background-image: url(/images/bg.webp);
+    background-size: cover;
+  }
+}
+
+// 头像圆形
+.VPImage {
+  border-radius: 50% !important;
+}
+
+// 头像·转圈圈
+.VPImage.image-src:hover {
+  transform: translate(-50%, -50%) rotate(666turn);
+  transition: transform 59s 1s cubic-bezier(0.3, 0, 0.8, 1);
+}
+
+.blog-author img {
+  background-color: var(--vp-c-brand-1) !important;
+}
+
+:root {
+  --medium-zoom-z-index: 100;
+  --medium-zoom-c-bg: var(--vp-c-bg);
+}
