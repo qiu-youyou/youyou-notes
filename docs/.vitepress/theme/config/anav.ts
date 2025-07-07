@@ -11,6 +11,8 @@ const getNavItemsBySidebar = (siderbar: SidebarItem[]) => {
 };
 
 export const nav: DefaultTheme.Config['nav'] = [
+  { text: '首页', link: '/' },
+
   {
     text: '芝士小记',
     activeMatch: '/note/',

@@ -4,6 +4,7 @@
   "name": "youyou-notes",
   "author": "Yòuyou",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",

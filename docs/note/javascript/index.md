@@ -1,11 +1,13 @@
 ---
-hidden: true,
-
 prev: false
 next: false
+date: false
+sidebar: false
 outline: false
 comment: false
-# sidebar: false
+readingTime: false
+hidden: true
+layout: page
 ---
 
-更新中......
+<StatisticList />

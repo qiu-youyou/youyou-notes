@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout: home
 blog:
   inspiring:
