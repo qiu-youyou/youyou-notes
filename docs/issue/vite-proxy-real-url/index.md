@@ -1,3 +1,8 @@
+---
+aside: false
+sidebar: false
+---
+
 # Vite 设置 Proxy 后 Network 中没有代理后的 URL
 
 接手到了一个 vite 工程的项目，启动开发环境后在调试过程中，我想看到真实的接口服务器 IP。

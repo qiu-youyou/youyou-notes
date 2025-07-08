@@ -129,3 +129,9 @@
   --medium-zoom-z-index: 100;
   --medium-zoom-c-bg: var(--vp-c-bg);
 }
+
+@media (min-width: 1440px) {
+  .VPContent:not(.has-sidebar) .VPDoc:not(.has-sidebar) .content {
+    max-width: 900px !important;
+  }
+}

@@ -1,3 +1,8 @@
+---
+aside: false
+sidebar: false
+---
+
 # VSCode 对 Tailwind 指令的警告
 
 问题：

@@ -3,6 +3,7 @@ hidden: true,
 
 prev: false
 next: false
+aside: false
 sidebar: false
 outline: false
 comment: false

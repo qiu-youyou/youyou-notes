@@ -23,7 +23,7 @@ export const nav: DefaultTheme.Config['nav'] = [
     items: getNavItemsBySidebar(sidebar?.['/blog']),
   },
   {
-    text: '问题整理',
+    text: '问题记录',
     activeMatch: '/issue/',
     items: getNavItemsBySidebar(sidebar?.['/issue']),
   },
