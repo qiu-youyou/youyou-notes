@@ -7,6 +7,8 @@ tags:
 
 # cos-js-sdk-v5 上传函数
 
+## 😀 完整代码
+
 ```ts
 import COS from 'cos-js-sdk-v5';
 

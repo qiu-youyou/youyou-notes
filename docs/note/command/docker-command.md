@@ -13,6 +13,8 @@ description: 记录 Docker 常用命令及配置
 
 ::: code-group
 
+## 😴 安装脚本
+
 ```sh
 # 官方安装脚本
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -39,7 +41,7 @@ service docker status # 查看 docker 运行状态
 
 :::
 
-- 容器生命周期管理
+## 😴 容器生命周期管理
 
 ::: code-group
 
@@ -56,7 +58,7 @@ rename # 重命名容器。
 
 :::
 
-- 容器操作
+## 😴 容器操作
 
 ::: code-group
 
@@ -76,7 +78,7 @@ update # 更新 Docker 容器的资源限制，包括内存、CPU 等。
 
 :::
 
-- 镜像仓库
+## 😴 镜像仓库
 
 ::: code-group
 
@@ -90,7 +92,7 @@ search # 用于在 Docker Hub 或其他注册表中搜索镜像。
 
 :::
 
-- Docker Compose
+## 😴 Docker Compose
 
 ::: code-group
 
@@ -107,7 +109,7 @@ docker compose restart # 重启 docker compose 文件创建的容器。
 
 :::
 
-- docker compose 创建 mysql：
+## 😴 docker compose 创建 mysql：
 
 ::: code-group
 

@@ -7,6 +7,8 @@ tags:
 
 # JS 清除所有 cookie
 
+## 😃 完整代码
+
 ```js
 export const clearAllCookie = () => {
   const keys = document.cookie.match(/[^ =;]+(?=\=)/g);

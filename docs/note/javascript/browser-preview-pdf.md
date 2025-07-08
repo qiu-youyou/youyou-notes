@@ -7,6 +7,8 @@ tags:
 
 # 浏览器预览 PDF 文件流
 
+## ☺️ 完整代码
+
 ```tsx
 import { Tooltip } from 'antd';
 import { FileTextOutlined } from '@ant-design/icons';
