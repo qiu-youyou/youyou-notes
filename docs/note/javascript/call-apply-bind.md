@@ -7,7 +7,7 @@ tags:
 
 # 手写 call、apply、bind
 
-## call
+## 😏 call
 
 `call` 和 `apply` 实现思路主要是：
 
@@ -44,7 +44,7 @@ Function.prototype.myCall = function (context) {
 
 :::
 
-## apply
+## 😏 apply
 
 ::: code-group
 
@@ -77,7 +77,7 @@ Function.prototype.myApply = function (context) {
 
 :::
 
-## bind
+## 😏 bind
 
 `bind` 实现思路主要是：
 

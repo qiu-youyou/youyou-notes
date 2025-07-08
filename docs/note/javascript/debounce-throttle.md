@@ -9,7 +9,7 @@ tags:
 
 防抖（Debounce）和节流（Throttle）是两种常见的性能优化技术，它们主要用于控制高频率事件的触发，以提高应用的响应速度和用户体验。
 
-## 防抖（Debounce）
+## 😳 防抖（Debounce）
 
 > n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时。
 
@@ -96,7 +96,7 @@ function debounce(fn, delay, immediate) {
 
 :::
 
-## 节流（Throttle）
+## 😳 节流（Throttle）
 
 > n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效。
 
@@ -149,7 +149,7 @@ function throttle(fn, wait) {
 
 :::
 
-## 应用场景
+## 😳 应用场景
 
 - 防抖：适用于输入框的搜索、验证，窗口大小调整后的布局计算等。
 

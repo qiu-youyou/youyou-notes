@@ -7,7 +7,7 @@ tags:
 
 # 判断数据类型的四种方法
 
-## typeof
+## 😃 typeof
 
 > `tyepof [value]`
 
@@ -48,7 +48,7 @@ typeof {}; // 'Object'
 
 :::
 
-## instanceof
+## 😃 instanceof
 
 > `实例 instanceof 类`
 
@@ -97,7 +97,7 @@ console.log(myInstance({}, Object));
 
 :::
 
-## constructor
+## 😃 constructor
 
 > `实例.constructor === 类`
 
@@ -129,7 +129,7 @@ console.log(reg.constructor.name); // RegExp
 
 :::
 
-## Object.prototype.toString.call()
+## 😃 Object.prototype.toString.call()
 
 > `Object.prototype.toString.call(被检测实例)`
 
