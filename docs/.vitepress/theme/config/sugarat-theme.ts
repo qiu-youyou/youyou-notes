@@ -8,6 +8,7 @@ import home from './home';
 
 const sugaratTheme = getThemeConfig({
   author: 'Yòuyou',
+  mermaid: true,
   ...tooltip,
   comment,
   friend,

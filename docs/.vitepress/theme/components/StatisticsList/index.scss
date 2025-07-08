@@ -1,0 +1,83 @@
+.waterfall {
+  width: 98vw;
+  margin: 20px auto 0 auto;
+  column-count: 5;
+  column-gap: 20px;
+  @media (max-width: 1680px) {
+    column-count: 4;
+  }
+  @media (max-width: 1200px) {
+    column-count: 3;
+  }
+  @media (max-width: 960px) {
+    column-count: 2;
+  }
+  @media (max-width: 600px) {
+    column-count: 1;
+  }
+}
+
+.card {
+  break-inside: avoid;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  --nav-icon-box-size: 45px;
+  --nav-icon-size: 40px;
+  --nav-box-gap: 12px;
+  border: 1px solid var(--vp-c-bg-soft);
+  border-radius: 12px;
+  height: 100%;
+  background-color: var(--vp-c-bg-soft);
+  transition: all 0.25s;
+}
+
+.card:hover {
+  box-shadow: var(--vp-shadow-2);
+  border-color: var(--vp-c-brand);
+  text-decoration: initial;
+  background-color: var(--vp-c-bg-soft-up);
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 4px;
+  transition: color 0.2s;
+  &:hover {
+    color: var(--vp-c-brand-1);
+  }
+}
+
+.card-description {
+  margin-top: 4px;
+  margin-bottom: 2px;
+  font-size: 13px;
+  color: #888;
+}
+
+.card-text {
+  font-size: 15px;
+  margin-top: 6px;
+  width: max-content;
+  &:hover {
+    color: var(--vp-c-brand-1);
+  }
+}
+
+.card-meta {
+  font-size: 13px;
+  color: #888;
+}
+
+.card-link {
+  transition: color 0.2s;
+  color: var(--vp-c-brand);
+  &:hover {
+    color: var(--vp-c-brand-1);
+  }
+}

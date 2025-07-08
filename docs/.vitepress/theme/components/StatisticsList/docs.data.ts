@@ -32,8 +32,9 @@ export default createContentLoader('**/*.md', {
       .map(({ url, frontmatter, src }) => ({
         title: frontmatter.title,
         extract: extractHeadings(src),
+        description: frontmatter?.description,
         url,
-        src
+        src,
       }));
   },
 });
