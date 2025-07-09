@@ -1,6 +1,13 @@
 ---
 aside: false
 sidebar: false
+
+tag:
+  - 问题整理
+tags:
+  - VSCode
+
+description: 在 VSCode 中使用 Tailwind CSS 时，遇到 `@apply` 等指令被识别为未知 at 规则的警告，两种解决方法。
 ---
 
 # VSCode 对 Tailwind 指令的警告

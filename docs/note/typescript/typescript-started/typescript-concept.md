@@ -1,6 +1,20 @@
-# TypeScript-相关概念
+---
+tag:
+  - 笔记
+tags:
+  - TypeScript
+  -
+recommend: 1
 
-## typescript 介绍
+description: TypeScript 基础语法与类型系统概念，包括类型推断、类型注解、类型断言、类型保护及类型兼容性等核心知识点，快速入门和理解 TypeScript 的静态类型特性。
+
+top: 3
+sticky: 9997
+---
+
+# TypeScript 语法用法 - 相关概念
+
+## 🎓 typescript 介绍
 
 [TypeScript](https://www.typescriptlang.org/)：是 JavaScript 的超集，拥有类型机制，不能在浏览器直接执行，而是编译成 JavaScript 后才会运行。
 
@@ -8,7 +22,7 @@
 - 类型：js 中一个存放字符串的变量，后续依旧可以将数字、对象、数组等类型赋值到该变量，这是动态类型。
 - 而 ts 则是静态类型，后续不可更改类型。
 
-## tsc 的安装与使用
+## 🎓 tsc 的安装与使用
 
 `.ts` 文件是不可以直接执行的，需要编译为 `.js` 文件，才能够进行运行。
 
@@ -41,7 +55,7 @@ npm install ts-node -D
 ts-node demo.ts
 ```
 
-## 类型推断
+## 🎓 类型推断
 
 #### 常见推断
 
@@ -59,10 +73,10 @@ const number3 = number1 + number2;
 当定义一个数组或元组这种包含多个元素的值的时候，多个元素可以有不同的类型，这时候 TypeScript 会将多个类型合并起来，组成一个联合类型：
 
 ```ts
-let arr = [1, "a"]; // arr 的元素被推断为 string | number
-arr = ["b", 2, false]; // error 不能将类型“boolean”分配给类型“string | number”。
+let arr = [1, 'a']; // arr 的元素被推断为 string | number
+arr = ['b', 2, false]; // error 不能将类型“boolean”分配给类型“string | number”。
 
-let value = Math.random() * 10 > 5 ? "abc" : 123; // value 的类型被推断为 string | number
+let value = Math.random() * 10 > 5 ? 'abc' : 123; // value 的类型被推断为 string | number
 value = false; // error 不能将类型“boolean”分配给类型“string | number”。
 ```
 
@@ -78,7 +92,7 @@ window.onmousedown = function (mouseEvent) {
 };
 ```
 
-## 类型注解
+## 🎓 类型注解
 
 类型注解(type annotation) ，告诉 TS 变量是什么类型。
 
@@ -92,27 +106,27 @@ const total = getTotal(1, 2);
 interface Person {
   name: string;
 }
-const person: Person = { name: "ZS" };
+const person: Person = { name: 'ZS' };
 
 let temp: number | string = 123;
-temp = "456";
+temp = '456';
 ```
 
-## 静态类型
+## 🎓 静态类型
 
 - JavaScript 运行时才会进行类型检查，会导致运行时的错误 它是动态类型。
 - TypeScript 是静态类型 在运行前需要先编译为 JavaScript，而在编译阶段就会进行类型检查。
 
 ```ts
 let foo = 1; // 这里根据类型推断，可以省略 :number
-foo.split(","); // Error 类型“number”上不存在属性“split”。
+foo.split(','); // Error 类型“number”上不存在属性“split”。
 
 // 支持 数字类型的所有方法
 foo.toFixed();
 foo.toString();
 ```
 
-## 类型断言
+## 🎓 类型断言
 
 TypeScript 允许你覆盖它的推断，并且能以你任何你想要的方式分析它，这种机制被称为「类型断言」
 
@@ -124,7 +138,7 @@ TypeScript 允许你覆盖它的推断，并且能以你任何你想要的方式
 ```ts
 const foo = {};
 foo.a = 123; // Error 类型“{}”上不存在属性“a”。
-foo.b = "hello"; // Error 类型“{}”上不存在属性“b”
+foo.b = 'hello'; // Error 类型“{}”上不存在属性“b”
 ```
 
 #### as 运算符
@@ -138,7 +152,7 @@ interface Foo {
 
 const foo = {} as Foo;
 foo.a = 123;
-foo.b = "hello";
+foo.b = 'hello';
 ```
 
 #### `<type>value` 写法
@@ -146,7 +160,7 @@ foo.b = "hello";
 ```ts
 const foo = <Foo>{};
 foo.a = 123;
-foo.b = "hello";
+foo.b = 'hello';
 ```
 
 ::: tip
@@ -191,19 +205,18 @@ const foo: Foo = {
 在某些情景下，你可能需要创建一个临时的变量，但至少，你不会使用一个承诺（可能是假的），而是依靠类型推断来检查你的代码。
 :::
 
-## 类型保护
+## 🎓 类型保护
 
 TypeScript 能够在特定的区块(类型保护区块)中保证变量属于某种特定的类型。
 
 可以在此区块中放心地引用此类型的属性，或者调用此类型的方法。
 
 ```ts
-const valueList = [123, "abc"];
+const valueList = [123, 'abc'];
 
 const getRandomValue = () => {
   const number = Math.random() * 10; // 这里取一个[0, 10)范围内的随机值
-  if (number < 5)
-    return valueList[0]; // 如果随机数小于5则返回valueList里的第一个值，也就是123
+  if (number < 5) return valueList[0]; // 如果随机数小于5则返回valueList里的第一个值，也就是123
   else return valueList[1]; // 否则返回"abc"
 };
 ```
@@ -261,7 +274,7 @@ if (isString(item)) {
 
 ```ts
 const item = getRandomValue();
-if (typeof item === "string") {
+if (typeof item === 'string') {
   console.log(item.length);
 } else {
   console.log(item.toFixed());
@@ -289,7 +302,7 @@ class CreateByClass1 {
   constructor() {}
 }
 class CreateByClass2 {
-  public name = "zs";
+  public name = 'zs';
   constructor() {}
 }
 
@@ -308,7 +321,7 @@ if (item instanceof CreateByClass1) {
 }
 ```
 
-## 类型兼容
+## 🎓 类型兼容
 
 #### 函数参数个数
 
@@ -363,7 +376,7 @@ funcB = funcA; // Success
 
 ```ts
 let x = (a: number): string | number => 0;
-let y = (b: number) => "a";
+let y = (b: number) => 'a';
 let z = (c: number) => false;
 x = y;
 x = z; // 不能将类型“(c: number) => boolean”分配给类型“(a: number) => string | number”
@@ -407,7 +420,7 @@ enum Color {
 let s = Status.On;
 s = Color.White; // Error 不能将类型“Color.White”分配给类型“Status”
 
-s = "zs"; // Error 不能将类型“"zs"”分配给类型“Status”
+s = 'zs'; // Error 不能将类型“"zs"”分配给类型“Status”
 ```
 
 #### 类

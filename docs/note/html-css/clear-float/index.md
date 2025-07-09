@@ -1,13 +1,15 @@
 ---
 tag:
-  - 芝士
+  - 笔记
 tags:
   - CSS
+
+description: 三种常用的 CSS 清除浮动方法，额外标签法、BFC和使用伪元素的 clearfix 技巧。
 ---
 
 # CSS-清除浮动
 
-## 😊 额外标签
+## 🔮 额外标签
 
 > clear: both
 
@@ -56,7 +58,7 @@ tags:
 
 :::
 
-## 😊 利用 BFC
+## 🔮 利用 BFC
 
 > overflow-hidden
 
@@ -78,7 +80,7 @@ tags:
 
 :::
 
-## 😊 使用 after
+## 🔮 使用 after
 
 > 推荐
 

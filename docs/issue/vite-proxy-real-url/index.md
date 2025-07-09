@@ -1,6 +1,13 @@
 ---
 aside: false
 sidebar: false
+
+tag:
+  - 问题整理
+tags:
+  - Vite
+
+description: 在 Vite 配置代理后，通过自定义响应头查看真实的后端服务器 URL。
 ---
 
 # Vite 设置 Proxy 后 Network 中没有代理后的 URL

@@ -1,6 +1,18 @@
-# TypeScript-函数类型
+---
+tag:
+  - 笔记
+tags:
+  - TypeScript
 
-## 基本用法
+recommend: 3
+
+
+description: 本笔记介绍了 TypeScript 中函数类型的基本用法，包括函数定义、参数类型、可选和默认参数、剩余参数以及函数重载的实现方式和注意事项。
+---
+
+# TypeScript 语法用法 - 函数类型
+
+## 🎏 基本用法
 
 一个函数的定义包括函数名、参数、逻辑和返回值。
 
@@ -63,7 +75,7 @@ let addFun: AddFun = (arg1: string, arg2: string): string => arg1 + arg2;
 // error 不能将类型“(arg1: string, arg2: string) => string”分配给类型“AddFun”
 ```
 
-## 函数参数
+## 🎏 函数参数
 
 #### 可选参数
 
@@ -112,7 +124,7 @@ const handleArgs = (arg1: number, ...args: number[]) => {
   console.log(args);
 };
 handleArgs(1, 2, 3, 4, 5); // [ 2, 3, 4, 5 ]
-handleArgs(1, "a"); // 类型“string”的参数不能赋给类型“number”的参数
+handleArgs(1, 'a'); // 类型“string”的参数不能赋给类型“number”的参数
 ```
 
 ::: tip
@@ -123,7 +135,7 @@ handleArgs(1, "a"); // 类型“string”的参数不能赋给类型“number”
 
 :::
 
-## 函数重载
+## 🎏 函数重载
 
 通过为一个函数指定多个函数类型定义，从而对函数调用的返回值进行检查。
 
@@ -142,11 +154,11 @@ function handleData(x: number): string;
 
 // 实体函数 重载内容
 function handleData(x: any): any {
-  if (typeof x === "string") return x.split("");
+  if (typeof x === 'string') return x.split('');
   else return x.toString();
 }
 
-andleData("abc").join("_");
-handleData(123).join("_"); // error 类型"string"上不存在属性"join"
+andleData('abc').join('_');
+handleData(123).join('_'); // error 类型"string"上不存在属性"join"
 handleData(false); // error 类型"boolean"的参数不能赋给类型"number"的参数。
 ```

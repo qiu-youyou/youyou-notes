@@ -1,13 +1,15 @@
 ---
 tag:
-  - 芝士
+  - 笔记
 tags:
   - JavaScript
+
+description: 使用 JavaScript 清除当前页面下的所有 cookie，完整的实现方法。
 ---
 
 # JS 清除所有 cookie
 
-## 😃 完整代码
+## 🎁 完整代码
 
 ```js
 export const clearAllCookie = () => {

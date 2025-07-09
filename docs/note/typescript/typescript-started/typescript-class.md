@@ -1,10 +1,21 @@
-# TypeScript-Class 类
+---
+tag:
+  - 笔记
+tags:
+  - TypeScript
 
-## 定义
+recommend: 5
+
+description: 本笔记介绍了 TypeScript 中类（Class）的基本用法，包括定义、继承、构造函数、访问修饰符、静态属性、可选属性、存取器、抽象类、实例类型、类类型接口及接口继承类等核心语法和实践示例。
+---
+
+# TypeScript 语法用法 - Class 类
+
+## 🎒 定义
 
 ```ts
 class Person {
-  name = "ZS";
+  name = 'ZS';
   getName() {
     return this.name;
   }
@@ -14,7 +25,7 @@ const person = new Person();
 person.getName(); // "ZS"
 ```
 
-## 继承
+## 🎒 继承
 
 继承类，继承类属于子类，被继承的属于父类。
 
@@ -28,7 +39,7 @@ class LSPerson extends Person {
   }
   // 子类可以重写父类的属性与方法
   getName() {
-    return "LS";
+    return 'LS';
   }
 }
 
@@ -36,7 +47,7 @@ const lsperson = new LSPerson();
 console.log(lsperson.getName()); // "LS"
 ```
 
-## 构建函数
+## 🎒 构建函数
 
 `constructor` 构建函数，会在 `new` 实例的时候自动执行。
 
@@ -62,12 +73,12 @@ class Person {
 
 class Teacher extends Person {
   constructor(public age: number) {
-    super("ZS");
+    super('ZS');
   }
 }
 ```
 
-## 修饰符
+## 🎒 修饰符
 
 `public` : 公共的。类定义的外部可以访问的属性和方法（默认）。
 
@@ -168,11 +179,11 @@ class UserInfo {
   }
 }
 
-const user = new UserInfo("ZS");
-user.name = "haha"; // error 无法为“name”赋值，因为它是只读属性。
+const user = new UserInfo('ZS');
+user.name = 'haha'; // error 无法为“name”赋值，因为它是只读属性。
 ```
 
-## 参数属性
+## 🎒 参数属性
 
 - 静态属性
 
@@ -203,12 +214,12 @@ class Info {
   }
 }
 
-const info1 = new Info("ZS");
-const info2 = new Info("ZS", 18);
-const info3 = new Info("ZS", 18, "man");
+const info1 = new Info('ZS');
+const info2 = new Info('ZS', 18);
+const info3 = new Info('ZS', 18, 'man');
 ```
 
-## 存储器
+## 🎒 存储器
 
 与 `ES6` 标准中的存值函数和取值函数一致。
 
@@ -225,11 +236,11 @@ class UserInfo {
   }
 }
 const user = new UserInfo();
-user.fullName = "LS"; // "setter: LS"
+user.fullName = 'LS'; // "setter: LS"
 console.log(user.fullName); // "LS"
 ```
 
-## 抽象类
+## 🎒 抽象类
 
 - 抽象类和类内部定义抽象方法，使用 `abstract` 关键字。
 - 只能被继承，不能实例化。
@@ -257,7 +268,7 @@ class Man extends People {
 }
 ```
 
-## 实例类型
+## 🎒 实例类型
 
 - 当我们定义一个类，并创建实例后，这个实例的类型就是创建他的类
 - 如果你想实现对创建实例的类进行判断，需要用到 instanceof 关键字
@@ -267,16 +278,16 @@ class People {
   constructor(public name: string) {}
 }
 // 指定类型不是必须的 TS会自动推断
-let p: People = new People("ZS");
+let p: People = new People('ZS');
 
 class Animal {
   constructor(public name: string) {}
 }
 
-p = new Animal("DOG"); // 同样实现的类 是被允许的
+p = new Animal('DOG'); // 同样实现的类 是被允许的
 ```
 
-## 类类型接口
+## 🎒 类类型接口
 
 - 使用接口可以强制一个类的定义必须包含某些内容
 - 指定一个类要继承的接口，使用关键字 `implements`
@@ -312,7 +323,7 @@ class FoodClass implements FoodInterface {
 
 :::
 
-## 接口继承类
+## 🎒 接口继承类
 
 - 接口继承类类之后 只继承成员以及成员类型 不包括实现。
 - 接口也会继承 `private` 和 `protected` 修饰的成员，但这接口 只能被这个类或者这个类的子类实现。

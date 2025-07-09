@@ -1,6 +1,17 @@
+---
+tag:
+  - 笔记
+tags:
+  - JavaScript
+
+description: 使用原生 JavaScript 实现网页中的打字机动画效果，包含完整 HTML、CSS 和 JS 代码，便于直接复用和学习。
+---
+
 # JS-实现打字机效果代码片段
 
 > 个人首页的描述文字打字机效果的实现：[点击看效果](https://qiuyouyou.cn/)
+
+## 💻 完整代码
 
 ::: code-group
 

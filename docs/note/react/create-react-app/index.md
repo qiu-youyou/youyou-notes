@@ -1,6 +1,18 @@
+---
+tag:
+  - 笔记
+tags:
+  - React
+
+description: 本笔记详细记录了使用 `create-react-app` 初始化 React 项目的常用配置与实践，包括项目创建、别名与路由配置、Axios 请求封装、Redux 状态管理、渲染优化、错误边界、分包加载等内容，适合作为 React 初始化开发的参考手册。
+
+top: 2
+sticky: 9998
+---
+
 # 记录使用 create-react-app 初始项目
 
-## 创建项目
+## 🔦 创建项目
 
 - 使用 `create-react-app` 创建项目
 
@@ -22,7 +34,7 @@ npm install sass -D
 npm run eject
 ```
 
-## 配置别名
+## 🔦 配置别名
 
 ```ts title="webpack.config.ts" {2}
 alias: {
@@ -37,19 +49,19 @@ alias: {
 }
 ```
 
-## 配置路由
+## 🔦 配置路由
 
 ```tsx title="src/index.tsx" {3,15,17}
-import { createRoot } from "react-dom/client";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./app/store";
-import App from "./App";
+import { createRoot } from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+import App from './App';
 
-import "./index.scss";
+import './index.scss';
 
-const container = document.getElementById("root")!;
+const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
@@ -67,17 +79,17 @@ reportWebVitals();
 ```
 
 ```tsx title="src/App.tsx"
-import { Navigate, Route, Routes } from "react-router-dom";
-import { routersData } from "./app/config";
-import Layout from "./components/layout";
-import Login from "./pages/login";
-import "./App.scss";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { routersData } from './app/config';
+import Layout from './components/layout';
+import Login from './pages/login';
+import './App.scss';
 
 function App() {
   return (
     <Routes>
       {/* 默认重定向到 login */}
-      <Route path="/" element={<Navigate to={"/login"}></Navigate>}></Route>
+      <Route path="/" element={<Navigate to={'/login'}></Navigate>}></Route>
       {/* 登录 */}
       <Route path={routersData.login.path} element={<Login />} />
       {/* Layout 包裹 实现 Outlet */}
@@ -93,7 +105,7 @@ function App() {
 export default App;
 ```
 
-## 配置 `Axios`
+## 🔦 配置 `Axios`
 
 - `create-react-app` 配置 `Proxy`
 
@@ -102,7 +114,7 @@ export default App;
 ```
 
 ```ts title="http.ts"
-import axios from "axios";
+import axios from 'axios';
 
 const instance = axios.create({
   // 处理状态码小于 500 的情况
@@ -118,24 +130,24 @@ instance.interceptors.response.use(
 
         // event 发布订阅 将页面直接跳转到  /login
         // EventBus.on('global_not_login', () => {}) 接收
-        EventBus.emit("global_not_login", response.data.msg);
-        return Promise.reject("没有登录状态");
+        EventBus.emit('global_not_login', response.data.msg);
+        return Promise.reject('没有登录状态');
 
         // 接口错误处理
         if (response.data.code !== 0) {
           // event 发布订阅
-          EventBus.emit("global_error_tips", response.data.msg);
+          EventBus.emit('global_error_tips', response.data.msg);
         }
       }
     } else {
-      EventBus.emit("global_error_tips", response.data.message);
+      EventBus.emit('global_error_tips', response.data.message);
     }
 
     return response;
   },
   function (error) {
     // console.log('发生错误',error)
-    EventBus.emit("global_error_tips", error.response.data.message);
+    EventBus.emit('global_error_tips', error.response.data.message);
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);
@@ -172,14 +184,14 @@ validateStatus: function (status) {
 使用 `toJSON` 可以获取更多关于 `HTTP` 错误的信息。
 
 ```js
-axios.get("/user/12345").catch(function (error) {
+axios.get('/user/12345').catch(function (error) {
   console.log(error.toJSON());
 });
 ```
 
 :::
 
-## 配置 `Store`
+## 🔦 配置 `Store`
 
 `redux` 写起来虽然啰嗦，但是每一条状态的变化都尽在掌控。
 
@@ -188,13 +200,13 @@ axios.get("/user/12345").catch(function (error) {
 - createSlice
 
 ```ts title="src/store/slice/demo.ts"
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {};
 
 const demoSlice = createSlice({
   initialState,
-  name: "demo",
+  name: 'demo',
   reducers: {},
   extraReducers: (builder) => {},
 });
@@ -205,20 +217,15 @@ export default demoSlice.reducer;
 - configureStore
 
 ```tsx title="src/store/index.ts"
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import demo1Reducer from "./slice/demo1";
-import demo2Reducer from "./slice/demo2";
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import demo1Reducer from './slice/demo1';
+import demo2Reducer from './slice/demo2';
 
 // 类型定义
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
 
 export const store = configureStore({
   reducer: { demo1: demo1Reducer, demo2: demo2Reducer },
@@ -231,9 +238,9 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 - 一个请求示例
 
 ```ts title="src/store/slice/demo.ts"
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios, { AxiosRes, ResData } from "@/util/http";
-import { RootState } from "../";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios, { AxiosRes, ResData } from '@/util/http';
+import { RootState } from '../';
 
 const initialState = {
   loading: false,
@@ -241,17 +248,14 @@ const initialState = {
   select_data: null,
 };
 
-export const fetchDemoSourceData = createAsyncThunk(
-  "demo/fetchDemoSourceData",
-  async () => {
-    const { data }: AxiosRes = await axios.get("/api/xxx/xxx");
-    return data.data;
-  }
-);
+export const fetchDemoSourceData = createAsyncThunk('demo/fetchDemoSourceData', async () => {
+  const { data }: AxiosRes = await axios.get('/api/xxx/xxx');
+  return data.data;
+});
 
 const demoSlice = createSlice({
   initialState,
-  name: "demo",
+  name: 'demo',
   reducers: {
     set_demo_select_data: (state, action) => {
       state.select_data = action.payload;
@@ -283,15 +287,15 @@ export default demoSlice.reducer;
 ```
 
 ```tsx title="scr/pages/demo/index.tsx"
-import { useEffect } from "react";
-import styles from "./index.module.scss";
-import { useAppDispatch, useAppSelector } from "@/store";
+import { useEffect } from 'react';
+import styles from './index.module.scss';
+import { useAppDispatch, useAppSelector } from '@/store';
 import {
   fetchDemoSourceData,
   select_demo_source_data,
   select_demo_select_data,
   set_demo_select_data,
-} from "@/store/slice/demo";
+} from '@/store/slice/demo';
 
 function Demo() {
   const dispatch = useAppDispatch();
@@ -307,10 +311,7 @@ function Demo() {
   }, []);
 
   // 改变时
-  const handleSelectorChange = (
-    value: string,
-    labelList: React.ReactNode[]
-  ) => {
+  const handleSelectorChange = (value: string, labelList: React.ReactNode[]) => {
     dispatch(set_demo_select_data({ value, title: labelList[0] }));
   };
 
@@ -330,12 +331,12 @@ export default Demo;
 `toolkit` 底层用的 `immer`, 实际上操作的是代理对象。
 :::
 
-## 渲染错误捕捉
+## 🔦 渲染错误捕捉
 
 - ErrorBoundary
 
 ```tsx title="src/components/ErrorBoundary.tsx"
-import React from "react";
+import React from 'react';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -376,7 +377,7 @@ export default ErrorBoundary;
 - 如果某些组件不稳定， 可以单独对这个组件进行 包装。
 
 ```tsx title="src/index.tsx" {1,6,8}
-import ErrorBoundary from "@/components/ErrorBoundary";
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 root.render(
   <Provider store={store}>
@@ -389,12 +390,12 @@ root.render(
 );
 ```
 
-## 检测渲染次数
+## 🔦 检测渲染次数
 
 - 自定义 hook useRenderCheck 检测组件渲染次数
 
 ```tsx title="@/hooks/useRenderCheck"
-import { useRef } from "react";
+import { useRef } from 'react';
 
 function useRenderCheck(cp_name: string) {
   const ref = useRef(0);
@@ -415,12 +416,12 @@ export default useRenderCheck;
 
 :::
 
-## 解决多次渲染
+## 🔦 解决多次渲染
 
 - useMemo、useCallback 结合 React.memo
 
 ```tsx title="使用 React.memo" {11}
-import React from "react";
+import React from 'react';
 
 function TestMemo() {
   return (
@@ -434,7 +435,7 @@ export default React.memo(TestMemo);
 ```
 
 ```tsx title="使用 useMemo、useCallback" {11}
-import React from "react";
+import React from 'react';
 
 function Test() {
   const testClick = () => {};
@@ -455,7 +456,7 @@ useMemo、useCallback 进行渲染次数优化，要结合 React.memo。
 useMemo, 和 useCallback 是优化组要接受 props 的组件。
 :::
 
-## 渲染优化
+## 🔦 渲染优化
 
 > `React` 默认开启同步渲染模式，如果某一个组件数据量以及计算量巨大，会卡住主线程，让浏览器不能渲染。
 
@@ -464,10 +465,10 @@ useMemo, 和 useCallback 是优化组要接受 props 的组件。
 - 使用 `useDeferredValue` 开启并发更新。可以让你延迟更新 `UI` 的某些部分。
 
 ```tsx
-import { useState, useDeferredValue } from "react";
+import { useState, useDeferredValue } from 'react';
 
 function SearchPage() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const deferredQuery = useDeferredValue(query);
   // ...
 }
@@ -478,7 +479,7 @@ function SearchPage() {
 ```tsx
 function TabContainer() {
   const [isPending, startTransition] = useTransition();
-  const [tab, setTab] = useState("about");
+  const [tab, setTab] = useState('about');
 
   function selectTab(nextTab) {
     startTransition(() => {
@@ -498,17 +499,13 @@ function TabContainer() {
 
 :::
 
-## 分包加载
+## 🔦 分包加载
 
 - 分包对页面进行懒加载。可以加速 `spa` 项目的加载速度。
 
 ```tsx
-const AsyncDemoPage1 = lazy(
-  () => import(/* webpackChunkName: "demo_page_1" */ "./pages/demo_page_1")
-);
-const AsyncDemoPage2 = lazy(
-  () => import(/* webpackChunkName: "demo_page_2" */ "./pages/demo_page_2")
-);
+const AsyncDemoPage1 = lazy(() => import(/* webpackChunkName: "demo_page_1" */ './pages/demo_page_1'));
+const AsyncDemoPage2 = lazy(() => import(/* webpackChunkName: "demo_page_2" */ './pages/demo_page_2'));
 
 function DemoPage1() {
   return (
@@ -536,7 +533,7 @@ webpack 在开发环境中 css 是通过 js 的 style 标签进行插入的，�
 但是在生产环境中 和 js 一样都可以做到异步加载。
 :::
 
-## 其他
+## 🔦 其他
 
 推荐的一些好用的包：
 

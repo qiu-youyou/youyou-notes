@@ -1,6 +1,17 @@
-# 渐进式 Web 应用（PWA）技术集成
+---
+tag:
+  - 笔记
+tags:
+  - Vue
 
-## 渐进式 Web 应用
+description: 介绍如何在 Vue3 项目中集成 PWA（渐进式 Web 应用）技术，包括 Service Worker、WebApp Manifest 的原理与配置，以及使用 vite-plugin-pwa 插件实现离线支持和应用安装体验。
+
+recommend: 2
+---
+
+# Vue3 基础项目模板搭建 - PWA 技术集成
+
+## 🔆 渐进式 Web 应用
 
 > 以下资料来自： [web.dev](https://web.dev/learn/pwa)。
 
@@ -60,7 +71,7 @@
 - `PWA` 适用于各种场景，如流媒体、云游戏、远程计算等。
 - 无论是哪种应用程序，`PWA` 都可以提供更好的用户体验，增加用户留存率，并提高应用程序的可发现性。
 
-## Service Workers
+## 🔆 Service Workers
 
 > 用户希望应用在网络连接速度较慢或不稳定时能够可靠地启动，或者 即使离线也无妨。他们希望看到最近互动过的内容 （例如媒体曲目）必须可供使用。
 
@@ -68,13 +79,13 @@
 - `Service Workers` 可以拦截 `HTTP` 请求，检查请求的资源是否在缓存中存在，如果存在则直接从缓存中调用，即使在网络不可用时也能提供服务。
 - `Service Workers` 还可以处理功能性事件，如 `fetch（请求）`、`sync（后台同步）`等。
 
-## WebApp Manifest
+## 🔆 WebApp Manifest
 
 - `WebApp Manifest` 是一个基于 `JSON` 的文件，它定义了 `PWA` 的一些基本信息和特性。
 - 通过 ` WebApp Manifest`，`PWA` 可以在移动设备的主屏上添加一个快捷方式，方便用户快速访问。
 - `WebApp Manifest` 还可以控制应用程序的启动画面、屏幕方向、图标等内容。
 
-## PWA 集成到项目
+## 🔆 PWA 集成到项目
 
 > `Vite PWA` 可以帮助您将现有的应用程序转换为 `PWA`，而无需进行太多的配置。它预设了适用于常见场景的合理默认值。
 
@@ -99,7 +110,7 @@ pnpm add -D vite-plugin-pwa
 ::: code-group
 
 ```ts [vite.config.ts]
-import { VitePWA } from "vite-plugin-pwa";
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default {
   plugins: [VitePWA()],
@@ -115,12 +126,12 @@ export default {
 ::: code-group
 
 ```ts [vite.config.ts]
-import { VitePWA } from "vite-plugin-pwa";
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   plugins: [
     VitePWA({
-      injectRegister: "auto",
+      injectRegister: 'auto',
     }),
   ],
 });
@@ -138,7 +149,7 @@ export default defineConfig({
 
 ```vue [src/components/ReloadPrompt.vue]
 <script setup lang="ts">
-import { useRegisterSW } from "virtual:pwa-register/vue";
+import { useRegisterSW } from 'virtual:pwa-register/vue';
 
 const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW();
 
@@ -151,8 +162,8 @@ async function close() {
 <template>
   <div v-if="offlineReady || needRefresh" class="pwa-toast" role="alert">
     <div class="message">
-      <span v-if="offlineReady"> 应用程序已准备好离线工作 </span>
-      <span v-else> 有新内容可用，请点击重新加载按钮进行更新。 </span>
+      <span v-if="offlineReady">应用程序已准备好离线工作</span>
+      <span v-else>有新内容可用，请点击重新加载按钮进行更新。</span>
     </div>
     <button v-if="needRefresh" @click="updateServiceWorker()">加载</button>
     <button @click="close">关闭</button>
@@ -194,16 +205,16 @@ async function close() {
 
 ```vue [src/views/index.vue]
 <script setup lang="ts">
-import ReloadPrompt from "@/components/ReloadPrompt.vue";
-import { useRegisterSW } from "virtual:pwa-register/vue";
+import ReloadPrompt from '@/components/ReloadPrompt.vue';
+import { useRegisterSW } from 'virtual:pwa-register/vue';
 
 const intervalMS = 5000; //  配置为每 5秒 检查一次service worker，做测试
 
 const updateServiceWorker = useRegisterSW({
   immediate: true,
   onRegisteredSW(url, registration) {
-    console.log("onRegisteredSW url", url);
-    console.log("onRegisteredSW registration", registration);
+    console.log('onRegisteredSW url', url);
+    console.log('onRegisteredSW registration', registration);
     registration &&
       setInterval(() => {
         registration.update();
@@ -252,22 +263,22 @@ npm run preview
 export default defineConfig({
   plugins: [
     VitePWA({
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
-        name: "Vite APP",
-        short_name: "Vite APP",
-        description: "Vite App description",
-        theme_color: "#ffffff",
+        name: 'Vite APP',
+        short_name: 'Vite APP',
+        description: 'Vite App description',
+        theme_color: '#ffffff',
         icons: [
           {
-            src: "/pwa-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
+            src: '/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
           },
           {
-            src: "/pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
           },
         ],
       },

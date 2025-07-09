@@ -1,13 +1,15 @@
 ---
 tag:
-  - 芝士
+  - 笔记
 tags:
   - JavaScript
+
+description: 使用腾讯云 COS 的 `cos-js-sdk-v5` 实现多文件上传功能，完整的 TypeScript 示例代码，适用于前端项目中图片等文件的批量上传场景。
 ---
 
 # cos-js-sdk-v5 上传函数
 
-## 😀 完整代码
+## 📠 完整代码
 
 ```ts
 import COS from 'cos-js-sdk-v5';

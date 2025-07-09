@@ -1,13 +1,15 @@
 ---
 tag:
-  - 芝士
+  - 笔记
 tags:
   - JavaScript
+
+description: 在浏览器中通过二进制流方式预览 PDF 文件，并提供完整的 React 组件实现代码。
 ---
 
 # 浏览器预览 PDF 文件流
 
-## ☺️ 完整代码
+## 🎉 完整代码
 
 ```tsx
 import { Tooltip } from 'antd';

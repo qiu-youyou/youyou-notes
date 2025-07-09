@@ -1,6 +1,17 @@
-# 配置 单元测试及 e2e 测试
+---
+tag:
+  - 笔记
+tags:
+  - Vue
 
-## 前端项目测试
+description: 介绍如何在 Vue3 项目中配置和使用 Vitest 进行单元测试，以及使用 Cypress 进行端到端（E2E）测试，涵盖测试工具选择、配置方法和基本用例示例。
+
+recommend: 3
+---
+
+# Vue3 基础项目模板搭建 - 单元测试及 e2e 测试
+
+## 📧 前端项目测试
 
 测试的分类：
 
@@ -17,7 +28,7 @@
 
 e2e 测试工具：`Cypress`、`Nightwatch`。
 
-## 单元测试-Vitest
+## 📧 单元测试-Vitest
 
 **安装配置:**
 
@@ -119,18 +130,18 @@ mkdir src/components/__test__
 ::: code-group
 
 ```ts [src/components/__test__/Card.test.ts]
-import { describe, it, expect, beforeEach } from "vitest";
-import { shallowMount } from "@vue/test-utils";
+import { describe, it, expect, beforeEach } from 'vitest';
+import { shallowMount } from '@vue/test-utils';
 
-import Card from "@/components/Card.vue";
+import Card from '@/components/Card.vue';
 
-describe("Card.vue", () => {
-  it("render card title and content", () => {
+describe('Card.vue', () => {
+  it('render card title and content', () => {
     const wrapper = shallowMount(Card, {
-      propsData: { title: "title", subTitle: "subTitle" },
+      propsData: { title: 'title', subTitle: 'subTitle' },
     });
-    expect(wrapper.text()).toMatch("title");
-    expect(wrapper.text()).toMatch("subTitle");
+    expect(wrapper.text()).toMatch('title');
+    expect(wrapper.text()).toMatch('subTitle');
   });
 });
 ```
@@ -154,7 +165,7 @@ pnpm test:coverage
 ![](./images/unit-e2e-test-02.png)
 ![](./images/unit-e2e-test-03.png)
 
-## 端到端测试-Cypress
+## 📧 端到端测试-Cypress
 
 端到端测试`（E2E，End-to-End Testing）`是一种全面的测试方法，旨在验证整个应用程序从用户界面到后端服务的工作流程。`E2E` 测试模拟用户实际操作场景，以确保应用在真实环境中的运行效果。
 
@@ -195,35 +206,35 @@ pnpm add -D cypress # 安装
 ::: code-group
 
 ```ts [cypress/e2e/login.cy.ts]
-describe("Login Page E2E Test", () => {
+describe('Login Page E2E Test', () => {
   beforeEach(() => {
     // 每次测试前访问登录页面
-    cy.visit("http://localhost:3000/login");
+    cy.visit('http://localhost:3000/login');
   });
 
-  it("should render login form", () => {
+  it('should render login form', () => {
     // 检查页面是否渲染了用户名和密码输入框
-    cy.get('input[name="username"]').should("be.visible");
-    cy.get('input[name="password"]').should("be.visible");
-    cy.get('button[type="submit"]').should("contain", "Login");
+    cy.get('input[name="username"]').should('be.visible');
+    cy.get('input[name="password"]').should('be.visible');
+    cy.get('button[type="submit"]').should('contain', 'Login');
   });
 
-  it("should login successfully with valid credentials", () => {
+  it('should login successfully with valid credentials', () => {
     // 输入用户名和密码
-    cy.get('input[name="username"]').type("testuser");
-    cy.get('input[name="password"]').type("testpassword");
+    cy.get('input[name="username"]').type('testuser');
+    cy.get('input[name="password"]').type('testpassword');
     // 点击登录按钮
     cy.get('button[type="submit"]').click();
     // 验证登录成功后页面跳转
-    cy.url().should("include", "/dashboard");
-    cy.get(".welcome-message").should("contain", "Welcome, testuser");
+    cy.url().should('include', '/dashboard');
+    cy.get('.welcome-message').should('contain', 'Welcome, testuser');
   });
 
-  it("should show error message for invalid credentials", () => {
-    cy.get('input[name="username"]').type("wronguser");
-    cy.get('input[name="password"]').type("wrongpassword");
+  it('should show error message for invalid credentials', () => {
+    cy.get('input[name="username"]').type('wronguser');
+    cy.get('input[name="password"]').type('wrongpassword');
     cy.get('button[type="submit"]').click();
-    cy.get(".error-message").should("contain", "Invalid username or password");
+    cy.get('.error-message').should('contain', 'Invalid username or password');
   });
 });
 ```

@@ -1,15 +1,26 @@
-# TypeScript-特殊类型
+---
+tag:
+  - 笔记
+tags:
+  - TypeScript
+
+recommend: 4
+
+description: 本笔记介绍 TypeScript 的六种特殊类型：any、never、void、unknown、Tuple 和 Enum，详细说明它们的用法、区别及注意事项，帮助理解和正确使用这些类型。
+---
+
+# TypeScript 语法用法 - 特殊类型
 
 这里介绍 TypeScript 的六种特殊类型 any & never & void & unknown & Tuple & Enum。
 
-## any 任意类型
+## 👻 any 任意类型
 
 有时，我们在编写代码的时候，并不能清楚地知道一个值到底是什么类型，这时就需要用到 `any` 类型，即任意类型；
 
 ```ts
 let a: any;
 a = 111;
-a = "111";
+a = '111';
 a = () => {};
 a = [];
 a = {};
@@ -17,14 +28,14 @@ a = undefined;
 a = null;
 ```
 
-## void 没有类型
+## 👻 void 没有类型
 
 `void` 和 `any` `相反，any` 是表示任意类型，而 `void` 是表示没有任意类型，就是什么类型都不是；
 
 ```ts
 let b: void;
 b = 111; // Error 不能将类型“number”分配给类型“void”。
-b = "111"; // Error 不能将类型“string”分配给类型“void”。
+b = '111'; // Error 不能将类型“string”分配给类型“void”。
 b = () => {}; // Error 不能将类型“() => void”分配给类型“void”。
 b = {}; // Error 不能将类型“{}”分配给类型“void”。
 b = []; // Error never[]”分配给类型“void”。
@@ -36,7 +47,7 @@ b = undefined; // OK
 `void` 类型的变量只能赋值为 `undefined` 其他类型不能赋值给 `void` 类型的变量。
 :::
 
-## never 永不存在的值的类型
+## 👻 never 永不存在的值的类型
 
 它是那些总会抛出异常或根本不会有返回值的函数表达式的返回值类型。
 
@@ -44,11 +55,11 @@ b = undefined; // OK
 
 ```ts
 interface Foo {
-  type: "foo";
+  type: 'foo';
 }
 
 interface Bar {
-  type: "bar";
+  type: 'bar';
 }
 
 type All = Foo | Bar;
@@ -57,10 +68,10 @@ type All = Foo | Bar;
 // 如果一切逻辑正确，那么这里应该能够编译通过。
 function handleValue(val: All) {
   switch (val.type) {
-    case "foo":
+    case 'foo':
       // val 被收窄为 Foo
       break;
-    case "bar":
+    case 'bar':
       // val 被收窄为 Bar
       break;
     default:
@@ -84,7 +95,7 @@ function handleValue(val: All) {
 `never` 的主要作用：限制类型、控制流程、类型运算。
 :::
 
-## unknown 未知类型
+## 👻 unknown 未知类型
 
 `unknown` 类型是 `TypeScript在3.0` 版本新增的类型，它表示未知的类型。
 
@@ -93,7 +104,7 @@ function handleValue(val: All) {
 ```ts
 let c: unknown;
 c = 111;
-c = "111";
+c = '111';
 c = [];
 c = {};
 c = () => {};
@@ -101,10 +112,10 @@ c = undefined;
 c = null;
 
 // 流程控制
-if (typeof c === "number") {
+if (typeof c === 'number') {
   c.toFixed(2);
-} else if (typeof c === "object" && c instanceof Array) {
-  c.join("-");
+} else if (typeof c === 'object' && c instanceof Array) {
+  c.join('-');
 }
 ```
 
@@ -198,27 +209,27 @@ console.log(tmp.length); // 当 tmp 是字符串或数组时获取它的length�
 所以 `unknown` 相比于 `any` 是安全的！
 :::
 
-## Tuple 元组
+## 👻 Tuple 元组
 
 - `Tuple` 表示成员类型可以自由设置的数组，即数组的各个成员的类型可以不同。
 - `Tuple` 必须声明每个成员的类型。
 
 ```ts
 const value: [number] = [1];
-const value1: [string, string, boolean] = ["a", "b", true];
+const value1: [string, string, boolean] = ['a', 'b', true];
 ```
 
 - 某些情况下，使用 `元组（Tuple）` 来代替数组要更加妥当，一个数组中只存放固定长度的变量，来防止越界访问。
 
 ```ts
-const value1: [string, string, boolean] = ["a", "b", true];
+const value1: [string, string, boolean] = ['a', 'b', true];
 console.log(value1[10]); // error 长度为“3”的元组类型“[string, string, boolean]”在索引“10“处没有元素
 ```
 
 - 元组也支持了在某一个位置上的可选成员。此时元组的长度属性也会发生变化。
 
 ```ts
-const value: [string, number?, boolean?] = ["a"];
+const value: [string, number?, boolean?] = ['a'];
 // 长度的类型为 1 | 2 | 3
 console.log(typeof value.length); // 1 | 2 | 3
 ```
@@ -226,10 +237,10 @@ console.log(typeof value.length); // 1 | 2 | 3
 - 具名元组（Labeled Tuple Elements） 可以为元组中的元素打上类似属性的标记。
 
 ```ts
-const value: [name: string, age: number, email?: string] = ["zhangsan", 18];
+const value: [name: string, age: number, email?: string] = ['zhangsan', 18];
 ```
 
-## Enum 枚举
+## 👻 Enum 枚举
 
 - 枚举并不是 `JavaScript` 中原生的概念
 - 用来将相关常量放在一个容器里面, 常量被真正地约束在一个命名空间下。
@@ -239,21 +250,21 @@ const value: [name: string, age: number, email?: string] = ["zhangsan", 18];
 
 ```ts
 enum baseUrl {
-  test = "xxx/test/url",
-  prev = "xxx/prev/url",
-  prod = "xxx/prod/url",
+  test = 'xxx/test/url',
+  prev = 'xxx/prev/url',
+  prod = 'xxx/prod/url',
 }
 
 enum baseUrl {
-  test = "xxx", // error
-  test1 = "xxx/test1/url",
-  prev1 = "xxx/prev1/url",
-  prod1 = "xxx/prod1/url",
+  test = 'xxx', // error
+  test1 = 'xxx/test1/url',
+  prev1 = 'xxx/prev1/url',
+  prod1 = 'xxx/prod1/url',
 }
 
 // 系统会自动把 baseUrl 合并
 
-baseUrl.test = "xxx/xxx"; // error 无法为“test”赋值，因为它是只读属性
+baseUrl.test = 'xxx/xxx'; // error 无法为“test”赋值，因为它是只读属性
 ```
 
 - 枚举和对象的重要差异在于，对象是单向映射的，我们只能从键映射到键值。而枚举是双向映射的，即你可以从枚举成员映射到枚举值，也可以从枚举值映射到枚举成员。
@@ -263,7 +274,7 @@ baseUrl.test = "xxx/xxx"; // error 无法为“test”赋值，因为它是只�
 enum Color {
   Red,
   Green,
-  Blue = "a",
+  Blue = 'a',
 }
 const colorValue = Color.Red; // 0
 const colorKey = Color[0]; // Red

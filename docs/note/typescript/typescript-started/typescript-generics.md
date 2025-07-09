@@ -1,6 +1,17 @@
-# TypeScript-Generics 泛型
+---
+tag:
+  - 笔记
+tags:
+  - TypeScript
+  -
+recommend: 6
 
-## 定义
+description: 本页简要介绍了 TypeScript 泛型（Generics）的基本用法，包括泛型的定义、变量、约束、函数、类和接口等常见场景，理解如何通过泛型提升代码的灵活性和类型安全性。
+---
+
+# TypeScript 语法用法 - Generics 泛型
+
+## 🎐 定义
 
 - 泛型：在定义函数、接口或类的时候不预先指定数据类型，而是在使用时再指定类型的 特性。
 
@@ -24,12 +35,12 @@ const pushArr = <T>(arr: T[], item: T): T[] => {
 };
 
 pushArr<number>([1, 2, 3, 4], 5);
-pushArr<string>(["a", "b", "c", "d"], "e");
+pushArr<string>(['a', 'b', 'c', 'd'], 'e');
 ```
 
 > 在调用 pushArr 的时候，在方法名后面使用<>传入了 泛型变量 T 的类型 number，那么在定义 pushArr 函数时使用 T 指定类型的地方，都会使用 number 指定。
 
-## 泛型变量
+## 🎐 泛型变量
 
 - 泛型变量，这是一种特殊的变量，只用于表示类型而不是值。
   > 其实可以把这个 T U 当作是一个 所有的可能 的一种类型，这个类型是使用者决定的。
@@ -39,14 +50,14 @@ function swapGeneric<T, U>(tuple: [T, U]): [U, T] {
   return [tuple[1], tuple[0]];
 }
 
-const result2 = swapGeneric(["string", 0.123]);
+const result2 = swapGeneric(['string', 0.123]);
 
 // ts的类型推断系统能够明确得知第一个元素会是数值，而第二个元素会是字符串
 result2[0].toFixed(2);
 result2[1].toLocaleUpperCase();
 ```
 
-## 泛型约束
+## 🎐 泛型约束
 
 - 属性约束
 
@@ -61,7 +72,7 @@ const getLength = <T extends ValueWithLength>(param: T): number => {
   return param.length;
 };
 
-getLength("abc"); // 3
+getLength('abc'); // 3
 getLength([1, 2, 3]); // 3
 getLength({ length: 3 }); // 3
 
@@ -76,8 +87,8 @@ getLength(123); // 类型“number”的参数不能赋给类型“ValueWithLeng
 const getProps = (object, propName) => {
   return object[propName];
 };
-const obj = { a: "aa", b: "bb" };
-getProps(obj, "c"); // undefined 访问这个对象的c属性时，这个属性是没有的
+const obj = { a: 'aa', b: 'bb' };
+getProps(obj, 'c'); // undefined 访问这个对象的c属性时，这个属性是没有的
 ```
 
 需要用到索引类型 keyof 结合泛型来实现对这个问题的检查：
@@ -87,15 +98,15 @@ const getProp = <T, K extends keyof T>(object: T, propName: K) => {
   return object[propName];
 };
 
-const obj = { a: "aa", b: "bb" };
+const obj = { a: 'aa', b: 'bb' };
 
 // 在这里 K 就被约束为了只能是"a"或"b"
-getProp(obj, "c"); // 类型“"c"”的参数不能赋给类型“"a" | "b"”的参数
+getProp(obj, 'c'); // 类型“"c"”的参数不能赋给类型“"a" | "b"”的参数
 ```
 
 可以理解为 keyof 的 T 相当于一个由泛型变量 T 的属性名构成的联合类型。
 
-## 泛型函数
+## 🎐 泛型函数
 
 - 简单定义
 
@@ -125,7 +136,7 @@ const getArray: GetArray = <T>(arg: T, times: number): T[] => {
 };
 ```
 
-## 泛型类
+## 🎐 泛型类
 
 - 定义一个类，实现被 push 入的队列元素与 pop 出的元素的类型一致:
 
@@ -143,10 +154,10 @@ class Queue<T> {
 //泛型类实例化时要指定具体的类型
 const queue = new Queue<number>();
 queue.push(1);
-queue.push("str"); // Error: 类型“string”的参数不能赋给类型“number”的参数。
+queue.push('str'); // Error: 类型“string”的参数不能赋给类型“number”的参数。
 ```
 
-## 泛型接口
+## 🎐 泛型接口
 
 - 泛型接口描述的对象:
 
@@ -156,8 +167,8 @@ interface KeyPair<T, U> {
   value: U;
 }
 
-let kp1: KeyPair<number, string> = { key: 123, value: "str" };
-let kp2: KeyPair<string, number> = { key: "test", value: 123 };
+let kp1: KeyPair<number, string> = { key: 123, value: 'str' };
+let kp2: KeyPair<string, number> = { key: 'test', value: 123 };
 ```
 
 - 泛型接口的描述函数

@@ -1,13 +1,15 @@
 ---
 tag:
-  - 芝士
+  - 笔记
 tags:
   - JavaScript
+
+description: 介绍了如何手写实现 JavaScript 中的 call、apply 和 bind 方法，包括实现思路与代码示例。
 ---
 
 # 手写 call、apply、bind
 
-## 😏 call
+## 📟 call
 
 `call` 和 `apply` 实现思路主要是：
 

@@ -1,13 +1,15 @@
 ---
 tag:
-  - 芝士
+  - 笔记
 tags:
   - JavaScript
+
+description: 总结 JavaScript 中判断数据类型的四种常用方法，包括 typeof、instanceof、constructor 和 Object.prototype.toString.call()，并分析它们的优缺点及适用场景。
 ---
 
 # 判断数据类型的四种方法
 
-## 😳 typeof
+## 📢 typeof
 
 > `tyepof [value]`
 
@@ -48,7 +50,7 @@ typeof {}; // 'Object'
 
 :::
 
-## 😳 instanceof
+## 📢 instanceof
 
 > `实例 instanceof 类`
 
@@ -97,7 +99,7 @@ console.log(myInstance({}, Object));
 
 :::
 
-## 😳 constructor
+## 📢 constructor
 
 > `实例.constructor === 类`
 
@@ -129,7 +131,7 @@ console.log(reg.constructor.name); // RegExp
 
 :::
 
-## 😳 Object.prototype.toString.call()
+## 📢 Object.prototype.toString.call()
 
 > `Object.prototype.toString.call(被检测实例)`
 

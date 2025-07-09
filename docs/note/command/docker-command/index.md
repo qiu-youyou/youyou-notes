@@ -1,19 +1,19 @@
 ---
 tag:
-  - 芝士
+  - 笔记
 tags:
   - 常用命令
 categories:
   - Docker
 
-description: 记录 Docker 常用命令及配置
+description: 整理 Docker 的常用命令、配置方法及 Docker Compose 和 Portainer 的基础用法，便于日常开发和运维参考。
 ---
 
 # Docker 常用命令及配置
 
 ::: code-group
 
-## 😴 安装脚本
+## 🎋 安装脚本
 
 ```sh
 # 官方安装脚本
@@ -34,14 +34,14 @@ docker --help # 帮助
 
 ::: code-group
 
-```sh
+```sh·
 systemctl enable docker # 设置 docker 开机自启动
 service docker status # 查看 docker 运行状态
 ```
 
 :::
 
-## 😴 容器生命周期管理
+## 🎋 容器生命周期管理
 
 ::: code-group
 
@@ -58,7 +58,7 @@ rename # 重命名容器。
 
 :::
 
-## 😴 容器操作
+## 🎋 容器操作
 
 ::: code-group
 
@@ -78,7 +78,7 @@ update # 更新 Docker 容器的资源限制，包括内存、CPU 等。
 
 :::
 
-## 😴 镜像仓库
+## 🎋 镜像仓库
 
 ::: code-group
 
@@ -92,7 +92,7 @@ search # 用于在 Docker Hub 或其他注册表中搜索镜像。
 
 :::
 
-## 😴 Docker Compose
+## 🎋 Docker Compose
 
 ::: code-group
 
@@ -109,7 +109,7 @@ docker compose restart # 重启 docker compose 文件创建的容器。
 
 :::
 
-## 😴 docker compose 创建 mysql：
+## 🎋 docker compose 创建 mysql：
 
 ::: code-group
 

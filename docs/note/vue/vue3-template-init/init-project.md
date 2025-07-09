@@ -1,6 +1,19 @@
-# 创建并初始化 Vue3 前端项目
+---
+tag:
+  - 笔记
+tags:
+  - Vue
 
-## 创建项目
+description: 本篇笔记介绍了如何基于 Vite 快速搭建 Vue3 项目模板，并集成自动路由、布局、原子化 CSS、自动导入、组件自动注册、Mock 接口等常用开发方案，适合 Vue3 项目初始化参考。
+
+top: 1
+sticky: 9999
+recommend: 1
+---
+
+# Vue3 基础项目模板搭建 - 初始化项目
+
+## ➿ 创建项目
 
 [vite](https://cn.vite.dev/) 创建项目:
 
@@ -43,15 +56,15 @@ rm src/views/AboutView.vue src/stores/counter.ts src/assets/base.css
 ```
 
 ```ts [index.ts]
-import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
-      name: "home",
+      path: '/',
+      name: 'home',
       component: HomeView,
     },
   ],
@@ -62,7 +75,7 @@ export default router;
 
 ```vue [App.vue]
 <script setup lang="ts">
-import { RouterView } from "vue-router";
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
@@ -110,7 +123,7 @@ app.mount('#app')
 
 :::
 
-## 路由方案
+## ➿ 路由方案
 
 这里采用自动路由方案：[unplugin-vue-router](https://github.com/posva/unplugin-vue-router)
 
@@ -174,8 +187,8 @@ Vite 在使用插件时有顺序要求。Vue 的插件一定要在 VueRouter 的
 ::: code-group
 
 ```ts {1,2,6} [src/router/index.ts]
-import { createRouter, createWebHistory } from "vue-router/auto"; // [!code focus]
-import { routes } from "vue-router/auto-routes"; // [!code focus]
+import { createRouter, createWebHistory } from 'vue-router/auto'; // [!code focus]
+import { routes } from 'vue-router/auto-routes'; // [!code focus]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -252,7 +265,7 @@ export default router;
 
 ![](./images/auto-route-example.jpg)
 
-## 全局布局
+## ➿ 全局布局
 
 [vite-plugin-vue-layouts](https://github.com/johncampionjr/vite-plugin-vue-layouts) : 在我们的项目中，除了一级路由 在项目中还涉及嵌套路由的情况，也就是不同层级使用同一组布局 。该插件允许开发者为不同页面指定布局，从而实现更灵活的页面结构管理。
 
@@ -341,9 +354,7 @@ export default router;
 ```vue [src/layouts/default.vue]
 <template>
   <h1 style="font-size: 20px; margin: 10px">this is default layout</h1>
-  <header style="font-size: 18px; color: red; margin: 10px">
-    this is default header
-  </header>
+  <header style="font-size: 18px; color: red; margin: 10px">this is default header</header>
 
   <div style="margin: 10px; color: blue">
     <router-link to="/">index</router-link>
@@ -357,9 +368,7 @@ export default router;
     <router-view></router-view>
   </div>
 
-  <footer style="font-size: 18px; color: red; margin: 10px">
-    this is default footer
-  </footer>
+  <footer style="font-size: 18px; color: red; margin: 10px">this is default footer</footer>
 </template>
 ```
 
@@ -372,17 +381,13 @@ export default router;
 ```vue [src/layouts/home.vue]
 <template>
   <h1 style="font-size: 20px; margin: 10px">this is home layout</h1>
-  <header style="font-size: 18px; color: red; margin: 10px">
-    this is home header
-  </header>
+  <header style="font-size: 18px; color: red; margin: 10px">this is home header</header>
 
   <div style="margin: 10px">
     <router-view></router-view>
   </div>
 
-  <footer style="font-size: 18px; color: red; margin: 10px">
-    this is home footer
-  </footer>
+  <footer style="font-size: 18px; color: red; margin: 10px">this is home footer</footer>
 </template>
 ```
 
@@ -428,7 +433,7 @@ meta:
 
 > 还可以配置过渡效果、参数传递等。阅读 🫱 [官方文档](https://github.com/johncampionjr/vite-plugin-vue-layouts?tab=readme-ov-file#transitions)
 
-## CSS 方案
+## ➿ CSS 方案
 
 这里采用 CSS 框架 [unocss](https://github.com/unocss/unocss)
 
@@ -466,7 +471,7 @@ pnpm add @unocss/reset
 ::: code-group
 
 ```ts [src/main.ts]
-import "@unocss/reset/tailwind-compat.css";
+import '@unocss/reset/tailwind-compat.css';
 ```
 
 :::
@@ -529,9 +534,9 @@ export default defineConfig({
 ::: code-group
 
 ```ts [uno.config.ts]
-import { defineConfig } from "unocss";
+import { defineConfig } from 'unocss';
 
-import presetWind from "@unocss/preset-wind"; // Preset
+import presetWind from '@unocss/preset-wind'; // Preset
 
 export default defineConfig({
   // ...UnoCSS options
@@ -578,7 +583,7 @@ app.mount("#app");
 
 ![](./images/unocss-example.jpg)
 
-## 图标方案
+## ➿ 图标方案
 
 [Iconify](https://iconify.design/) : unocss 中使用 Iconify 作为图标数据源 🫱 [文档](https://unocss.dev/presets/icons#install)
 
@@ -593,8 +598,8 @@ app.mount("#app");
 ::: code-group
 
 ```ts [uno.config.ts]
-import { defineConfig } from "unocss";
-import { presetWind, presetIcons } from "unocss"; // presets // [!code focus]
+import { defineConfig } from 'unocss';
+import { presetWind, presetIcons } from 'unocss'; // presets // [!code focus]
 
 export default defineConfig({
   // ...UnoCSS options
@@ -602,11 +607,11 @@ export default defineConfig({
     presetWind(),
     // [!code focus:9]
     presetIcons({
-      prefix: "i-", // 设置前缀
+      prefix: 'i-', // 设置前缀
       // 设置额外的css属性
       extraProperties: {
-        display: "inline-block",
-        "vertical-align": "middle",
+        display: 'inline-block',
+        'vertical-align': 'middle',
       },
     }),
   ],
@@ -628,9 +633,7 @@ export default defineConfig({
   <!-- An orange alarm from Material Design Icons -->
   <div class="i-mdi-alarm text-orange-400" />
   <!-- Twemoji of laugh, turns to tear on hovering -->
-  <div
-    class="i-twemoji-grinning-face-with-smiling-eyes hover:i-twemoji-face-with-tears-of-joy"
-  />
+  <div class="i-twemoji-grinning-face-with-smiling-eyes hover:i-twemoji-face-with-tears-of-joy" />
 
   <!-- 前缀 图标集:图标名称。 也可以设置style -->
   <div class="i-carbon:4k-filled" style="color: green; font-size: 60px"></div>
@@ -641,7 +644,7 @@ export default defineConfig({
 
 ![](./images/unocss-icon-example.jpg)
 
-## 自动导入依赖
+## ➿ 自动导入依赖
 
 > [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)：在项目中，频繁引入依赖包是一个常见的操作，但手动引入依赖包往往繁琐。可以通过自动导入的插件，就可以自动导入我们的 API。
 
@@ -781,7 +784,7 @@ const { x, y } = useMouse();
 
 :::
 
-## 自动注册组件
+## ➿ 自动注册组件
 
 > [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components)：解决的是在 vue 项目中自动导入以 .vue、.ts、.tsx 这些组件。使用插件结合 setup 语法糖，让编写变得更加方便。
 
@@ -952,41 +955,27 @@ Components({ directoryAsNamespace: true,}),
 
 ```ts
 // before
-UserComponent: typeof import("./src/components/user/UserComponent.vue")[
-  "default"
-];
+UserComponent: typeof import('./src/components/user/UserComponent.vue')['default'];
 
 // after：增加了一个并带上了文件夹最为前缀
-UserComponent: typeof import("./src/components/user/UserComponent.vue")[
-  "default"
-];
-UserUserComponent: typeof import("./src/components/user/UserComponent.vue")[
-  "default"
-];
+UserComponent: typeof import('./src/components/user/UserComponent.vue')['default'];
+UserUserComponent: typeof import('./src/components/user/UserComponent.vue')['default'];
 
 // 这时如果有一个文件夹中也有 UserComponent.vue。比如：admin/UserComponent.vue
 // 同样也会带上 文件的前缀
-AdminUserComponent: typeof import("./src/components/admin/UserComponent.vue")[
-  "default"
-];
+AdminUserComponent: typeof import('./src/components/admin/UserComponent.vue')['default'];
 ```
 
 当然也可以省略问与组件相同的前缀: `collapseSamePrefixes: true,`
 
 ```ts
 // before
-UserComponent: typeof import("./src/components/user/UserComponent.vue")[
-  "default"
-];
-UserUserComponent: typeof import("./src/components/user/UserComponent.vue")[
-  "default"
-];
+UserComponent: typeof import('./src/components/user/UserComponent.vue')['default'];
+UserUserComponent: typeof import('./src/components/user/UserComponent.vue')['default'];
 
 // after：与 user 文件夹 相同名称的前缀，前缀会被省略：
 // UserUserComponent 从 components.d.ts 中删除了
-UserComponent: typeof import("./src/components/user/UserComponent.vue")[
-  "default"
-];
+UserComponent: typeof import('./src/components/user/UserComponent.vue')['default'];
 ```
 
 :::
@@ -995,7 +984,7 @@ UserComponent: typeof import("./src/components/user/UserComponent.vue")[
 如果你在测试时 `components.d.ts` 文件没变化。可以删除该文件。然后重启程序。
 :::
 
-## 接口 MOCK
+## ➿ 接口 MOCK
 
 在前端项目的开发过程中，有时候我们会需要一些模拟数据。这样我们的开发可以优先于后端的接口。可以先调试本地的数据和一些交互。
 
@@ -1046,21 +1035,21 @@ export default defineConfig({
 ::: code-group
 
 ```ts [mock/test.ts]
-import { MockMethod } from "vite-plugin-mock";
+import { MockMethod } from 'vite-plugin-mock';
 
 export default [
   {
-    url: "/api/get",
-    method: "get",
+    url: '/api/get',
+    method: 'get',
     response: ({ query }) => {
-      return { code: 0, data: { name: "vben" } };
+      return { code: 0, data: { name: 'vben' } };
     },
   },
   {
-    url: "/api/post",
-    method: "post",
+    url: '/api/post',
+    method: 'post',
     timeout: 2000,
-    response: { code: 0, data: { name: "vben" } },
+    response: { code: 0, data: { name: 'vben' } },
   },
 ] as MockMethod[];
 ```

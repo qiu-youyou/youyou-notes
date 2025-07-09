@@ -1,17 +1,17 @@
 ---
 tag:
-  - 芝士
+  - 笔记
 tags:
   - 常用命令
 categories:
   - Linux
 
-description: 记录 linux 常用命令及配置
+description: 整理了 Linux 常用命令、配置方法及 SSH 密钥登录等实用技巧，便于日常运维和开发参考。
 ---
 
 # Linux 常用命令及配置
 
-## 😟 命令格式
+## 🎈 命令格式
 
 ::: code-group
 
@@ -35,7 +35,7 @@ description: 记录 linux 常用命令及配置
 
 :::
 
-## 😟 常用命令
+## 🎈 常用命令
 
 ::: code-group
 
@@ -107,7 +107,7 @@ ln -s 被链接的源文件 链接文件
 
 :::
 
-## 😟 SSH 密钥方式远程 linux
+## 🎈 SSH 密钥方式远程 linux
 
 ::: code-group
 
@@ -158,7 +158,7 @@ $ shutdown -c
 
 :::
 
-## 😟 unbuntu 初始 root 密码
+## 🎈 unbuntu 初始 root 密码
 
 安装完成 `Ubuntu` 后，意识到在安装中并没有设置密码。自然也就无法进入到 `根用户下`。
 

@@ -1,10 +1,21 @@
-# TypeScript-Interface 接口
+---
+tag:
+  - 笔记
+tags:
+  - TypeScript
+  -
+recommend: 7
+
+description: 本笔记介绍了 TypeScript 中接口（Interface）的基本用法，包括接口的定义、继承、函数类型、索引类型、混合类型、可选和只读属性，以及多余属性检查等内容，理解并灵活应用接口特性。
+---
+
+# TypeScript 语法用法 - Interface 接口
 
 接口是一系列抽象方法的声明，是一些方法特征的集合，这些方法都应该是抽象的，需要由具体的类去实现，然后第三方就可以通过这组抽象方法调用，让具体的类执行具体的方法。
 
 基础类型只是定义了简单的类型定义，而接口可以定义几乎任意结构（复杂结构）
 
-## 基本用法
+## 🎃 基本用法
 
 #### 基础用法
 
@@ -56,7 +67,7 @@ interface AddFun {
 
 const add: AddFun = (num1, num2) => num1 + num2;
 const join: AddFun = (num1, num2) => `${num1} ${num2}`; // 不能将类型“string”分配给类型“number”。
-add("1", 2); // 类型“string”的参数不能赋给类型“number”的参数。
+add('1', 2); // 类型“string”的参数不能赋给类型“number”的参数。
 ```
 
 #### 索引类型
@@ -69,16 +80,16 @@ interface RoleDic {
 }
 
 const role1: RoleDic = {
-  0: "super_admin",
-  1: "admin",
+  0: 'super_admin',
+  1: 'admin',
 };
 
 const role2: RoleDic = {
-  s: "super_admin", // 不能将类型"{ s: string; a: string; }"分配给类型"RoleDic"。
-  a: "admin",
+  s: 'super_admin', // 不能将类型"{ s: string; a: string; }"分配给类型"RoleDic"。
+  a: 'admin',
 };
 
-const role3: RoleDic = ["super_admin", "admin"];
+const role3: RoleDic = ['super_admin', 'admin'];
 ```
 
 - 也可以给索引设置`readonly`，从而防止索引返回值被修改。
@@ -89,10 +100,10 @@ interface RoleDic {
 }
 
 const role: RoleDic = {
-  0: "super_admin",
+  0: 'super_admin',
 };
 
-role[0] = "admin"; // error 类型"RoleDic"中的索引签名仅允许读取
+role[0] = 'admin'; // error 类型"RoleDic"中的索引签名仅允许读取
 ```
 
 #### 接口继承
@@ -116,7 +127,7 @@ const tomato: Tomato = {
   radius: 1.2,
 };
 const carrot: Carrot = {
-  color: "orange",
+  color: 'orange',
   length: 20,
 };
 ```
@@ -135,8 +146,8 @@ interface Tomato extends Food, Vegetables {
 }
 
 const tomato: Tomato = {
-  type: "vegetables",
-  color: "red",
+  type: 'vegetables',
+  color: 'red',
   radius: 1.2,
 };
 ```
@@ -171,7 +182,7 @@ counter();
 console.log(counter.count); // 2
 ```
 
-## 可选/只读属性
+## 🎃 可选/只读属性
 
 #### 可选属性
 
@@ -183,7 +194,7 @@ interface MyType {
   type: string;
 }
 
-const tmp: MyType = { type: "string" }; // 正确
+const tmp: MyType = { type: 'string' }; // 正确
 ```
 
 #### 只读属性
@@ -197,13 +208,13 @@ interface Role {
 }
 
 const role: Role = {
-  0: "super_admin",
-  1: "admin",
+  0: 'super_admin',
+  1: 'admin',
 };
-role[1] = "super_admin"; // 无法为“1”赋值，因为它是只读属性。
+role[1] = 'super_admin'; // 无法为“1”赋值，因为它是只读属性。
 ```
 
-## 多余属性检查
+## 🎃 多余属性检查
 
 - 接口的校验是严格的，在定义一个实现某个接口的值的时候，对于接口中没有定义的字段是不允许出现的，我们称这个为多余属性检查。
 
@@ -218,11 +229,11 @@ interface MyType {
 }
 
 const getTypes = ({ color, type }: MyType) => {
-  return `A ${color ? color + " " : ""}${type}`;
+  return `A ${color ? color + ' ' : ''}${type}`;
 };
 
 getTypes({
-  type: "tomato",
+  type: 'tomato',
   size: 12,
   price: 1.2,
 } as MyTypes); // 这里就是类型断言
@@ -238,12 +249,12 @@ interface MyType {
 }
 
 const getTypes = ({ color, type }: MyType) => {
-  return `A ${color ? color + " " : ""}${type}`;
+  return `A ${color ? color + ' ' : ''}${type}`;
 };
 
 getTypes({
-  color: "red",
-  type: "tomato",
+  color: 'red',
+  type: 'tomato',
   size: 12,
   price: 1.2,
 });
@@ -261,6 +272,6 @@ const getTypes = ({ type }: MyType) => {
   return `A ${type}`;
 };
 
-const option = { type: "tomato", size: 12 };
+const option = { type: 'tomato', size: 12 };
 getTypes(option);
 ```

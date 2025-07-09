@@ -13,15 +13,15 @@ const getNavItemsBySidebar = (siderbar: SidebarItem[]) => {
 export const nav: DefaultTheme.Config['nav'] = [
   { text: '首页', link: '/' },
   {
-    text: '芝士小记',
+    text: '芝士笔记',
     activeMatch: '/note/',
     items: getNavItemsBySidebar(sidebar?.['/note']),
   },
-  {
-    text: '技术笔记',
-    activeMatch: '/blog/',
-    items: getNavItemsBySidebar(sidebar?.['/blog']),
-  },
+  // {
+  //   text: '技术笔记',
+  //   activeMatch: '/blog/',
+  //   items: getNavItemsBySidebar(sidebar?.['/blog']),
+  // },
   {
     text: '问题记录',
     activeMatch: '/issue/',
