@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
+copyFileSync('./patches/BlogHomeTags.vue', './node_modules/@sugarat/theme/src/components/BlogHomeTags.vue');
 copyFileSync('./patches/BlogHomeInfo.vue', './node_modules/@sugarat/theme/src/components/BlogHomeInfo.vue');
 
 function copyFileSync(source, target) {

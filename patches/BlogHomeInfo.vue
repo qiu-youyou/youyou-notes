@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import BlogHomeOverview from './BlogHomeOverview.vue'
-import BlogHotArticle from './BlogHotArticle.vue'
-import BlogHomeTags from './BlogHomeTags.vue'
-import BlogFriendLink from './BlogFriendLink.vue'
+import BlogHomeOverview from './BlogHomeOverview.vue';
+import BlogHotArticle from './BlogHotArticle.vue';
+import BlogHomeTags from './BlogHomeTags.vue';
+import BlogFriendLink from './BlogFriendLink.vue';
 </script>
 
 <template>
@@ -10,11 +10,11 @@ import BlogFriendLink from './BlogFriendLink.vue'
     <!-- 统计数据，日后支持，点击筛选出左侧的数据 -->
     <BlogHomeOverview />
 
-    <!-- 置顶的一些文章 -->
-    <BlogHotArticle />
-
     <!-- 标签 -->
     <BlogHomeTags />
+
+    <!-- 置顶的一些文章 -->
+    <BlogHotArticle />
 
     <!-- 友链 -->
     <ClientOnly>
