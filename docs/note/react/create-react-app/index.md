@@ -105,7 +105,7 @@ function App() {
 export default App;
 ```
 
-## 🔦 配置 `Axios`
+## 🔦 配置 Axios
 
 - `create-react-app` 配置 `Proxy`
 
@@ -191,7 +191,7 @@ axios.get('/user/12345').catch(function (error) {
 
 :::
 
-## 🔦 配置 `Store`
+## 🔦 配置 Store
 
 `redux` 写起来虽然啰嗦，但是每一条状态的变化都尽在掌控。
 
