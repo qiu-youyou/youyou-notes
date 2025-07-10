@@ -1,10 +1,19 @@
-# Homebrew：MacOS 上的软件包管理
+---
+tag:
+  - 环境配置
+tags:
+  - MacOS
+
+description: MacOS 上使用 Homebrew 进行软件包的安装、配置、加速及常用命令总结。
+---
+
+# 🔨 Homebrew：MacOS 上的软件包管理
 
 [Homebrew](https://brew.sh/) 是一款强大的开源软件包管理器。
 
 它的存在填补了 macOS 原生缺少的软件包管理工具，使得在 Mac 上安装、升级和管理软件包变得更加轻松和便捷。
 
-## Homebrew 使用场景
+## 🔨 Homebrew 使用场景
 
 比如在`MacOS`中安装`redis`，使用`Homebrew`可以减少大量的安装和配置的工作量。
 
@@ -40,7 +49,7 @@ brew services stop redis
 brew services restart redis
 ```
 
-## 安装 Homebrew
+## 🔨 安装 Homebrew
 
 ### 官方源安装
 
@@ -64,7 +73,7 @@ brew services restart redis
 
 如果存在旧版本，会弹出删除旧版本提示，输入"Y"，回车。
 
-![](./assets/homebrew-install.jpg)
+![](./images/homebrew-install.jpg)
 
 #### 无 Git 环境
 
@@ -74,13 +83,13 @@ brew services restart redis
 
 - 安装完成 `git` 后，再次执行 `Homebrew` 安装指令，直到安装完成。
 
-![](./assets/homebrew-git.jpg)
+![](./images/homebrew-git.jpg)
 
 #### 安装完成
 
 使用 `brew --version` 看到版本信息。
 
-![](./assets/homebrew-version.jpg)
+![](./images/homebrew-version.jpg)
 
 #### 卸载 Homebrew
 
@@ -88,7 +97,7 @@ brew services restart redis
 /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)"
 ```
 
-## 让 Homebrew 加速起飞
+## 🔨 Homebrew 加速起飞
 
 使用魔法的可以跳过了。有条件推荐优先使用官方源。
 
@@ -128,7 +137,7 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bott
 source ~/.zshrc
 ```
 
-## Homebrew 常用命令
+## 🔨 Homebrew 常用命令
 
 #### 安装软件
 

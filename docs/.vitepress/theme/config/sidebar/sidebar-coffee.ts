@@ -2,23 +2,21 @@ import { DefaultTheme } from 'vitepress';
 
 export const sidebarCoffee: DefaultTheme.SidebarItem[] = [
   {
-    text: 'NPM 语义化的版本号',
-    link: '/coffee/semantic-version/',
+    text: '技术理论知识',
+    link: '/coffee/concept/',
+    collapsed: false,
+    items: [],
   },
   {
-    text: '简述 NPM 的发包过程',
-    link: '/coffee/npm-publish-process',
+    text: '问题踩坑记录',
+    link: '/coffee/issue/',
+    collapsed: false,
+    items: [],
   },
   {
-    text: 'Homebrew-软件包管理',
-    link: '/coffee/mac/homebrew/',
-  },
-  {
-    text: 'MacOS-管理多版本JDK',
-    link: '/coffee/mac/manage-jdk/',
-  },
-  {
-    text: '工作流-技术栈更新与维护',
-    link: '/coffee/technology-stack-maintenance/',
+    text: '常用环境配置',
+    link: '/coffee/environment/',
+    collapsed: false,
+    items: [],
   },
 ];

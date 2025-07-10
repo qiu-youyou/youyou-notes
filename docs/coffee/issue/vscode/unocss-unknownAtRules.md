@@ -1,9 +1,6 @@
 ---
-aside: false
-sidebar: false
-
 tag:
-  - 问题整理
+  - 问题踩坑
 tags:
   - VSCode
 
@@ -12,13 +9,13 @@ description: 在 VSCode 中使用 Tailwind CSS 时，遇到 `@apply` 等指令�
 
 # VSCode 对 Tailwind 指令的警告
 
-问题：
+## ➿ 问题描述
 
 - 在 `Sass` 中使用 `@aplly` 语法 ： `Unknown at rule @applyscss(unknownAtRules)`
 
 ![](./images/warning.png)
 
-解决：
+## ➿ 处理方案
 
 - 方案 1: 打开 vscode 设置，搜索 `scss Unknown`，改为 `ignore`：
 

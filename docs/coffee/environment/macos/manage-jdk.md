@@ -1,6 +1,15 @@
+---
+tag:
+  - 环境配置
+tags:
+  - MacOS
+
+description: 如何在 MacOS 上管理和切换多个 JDK 版本，包括下载安装、环境变量配置及版本切换方法。
+---
+
 # MacOS 中管理多版本 JDK
 
-## 官网下载
+## 🔌 官网下载
 
 从官网选择下载你需要的 JDK 版本。
 
@@ -8,7 +17,7 @@
 
 下载完成后 直接安装完成即可。
 
-## 查看信息
+## 🔌 查看信息
 
 检查已安装 JDK 的版本及路径
 
@@ -26,7 +35,7 @@
 
 ![](./assets/jdk-finder.jpg)
 
-## 配置环境变量
+## 🔌 配置环境变量
 
 - 打开你正在使用的 `shell配置文件`，我这里使用的是 `.zshrc`
 
@@ -66,7 +75,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/lib:$JAVA_HOME/jre/bin
 在 `shell配置文件` 中 , 上面的 `#使用vim` 和 `#java`, 代表注释，这样你可以给你的 `shell文件` 添加说明了。
 :::
 
-## 重新加载配置
+## 🔌 重新加载配置
 
 - 保存重新加载你的 shell 配置文件
 
@@ -77,7 +86,7 @@ source ~/.zshrc
 java --version
 ```
 
-## 切换版本
+## 🔌 切换版本
 
 - 设置本机环境中的 JDK 版本
 

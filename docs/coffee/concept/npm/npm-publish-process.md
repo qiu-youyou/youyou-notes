@@ -1,6 +1,15 @@
+---
+tag:
+  - 理论知识
+tags:
+  - NPM
+
+description: 简要介绍了 NPM 包发布的准备、配置、登录和发布流程，快速了解发包步骤。
+---
+
 # 简述 NPM 的发包过程
 
-## 准备工作
+## 🔑 准备工作
 
 确保你的项目满足以下条件:
 
@@ -11,7 +20,7 @@
 npm init
 ```
 
-## 更新 package.json 文件
+## 🔑 更新 package.json 文件
 
 确保你的 `package.json` 文件包含以下信息:
 
@@ -34,7 +43,7 @@ npm init
 }
 ```
 
-## 创建 .npmignore 文件
+## 🔑 创建 .npmignore 文件
 
 创建一个 `.npmignore` 文件来排除发布时不需要的文件。这类似于 `.gitignore` 文件。如:
 
@@ -45,7 +54,7 @@ node_modules
 *.bak
 ```
 
-## 登录 NPM 账户
+## 🔑 登录 NPM 账户
 
 在终端中运行 `npm login` 命令，并输入你的 `NPM` 账户名、密码和邮箱。如果还没有账户，可以通过 运行 `npm adduser` 创建一个。
 
@@ -53,7 +62,7 @@ node_modules
 npm login
 ```
 
-## 发布包
+## 🔑 发布包
 
 ```bash
 npm publish
@@ -62,7 +71,7 @@ npm publish
 
 登录 [NPM](https://www.npmjs.com/) 官网，进入你的个人主页，查看已发布的包。
 
-## 更新和维护
+## 🔑 更新和维护
 
 当你的包需要更新时，确保按照 [Semantic Versioning](https://semver.org/) 规范更新 重新执行 命令发布新版本。
 现在可以通过 `npm install your-package-name`命令安装你的包。

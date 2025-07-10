@@ -1,7 +1,5 @@
 import type { DefaultTheme } from 'vitepress';
 import { sidebarNote } from './sidebar-note';
-import { sidebarBlog } from './sidebar-blog';
-import { sidebarIssue } from './sidebar-issue';
 import { sidebarCoffee } from './sidebar-coffee';
 
 export type SidebarItem = DefaultTheme.SidebarItem & {
@@ -10,7 +8,5 @@ export type SidebarItem = DefaultTheme.SidebarItem & {
 
 export const sidebar: DefaultTheme.Config['sidebar'] = {
   '/note': sidebarNote,
-  '/blog': sidebarBlog,
-  '/issue': sidebarIssue,
   '/coffee': sidebarCoffee,
 };

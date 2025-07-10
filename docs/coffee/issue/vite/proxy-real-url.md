@@ -1,16 +1,15 @@
 ---
-aside: false
-sidebar: false
-
 tag:
-  - 问题整理
+  - 问题踩坑
 tags:
   - Vite
 
-description: 在 Vite 配置代理后，通过自定义响应头查看真实的后端服务器 URL。
+description: 在 Vite 配置 Proxy 代理后，通过自定义响应头查看真实的后端服务器 URL。
 ---
 
-# Vite 设置 Proxy 后 Network 中没有代理后的 URL
+# Vite 设置 Proxy 后不显示代理后的 URL
+
+## 🔎 问题描述
 
 接手到了一个 vite 工程的项目，启动开发环境后在调试过程中，我想看到真实的接口服务器 IP。
 
@@ -19,6 +18,8 @@ description: 在 Vite 配置代理后，通过自定义响应头查看真实的�
 我一直习惯在 Network 中查看，可以第一时间确定 代理的地址是否正确。
 
 ![](./images/example-01.png)
+
+## 🔎 处理方案
 
 `proxy` 中配置 `bypass` 函数，获取代理结果，设置响应头:
 

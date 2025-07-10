@@ -1,3 +1,12 @@
+---
+tag:
+  - 理论知识
+tags:
+  - NPM
+
+description: 介绍 NPM 语义化版本（semver）规范的基本概念、常见版本号释义及相关命令用法，帮助理解如何合理管理和发布包的版本。
+---
+
 # 语义化的版本号
 
 semver 是语义化版本[（Semantic Versioning）](https://semver.org/)规范 的一个实现。
@@ -6,9 +15,9 @@ semver 是语义化版本[（Semantic Versioning）](https://semver.org/)规范 
 
 版本号其实就是一个标识 用语义化的方式告诉使用者 包做了哪些变更。
 
-## 语义化版本 2.0.0 摘要
+## 📮 语义化版本 2.0.0 摘要
 
-![](./assets/npm-version-1.jpg)
+![](./images/npm-version-1.jpg)
 
 版本格式：主版本号.次版本号.修订号，版本号递增规则如下：
 
@@ -21,14 +30,14 @@ semver 是语义化版本[（Semantic Versioning）](https://semver.org/)规范 
 如：1.2.3-alpha1.0 、1.2.3-beta2.1
 :::
 
-## 常见版本名称释义
+## 📮 常见版本名称释义
 
 - `alpha` 内部测试版本，除非是内部测试人员，否则不推荐使用，有很多 Bug
 - `beta` 公测版本，消除了严重错误，还是会有缺陷，这个阶段还会持续加入新的功能
 - `rc` (Release Candidate)，发行侯选版本。这个版本不会加入新的功能，主要是排错，修改 Bug
 - `release` 一般当 `rc` 持续一段时间后，就会发布 `release` 版本，该版本通常是些大版本，如：1.0.0、 2.0.0
 
-## NPM 版本命令
+## 📮 NPM 版本命令
 
 可以使用 `npm version --help` 命令 查看帮助：
 
@@ -59,7 +68,7 @@ Run "npm help version" for more info
 当然也可以使用 `Options` 中 的配置取消，如：`--no-git-tag-version`
 :::
 
-## Npm Version 使用
+## 📮 Npm Version 使用
 
 1. 初始化 `npm` 、 `git仓库` 进行第一次提交
 

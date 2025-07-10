@@ -6,7 +6,6 @@ tags:
 
 recommend: 3
 
-
 description: 本笔记介绍了 TypeScript 中函数类型的基本用法，包括函数定义、参数类型、可选和默认参数、剩余参数以及函数重载的实现方式和注意事项。
 ---
 
