@@ -104,7 +104,7 @@ function copyFileSync(source, target) {
 ### 实现步骤
 
 - 安装 `patch-package` 到项目中并 添加 `postinstall` 脚本为 `patch-package`
-- 在 `node_modules` 中找到我们要修改的目标代码文件并修改。\*\*\*\*
+- 在 `node_modules` 中找到我们要修改的目标代码文件并修改。
 - 修改后手动执行 `npx patch-package <package-name>` 生成修改后的补丁文件。
 - 将生成的 `.patch` 文件提交到版本控制中, 每次运行 `install` 时，会自动应用补丁文件。
 
