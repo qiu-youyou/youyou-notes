@@ -34,7 +34,7 @@
       ]
     },
     "patchedDependencies": {
-      "@sugarat/theme": "/Users/shuang/Documents/work/youyou/youyou-notes/patches/@sugarat__theme.patch"
+      "@sugarat/theme": "patches/@sugarat__theme.patch"
     }
   }
 }

@@ -1,18 +1,16 @@
 diff --git a/src/components/BlogHomeInfo.vue b/src/components/BlogHomeInfo.vue
-index 8e4cafa53b268eb81452ce52683d2ce88a804c3c..ae66eddf4348f87be00393812650c496c9633365 100644
+index 8e4cafa53b268eb81452ce52683d2ce88a804c3c..4c940710f0c3bb9b196af073fdbb927212bce296 100644
 --- a/src/components/BlogHomeInfo.vue
 +++ b/src/components/BlogHomeInfo.vue
-@@ -10,6 +10,9 @@ import BlogFriendLink from './BlogFriendLink.vue'
-     <!-- 统计数据，日后支持，点击筛选出左侧的数据 -->
-     <BlogHomeOverview />
+@@ -13,13 +13,14 @@ import BlogFriendLink from './BlogFriendLink.vue'
+     <!-- 置顶的一些文章 -->
+     <BlogHotArticle />
  
 +    <!-- 标签 -->
 +    <BlogHomeTags />
 +
-     <!-- 置顶的一些文章 -->
-     <BlogHotArticle />
- 
-@@ -18,8 +21,6 @@ import BlogFriendLink from './BlogFriendLink.vue'
+     <!-- 友链 -->
+     <ClientOnly>
        <BlogFriendLink />
      </ClientOnly>
  
