@@ -1,0 +1,36 @@
+diff --git a/src/components/BlogHomeInfo.vue b/src/components/BlogHomeInfo.vue
+index 8e4cafa53b268eb81452ce52683d2ce88a804c3c..ae66eddf4348f87be00393812650c496c9633365 100644
+--- a/src/components/BlogHomeInfo.vue
++++ b/src/components/BlogHomeInfo.vue
+@@ -10,6 +10,9 @@ import BlogFriendLink from './BlogFriendLink.vue'
+     <!-- 统计数据，日后支持，点击筛选出左侧的数据 -->
+     <BlogHomeOverview />
+ 
++    <!-- 标签 -->
++    <BlogHomeTags />
++
+     <!-- 置顶的一些文章 -->
+     <BlogHotArticle />
+ 
+@@ -18,8 +21,6 @@ import BlogFriendLink from './BlogFriendLink.vue'
+       <BlogFriendLink />
+     </ClientOnly>
+ 
+-    <!-- 标签 -->
+-    <BlogHomeTags />
+   </div>
+ </template>
+ 
+diff --git a/src/components/BlogHomeTags.vue b/src/components/BlogHomeTags.vue
+index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..1036137d07c1058e3de8dd6c012c86a47d38f178 100644
+--- a/src/components/BlogHomeTags.vue
++++ b/src/components/BlogHomeTags.vue
+@@ -20,7 +20,7 @@ const title = computed(() => (typeof homeTagsConfig.value === 'boolean' || !home
+   : homeTagsConfig.value?.title
+ )
+ const tags = computed(() => {
+-  return [...new Set(docs.value.map(v => v.meta.tag || []).flat(3))]
++  return [...new Set(docs.value.map(v => v.meta.tag || []).flat(3))].filter(v => !!v)
+ })
+ 
+ const activeTag = useActiveTag()

@@ -7,9 +7,10 @@ interface DocsList {
 }
 
 // 提取 raw 中的 一级标题 和 二级标题 生成概要
-function extractHeadings(markdown?: string): { h1: string; h2: string[] } {
-  if (!markdown) return { h1: '', h2: [] };
+function extractHeadings(markdown?: string): { h1: string; h2: string[]; desc: string } {
+  if (!markdown) return { h1: '', h2: [], desc: '' };
   let h1: string = '';
+  let desc: string = '';
   const h2: string[] = [];
   const lines = markdown.split('\n');
   for (const line of lines) {
@@ -17,11 +18,15 @@ function extractHeadings(markdown?: string): { h1: string; h2: string[] } {
       h1 = line.replace(/^# /, '').trim();
       continue;
     }
+    if (!desc && line.startsWith('> ')) {
+      desc = line.replace(/^> /, '').trim();
+      continue;
+    }
     if (line.startsWith('## ')) {
       h2.push(line.replace(/^## /, '').trim());
     }
   }
-  return { h1, h2 };
+  return { h1, h2, desc };
 }
 
 export default createContentLoader('**/*.md', {

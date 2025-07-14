@@ -17,9 +17,13 @@ comment: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
+## 2025-07-14
+
+- 发表了一篇文章，快来瞅瞅 👀 [前端如何优雅的对 npm 包打补丁](/coffee/concept/npm/npm-patch-package/)
+
 ## 2025-03-11
 
-- 发表了一篇文章，快来瞅瞅 👀 [工作流 - 技术栈更新与维护方案](/coffee/technology-stack-maintenance/)
+- 发表了一篇文章，快来瞅瞅 👀 [工作流 - 技术栈更新与维护方案](/coffee/concept/workflow/technology-stack-maintenance/)
 
 ## 2025-03-07
 

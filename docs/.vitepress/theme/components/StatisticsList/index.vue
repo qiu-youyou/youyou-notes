@@ -5,7 +5,6 @@ import { data } from './docs.data';
 const route = useRoute();
 const router = useRouter();
 const currentDocs = data.filter((item) => item.url.startsWith(route.path));
-
 const handleCardClick = (url) => {
   router.go(url);
 };
@@ -16,8 +15,8 @@ const handleCardClick = (url) => {
     <template v-for="(doc, i) in currentDocs" :key="i">
       <div class="card" @click="() => handleCardClick(doc.url)">
         <a :href="doc.url" class="card-title">{{ doc.extract.h1 }}</a>
-        <div v-if="!!doc?.description" class="card-description">
-          <span>{{ doc.description }}</span>
+        <div class="card-description">
+          <span>{{ doc.description || doc.extract.desc }}</span>
         </div>
         <a v-for="(doch2, i) in doc.extract.h2" :key="i" :href="doc.url + '#' + doch2" class="card-text">{{ doch2 }}</a>
         <!-- <div class="card-meta" style="margin-top: 10px">

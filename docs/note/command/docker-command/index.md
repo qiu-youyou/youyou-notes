@@ -11,9 +11,9 @@ description: 整理 Docker 的常用命令、配置方法及 Docker Compose 和 
 
 # Docker 常用命令及配置
 
-::: code-group
-
 ## 🎋 安装脚本
+
+::: code-group
 
 ```sh
 # 官方安装脚本
@@ -34,7 +34,7 @@ docker --help # 帮助
 
 ::: code-group
 
-```sh·
+```sh
 systemctl enable docker # 设置 docker 开机自启动
 service docker status # 查看 docker 运行状态
 ```
