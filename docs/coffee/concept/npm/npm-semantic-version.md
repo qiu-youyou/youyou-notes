@@ -17,7 +17,7 @@ semver 是语义化版本[（Semantic Versioning）](https://semver.org/)规范 
 
 ## 📮 语义化版本 2.0.0 摘要
 
-![](./images/npm-version-1.jpg)
+![](http://images.qiuyouyou.cn/notes/npm-version-1.jpg)
 
 版本格式：主版本号.次版本号.修订号，版本号递增规则如下：
 

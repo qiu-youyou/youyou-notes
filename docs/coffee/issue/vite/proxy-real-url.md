@@ -17,7 +17,7 @@ description: 在 Vite 配置 Proxy 代理后，通过自定义响应头查看真
 
 我一直习惯在 Network 中查看，可以第一时间确定 代理的地址是否正确。
 
-![](./images/example-01.png)
+![](http://images.qiuyouyou.cn/notes/proxy-real-url-example-01.png)
 
 ## 🔎 处理方案
 
@@ -35,4 +35,4 @@ description: 在 Vite 配置 Proxy 代理后，通过自定义响应头查看真
 
 :::
 
-![](./images/example-02.png)
+![](http://images.qiuyouyou.cn/notes/proxy-real-url-example-02.png)

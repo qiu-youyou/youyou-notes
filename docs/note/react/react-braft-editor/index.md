@@ -13,7 +13,7 @@ description: 本文记录了在 React 项目中集成 BraftEditor 富文本编�
 
 [（BraftEditor）](https://www.npmjs.com/package/braft-editor)一个基于 draft-js 的 Web 富文本编辑器，适用于 React 框架，兼容主流现代浏览器。
 
-![](./assets/react+braftte-editor-1.jpg)
+![](http://images.qiuyouyou.cn/notes/react+braftte-editor-1.jpg)
 
 ## 😊 安装 BraftEditor
 

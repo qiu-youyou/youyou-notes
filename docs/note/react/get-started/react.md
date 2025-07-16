@@ -21,7 +21,7 @@ npm start
 
 ## 💣 入口文件
 
-![](./images/react-1.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-1.jpg)
 
 ::: tip react-dom/client
 
@@ -107,7 +107,7 @@ export default App;
 
 - `Jsx `作用就是 可以在 `js` 中返回 `dom` , 经过 `babel` 编译成 `js` 认识的代码。
 
-![](./images/react-2.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-2.jpg)
 
 `import { jsx as _jsx } from "react/jsx-runtime";`
 
@@ -125,7 +125,7 @@ export default App;
 - 更新时：`static getDerivedStateFromProps()`、`render()`、`getSnapshotBeforeUpdate()`、`componentDidUpdate()`
 - 卸载时：`componentWillUnmount()`
 
-![](./images/react-3.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-3.jpg)
 
 >
 
@@ -194,7 +194,7 @@ class App extends React.Component {
 export default App;
 ```
 
-![](./images/react-4.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-4.jpg)
 
 ::: info constructor
 
@@ -362,7 +362,7 @@ function App() {
 export default App;
 ```
 
-![](./images/react-5.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-5.jpg)
 
 :::
 
@@ -391,7 +391,7 @@ useEffect(() => {
 ::: tip hooks 不能写在条件判断或函数内部中，只能写在当前组件的顶级作用域。
 hooks 是用链表这种数据结构来进行连接的，通过 next 属性保持执行顺序。如果中间的断开，会导致后面的钩子找不到。
 
-![](./images/react-6.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-6.jpg)
 :::
 
 ### useLayoutEffect
@@ -409,7 +409,7 @@ hooks 是用链表这种数据结构来进行连接的，通过 next 属性保�
 - `useEffect` 是异步，在 `JS修改DOM前` 调用，在 `浏览器完成渲染` 后执行。
 - `useLayoutEffect` 是同步，在 `JS修改DOM之后` 调用执行。
 - 所以效果是 `useLayoutEffect` 早于 `useEffect`。
-  ![](./images/react-7.jpg)
+  ![](http://images.qiuyouyou.cn/notes/get-started-react-7.jpg)
 
 :::
 
@@ -583,7 +583,7 @@ function TabContainer() {
   - 使用指针 `workinprogress` 记录当前遍历到的树结构。
   - 基于 `Fiber` 数据结构进行细粒度的任务拆分，在浏览器空闲时间执行。
 
-![](./images/react-8.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-8.jpg)
 
 :::
 

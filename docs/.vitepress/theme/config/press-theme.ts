@@ -5,7 +5,7 @@ import { nav } from './anav';
 export const pressTheme: DefaultTheme.Config = {
   nav,
   i18nRouting: false,
-  logo: '/images/logo.png',
+  logo: 'http://images.qiuyouyou.cn/notes/logo.png?imageSlim',
   darkModeSwitchLabel: '主题',
   returnToTopLabel: '回到顶部',
   lastUpdatedText: '最后更新于',

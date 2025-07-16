@@ -84,7 +84,7 @@ description: 在实现了初始技术选型并投入开发后，一个重要的�
 
 <br />
 
-![](./images/technology-stack-maintenance-01.png)
+![](http://images.qiuyouyou.cn/notes/technology-stack-maintenance-01.png)
 
 <br />
 

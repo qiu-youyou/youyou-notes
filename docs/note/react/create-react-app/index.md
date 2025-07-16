@@ -526,7 +526,7 @@ function DemoPage2() {
 
 - 分包前后打包后的静态文件：
 
-![](./assets/lazy.jpg)
+![](http://images.qiuyouyou.cn/notes/create-react-app-lazy.jpg)
 
 ::: tip
 webpack 在开发环境中 css 是通过 js 的 style 标签进行插入的，同时也方便了热更新。

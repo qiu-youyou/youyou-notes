@@ -248,12 +248,12 @@ npm run preview
 
 :::
 
-![](./images/pwa-example-1.jpg)
+![](http://images.qiuyouyou.cn/notes/pwa-example-1.jpg)
 
 <br />
 这时我们修改部分内容并重新打包:
 
-![](./images/pwa-example-2.jpg)
+![](http://images.qiuyouyou.cn/notes/pwa-example-2.jpg)
 
 配置 `manifest` [参考文档](https://vite-pwa-org.netlify.app/guide/pwa-minimal-requirements.html#web-app-manifest)
 按照示例，这里是最小配置:
@@ -291,11 +291,11 @@ export default defineConfig({
 
 打包后可以看到我们 `PWA` 应用：
 
-![](./images/pwa-example-3.png)
+![](http://images.qiuyouyou.cn/notes/pwa-example-3.png)
 
 从 `ServiceWorker` 中获取缓存资源。即使离线也可以访问。
 
-![](./images/pwa-example-4.png)
+![](http://images.qiuyouyou.cn/notes/pwa-example-4.png)
 
 ::: tip 完整项目在：[这里](https://github.com/qiu-youyou/youyou-vue3-template)
 :::

@@ -147,7 +147,7 @@ fun(2);
 
 #### 作用域链
 
-![](./assets//get-scope-find.jpg)
+![](http://images.qiuyouyou.cn/notes/get-scope-find.jpg)
 
 ::: tip 总结
 引擎从当前的执行作用域开始查找变量，如果找不到，就向上一级继续查找。

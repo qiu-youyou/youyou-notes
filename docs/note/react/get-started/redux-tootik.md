@@ -257,7 +257,7 @@ const currentValue = selectCounterValue(store.getState());
 - 当发生某些事情时（例如用户单击按钮），`state` 会根据发生的事情进行更新，生成新的 `state`。
 - 基于新的 `state` 重新渲染 `View`。
 
-![](./images/redux-0.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-redux-0.jpg)
 
 #### Redux 数据流
 
@@ -278,7 +278,7 @@ Redux 使用 "单向数据流"，可以将这些步骤分解为更详细的内�
   - 每个订阅过 `store` 数据的 `UI` 组件都会检查它们需要的 `state` 部分是否被更新。
   - 发现数据被更新的每个组件都强制使用新数据重新渲染，紧接着更新网页。
 
-![](./images/redux-1.gif)
+![](http://images.qiuyouyou.cn/notes/get-started-redux-1.gif)
 
 ```html title="代码实现"
 <body>
@@ -337,7 +337,7 @@ Redux 使用 "单向数据流"，可以将这些步骤分解为更详细的内�
 </body>
 ```
 
-![](./images/redux-2.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-redux-2.jpg)
 
 ## 🚪 Redux Toolkit
 
@@ -694,7 +694,7 @@ console.log(store.getState());
 // ... 省略以下代码 ...
 ```
 
-![](./images/redux-3.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-redux-3.jpg)
 
 ### 实现 applyMiddleware
 
@@ -814,7 +814,7 @@ const store = createStore(reducer, applyMiddleware(logger));
 
 - 每次 `dispatch action` 时都会运行 `middleware`：
 
-![](./images/redux-4.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-redux-4.jpg)
 
 ### 实现 compose
 
@@ -932,4 +932,4 @@ const store = createStore(reducer, applyMiddleware(middleware1, middleware2, mid
 // ... 省略以下代码 ...
 ```
 
-![](./images/redux-5.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-redux-5.jpg)

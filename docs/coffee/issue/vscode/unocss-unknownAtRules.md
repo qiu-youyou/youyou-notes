@@ -13,13 +13,13 @@ description: 在 VSCode 中使用 Tailwind CSS 时，遇到 `@apply` 等指令�
 
 - 在 `Sass` 中使用 `@aplly` 语法 ： `Unknown at rule @applyscss(unknownAtRules)`
 
-![](./images/warning.png)
+![](http://images.qiuyouyou.cn/notes/unocss-unknownAtRules-warning.png)
 
 ## ➿ 处理方案
 
 - 方案 1: 打开 vscode 设置，搜索 `scss Unknown`，改为 `ignore`：
 
-![](./images/solve.png)
+![](http://images.qiuyouyou.cn/notes/unocss-unknownAtRules-solve.png)
 
 - 方案 2: 参考：https://duncanleung.com/tailwind-css-unknown-at-rule/ ：
 

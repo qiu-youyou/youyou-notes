@@ -158,12 +158,12 @@ pnpm test:coverage
 | -------- | ---------- | -------------- | ---------- | -------- | ----------------- |
 | 测试文件 | 语句覆盖率 | 分支语句覆盖率 | 函数覆盖率 | 执行比列 | 没有覆盖到的行    |
 
-![](./images/unit-e2e-test-01.png)
+![](http://images.qiuyouyou.cn/notes/unit-e2e-test-01.png)
 
 **可以在 [Vitest UI](https://cn.vitest.dev/guide/ui.html) 中查看你的覆盖率报告。 一个漂亮的 `UI` 界面来查看并与测试交互:**
 
-![](./images/unit-e2e-test-02.png)
-![](./images/unit-e2e-test-03.png)
+![](http://images.qiuyouyou.cn/notes/unit-e2e-test-02.png)
+![](http://images.qiuyouyou.cn/notes/unit-e2e-test-03.png)
 
 ## 📧 端到端测试-Cypress
 

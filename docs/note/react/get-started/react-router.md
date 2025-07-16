@@ -241,7 +241,7 @@ function PageB() {
 }
 ```
 
-![](./images/react-router-1.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-router-1.jpg)
 
 ### useSearchParams
 
@@ -268,7 +268,7 @@ function PageA() {
 }
 ```
 
-![](./images/react-router-2.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-router-2.jpg)
 
 ### useMatch
 
@@ -287,14 +287,14 @@ console.log(match1);
 console.log(match2);
 ```
 
-![](./images/react-router-3.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-router-3.jpg)
 
 ## 💊 数据路由架构
 
 - 传统路由: 路由与 UI 渲染之间的关系。
 - 数据路由: 路由与 UI 渲染和数据之间的关系，多了一个数据状态的抽象。
 
-![](./images/react-router-4.jpg)
+![](http://images.qiuyouyou.cn/notes/get-started-react-router-4.jpg)
 
 Router V6.4 解决的核心问题就是 可以实现并行加载资源，解决了单页面瀑布流的问题。
 

@@ -21,7 +21,7 @@ recommend: 1
 pnpm create vite youyou-vue3-template
 ```
 
-![](./images/init-project.jpg)
+![](http://images.qiuyouyou.cn/notes/init-project.jpg)
 
 安装项目依赖:
 
@@ -204,7 +204,7 @@ export default router;
 
 如果你遇到了这个问题：
 
-![](./images/auto-routes-ts-error.jgp.jpg)
+![](http://images.qiuyouyou.cn/notes/auto-routes-ts-error.jgp.jpg)
 
 这里按照文档方式来处理一下：[传送](https://github.com/posva/unplugin-vue-router?tab=readme-ov-file#setup)
 
@@ -263,7 +263,7 @@ export default router;
 
 :::
 
-![](./images/auto-route-example.jpg)
+![](http://images.qiuyouyou.cn/notes/auto-route-example.jpg)
 
 ## ➿ 全局布局
 
@@ -335,7 +335,7 @@ export default router;
 
 如果你遇到了这个问题：
 
-![](./images/layouts-ts-error.jgp.jpg)
+![](http://images.qiuyouyou.cn/notes/layouts-ts-error.jgp.jpg)
 
 和上个问题一样在这里向 `env.d.ts` 文件中添加类型：
 
@@ -429,7 +429,7 @@ meta:
 
 :::
 
-![](./images/layout-example.jpg)
+![](http://images.qiuyouyou.cn/notes/layout-example.jpg)
 
 > 还可以配置过渡效果、参数传递等。阅读 🫱 [官方文档](https://github.com/johncampionjr/vite-plugin-vue-layouts?tab=readme-ov-file#transitions)
 
@@ -581,7 +581,7 @@ app.mount("#app");
 
 :::
 
-![](./images/unocss-example.jpg)
+![](http://images.qiuyouyou.cn/notes/unocss-example.jpg)
 
 ## ➿ 图标方案
 
@@ -642,7 +642,7 @@ export default defineConfig({
 
 :::
 
-![](./images/unocss-icon-example.jpg)
+![](http://images.qiuyouyou.cn/notes/unocss-icon-example.jpg)
 
 ## ➿ 自动导入依赖
 

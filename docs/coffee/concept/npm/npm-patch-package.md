@@ -26,7 +26,7 @@ tags:
 
 还遇到了一个问题就是 在首页标签显示中 存在空标签的情况。
 
-![](./images/npm-patch-package-02.png)
+![](http://images.qiuyouyou.cn/notes/npm-patch-package-02.png)
 
 - 通过查看包的源码，作者找到了需要修改的文件, 复制到 `patches` 文件夹中，并进了修改。
 
@@ -140,7 +140,7 @@ npx patch-package @@vueuse/core
 
 - 可以看到项目中生成了一个 `patches` 文件夹，里面包含了 `@@vueuse/core` 的 `.patch` 补丁文件。
 
-![](./images/npm-patch-package-03.png)
+![](http://images.qiuyouyou.cn/notes/npm-patch-package-03.png)
 
 打开文件不难发现，文件中就是记录了一下 `git diff` 记录的描述，这种方案既保持了修改的简便性，又解决了持久化的问题，是一个非常实用的开发技巧。
 
@@ -149,7 +149,7 @@ npx patch-package @@vueuse/core
 如果你使用 `patch-package` 并且使用了 `pnpm` 你应该会遇到这个问题:
 可以看出来他只支持 `npm` 、`yarn` - [issues](https://github.com/ds300/patch-package/issues/338)，。
 
-![](./images/npm-patch-package-01.png)
+![](http://images.qiuyouyou.cn/notes/npm-patch-package-01.png)
 
 <br />
 
@@ -191,11 +191,11 @@ pnpm patch-remove package-name@version package-name@version
 
 依然可以发现文件中就是记录了一下 `git diff` 记录的描述。
 
-![](./images/npm-patch-package-04.png)
+![](http://images.qiuyouyou.cn/notes/npm-patch-package-04.png)
 
 当我们执行完 `pnpm patch-commit` 后，`pnpm` 已经为我们在 `package.json` 中自动添加了 `pnpm patch` 的配置：
 
-![](./images/npm-patch-package-05.png)
+![](http://images.qiuyouyou.cn/notes/npm-patch-package-05.png)
 
 我们把补丁文件提交到仓库中。当团队中的任何伙伴每次执行 `pnpm install` 时，`pnpm` 会自动应用补丁文件，就可以实现打补丁的功能了。
 
