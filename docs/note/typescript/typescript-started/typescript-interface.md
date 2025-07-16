@@ -3,7 +3,7 @@ tag:
   - 笔记
 tags:
   - TypeScript
-  -
+
 recommend: 7
 
 description: 本笔记介绍了 TypeScript 中接口（Interface）的基本用法，包括接口的定义、继承、函数类型、索引类型、混合类型、可选和只读属性，以及多余属性检查等内容，理解并灵活应用接口特性。

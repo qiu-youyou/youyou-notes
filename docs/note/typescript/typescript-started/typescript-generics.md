@@ -3,7 +3,7 @@ tag:
   - 笔记
 tags:
   - TypeScript
-  -
+
 recommend: 6
 
 description: 本页简要介绍了 TypeScript 泛型（Generics）的基本用法，包括泛型的定义、变量、约束、函数、类和接口等常见场景，理解如何通过泛型提升代码的灵活性和类型安全性。
