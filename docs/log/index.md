@@ -17,6 +17,10 @@ comment: false
 >
 > 修改文档的问题可以点击锚点链接进入到具体修改位置。
 
+## 2025-07-17
+
+- 发表了一篇文章，快来瞅瞅 👀 [PicGo + COS + Typora 搭建图床服务](/coffee/environment/picgo-cos-typora)
+
 ## 2025-07-14
 
 - 发表了一篇文章，快来瞅瞅 👀 [前端如何优雅的对 npm 包打补丁](/coffee/concept/npm/npm-patch-package)
