@@ -65,10 +65,10 @@ export default {
   // },
 
   search: {
-    btnPlaceholder: 'Search',
-    placeholder: 'Search Docs',
-    emptyText: 'No results found',
-    heading: 'Total: {{searchResult}} search results.',
+    btnPlaceholder: '搜索',
+    placeholder: '搜索文档',
+    emptyText: '空空如也',
+    heading: '共: {{searchResult}} 条结果',
   },
 
   // 自定义图标
