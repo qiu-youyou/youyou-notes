@@ -19,7 +19,7 @@ comment: false
 
 ## 2025-07-17
 
-- 发表了一篇文章，快来瞅瞅 👀 [PicGo + COS + Typora 搭建图床服务](/coffee/environment/picgo-cos-typora)
+- 发表了一篇文章，快来瞅瞅 👀 [PicGo + COS + Typora 搭建图床服务](/coffee/environment/picgo-cos-typora/index)
 
 ## 2025-07-14
 
