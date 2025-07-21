@@ -30,7 +30,6 @@ export default createContentLoader('**/*.md', {
     return raw
       .filter(({ frontmatter }) => !frontmatter.hidden)
       .map(({ url, frontmatter, src }) => {
-        console.log(url);
         return {
           title: frontmatter.title,
           extract: extractHeadings(src),
