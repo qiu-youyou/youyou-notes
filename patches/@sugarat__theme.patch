@@ -1,14 +1,16 @@
 diff --git a/src/components/BlogApp.vue b/src/components/BlogApp.vue
-index 3e3e57f4173bbe4b5a93965eca1a6c294ff7fc4f..3c144888c4fb06a3dfd2242bf5abcbca84d31a5e 100644
+index 3e3e57f4173bbe4b5a93965eca1a6c294ff7fc4f..d31e307ff17cd127edd73d5685dc2cba19947fd1 100644
 --- a/src/components/BlogApp.vue
 +++ b/src/components/BlogApp.vue
-@@ -21,6 +21,10 @@ import CommentArtalk from './CommentArtalk.vue'
+@@ -21,6 +21,12 @@ import CommentArtalk from './CommentArtalk.vue'
  import BlogButtonAfterArticle from './BlogButtonAfterArticle.vue'
  import BlogCommentWrapper from './BlogCommentWrapper.vue'
  
 +import { useArticles } from '../composables/config/blog'
 +
-+window.docs = useArticles().value
++if(typeof window !== 'undefined') {
++  window.docs = useArticles().value
++}
 +
  const { frontmatter } = useData()
  const layout = computed(() => frontmatter.value.layout)

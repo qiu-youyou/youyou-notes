@@ -22,7 +22,7 @@ const sidebarRes = {};
 sidebarData.value = sidebarRes;
 
 const docsRes = {};
-window.docs.forEach(({ route, meta }) => {
+window.docs?.forEach(({ route, meta }) => {
   docsRes[route.replace('index', '')] = meta;
 });
 docs.value = docsRes;
@@ -37,18 +37,18 @@ const handleCardClick = (url) => {
     <div v-if="!!currentDocs.length">
       <div class="title-wrapper">
         <div class="title">
-          <span class="title-text">{{ sidebarData[route.path].text }}</span>
-          <span class="title-count">- 共 {{ currentDocs.length }} 篇</span>
+          <span class="title-text">{{ sidebarData?.[route.path]?.text }}</span>
+          <span class="title-count">- 共 {{ currentDocs?.length }} 篇</span>
         </div>
       </div>
 
       <div class="waterfall">
         <template v-for="(doc, i) in currentDocs" :key="i">
           <div class="card" @click="() => handleCardClick(doc.url)">
-            <span class="card-title">{{ docs[doc.url].title }}</span>
+            <span class="card-title">{{ docs?.[doc.url]?.title }}</span>
 
             <div class="card-description">
-              <span>{{ docs[doc.url].description }}</span>
+              <span>{{ docs?.[doc.url]?.description }}</span>
             </div>
 
             <a v-for="(doch2, i) in doc.extract.h2" :key="i" :href="doc.url + '#' + doch2" class="card-text">
@@ -58,7 +58,7 @@ const handleCardClick = (url) => {
             <div class="card-meta" style="margin-top: 10px">
               <span>
                 <ElIcon><Timer style="transform: translateY(2px)" /></ElIcon>
-                更新于：{{ docs[doc.url].date }}
+                更新于：{{ docs?.[doc.url]?.date }}
               </span>
             </div>
           </div>
