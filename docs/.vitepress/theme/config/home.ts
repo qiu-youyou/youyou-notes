@@ -1,7 +1,7 @@
 import { Theme } from '@sugarat/theme';
 
 export default {
-  pageSize: 10,
+  pageSize: 20,
   name: 'Yòuyou',
   motto: '技术知识库',
   inspiringTimeout: 6000,
