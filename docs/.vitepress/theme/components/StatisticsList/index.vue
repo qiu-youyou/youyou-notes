@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { ElIcon } from 'element-plus';
 import { useRoute, useRouter } from 'vitepress';
-import { Timer } from '@element-plus/icons-vue';
+import { Timer, UserFilled } from '@element-plus/icons-vue';
 
 import { sidebarNote } from '../../config/sidebar/sidebar-note';
 import { sidebarCoffee } from '../../config/sidebar/sidebar-coffee';
@@ -46,7 +46,6 @@ const handleCardClick = (url) => {
         <template v-for="(doc, i) in currentDocs" :key="i">
           <div class="card" @click="() => handleCardClick(doc.url)">
             <span class="card-title">{{ docs?.[doc.url]?.title }}</span>
-
             <div class="card-description">
               <span>{{ docs?.[doc.url]?.description }}</span>
             </div>
@@ -56,6 +55,10 @@ const handleCardClick = (url) => {
             </a>
 
             <div class="card-meta" style="margin-top: 10px">
+              <span>
+                <ElIcon><UserFilled style="transform: translateY(1px)" /></ElIcon>
+                Yòuyou
+              </span>
               <span>
                 <ElIcon><Timer style="transform: translateY(2px)" /></ElIcon>
                 更新于：{{ docs?.[doc.url]?.date }}

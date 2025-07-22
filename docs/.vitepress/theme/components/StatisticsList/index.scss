@@ -112,6 +112,8 @@
 .card-meta {
   font-size: 12px;
   color: #888;
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-link {

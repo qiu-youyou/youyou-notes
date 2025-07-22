@@ -3,6 +3,8 @@ tag:
   - 环境配置
 tags:
   - PicGo
+
+description: 借助 PicGo、腾讯云对象存储（COS）、Typora 以及 VSCode，我们可以搭建一个稳定、快速图床服务，极大提升写作和笔记体验。
 ---
 
 # PicGo + COS + Typora 搭建图床服务
