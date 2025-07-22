@@ -29,13 +29,10 @@ export default createContentLoader('**/*.md', {
   transform(raw): DocsList[] {
     return raw
       .filter(({ frontmatter }) => !frontmatter.hidden)
-      .map(({ url, frontmatter, src }) => {
-        return {
-          title: frontmatter.title,
-          extract: extractHeadings(src),
-          description: frontmatter?.description,
-          url,
-        };
-      });
+      .map(({ url, frontmatter, src }) => ({
+        title: frontmatter.title,
+        extract: extractHeadings(src),
+        url,
+      }));
   },
 });
