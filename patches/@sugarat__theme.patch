@@ -37,7 +37,7 @@ index 8e4cafa53b268eb81452ce52683d2ce88a804c3c..4c940710f0c3bb9b196af073fdbb9272
  </template>
  
 diff --git a/src/components/BlogHomeTags.vue b/src/components/BlogHomeTags.vue
-index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..1036137d07c1058e3de8dd6c012c86a47d38f178 100644
+index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..981b578693d89f85b4bc61ed8893a4e77333523f 100644
 --- a/src/components/BlogHomeTags.vue
 +++ b/src/components/BlogHomeTags.vue
 @@ -20,7 +20,7 @@ const title = computed(() => (typeof homeTagsConfig.value === 'boolean' || !home
@@ -49,3 +49,103 @@ index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..1036137d07c1058e3de8dd6c012c86a4
  })
  
  const activeTag = useActiveTag()
+@@ -32,6 +32,25 @@ const isDark = useDark({
+ const colorMode = computed(() => (isDark.value ? 'light' : 'dark'))
+ 
+ const tagType: any = ['', 'info', 'success', 'warning', 'danger']
++
++const colorType: any = ['#00a7d5', '#00a6dc', '#00a6e2', '#00a4e7', '#00a3ec',
++  '#00a2f1', '#00a0f4', '#009ff7', '#009dfa', '#009bfc',
++  '#0098fd', '#0096fd', '#0093fd', '#2e90fc', '#4d8dfa',
++  '#638af8', '#7587f5', '#8583f1', '#9280ed', '#9f7ce9',
++  '#aa78e3', '#b574dd', '#be71d7', '#c76dd1', '#cf69c9',
++  '#d566c2', '#dc63ba', '#e160b3', '#e65eab', '#e95ca2',
++  '#ed5a9a', '#ef5992', '#f15989', '#f25981', '#f25a79',
++  '#f25c71', '#f15e69', '#ef6061', '#ed635a', '#eb6552',
++  '#e8694b', '#e46c44', '#e06f3d', '#db7336', '#d77630',
++  '#d17a2a', '#cc7d24', '#c6811e', '#bf8418', '#b98713',
++  '#b28a0f', '#ab8d0c', '#a3900b', '#9c920d', '#949510',
++  '#8b9715', '#83991b', '#7a9b21', '#719d27', '#679e2e',
++  '#5da035', '#51a13c', '#44a244', '#34a44b', '#1ba553',
++  '#00a65b', '#00a663', '#00a76c', '#00a874', '#00a87d',
++  '#00a985', '#00a98e', '#00a98e', '#00a996', '#00a99f',
++  '#00a9a7', '#00a9b0', '#00a9b8', '#00a9c0', '#00a8c7',
++  '#00a8cf']
++
+ const currentPage = useCurrentPageNum()
+ const router = useRouter()
+ 
+@@ -57,6 +76,11 @@ function handleTagClick(tag: string, type: string) {
+   )
+ }
+ 
++const getStableRandomColor = (key) => {
++  const hash = Array.from(key).reduce((acc, char) => acc + char.charCodeAt(0), 0)
++  return colorType[hash % colorType.length]
++}
++
+ watch(
+   location,
+   () => {
+@@ -88,22 +112,45 @@ watch(
+     <!-- 头部 -->
+     <div class="card-header">
+       <span class="title svg-icon" v-html="title" />
+-      <ElTag
+-        v-if="activeTag.label" :type="activeTag.type || 'primary'" :effect="colorMode" closable
+-        @close="handleCloseTag"
+-      >
+-        {{ activeTag.label }}
+-      </ElTag>
++      <template v-if="activeTag.label">
++        <ElTag
++          v-if="isDark"
++          :type="activeTag.type || 'primary'" :effect="colorMode" closable
++          @close="handleCloseTag"
++        >
++          {{ activeTag.label }}
++        </ElTag>
++
++        <ElTag
++          v-else
++          :color="activeTag.type || 'primary'" :effect="colorMode" closable
++          @close="handleCloseTag"
++          hit
++        >
++          {{ activeTag.label }}
++        </ElTag>
++      </template>
++
+     </div>
+     <!-- 标签列表 -->
+     <ul class="tag-list">
+       <li v-for="(tag, idx) in tags" :key="tag">
+         <ElTag
++          v-if="isDark"
+           :type="tagType[idx % tagType.length] || 'primary'" :effect="colorMode"
+           @click="handleTagClick(tag, tagType[idx % tagType.length])"
+         >
+           {{ tag }}
+         </ElTag>
++
++        <ElTag
++          v-else
++          :color="getStableRandomColor(tag)" :effect="colorMode"
++          @click="handleTagClick(tag, getStableRandomColor(tag))"
++          hit
++        >
++          {{ tag }}
++        </ElTag>
+       </li>
+     </ul>
+   </div>
+@@ -154,6 +201,9 @@ watch(
+     margin-right: 10px;
+     margin-bottom: 10px;
+     cursor: pointer;
++    .el-tag {
++      border: none;
++    }
+   }
+ }
+ </style>

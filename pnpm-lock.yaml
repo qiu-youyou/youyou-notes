@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@sugarat/theme':
-    hash: 585e799ca515272f55fb76070c7eb4739ba4c03346cb1b5b70ffd05ec3b632bc
+    hash: ed4c0afc539a004ab804ec2b9765624b1d92440ed3695e4788910270812c1eac
     path: patches/@sugarat__theme.patch
 
 importers:
@@ -18,7 +18,7 @@ importers:
         version: 2.3.1(vue@3.5.12(typescript@5.8.3))
       '@sugarat/theme':
         specifier: ^0.5.3
-        version: 0.5.5(patch_hash=585e799ca515272f55fb76070c7eb4739ba4c03346cb1b5b70ffd05ec3b632bc)(@element-plus/icons-vue@2.3.1(vue@3.5.12(typescript@5.8.3)))(element-plus@2.10.2(vue@3.5.12(typescript@5.8.3)))(pagefind@1.3.0)(typescript@5.8.3)(vitepress@1.6.3(@algolia/client-search@5.30.0)(async-validator@4.2.5)(postcss@8.5.6)(sass@1.89.2)(search-insights@2.17.3)(typescript@5.8.3))(vue@3.5.12(typescript@5.8.3))
+        version: 0.5.5(patch_hash=ed4c0afc539a004ab804ec2b9765624b1d92440ed3695e4788910270812c1eac)(@element-plus/icons-vue@2.3.1(vue@3.5.12(typescript@5.8.3)))(element-plus@2.10.2(vue@3.5.12(typescript@5.8.3)))(pagefind@1.3.0)(typescript@5.8.3)(vitepress@1.6.3(@algolia/client-search@5.30.0)(async-validator@4.2.5)(postcss@8.5.6)(sass@1.89.2)(search-insights@2.17.3)(typescript@5.8.3))(vue@3.5.12(typescript@5.8.3))
       element-plus:
         specifier: ^2.7.2
         version: 2.10.2(vue@3.5.12(typescript@5.8.3))
@@ -2242,7 +2242,7 @@ snapshots:
       cross-spawn: 7.0.6
       gray-matter: 4.0.3
 
-  '@sugarat/theme@0.5.5(patch_hash=585e799ca515272f55fb76070c7eb4739ba4c03346cb1b5b70ffd05ec3b632bc)(@element-plus/icons-vue@2.3.1(vue@3.5.12(typescript@5.8.3)))(element-plus@2.10.2(vue@3.5.12(typescript@5.8.3)))(pagefind@1.3.0)(typescript@5.8.3)(vitepress@1.6.3(@algolia/client-search@5.30.0)(async-validator@4.2.5)(postcss@8.5.6)(sass@1.89.2)(search-insights@2.17.3)(typescript@5.8.3))(vue@3.5.12(typescript@5.8.3))':
+  '@sugarat/theme@0.5.5(patch_hash=ed4c0afc539a004ab804ec2b9765624b1d92440ed3695e4788910270812c1eac)(@element-plus/icons-vue@2.3.1(vue@3.5.12(typescript@5.8.3)))(element-plus@2.10.2(vue@3.5.12(typescript@5.8.3)))(pagefind@1.3.0)(typescript@5.8.3)(vitepress@1.6.3(@algolia/client-search@5.30.0)(async-validator@4.2.5)(postcss@8.5.6)(sass@1.89.2)(search-insights@2.17.3)(typescript@5.8.3))(vue@3.5.12(typescript@5.8.3))':
     dependencies:
       '@element-plus/icons-vue': 2.3.1(vue@3.5.12(typescript@5.8.3))
       '@giscus/vue': 2.4.0(vue@3.5.12(typescript@5.8.3))
