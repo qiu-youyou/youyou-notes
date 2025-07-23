@@ -2,7 +2,7 @@
 # top: 4
 # sticky: 9996
 # recommend: 1 推荐排序
-# hidden: true
+hidden: true
 publish: false
 
 # tag:

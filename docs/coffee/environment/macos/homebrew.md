@@ -7,7 +7,7 @@ tags:
 description: MacOS 上使用 Homebrew 进行软件包的安装、配置、加速及常用命令总结。
 ---
 
-# 🔨 Homebrew：MacOS 上的软件包管理
+# Homebrew：MacOS 上的软件包管理
 
 [Homebrew](https://brew.sh/) 是一款强大的开源软件包管理器。
 

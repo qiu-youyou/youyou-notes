@@ -66,7 +66,7 @@ const handleCardClick = (url) => {
             <div class="title-wrapper">
               <div class="title" style="left: 10%">
                 <span class="title-text">{{ month }}</span>
-                <span class="title-count">- 更新了 {{ docs[month].length }} 篇</span>
+                <span class="title-count">- 共 {{ docs[month].length }} 篇</span>
               </div>
             </div>
           </div>
