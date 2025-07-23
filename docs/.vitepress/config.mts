@@ -11,6 +11,7 @@ export default defineConfig({
   description: 'Yòuyou 的文档站',
   vite: { server: { host: '0.0.0.0' } },
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+  markdown: { image: { lazyLoading: true } },
   themeConfig: pressTheme,
   ignoreDeadLinks: true,
   lastUpdated: true,
