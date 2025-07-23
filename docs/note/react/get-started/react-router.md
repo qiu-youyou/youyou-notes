@@ -300,7 +300,7 @@ Router V6.4 解决的核心问题就是 可以实现并行加载资源，解决�
 
 ::: details Before: 假设 CommonHeader 组件渲染了两秒，PageA 中接口请求了两秒 那 username 的显示，至少大于四秒。
 
-```jsx title="App.js"
+```jsx [App.js]
 root.render(
   <BrowserRouter>
     <Routes>
@@ -313,7 +313,7 @@ root.render(
 );
 ```
 
-```jsx title="PageA.js" {5-9,14}
+```jsx{5-9,14} [PageA.js]
 function PageA() {
   const [userName, setUserName] = useState('');
 
@@ -337,7 +337,7 @@ function PageA() {
 
 ::: details After: 假设 CommonHeader 组件渲染了两秒，PageA 接口请求了两秒，那么获取到的时间只接近于接口的时间。
 
-```jsx title="App.js 使用 createBrowserRouter" {1,2,7-10,17}
+```jsx{1,2,7-10,17} [App.js 使用 createBrowserRouter]
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<CommonHeader />}>
@@ -358,7 +358,7 @@ const router = createBrowserRouter(
 root.render(<RouterProvider router={router} />);
 ```
 
-```jsx title="pageA.js 使用 useLoaderData" {2}
+```jsx{2} [pageA.js 使用 useLoaderData]
 function PageA() {
   const data = useLoaderData();
   return (
@@ -378,7 +378,7 @@ function PageA() {
 
 - Before: 依然假设 CommonHeader 组件渲染了两秒，PageA 做了分包，从至少两秒之后开始加载？
 
-```jsx title="开启分包" {1,6}
+```jsx{1,6} [开启分包]
 const PageA = React.lazy(() => import('./PageA'))
 
 <Route path="/" element={<CommonHeader />}>
@@ -396,7 +396,7 @@ const PageA = React.lazy(() => import('./PageA'))
 
 - After: 依然假设 CommonHeader 组件渲染了两秒，做了数据路由的 lazy，什么时候开始加载？
 
-```jsx title="数据路由的 加载分包" {8-13}
+```jsx{8-13} [数据路由的 加载分包]
 <Route path="/" element={<CommonHeader />}>
   <Route
     path="pageA"

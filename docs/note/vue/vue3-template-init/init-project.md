@@ -942,12 +942,12 @@ directoryAsNamespace: false,
 
 可以更改为 `true`：
 
-```ts title="vite.config.ts"
+```ts [vite.config.ts]
 // ......
 Components({ directoryAsNamespace: true,}),
 ```
 
-```ts title="src/pages/index.vue"
+```ts [src/pages/index.vue]
 <UserUserComponent></<UserUserComponent>
 ```
 

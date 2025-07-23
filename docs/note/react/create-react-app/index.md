@@ -36,13 +36,13 @@ npm run eject
 
 ## 🔦 配置别名
 
-```ts title="webpack.config.ts" {2}
+```ts{2} [webpack.config.ts]
 alias: {
   "@": path.resolve(__dirname, "../src"),
 },
 ```
 
-```json title="tsconfig.json" {2,3}
+```json{2,3} [tsconfig.json]
 {
   "baseUrl": "./",
   "paths": { "@/*": ["src/*"] }
@@ -51,7 +51,7 @@ alias: {
 
 ## 🔦 配置路由
 
-```tsx title="src/index.tsx" {3,15,17}
+```tsx{3,15,17} [src/index.tsx]
 import { createRoot } from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
@@ -78,7 +78,7 @@ root.render(
 reportWebVitals();
 ```
 
-```tsx title="src/App.tsx"
+```tsx [src/App.tsx]
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { routersData } from './app/config';
 import Layout from './components/layout';
@@ -109,11 +109,11 @@ export default App;
 
 - `create-react-app` 配置 `Proxy`
 
-```json title="package.json"
+```json [package.json]
   "proxy": "http://localhost:4000",
 ```
 
-```ts title="http.ts"
+```ts [http.ts]
 import axios from 'axios';
 
 const instance = axios.create({
@@ -199,7 +199,7 @@ axios.get('/user/12345').catch(function (error) {
 
 - createSlice
 
-```ts title="src/store/slice/demo.ts"
+```ts [src/store/slice/demo.ts]
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {};
@@ -216,7 +216,7 @@ export default demoSlice.reducer;
 
 - configureStore
 
-```tsx title="src/store/index.ts"
+```tsx [src/store/index.ts]
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import demo1Reducer from './slice/demo1';
@@ -237,7 +237,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 - 一个请求示例
 
-```ts title="src/store/slice/demo.ts"
+```ts [src/store/slice/demo.ts]
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios, { AxiosRes, ResData } from '@/util/http';
 import { RootState } from '../';
@@ -286,7 +286,7 @@ export const { set_demo_select_data } = demoSlice.actions;
 export default demoSlice.reducer;
 ```
 
-```tsx title="scr/pages/demo/index.tsx"
+```tsx [scr/pages/demo/index.tsx]
 import { useEffect } from 'react';
 import styles from './index.module.scss';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -335,7 +335,7 @@ export default Demo;
 
 - ErrorBoundary
 
-```tsx title="src/components/ErrorBoundary.tsx"
+```tsx [src/components/ErrorBoundary.tsx]
 import React from 'react';
 
 class ErrorBoundary extends React.Component {
@@ -376,7 +376,7 @@ export default ErrorBoundary;
 - 全局引入， 简单粗暴。
 - 如果某些组件不稳定， 可以单独对这个组件进行 包装。
 
-```tsx title="src/index.tsx" {1,6,8}
+```tsx{1,6,8} [src/index.tsx]
 import ErrorBoundary from '@/components/ErrorBoundary';
 
 root.render(
@@ -394,7 +394,7 @@ root.render(
 
 - 自定义 hook useRenderCheck 检测组件渲染次数
 
-```tsx title="@/hooks/useRenderCheck"
+```tsx [@/hooks/useRenderCheck]
 import { useRef } from 'react';
 
 function useRenderCheck(cp_name: string) {
@@ -420,7 +420,7 @@ export default useRenderCheck;
 
 - useMemo、useCallback 结合 React.memo
 
-```tsx title="使用 React.memo" {11}
+```tsx{11} [使用 React.memo]
 import React from 'react';
 
 function TestMemo() {
@@ -434,7 +434,7 @@ function TestMemo() {
 export default React.memo(TestMemo);
 ```
 
-```tsx title="使用 useMemo、useCallback" {11}
+```tsx{11} [使用 useMemo、useCallback]
 import React from 'react';
 
 function Test() {

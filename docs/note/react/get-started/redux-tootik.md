@@ -280,7 +280,7 @@ Redux 使用 "单向数据流"，可以将这些步骤分解为更详细的内�
 
 ![](http://images.qiuyouyou.cn/notes/get-started-redux-1.gif)
 
-```html title="代码实现"
+```html [代码实现]
 <body>
   <div>
     <span id="value">0</span>
@@ -503,7 +503,7 @@ const todosSlice = createSlice({
 
 以下代码实现的测试都基于该计数器代码：
 
-```html title="redux-learn.html"
+```html [redux-learn.html]
 <!DOCTYPE html>
 <html>
   <head>
@@ -574,7 +574,7 @@ const todosSlice = createSlice({
 - `store` 在启动时 `dispatch` 一个 `action` 来初始化 `reducers` 的 `state`
 - `store API` 是一个对象，里面有 { `dispatch`, `subscribe`, `getState` }
 
-```js title="redux-learn.js"
+```js [redux-learn.js]
 function createStore(reducer) {
   // store 内部 state 值
   let state;
@@ -611,7 +611,7 @@ function createStore(reducer) {
 
 - 测试：
 
-```html title="redux-learn.html" {4,7}
+```html{4,7} [redux-learn.html]
 <!-- ... 省略以上代码 ... -->
 
 <!-- 引入自己实现的 createStore -->
@@ -631,7 +631,7 @@ function createStore(reducer) {
 - 参数：一个 `reducers` 对象，对象的 `value` 对应不同的 `reducer`。
 - 返回：调用了 `reducers` 对象里所有 `reducer` 后的一个 `reducer` 函数，并且构造一个与 `reducers` 对象结构相同的 `state` 对象。
 
-```js title="redux-learn.js"
+```js [redux-learn.js]
 function combineReducers(reducers) {
   // 获取传入对象的所有 key
   const reducersKeys = Object.keys(reducers);
@@ -659,7 +659,7 @@ function combineReducers(reducers) {
 
 - 测试：
 
-```js title="redux-learn.html"
+```js [redux-learn.html]
 // ... 省略以上代码 ...
 
 // 定义State： 定义一个初始状态值
@@ -706,7 +706,7 @@ console.log(store.getState());
 - `middleware` 被写成三个相互嵌套的函数 每次 `dispatch action` 时都会运行 `middleware`。
 - 自定义 `middleware` 示例：
 
-```js title="redux-learn.html"
+```js [redux-learn.html]
 // 外层 function:
 function logger(storeAPI) {
   return function wrapDispatch(next) {
@@ -742,7 +742,7 @@ const anotherLogger = (storeAPI) => (next) => (action) => {
 - 返回: 一个应用了 `middleware` 后的 `store enhancer`。
 - 实现 `applyMiddleware`：
 
-```js title="redux-learn.js"
+```js [redux-learn.js]
 // 首先 createStore 接收一个 enhancer 函数
 function createStore(reducer, enhancer) {
   // 如果 传入 enhancer, 返回一个 新的 store
@@ -784,7 +784,7 @@ function applyMiddleware(middleware) {
 
 - 测试 `applyMiddleware`：
 
-```js title="redux-learn.html"
+```js [redux-learn.html]
 // ... 省略以上代码 ...
 
 // logger middleware
@@ -820,7 +820,7 @@ const store = createStore(reducer, applyMiddleware(logger));
 
 - 想要使用多个 `store enhancer`，可以使用 `compose()` 方法：
 
-```js title="例"
+```js [例]
 // applyMiddleware 中的连续调用：
 const store = createStore(reducer, applyMiddleware(middleware1, middleware2, middleware3));
 //  或: 这个 store 与 applyMiddleware 和 redux-devtools 一起使用:
@@ -834,7 +834,7 @@ const store = createStore(reducer, compose(applyMiddleware(thunk), DevTools.inst
 - compose(funcA, funcB, funcC) 形象为 compose(funcA(funcB(funcC())))。
 - 实现 `compose`：
 
-```js title="redux-learn.js"
+```js [redux-learn.js]
 // 定义 compose 函数 接收 需要合成的多个函数
 function compose() {
   // 接收 函数参数
@@ -852,7 +852,7 @@ function compose() {
 
 - 改写 `applyMiddleware` 支持 多个中间件：
 
-```js title="redux-learn.js" {12,13,18-21}
+```js{12,13,18-21} [redux-learn.js]
 // before : function applyMiddleware(middleware) {
 // after: 这里 接收 middlewares
 function applyMiddleware(...middlewares) {
@@ -884,7 +884,7 @@ function applyMiddleware(...middlewares) {
 
 - 测试 `applyMiddleware`：
 
-```js title="redux-learn.html" {46}
+```js{46} [redux-learn.html]
 // ... 省略以上代码 ...
 
 // 第一个中间件

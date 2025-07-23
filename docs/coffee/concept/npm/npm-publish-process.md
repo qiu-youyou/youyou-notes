@@ -30,7 +30,7 @@ npm init
 - `scripts` : 包中可执行的脚本。
 - `dependencies` 和 `devDependencies` : 包所依赖的其他包。 如:
 
-```json title="package.json"
+```json [package.json]
 {
   "name": "your-package-name",
   "version": "1.0.0",
@@ -47,7 +47,7 @@ npm init
 
 创建一个 `.npmignore` 文件来排除发布时不需要的文件。这类似于 `.gitignore` 文件。如:
 
-```ignore title=".npmignore"
+```ignore [.npmignore]
 node_modules
 *.log
 *.swp
