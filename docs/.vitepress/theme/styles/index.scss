@@ -2,3 +2,10 @@
 @use './theme.scss';
 @use './marker.scss';
 @use './rainbow.scss';
+
+// 置灰
+// html {
+//   -webkit-filter: grayscale(100%);
+//   filter: grayscale(100%);
+//   filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+// }
