@@ -18,6 +18,14 @@ const customIcon: any = {
   yaml: 'vscode-icons:file-type-light-yaml',
 };
 
+const baseUrl = 'https://notes.qiuyouyou.cn';
+const RSS: Theme.RSSOptions = {
+  title: 'Yòuyou Notes',
+  copyright: `Yòuyou 2023-${new Date().getFullYear()}`,
+  favicon: 'https://notes.qiuyouyou.cn/favicon.ico',
+  baseUrl,
+};
+
 export default {
   // alert: {
   //   type: 'success',
@@ -73,4 +81,5 @@ export default {
 
   // 自定义图标
   groupIcon: { customIcon },
+  RSS,
 } as Theme.BlogConfig;
