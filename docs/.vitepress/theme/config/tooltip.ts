@@ -23,6 +23,7 @@ const RSS: Theme.RSSOptions = {
   title: 'Yòuyou Notes',
   copyright: `Yòuyou 2023-${new Date().getFullYear()}`,
   favicon: 'https://notes.qiuyouyou.cn/favicon.ico',
+  language: 'zh-cn',
   baseUrl,
 };
 
