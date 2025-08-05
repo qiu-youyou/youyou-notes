@@ -6,7 +6,7 @@ tags:
 categories:
   - Docker
 
-description: 整理 Docker 的常用命令、配置方法及 Docker Compose 和 Portainer 的基础用法，便于日常开发和运维参考。
+description: Docker 的常用命令、配置方法，便于日常开发和运维参考。
 ---
 
 # Docker 常用命令及配置

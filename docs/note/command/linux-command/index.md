@@ -6,7 +6,7 @@ tags:
 categories:
   - Linux
 
-description: 整理了 Linux 常用命令、配置方法及 SSH 密钥登录等实用技巧，便于日常运维和开发参考。
+description: 整理 Linux 常用命令、配置方法，便于日常运维和开发参考。
 ---
 
 # Linux 常用命令及配置

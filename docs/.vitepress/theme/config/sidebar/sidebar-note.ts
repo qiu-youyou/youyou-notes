@@ -26,6 +26,12 @@ export const sidebarNote: SidebarItem[] = [
     items: [],
   },
   {
+    text: 'Python',
+    link: '/note/python/',
+    collapsed: false,
+    items: [],
+  },
+  {
     text: 'React',
     link: '/note/react/',
     collapsed: false,

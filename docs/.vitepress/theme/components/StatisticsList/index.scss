@@ -38,10 +38,9 @@
 
 .waterfall {
   width: 98%;
-  margin: 0 auto;
+  margin: 50px auto;
   column-count: 5;
   column-gap: 20px;
-  margin-top: 50px;
   @media (max-width: 1680px) {
     column-count: 4;
   }
