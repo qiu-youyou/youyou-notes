@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vitepress';
 import { Timer, UserFilled } from '@element-plus/icons-vue';
 
 import { sidebarNote } from '../../config/sidebar/sidebar-note';
-import { sidebarCoffee } from '../../config/sidebar/sidebar-coffee';
+import { sidebarOther } from '../../config/sidebar/sidebar-other';
 import { data as allDocs } from './docs.data';
 
 const route = useRoute();
@@ -18,7 +18,7 @@ const typeArchive = ref({});
 
 // 根据文档生成类型归档
 const sidebarRes = {};
-[...sidebarNote, ...sidebarCoffee].forEach((item) => (sidebarRes[item.link] = item));
+[...sidebarNote, ...sidebarOther].forEach((item) => (sidebarRes[item.link] = item));
 typeArchive.value = sidebarRes;
 
 // 处理所有文档生成摘要

@@ -3,7 +3,7 @@ tag:
   - 笔记
 tags:
   - Python
-  -
+
 recommend: 1
 
 description: 使用 Python 快速实现一个 Hello World，认识 Python。
