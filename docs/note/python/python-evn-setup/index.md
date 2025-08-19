@@ -4,12 +4,12 @@ tag:
 tags:
   - Python
 
-description: 配置 Python 开发环境，包括 Python 版本选择、Python 虚拟环境、Python 环境变量、Python 包管理工具，以及常用的 Python 命令。
+description: 配置 Python 开发环境，包括 Python 版本选择、Python 虚拟环境、Python 包管理工具，以及 VSCode 配置。
 ---
 
 # Python 开发环境搭建
 
-## Python 版本介绍
+## 🐜 Python 版本介绍
 
 prerelease 为预发布版本，security 为安全版本，bugfix 为 bug 修复版本。
 
@@ -26,7 +26,7 @@ prerelease 为预发布版本，security 为安全版本，bugfix 为 bug 修复
 | 3.9         | security   | 2020-10-05 | 2025-10  |
 | 3.8         | security   | 2019-10-14 | 2024-10  |
 
-## 来给 PIP 提提速
+## 🐜 来给 PIP 提提速
 
 镜像加速就是把 pip 所有的包拷贝，我们让 pip 直接连接到国内下载。
 
@@ -35,7 +35,7 @@ prerelease 为预发布版本，security 为安全版本，bugfix 为 bug 修复
 - 临时设置：`pip install -i [镜像地址] <package>`
 - 全局设置：`pip config set global.index-url [镜像地址]`
 
-## Python 虚拟环境
+## 🐜 Python 虚拟环境
 
 Python 虚拟环境提供了一个独立运行的环境，每个虚拟环境都有自己的 Python 解释器、库、包等。达到了为
 不同项目创建隔离的 Python 环境:
@@ -104,7 +104,7 @@ rm -rf .venv
 
 `pip install openai`
 
-## 开发编辑器配置
+## 🐜 开发编辑器配置
 
 如果你不喜欢自己进行配置推荐选择 `PyCharm` 来进行开发。当然如果你也喜欢使用 `VSCode` , 为了有更好的
 开发体验可以进行下面的配置：
