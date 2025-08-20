@@ -106,6 +106,8 @@ rm -rf .venv
 
 ## 🐜 开发编辑器配置
 
+#### VSCode
+
 如果你不喜欢自己进行配置推荐选择 `PyCharm` 来进行开发。当然如果你也喜欢使用 `VSCode` , 为了有更好的
 开发体验可以进行下面的配置：
 
@@ -191,5 +193,29 @@ Python 头部文件:
 头注释除了必要的信息外，一些简单的介绍也是尤为重要呢，比如作者、创建日期、版本等等。
 :::
 
-如觉得这些配置麻烦，使用 `PyCharm` 吧。也需进行一些简单配置
-。自行搜索即可。
+#### PyCharm (推荐)
+
+PyCharm 是由 JetBrains 开发的一款功能强大的 Python 集成开发环境（IDE），专为 Python 开发者设计。
+
+同样为了有更好的开发体验，可以进行一些简单的配置：
+
+使用 `PyCharm` 打开项目，打开项目设置，可以看到编辑器默认给我们选择了当前的虚拟环境：
+
+![20250820151437](http://images.qiuyouyou.cn/notes/20250820151437.png)
+
+这里也可以手动设置：`Add Interpreter 👉 Add Local Interpreter`
+选择虚拟环境 `Vitualenv Environment 👉 existing`
+选择我们项目的虚拟环境即可：
+
+![20250820152125](http://images.qiuyouyou.cn/notes/20250820152125.png)
+
+设置 `Reformat code`(保存格式化代码) 及 `Optimize imports` (优化导入)：
+
+![20250820160040](http://images.qiuyouyou.cn/notes/20250820160040.png)
+
+还记得[上面](/note/python/python-evn-setup/#vscode)在 `VSCode` 中配置的文件头部注释吗？
+在 `PyCharm` 中来配置一下:
+配置后在我们新建文件时就会自动生成头部注释。
+
+![20250820162839](http://images.qiuyouyou.cn/notes/20250820162839.png)
+
