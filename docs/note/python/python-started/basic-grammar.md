@@ -201,6 +201,14 @@ print(s1 | s2) # {1, 2, 3, 4}
 | < （小于）      | 1 < 2  | True  |
 | <= （小于等于） | 1 <= 2 | False |
 
+## ✊ 逻辑运算
+
+| 运算符 | 例子           | 结果  |
+| ------ | -------------- | ----- |
+| and    | True and False | False |
+| or     | True or False  | True  |
+| not    | not True       | False |
+
 ## ✊ 条件判断
 
 Python 中 使用 `if...else...` 语句来判断某个表达式的值, 是按照缩进来划分代码块的。
@@ -289,7 +297,7 @@ match lesson:
 
 :::
 
-## ✊ 循环
+## ✊ 循环控制
 
 Python 里有 `for...in` 和 `while` 两种循环。
 
