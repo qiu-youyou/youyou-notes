@@ -74,12 +74,13 @@ jobs:
           SECONDS=$((DURATION % 60))
           TIME_STR="${MINUTES}分${SECONDS}秒"
 
-          # 计算签名
-          string_to_sign="${END_TIME}\n${FEISHU_SECRET}"
+          # 用当前时间戳生成签名
+          TIMESTAMP=$(date +%s)
+          string_to_sign="${TIMESTAMP}\n${FEISHU_SECRET}"
           sign=$(echo -n "$string_to_sign" | openssl dgst -sha256 -hmac "$FEISHU_SECRET" -binary | base64 | tr -d '\n')
 
           # 发送飞书消息
-          curl -X POST "${FEISHU_WEBHOOK}?timestamp=${END_TIME}&sign=${sign}" \
+          curl -X POST "${FEISHU_WEBHOOK}?timestamp=${TIMESTAMP}&sign=${sign}" \
             -H 'Content-Type: application/json' \
             -d "{
               \"msg_type\": \"interactive\",
@@ -112,12 +113,13 @@ jobs:
           SECONDS=$((DURATION % 60))
           TIME_STR="${MINUTES}分${SECONDS}秒"
 
-          # 计算签名
-          string_to_sign="${END_TIME}\n${FEISHU_SECRET}"
+          # 用当前时间戳生成签名
+          TIMESTAMP=$(date +%s)
+          string_to_sign="${TIMESTAMP}\n${FEISHU_SECRET}"
           sign=$(echo -n "$string_to_sign" | openssl dgst -sha256 -hmac "$FEISHU_SECRET" -binary | base64 | tr -d '\n')
 
           # 发送飞书消息
-          curl -X POST "${FEISHU_WEBHOOK}?timestamp=${END_TIME}&sign=${sign}" \
+          curl -X POST "${FEISHU_WEBHOOK}?timestamp=${TIMESTAMP}&sign=${sign}" \
             -H 'Content-Type: application/json' \
             -d "{
               \"msg_type\": \"interactive\",
