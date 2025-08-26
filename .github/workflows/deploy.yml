@@ -63,6 +63,10 @@ jobs:
       # 成功通知 (卡片样式)
       - name: Notify Feishu (success)
         if: success()
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          FEISHU_SECRET: ${{ secrets.FEISHU_SECRET }}
+          START_TIME: ${{ env.START_TIME }}
         run: |
           END_TIME=$(date +%s)
           DURATION=$((END_TIME - START_TIME))
@@ -70,18 +74,23 @@ jobs:
           SECONDS=$((DURATION % 60))
           TIME_STR="${MINUTES}分${SECONDS}秒"
 
-          curl -X POST ${{ secrets.FEISHU_WEBHOOK }} \
+          # 计算签名
+          string_to_sign="${END_TIME}\n${FEISHU_SECRET}"
+          sign=$(echo -n "$string_to_sign" | openssl dgst -sha256 -hmac "$FEISHU_SECRET" -binary | base64 | tr -d '\n')
+
+          # 发送飞书消息
+          curl -X POST "${FEISHU_WEBHOOK}?timestamp=${END_TIME}&sign=${sign}" \
             -H 'Content-Type: application/json' \
             -d "{
               \"msg_type\": \"interactive\",
               \"card\": {
                 \"config\": {\"wide_screen_mode\": true},
                 \"header\": {
-                  \"title\": {\"tag\": \"plain_text\", \"content\": \"✅ VitePress 部署成功\"},
+                  \"title\": {\"tag\": \"plain_text\", \"content\": \"✅ youyou-notes 部署成功\"},
                   \"template\": \"green\"
                 },
                 \"elements\": [
-                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**分支：** \`${{ github.ref_name }}\`\n**时间：** $(date '+%Y-%m-%d %H:%M:%S')\n**耗时：** ${TIME_STR}\"}},
+                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**部署分支：** \`${{ github.ref_name }}\`\n**部署时间：** $(date '+%Y-%m-%d %H:%M:%S')\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}},
                   {\"tag\": \"action\", \"actions\": [
                     {\"tag\": \"button\", \"text\": {\"tag\": \"plain_text\", \"content\": \"查看构建日志\"}, \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\", \"type\": \"primary\"}
                   ]}
@@ -92,6 +101,10 @@ jobs:
       # 失败通知 (卡片样式)
       - name: Notify Feishu (failure)
         if: failure()
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          FEISHU_SECRET: ${{ secrets.FEISHU_SECRET }}
+          START_TIME: ${{ env.START_TIME }}
         run: |
           END_TIME=$(date +%s)
           DURATION=$((END_TIME - START_TIME))
@@ -99,22 +112,26 @@ jobs:
           SECONDS=$((DURATION % 60))
           TIME_STR="${MINUTES}分${SECONDS}秒"
 
-          curl -X POST ${{ secrets.FEISHU_WEBHOOK }} \
+          # 计算签名
+          string_to_sign="${END_TIME}\n${FEISHU_SECRET}"
+          sign=$(echo -n "$string_to_sign" | openssl dgst -sha256 -hmac "$FEISHU_SECRET" -binary | base64 | tr -d '\n')
+
+          # 发送飞书消息
+          curl -X POST "${FEISHU_WEBHOOK}?timestamp=${END_TIME}&sign=${sign}" \
             -H 'Content-Type: application/json' \
             -d "{
               \"msg_type\": \"interactive\",
               \"card\": {
                 \"config\": {\"wide_screen_mode\": true},
                 \"header\": {
-                  \"title\": {\"tag\": \"plain_text\", \"content\": \"❌ VitePress 部署失败\"},
+                  \"title\": {\"tag\": \"plain_text\", \"content\": \"❌ youyou-notes 部署失败\"},
                   \"template\": \"red\"
                 },
                 \"elements\": [
-                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**分支：** \`${{ github.ref_name }}\`\n**时间：** $(date '+%Y-%m-%d %H:%M:%S')\n**耗时：** ${TIME_STR}\"}},
+                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**部署分支：** \`${{ github.ref_name }}\`\n**部署时间：** $(date '+%Y-%m-%d %H:%M:%S')\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}},
                   {\"tag\": \"action\", \"actions\": [
                     {\"tag\": \"button\", \"text\": {\"tag\": \"plain_text\", \"content\": \"查看构建日志\"}, \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\", \"type\": \"danger\"}
                   ]}
                 ]
               }
             }"
-
