@@ -6,7 +6,6 @@ tags:
 
 description: 本笔记详细记录了使用 `create-react-app` 初始化 React 项目的常用配置与实践，包括项目创建、别名与路由配置、Axios 请求封装、Redux 状态管理、渲染优化、错误边界、分包加载等内容，适合作为 React 初始化开发的参考手册。
 
-top: 2
 sticky: 9998
 ---
 

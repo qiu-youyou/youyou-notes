@@ -8,7 +8,6 @@ recommend: 1
 
 description: TypeScript 基础语法与类型系统概念，包括类型推断、类型注解、类型断言、类型保护及类型兼容性等核心知识点，快速入门和理解 TypeScript 的静态类型特性。
 
-top: 3
 sticky: 9997
 ---
 

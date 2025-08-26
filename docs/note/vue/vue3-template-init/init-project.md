@@ -6,7 +6,6 @@ tags:
 
 description: 本篇笔记介绍了如何基于 Vite 快速搭建 Vue3 项目模板，并集成自动路由、布局、原子化 CSS、自动导入、组件自动注册、Mock 接口等常用开发方案，适合 Vue3 项目初始化参考。
 
-top: 1
 sticky: 9999
 recommend: 1
 ---
