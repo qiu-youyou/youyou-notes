@@ -76,6 +76,7 @@ jobs:
           MINUTES=$((DURATION / 60))
           SECONDS=$((DURATION % 60))
           TIME_STR="${MINUTES}分${SECONDS}秒"
+          EXEC_TIME=$(date '+%Y-%m-%d %H:%M:%S')
 
           # 发送飞书消息
           curl -X POST "$FEISHU_WEBHOOK" \
@@ -89,7 +90,7 @@ jobs:
                   \"template\": \"green\"
                 },
                 \"elements\": [
-                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**部署环境：** 日常环境\n**执行分支：** \`${{ github.ref_name }}\`\n**执行备注：** ${{ github.event.head_commit.message }}\n**执行时间：** ${EXEC_TIME}\n**执行人员：** \`${{ github.actor }}\`\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}},
+                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**部署环境：** 日常环境\n**执行分支：** ${{ github.ref_name }}\n**执行时间：** ${{EXEC_TIME}}\n**执行备注：** ${{ github.event.head_commit.message }}\n**执行人员：** ${{ github.actor }}\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}},
                   {\"tag\": \"action\", \"actions\": [
                     {\"tag\": \"button\", \"text\": {\"tag\": \"plain_text\", \"content\": \"查看构建日志\"}, \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\", \"type\": \"primary\"}
                   ]}
@@ -109,6 +110,7 @@ jobs:
           MINUTES=$((DURATION / 60))
           SECONDS=$((DURATION % 60))
           TIME_STR="${MINUTES}分${SECONDS}秒"
+          EXEC_TIME=$(date '+%Y-%m-%d %H:%M:%S')
 
           # 发送飞书消息
           curl -X POST "$FEISHU_WEBHOOK" \
@@ -122,7 +124,7 @@ jobs:
                   \"template\": \"red\"
                 },
                 \"elements\": [
-                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**部署环境：** 日常环境\n**执行分支：** \`${{ github.ref_name }}\`\n**执行备注：** ${{ github.event.head_commit.message }}\n**执行时间：** ${EXEC_TIME}\n**执行人员：** \`${{ github.actor }}\`\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}},
+                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**部署环境：** 日常环境\n**执行分支：** ${{ github.ref_name }}\n**执行时间：** ${{EXEC_TIME}}\n**执行备注：** ${{ github.event.head_commit.message }}\n**执行人员：** ${{ github.actor }}\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}},
                   {\"tag\": \"action\", \"actions\": [
                     {\"tag\": \"button\", \"text\": {\"tag\": \"plain_text\", \"content\": \"查看构建日志\"}, \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\", \"type\": \"danger\"}
                   ]}
