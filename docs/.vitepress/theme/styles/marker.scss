@@ -73,8 +73,11 @@
 }
 
 /** 代码块: 代码块边距 */
+// .vp-doc [class*='language-'] code {
+//   padding: 0 14px;
+// }
 // .vp-doc [class*='language-'] code .diff::before {
-//   left: auto;
+// left: 4px;
 // }
 // .vp-doc [class*="language-"] pre {
 //   // padding: 10px 0;
