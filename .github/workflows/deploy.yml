@@ -74,7 +74,7 @@ jobs:
           coscmd config -a ${{ secrets.TENCENT_SECRET_ID }} -s ${{ secrets.TENCENT_SECRET_KEY }} -b ${{ secrets.TENCENT_BUCKET }} -r ${{ secrets.TENCENT_REGION }}
       - name: Upload COS
         run: |
-          coscmd upload -rs --skipmd5 dist /
+          coscmd upload -rs --skipmd5 dist ./
       # 成功通知 (飞书)
       - name: Notify Feishu (success)
         if: success()
