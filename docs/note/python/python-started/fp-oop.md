@@ -496,12 +496,169 @@ self_introduction(wk)
 对修改封闭：不需要修改依赖 Person 类型的 self_introduction()等函数。
 :::
 
-## FP 与 OOP 的关系
+#### 不依赖继承的多态（鸭子类型）
+
+Python 比较特别，它的多态不一定要靠继承。
+Python 的多态是基于鸭子类型的（duck typing），鸭子类型是指：如果看起来像鸭子，那就是鸭子。
+
+只要对象有 `say_hello` 方法，就能被 `self_introduction` 使用：
 
 ::: code-group
 
-```python [] {}
+```python [polymorphism.py] {}
+class Programmer:
+    def __init__(self, name):
+        self.name = name
+
+    def say_hello(self):
+        print(f"Hi, I'm {self.name}, I'm a programmer.")
+
+
+prg = Programmer("xiaowang")
+self_introduction(prg)
+# Hi, I'm xiaowang, I'm a programmer
+
 
 ```
 
 :::
+
+可以看到虽然 `Programmer` 没有继承 `Person`
+但它也能用在 `self_introduction` 里，因为它实现了 `say_hello`。
+
+在 `Python` 中，多态甚至不需要继承，只要“有这个方法”就行。
+
+::: tip
+动态语言的鸭子类型特点决定了继承不像静态语言那样是必须的。
+
+对于静态语言（例如 Java）来说，如果需要传入 `Person` 类型，
+则传入的对象必须是 `Person` 类型或者它的子类，否则，将无法调用 `say_hello` 方法。
+
+对于 Python 这样的动态语言来说，则不一定需要传入 `Person` 类型。
+我们只需要保证传入的对象有一个 `say_hello` 方法就可以了
+:::
+
+## 面向对象高级
+
+数据封装、继承和多态只是面向对象程序设计中最基础的 3 个概念。在 Python 中，面向对象还有很多高级特性，允许我们写出非常强大的功能。
+
+### 实例属性、类属性
+
+当给实例绑定属性的方法时是通过实例的变量，或者通过 self 变量来绑定。
+我们还可以给类绑定 类的属性:
+
+::: code-group
+
+```python [class.py] {}
+class Person(object):
+    person_total = 0  # [!code focus] [!code ++]
+
+    def __init__(self, name, age):
+        Person.person_total += 1  # 修改类属性统计人数
+        self.name = name
+
+
+p1 = Person("A", 20)  # [!code focus] [!code ++]
+p2 = Person("B", 20)  # [!code focus] [!code ++]
+p3 = Person("C", 20)  # [!code focus] [!code ++]
+
+print(Person.person_total)  # 3  访问类属性 [!code focus] [!code ++]
+print(p2.person_total)  # 3 类的所有实例都可以访问  [!code focus] [!code ++]
+
+```
+
+:::
+
+实例属性、类属性:
+
+- 实例属性属于各个实例所有，互不干扰。
+- 类属性属于类所有，所有实例共享一个属性。
+- 定义了一个类属性后，这个属性虽然归类所有，但类的所有实例都可以访问到。
+- 不要对实例属性和类属性使用相同的名字。
+
+### 类和实例的属性控制
+
+在我们创建了一个实例后，
+我们可以给该实例绑定任何属性和方法，
+这就是动态语言的灵活性。
+
+Python 允许在定义 class 的时候，定义一个特殊的 `__slots__`变量，
+来限制该 class 实例能添加的属性：
+
+::: code-group
+
+```python [] {}
+# 用tuple定义允许绑定的属性名称
+class Person:
+    __slots__ = ("name", "age")  # 只能有这两个属性
+
+
+p = Person()
+p.name = "Alice"  # ✅
+p.age = 20  # ✅
+# p.gender = "F"  # ❌ AttributeError
+```
+
+:::
+
+需要注意是`__slots__`定义的属性仅对
+当前类实例起作用，对继承的子类是不起作用的。
+
+### 属性管理(@property)
+
+Python 面向对象里的一个 高级特性 `@property`,
+它的本质就是 通过装饰器把方法伪装成属性来访问。
+
+假设我们有一个矩形类，来计算矩形的面积和周长：
+
+::: code-group
+
+```python [rectangle.py] {}
+class Rectangle:
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter  # 可读可写属性
+    def width(self, value):
+        self._width = value
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter  # 可读可写属性
+    def height(self, value):
+        self._height = value
+
+    @property  # 只读属性
+    def area(self):
+        return self._width * self._height
+
+
+r = Rectangle()
+r.width = 10
+r.height = 5
+# r.area = 50 # x ❌ AttributeError
+
+print(r.width)  # ✅ 10 直接像属性一样访问，不用加 ()
+print(r.height)  # ✅ 5 直接像属性一样访问，不用加 ()
+print(r.area)  # ✅ 50 直接像属性一样访问，不用加 ()
+
+```
+
+:::
+
+- 当使用 `@property` 时，它又创建了另一个装饰器 `@score.setter`。
+- 当我们只写 `@property` 时，没有写 `setter`，那它就是只读属性。
+- 这里需要注意的是 属性的方法名不要和实例变量重名。
+
+## FP 与 OOP
+
+|      | 函数式编程                  | 面向对象编程                     |
+| ---- | --------------------------- | -------------------------------- |
+| 思想 | 函数和行为分离 函数式是核心 | 数据和操作数据的行为封装在对象中 |
+| 状态 | 要尽量无状态 不修改外部变量 | 对象有状态有方法可以修改对象     |
+| 核心 | 函数、高阶函数、不可变数据  | 类、对象、继承、多态             |
+| 优势 | 并行、安全、逻辑清晰        | 组织复杂的系统                   |
+| 场景 | 数据处理、计算流水线        | 大型系统、模拟实体、GUI          |
