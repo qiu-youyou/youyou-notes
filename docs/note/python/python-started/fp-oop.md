@@ -505,9 +505,3 @@ self_introduction(wk)
 ```
 
 :::
-
-## tt
-
-## aa
-
-## bb
