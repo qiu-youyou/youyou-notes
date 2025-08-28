@@ -62,7 +62,6 @@ jobs:
           cos_region: ${{ secrets.TENCENT_REGION }}
           local_path: dist
           remote_path: /
-          clean: true
 
       # 成功通知 (卡片样式)
       - name: Notify Feishu (success)
