@@ -3,7 +3,6 @@ name: Deploy VitePress site to Tencent Cloud COS
 on:
   push:
     branches: [main]
-
   workflow_dispatch:
 
 jobs:
@@ -24,7 +23,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 设置 pnpm（如果你用 npm/yarn 可以改掉）
+      # 设置 pnpm
       - uses: pnpm/action-setup@v3
         with:
           version: 9
@@ -36,7 +35,8 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      - name: Setup pnpm cache
+      # 缓存 pnpm
+      - name: Cache pnpm
         uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
@@ -52,18 +52,30 @@ jobs:
       - name: Build with VitePress
         run: pnpm build
 
-      # 上传到腾讯云 COS
-      - name: Deploy to COS
-        uses: TencentCloud/cos-action@v1
+      # 设置 Python 3.10 版本
+      - name: Set Python 3.10
+        uses: actions/setup-python@v4
         with:
-          secret_id: ${{ secrets.TENCENT_SECRET_ID }}
-          secret_key: ${{ secrets.TENCENT_SECRET_KEY }}
-          cos_bucket: ${{ secrets.TENCENT_BUCKET }}
-          cos_region: ${{ secrets.TENCENT_REGION }}
-          local_path: dist
-          remote_path: /
+          python-version: '3.10'
 
-      # 成功通知 (卡片样式)
+      # 缓存 pip
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Instal coscmd
+        run: pip install coscmd
+
+      - name: Config coscmd
+        run: |
+          coscmd config -a ${{ secrets.TENCENT_SECRET_ID }} -s ${{ secrets.TENCENT_SECRET_KEY }} -b ${{ secrets.TENCENT_BUCKET }} -r ${{ secrets.TENCENT_REGION }}
+      - name: Upload COS
+        run: |
+          coscmd upload -r dist /
+      # 成功通知 (飞书)
       - name: Notify Feishu (success)
         if: success()
         env:
@@ -76,8 +88,6 @@ jobs:
           SECONDS=$((DURATION % 60))
           TIME_STR="${MINUTES}分${SECONDS}秒"
           EXEC_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-
-          # 发送飞书消息
           curl -X POST "$FEISHU_WEBHOOK" \
             -H 'Content-Type: application/json' \
             -d "{
@@ -89,15 +99,11 @@ jobs:
                   \"template\": \"green\"
                 },
                 \"elements\": [
-                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**执行分支：** ${{ github.ref_name }}\n**执行环境：** 日常环境\n**执行时间：** ${EXEC_TIME}\n**执行备注：** ${{ github.event.head_commit.message }}\n**执行人员：** ${{ github.actor }}\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}},
-                  {\"tag\": \"action\", \"actions\": [
-                    {\"tag\": \"button\", \"text\": {\"tag\": \"plain_text\", \"content\": \"查看构建日志\"}, \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\", \"type\": \"primary\"}
-                  ]}
+                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**执行分支：** ${{ github.ref_name }}\n**执行环境：** 日常环境\n**执行时间：** ${EXEC_TIME}\n**执行备注：** ${{ github.event.head_commit.message }}\n**执行人员：** ${{ github.actor }}\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}}
                 ]
               }
             }"
-
-      # 失败通知 (卡片样式)
+      # 失败通知 (飞书)
       - name: Notify Feishu (failure)
         if: failure()
         env:
@@ -110,8 +116,6 @@ jobs:
           SECONDS=$((DURATION % 60))
           TIME_STR="${MINUTES}分${SECONDS}秒"
           EXEC_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-
-          # 发送飞书消息
           curl -X POST "$FEISHU_WEBHOOK" \
             -H 'Content-Type: application/json' \
             -d "{
@@ -123,10 +127,7 @@ jobs:
                   \"template\": \"red\"
                 },
                 \"elements\": [
-                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**执行分支：** ${{ github.ref_name }}\n**执行环境：** 日常环境\n**执行时间：** ${EXEC_TIME}\n**执行备注：** ${{ github.event.head_commit.message }}\n**执行人员：** ${{ github.actor }}\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}},
-                  {\"tag\": \"action\", \"actions\": [
-                    {\"tag\": \"button\", \"text\": {\"tag\": \"plain_text\", \"content\": \"查看构建日志\"}, \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\", \"type\": \"danger\"}
-                  ]}
+                  {\"tag\": \"div\", \"text\": {\"tag\": \"lark_md\", \"content\": \"**执行分支：** ${{ github.ref_name }}\n**执行环境：** 日常环境\n**执行时间：** ${EXEC_TIME}\n**执行备注：** ${{ github.event.head_commit.message }}\n**执行人员：** ${{ github.actor }}\n**运行耗时：** ${TIME_STR}\n**访问地址：** [点击访问](https://notes.qiuyouyou.cn)\"}}
                 ]
               }
             }"
