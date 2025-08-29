@@ -7,12 +7,12 @@ tags:
 recommend: 4
 sticky: 9996
 
-description:
+description: 本笔记介绍了 Python 的 FP 与 OOP 核心思想、特征及常用语法，包括纯函数、高阶函数、不可变性、装饰器、偏函数，以及类、继承、多态、属性管理和 MixIn 等高级特性。
 ---
 
 # Python 学习笔记（四） - FP、OOP 编程
 
-## 函数式编程
+## 🐈 函数式编程
 
 函数式编程的核心思想: 强调 “计算就是函数的应用” ，
 数据和函数是分离的，程序尽量不依赖外部状态（即避免副作用）。
@@ -292,7 +292,7 @@ print(square(10))  # 100
 使用 `functools.partial` 可以创建一个新的函数，
 这个新函数可以固定住原函数的部分参数，从而在调用时更简单。
 
-## 面向对象编程
+## 🐈 面向对象编程
 
 面向对象编程的核心思想: 强调 “数据和操作数据的行为封装在对象中”，
 把数据和操作封装在对象里，用类来表达概念，用组合/继承/多态来扩展。
@@ -538,7 +538,7 @@ self_introduction(prg)
 我们只需要保证传入的对象有一个 `say_hello` 方法就可以了
 :::
 
-## 面向对象高级
+## 🐈 面向对象高级
 
 数据封装、继承和多态只是面向对象程序设计中最基础的 3 个概念。在 Python 中，面向对象还有很多高级特性，允许我们写出非常强大的功能。
 
@@ -653,7 +653,64 @@ print(r.area)  # ✅ 50 直接像属性一样访问，不用加 ()
 - 当我们只写 `@property` 时，没有写 `setter`，那它就是只读属性。
 - 这里需要注意的是 属性的方法名不要和实例变量重名。
 
-## FP 与 OOP
+### 多重继承
+
+多重继承，就是可以让一个子类就可以同时获得多个父类的所有功能。
+
+在我们设计类的继承关系时，通常主线都是单一继承下来，如果想要混入（MixIn）额外的功能，
+就可以通过多重继承来实现：
+
+::: code-group
+
+```python [mix_in.py] {}
+class Animal(object):
+    pass
+
+class Mammal(Animal):
+    pass
+
+class Bird(Animal):
+    pass
+
+class RunnableMixIn(object):
+    def run(self):
+        print("Running...")
+
+class FlyableMixIn(object):
+    def fly(self):
+        print("Flying...")
+
+# 需要 RunnableMixIn 功能的动物，就多继承一个 RunnableMixIn
+class Dog(Mammal, RunnableMixIn):
+    pass
+
+# 需要 FlyableMixIn 功能的动物，就多继承一个 FlyableMixIn
+class Bat(Mammal, FlyableMixIn):
+    pass
+
+# 需要 RunnableMixIn 和 FlyableMixIn 功能的动物，就多继承它们
+class duck(Bird, RunnableMixIn, FlyableMixIn):
+    pass
+
+```
+
+:::
+
+MixIn 的目的就是给一个类增加多个功能，
+这样，在设计类的时候，我们优先考虑通过多重继承来
+组合多个 MixIn 的功能，而不是设计多层次的复杂的继承关系。
+
+::: tip
+
+在面向对象编程中，MixIn 是一种允许类继承额外方法或属性而不改变其基本结构的设计模式。
+
+由于 Python 允许使用多重继承，因此，MixIn 就是一种常见的设计。
+
+只允许单一继承的语言，比如 Java，就不能使用 MixIn 的设计。
+
+:::
+
+## 🐈 FP 与 OOP
 
 |      | 函数式编程                  | 面向对象编程                     |
 | ---- | --------------------------- | -------------------------------- |
