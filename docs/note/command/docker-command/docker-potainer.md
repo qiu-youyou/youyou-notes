@@ -5,39 +5,54 @@ tags:
   - 常用命令
 categories:
   - Docker
+
+description: Docker 使用 Potainer 可视化管理面板
 ---
 
 # Docker 使用 Potainer
 
 ## 🌰 使用 Potainer
 
-Docker 工具：[Potainer](https://docs.portainer.io/start/install-ce/server/docker/linux)
+Docker 可视化管理面板 ：[Potainer](https://docs.portainer.io/start/install-ce/server/docker/linux)
 
-首先，创建 Portainer Server 用于存储其数据库的卷：
+创建 Portainer Server 用于存储其数据库的卷：
 
 ::: code-group
 
-```sh
+```bash
 docker volume create portainer_data
 ```
 
 :::
 
-然后，下载并安装 Portainer Server 容器：
+拉取 Portainer ：
 
 ::: code-group
 
-```sh
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```bash
+docker pull portainer/portainer-ce:lts
+```
+
+:::
+
+启动 Portainer:
+
+::: code-group
+
+```bash
+docker run -d --name portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v /app/portainer_data:/data --restart always --privileged=true portainer/portainer-ce:latest
 ```
 
 :::
 
 更新 Portainer：
+::: code-group
 
-```sh
+```bash
 docker pull portainer/portainer-ce:lts
 ```
+
+:::
 
 ## 🌰 Potainer 重置密码
 
@@ -49,7 +64,7 @@ docker pull portainer/portainer-ce:lts
 
 ![20250829113900](http://images.qiuyouyou.cn/notes/20250829113900.png)
 
-```sh
+```bash
 docker run --rm -v /var/lib/docker/volumes/portainer_data/_data:/data portainer/helper-reset -password
 ```
 

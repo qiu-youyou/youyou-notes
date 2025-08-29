@@ -9,37 +9,80 @@ description: 记录 CSS 常用的代码片段。备忘。持续更新中～～�
 
 # CSS 常用代码片段
 
-## 📋 单行文本溢出显示省略号
+## 📋 水平垂直居中
 
 ::: code-group
 
-```css
-p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
-  white-space: nowrap;
+```css [] {}
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 ```
 
 :::
 
-## 📋 隐藏浏览器右侧滚动条
+## 📋 等比例正方形
+
+::: code-group
+
+```css [] {}
+.square {
+  width: 100px;
+  aspect-ratio: 1 / 1; /* 现代浏览器 */
+}
+```
+
+:::
+
+## 📋 背景图覆盖容器
+
+::: code-group
+
+```css [] {}
+.bg-cover {
+  background: url(bg.jpg) no-repeat center center;
+  background-size: cover;
+}
+```
+
+:::
+
+## 📋 文字渐变
+
+::: code-group
+
+```css [] {}
+.gradient-text {
+  background: linear-gradient(45deg, #6cad84, #00a7d5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+```
+
+:::
+
+## 📋 背景渐变
 
 ::: code-group
 
 ```css
-html {
-  -ms-overflow-style: none;
-  overflow: -moz-scrollbars-none;
-  overflow: hidden;
-  overflow-y: scroll;
-  scrollbar-width: none;
+.container {
+  background: linear-gradient(180deg, #fa61e3ff 0%, #1ee07fff 100%);
 }
+```
 
-html::-webkit-scrollbar {
-  width: 0 !important;
+## 📋 圆形头像
+
+::: code-group
+
+```css [] {}
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 ```
 
@@ -118,13 +161,21 @@ html {
 
 :::
 
-## 📋 背景色渐变
+## 📋 隐藏浏览器右侧滚动条
 
 ::: code-group
 
 ```css
-.container {
-  background: linear-gradient(180deg, #fa61e3ff 0%, #1ee07fff 100%);
+html {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0 !important;
 }
 ```
 
