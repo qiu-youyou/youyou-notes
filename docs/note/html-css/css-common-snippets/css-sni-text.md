@@ -3,11 +3,13 @@ tag:
   - 笔记
 tags:
   - CSS
+categories:
+  - Snippet
 
 description: 记录常用的文字文本 相关 CSS 常用代码片段。
 ---
 
-# CSS 常用代码片段 - 文字文本
+# CSS 常用代码片段 - 文本
 
 ## 🌻 单行文本溢出省略号
 
