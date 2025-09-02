@@ -218,3 +218,333 @@ PyCharm 是由 JetBrains 开发的一款功能强大的 Python 集成开发环�
 配置后在我们新建文件时就会自动生成头部注释。
 
 ![20250820162839](http://images.qiuyouyou.cn/notes/20250820162839.png)
+
+## 🐜 实现简单接口
+
+接下来实现一个简单的接口，简单梳理代码的运行流程。
+
+#### Python 命名规范
+
+开始在写代码前，先了简单解一下 Python 命名规范：
+
+- 文件名：小写字母，下划线分割，如：`app_service.py`
+- 模块名：与文件名类似，小写字母，下划线分割；
+- 类 名：以大写字母开头，使用驼峰命名法，如：`AppService`
+- 常 量：使用全大写字母，使用下划线分割，如：`APP_SERVICE`
+- 变量名：以小写字母开头，使用下划线分割，如：`app_service`
+- 方法名：以小写字母开头，使用下划线分割，如：`get_app_service`
+- 私有变量及方法：以一个下划线开头，使用下划线分割，如：`_app_service`、
+
+::: warning
+Python 中并没有严格的私有变量/方法，这种命名约定只是一种约定，而不是强制规则，实际上
+这些变量或者方法仍然可以被使用，但是作为一种约定，在外部调用时，
+不应该调用私有的变量与方法。
+
+在一些场景中使用单下划线表示弱私有，双下划线表示强私有。
+
+:::
+
+#### 创建项目
+
+创建一个新的项目并创建一个新的虚拟环境:
+
+::: code-group
+
+```bash [] {}
+mkdir first-demo && cd first-demo
+python3 -m venv venv
+```
+
+:::
+
+#### 该项目目录结构
+
+::: code-group
+
+```python [] {}
+📦.venv                 # 虚拟环境表现
+📦app                   # 应用入口集合
+ ┣ 📂http
+ ┃ ┣ 📜__init__.py
+ ┃ ┗ 📜app.py
+ ┗ 📜__init__.py
+📦config                # 应用配置文件
+ ┗ 📜__init__.py
+📦internal              # 所有内部文件夹
+ ┣ 📂handle             # 路由处理器、控制器目录
+ ┃ ┣ 📜__init__.py
+ ┃ ┗ 📜app_handle.py
+ ┣ 📂router             # 路由文件夹
+ ┃ ┣ 📜__init__.py
+ ┃ ┗ 📜router.py
+ ┣ 📂server            # 构建应用 与app文件夹对应
+ ┃ ┣ 📜__init__.py
+ ┃ ┗ 📜http.py
+ ┗ 📜__init__.py
+```
+
+:::
+
+#### 实现简单接口
+
+使用 Flask 来实现一个简单的接口，Flask 是一个轻量级的 Python web 框架，
+它可以帮助我们快速搭建一个简单的 Web 服务，
+并提供了一些常用的功能，比如路由、请求处理、模板渲染等等。
+
+确保在我们的虚拟环境中进行安装：
+![20250902112637](http://images.qiuyouyou.cn/notes/20250902112637.png)
+
+<br />
+
+- 在 `venv` 虚拟环境中安装 `Flask` 、`injector`
+
+::: code-group
+
+```bash [] {}
+pip install flask
+pip install injector
+```
+
+:::
+
+- 创建应用控制器并进行导出：
+
+::: code-group
+
+```python [internal/handle/app_handle.py] {}
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+"""
+@File   :   app_handle
+@Time   :   2025/9/2 10:03
+@Author :   s.qiu@foxmail.com
+"""
+
+
+class AppHandle:
+    """应用控制器"""
+
+    def test(self):
+        return {"test": "test handle"}
+
+```
+
+```python [internal/handle/__init__.py] {}
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+"""
+@File   :   __init__.py
+@Time   :   2025/9/2 10:02
+@Author :   s.qiu@foxmail.com
+"""
+from .app_handle import AppHandle
+
+# 魔术变量
+__all__ = ["AppHandle"]
+
+```
+
+:::
+
+- 创建路由
+
+::: code-group
+
+```python [internal/router/router.py] {}
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+"""
+@File   :   router
+@Time   :   2025/9/2 10:03
+@Author :   s.qiu@foxmail.com
+"""
+
+from flask import Flask, Blueprint
+from injector import inject
+from dataclasses import dataclass
+
+from internal.handle import AppHandle
+
+
+@inject  # 依赖注入
+@dataclass
+class Router:
+    app_handle: AppHandle
+
+    """路由"""
+
+    def register_router(self, app: Flask):
+        """注册路由"""
+
+        # flask 创建蓝图
+        bp = Blueprint('demo', __name__, url_prefix='')
+
+        # 将 URL 与对应的控制器方法做绑定
+        bp.add_url_rule('/test', view_func=self.app_handle.test)
+
+        ## flask 注册蓝图
+        app.register_blueprint(bp)
+
+```
+
+```python [internal/router/__init__.py] {}
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+"""
+@File   :   __init__.py
+@Time   :   2025/9/2 10:03
+@Author :   s.qiu@foxmail.com
+"""
+
+from .router import Router
+
+__all__ = ['Router']
+
+```
+
+:::
+
+- 创建 HTTP 服务引擎
+
+::: code-group
+
+```python [internal/server/http.py] {}
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+"""
+@File   :   http
+@Time   :   2025/9/2 10:03
+@Author :   s.qiu@foxmail.com
+"""
+from flask import Flask, views
+from internal.router import Router
+
+
+# 继承 Flask
+class Http(Flask):
+    """HTTP引擎"""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # 注册路由
+        Router.register_router(self)
+
+```
+
+```python [internal/server/__init__.py] {}
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+"""
+@File   :   __init__.py
+@Time   :   2025/9/2 10:03
+@Author :   s.qiu@foxmail.com
+"""
+
+from .http import Http
+
+__all__ = ["Http"]
+
+```
+
+:::
+
+- 创建应用
+
+::: code-group
+
+```python [app/http/app.py] {}
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+"""
+@File   :   app.py
+@Time   :   2025/9/2 10:02
+@Author :   s.qiu@foxmail.com
+"""
+
+from injector import Injector
+
+from internal.router import Router
+from internal.server import Http
+
+app = Http(__name__, router=Injector.get(Router))
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+```
+
+:::
+
+#### 配置 Flask 脚本
+
+`Add New Configuration` -> `Flask server`
+把 `app.py` 设置为启动脚本后运行：
+
+![20250902113603](http://images.qiuyouyou.cn/notes/20250902113603.png)
+
+![20250902113841](http://images.qiuyouyou.cn/notes/20250902113841.png)
+
+## 🐜 项目依赖管理
+
+在 Python 项目里，我们通常需要一个
+`requirements.txt` 来记录项目依赖的第三方库,
+方便部署或给别人使用。 可以使用 `pip freeze` 命令：
+
+::: code-group
+
+```bash [] {}
+pip freeze > requirements.txt
+```
+
+:::
+
+但 `pip freeze` 会把 当前环境里的所有包
+都写进去（哪怕项目没有用到），导致文件很臃肿。
+
+而 `pipreqs` 的思路是： 扫描你的项目源码，
+根据 `import xxx` 的语句来判断你真正用到哪些库，再生成简洁的 `requirements.txt`。
+
+安装 [`pipreqs`](https://pypi.org/project/pipreqs/) 并在项目目录下运行:
+
+::: code-group
+
+```bash [] {}
+pip install --no-deps pipreqs
+pip install yarg==0.1.9 docopt==0.6.2
+```
+
+:::
+
+`--ignore` 参数忽略 `venv` 目录
+/ `--force` 参数强制覆盖 `requirements.txt`
+
+::: code-group
+
+```bash [] {}
+pipreqs --ignore .venv --force
+```
+
+:::
+
+生成结果 `requirements.txt` ：
+
+::: code-group
+
+```txt [requirements.txt] {}
+Flask==3.1.2
+injector==0.22.0
+
+```
+
+:::
+
+根据 `requirements.txt` 文件一次性安装项目依赖:
+
+::: code-group
+
+```bash [] {}
+pip install -r requirements.txt
+```
+
+:::
