@@ -9,6 +9,8 @@ description: python-dotenv 是一个用于在 Python 项目中加载和管理环
 
 # python-dotenv 环境变量配置
 
+python-dotenv 是一个用于在 Python 项目中加载和管理环境变量的工具。通过将配置信息存储在 .env 文件中，可以简化敏感信息和配置的管理，提升代码的安全性和可维护性。
+
 ## ⚾ 安装
 
 ::: code-group
