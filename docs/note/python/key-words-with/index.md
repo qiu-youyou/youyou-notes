@@ -91,9 +91,7 @@ with open("a.txt") as f1, open("b.txt") as f2:
 1. `__enter__()`：进入上下文时调用，返回值赋给 `as` 后的变量。
 2. `__exit__()`：退出上下文时调用，处理清理工作。
 
-#### 实现自定义上下文管理器
-
-使用类实现一个上下文管理器:
+#### 使用类实现一个上下文管理器:
 
 ::: code-group
 
@@ -125,7 +123,14 @@ with MyContext() as ctx:
   - 参数：`exc_type`：异常类型、 `exc_value`：异常实例、`traceback`：追踪信息
   - 返回值：`True`: 抑制异常、`False`: 不抑制异常（默认）
 
-::: tip 也可以使用 contextlib 装饰器简化我们的实现
+<br />
+
+#### 使用 `contextlib` 模块上下文管理器
+
+> `python` 的 `contextlib` 模块提供了更简单的方式来创建上下文管理器：
+
+- yield 之前 : `__enter__` 的逻辑
+- yield 之后 : `__exit__` 的逻辑
 
 ::: code-group
 
@@ -144,10 +149,9 @@ with my_context() as r:
 
 ```
 
-- yield 之前 : `__enter__` 的逻辑
-- yield 之后 : `__exit__` 的逻辑
-
 :::
+
+<br />
 
 #### with 执行流程
 
@@ -208,7 +212,8 @@ with lock:
 
 ## 🐡 总结
 
-- with = 上下文管理器的语法糖。
-- 自动处理资源的 初始化 和 释放。
-- 异常安全，代码简洁。
+- `with`: 上下文管理器的语法糖。
+- 上下文协议：需要实现 `__enter__` 和 `__exit__`方法。
+- 可以通过 `class` 或 `contextlib` 创建自定义上下文管理器
+- 自动处理资源的 初始化 和 释放。异常安全，代码简洁。
 - 常见用途：文件操作、锁机制、数据库连接、自定义资源管理。
