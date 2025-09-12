@@ -7,7 +7,7 @@ tags:
 description: 介绍 pytest 的 fixture 用法，包括基础定义、作用范围、依赖嵌套、参数化、自动运行和 conftest.py 等高级技巧，帮助更高效地管理测试环境和资源。
 ---
 
-# pytest 之 fixture 用法
+# Pytest fixture 概念及用法
 
 ## 🚃 fixture 是什么
 
