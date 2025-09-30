@@ -16,18 +16,20 @@ index 3e3e57f4173bbe4b5a93965eca1a6c294ff7fc4f..d31e307ff17cd127edd73d5685dc2cba
  const layout = computed(() => frontmatter.value.layout)
  const isBlogTheme = useBlogThemeMode()
 diff --git a/src/components/BlogHomeInfo.vue b/src/components/BlogHomeInfo.vue
-index 8e4cafa53b268eb81452ce52683d2ce88a804c3c..4c940710f0c3bb9b196af073fdbb927212bce296 100644
+index 8e4cafa53b268eb81452ce52683d2ce88a804c3c..ae66eddf4348f87be00393812650c496c9633365 100644
 --- a/src/components/BlogHomeInfo.vue
 +++ b/src/components/BlogHomeInfo.vue
-@@ -13,13 +13,14 @@ import BlogFriendLink from './BlogFriendLink.vue'
-     <!-- 置顶的一些文章 -->
-     <BlogHotArticle />
+@@ -10,6 +10,9 @@ import BlogFriendLink from './BlogFriendLink.vue'
+     <!-- 统计数据，日后支持，点击筛选出左侧的数据 -->
+     <BlogHomeOverview />
  
 +    <!-- 标签 -->
 +    <BlogHomeTags />
 +
-     <!-- 友链 -->
-     <ClientOnly>
+     <!-- 置顶的一些文章 -->
+     <BlogHotArticle />
+ 
+@@ -18,8 +21,6 @@ import BlogFriendLink from './BlogFriendLink.vue'
        <BlogFriendLink />
      </ClientOnly>
  
@@ -37,7 +39,7 @@ index 8e4cafa53b268eb81452ce52683d2ce88a804c3c..4c940710f0c3bb9b196af073fdbb9272
  </template>
  
 diff --git a/src/components/BlogHomeTags.vue b/src/components/BlogHomeTags.vue
-index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..981b578693d89f85b4bc61ed8893a4e77333523f 100644
+index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9898af14a 100644
 --- a/src/components/BlogHomeTags.vue
 +++ b/src/components/BlogHomeTags.vue
 @@ -20,7 +20,7 @@ const title = computed(() => (typeof homeTagsConfig.value === 'boolean' || !home
@@ -139,12 +141,18 @@ index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..981b578693d89f85b4bc61ed8893a4e7
        </li>
      </ul>
    </div>
-@@ -154,6 +201,9 @@ watch(
-     margin-right: 10px;
-     margin-bottom: 10px;
+@@ -151,9 +198,13 @@ watch(
+   margin-top: 10px;
+ 
+   li {
+-    margin-right: 10px;
+-    margin-bottom: 10px;
++    margin-right: 4px;
++    margin-bottom: 8px;
      cursor: pointer;
 +    .el-tag {
 +      border: none;
++      padding: 0px 6px;
 +    }
    }
  }
