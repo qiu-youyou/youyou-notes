@@ -1,6 +1,6 @@
 ---
 tag:
-  - 这就懂了
+  - 笔记
 tags:
   - JavaScript
 
