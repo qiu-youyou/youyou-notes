@@ -30,7 +30,7 @@ allDocs.forEach((item) => {
 logList.value = allDocsRes
 
 const getTag = (str) => {
-  if(str.startsWith('/note/')) return '发表了一篇笔记'
+  if(str.startsWith('/notes/')) return '发表了一篇笔记'
   if(str.startsWith('/wtf/')) return '记录了一个问题'
   return '发表了一篇笔记'
 }

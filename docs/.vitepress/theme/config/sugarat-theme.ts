@@ -11,7 +11,7 @@ const sugaratTheme = getThemeConfig({
   mermaid: true,
   ...tooltip,
   comment,
-  friend,
+  // friend,
   footer,
   home,
 });

@@ -2,44 +2,69 @@ import type { SidebarItem } from './';
 
 export const sidebarNote: SidebarItem[] = [
   {
+    text: 'WROKFLOW',
+    link: '/notes/workflow/',
+    collapsed: false,
+    items: [],
+  },
+  {
     text: 'HTML/CSS',
-    link: '/note/html-css/',
+    link: '/notes/html-css/',
+    collapsed: false,
+    items: [],
+  },
+
+  {
+    text: 'TypeScript',
+    link: '/notes/typescript/',
     collapsed: false,
     items: [],
   },
   {
     text: 'JavaScript',
-    link: '/note/javascript/',
+    link: '/notes/javascript/',
     collapsed: false,
     items: [],
   },
   {
-    text: 'TypeScript',
-    link: '/note/typescript/',
-    collapsed: false,
-    items: [],
-  },
-  {
-    text: 'Command',
-    link: '/note/command/',
+    text: 'Docker',
+    link: '/notes/docker/',
     collapsed: false,
     items: [],
   },
   {
     text: 'Python',
-    link: '/note/python/',
+    link: '/notes/python/',
+    collapsed: false,
+    items: [],
+  },
+  {
+    text: 'Linux',
+    link: '/notes/linux/',
     collapsed: false,
     items: [],
   },
   {
     text: 'React',
-    link: '/note/react/',
+    link: '/notes/react/',
     collapsed: false,
     items: [],
   },
   {
     text: 'Vue',
-    link: '/note/vue/',
+    link: '/notes/vue/',
+    collapsed: false,
+    items: [],
+  },
+  {
+    text: 'LLM',
+    link: '/notes/llm/',
+    collapsed: false,
+    items: [],
+  },
+  {
+    text: 'PIT',
+    link: '/notes/pit/',
     collapsed: false,
     items: [],
   },

@@ -5,7 +5,7 @@ index 3e3e57f4173bbe4b5a93965eca1a6c294ff7fc4f..d31e307ff17cd127edd73d5685dc2cba
 @@ -21,6 +21,12 @@ import CommentArtalk from './CommentArtalk.vue'
  import BlogButtonAfterArticle from './BlogButtonAfterArticle.vue'
  import BlogCommentWrapper from './BlogCommentWrapper.vue'
- 
+
 +import { useArticles } from '../composables/config/blog'
 +
 +if(typeof window !== 'undefined') {
@@ -15,29 +15,6 @@ index 3e3e57f4173bbe4b5a93965eca1a6c294ff7fc4f..d31e307ff17cd127edd73d5685dc2cba
  const { frontmatter } = useData()
  const layout = computed(() => frontmatter.value.layout)
  const isBlogTheme = useBlogThemeMode()
-diff --git a/src/components/BlogHomeInfo.vue b/src/components/BlogHomeInfo.vue
-index 8e4cafa53b268eb81452ce52683d2ce88a804c3c..ae66eddf4348f87be00393812650c496c9633365 100644
---- a/src/components/BlogHomeInfo.vue
-+++ b/src/components/BlogHomeInfo.vue
-@@ -10,6 +10,9 @@ import BlogFriendLink from './BlogFriendLink.vue'
-     <!-- 统计数据，日后支持，点击筛选出左侧的数据 -->
-     <BlogHomeOverview />
- 
-+    <!-- 标签 -->
-+    <BlogHomeTags />
-+
-     <!-- 置顶的一些文章 -->
-     <BlogHotArticle />
- 
-@@ -18,8 +21,6 @@ import BlogFriendLink from './BlogFriendLink.vue'
-       <BlogFriendLink />
-     </ClientOnly>
- 
--    <!-- 标签 -->
--    <BlogHomeTags />
-   </div>
- </template>
- 
 diff --git a/src/components/BlogHomeTags.vue b/src/components/BlogHomeTags.vue
 index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9898af14a 100644
 --- a/src/components/BlogHomeTags.vue
@@ -49,11 +26,11 @@ index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9
 -  return [...new Set(docs.value.map(v => v.meta.tag || []).flat(3))]
 +  return [...new Set(docs.value.map(v => v.meta.tag || []).flat(3))].filter(v => !!v)
  })
- 
+
  const activeTag = useActiveTag()
 @@ -32,6 +32,25 @@ const isDark = useDark({
  const colorMode = computed(() => (isDark.value ? 'light' : 'dark'))
- 
+
  const tagType: any = ['', 'info', 'success', 'warning', 'danger']
 +
 +const colorType: any = ['#00a7d5', '#00a6dc', '#00a6e2', '#00a4e7', '#00a3ec',
@@ -76,11 +53,11 @@ index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9
 +
  const currentPage = useCurrentPageNum()
  const router = useRouter()
- 
+
 @@ -57,6 +76,11 @@ function handleTagClick(tag: string, type: string) {
    )
  }
- 
+
 +const getStableRandomColor = (key) => {
 +  const hash = Array.from(key).reduce((acc, char) => acc + char.charCodeAt(0), 0)
 +  return colorType[hash % colorType.length]
@@ -143,7 +120,7 @@ index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9
    </div>
 @@ -151,9 +198,13 @@ watch(
    margin-top: 10px;
- 
+
    li {
 -    margin-right: 10px;
 -    margin-bottom: 10px;

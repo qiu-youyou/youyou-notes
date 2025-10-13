@@ -139,3 +139,13 @@
 .recommend-container {
   padding: 0 0 0 0 !important;
 }
+.VPDoc.has-aside .content-container {
+  max-width: 100% !important;
+}
+.VPNavBarTitle.has-sidebar .title {
+  border-bottom: none;
+}
+
+div [command-dialog-wrapper] {
+  max-width: 50%;
+}
