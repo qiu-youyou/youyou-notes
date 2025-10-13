@@ -27,14 +27,14 @@ export const sidebarNote: SidebarItem[] = [
     items: [],
   },
   {
-    text: 'Docker',
-    link: '/notes/docker/',
+    text: 'Python',
+    link: '/notes/python/',
     collapsed: false,
     items: [],
   },
   {
-    text: 'Python',
-    link: '/notes/python/',
+    text: 'Docker',
+    link: '/notes/docker/',
     collapsed: false,
     items: [],
   },
