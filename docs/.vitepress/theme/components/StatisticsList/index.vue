@@ -84,14 +84,14 @@ const handleCardClick = (url) => {
                 </a>
 
                 <div class="card-meta" style="margin-top: 10px">
-                  <span>
+                  <!-- <span>
                     <ElIcon><UserFilled style="transform: translateY(1px)" /></ElIcon>
                     Yòuyou
-                  </span>
-                  <span>
+                  </span> -->
+                  <!-- <span>
                     <ElIcon><Timer style="transform: translateY(2px)" /></ElIcon>
-                    更新于：{{ doc?.date }}
-                  </span>
+                    更新于：{{ doc?.date?.substring(0, 10) }}
+                  </span> -->
                 </div>
               </div>
             </template>
