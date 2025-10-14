@@ -64,7 +64,7 @@ const handleCardClick = (url) => {
         <template v-for="(month, i) in Object.keys(docs)" :key="i">
           <div>
             <div class="title-wrapper">
-              <div class="title" style="left: 10%">
+              <div class="title" style="left: 22%">
                 <span class="title-text">{{ month }}</span>
                 <span class="title-count">- 共 {{ docs[month].length }} 篇</span>
               </div>

@@ -18,6 +18,6 @@ export const nav: DefaultTheme.Config['nav'] = [
     items: getNavItemsBySidebar((sidebar as any)?.['/note']),
   },
   { text: 'Archives', activeMatch: '/archives/', link: '/archives/' },
-  { text: 'ChangeLog', link: '/log/', activeMatch: '/log/' },
+  { text: 'ChangeLog', link: '/changelog/', activeMatch: '/changeLog/' },
   { text: 'Nav', activeMatch: '/nav/', link: '/nav/' },
 ];
