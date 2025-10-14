@@ -91,7 +91,7 @@
 
 .VPSidebar {
   padding: 32px 32px 96px;
-  padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 20px)) / 2)) !important;
+  padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 0px)) / 2)) !important;
 }
 
 .VPSidebarItem.level-0 {
@@ -148,4 +148,8 @@
 
 div [command-dialog-wrapper] {
   max-width: 50%;
+}
+
+.VPDoc > .container > .content {
+  padding: 0 !important;
 }

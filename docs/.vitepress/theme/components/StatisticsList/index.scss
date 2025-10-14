@@ -30,7 +30,7 @@
     .title-count {
       color: var(--vp-c-text-3);
       font-weight: 500;
-      font-size: 14px;
+      font-size: 13px;
       margin: 0 4px;
     }
   }
@@ -38,9 +38,9 @@
 
 .waterfall {
   width: 98%;
-  margin: 50px auto;
+  margin: 40px auto;
   column-count: 5;
-  column-gap: 20px;
+  column-gap: 15px;
   @media (max-width: 1680px) {
     column-count: 4;
   }

@@ -53,10 +53,12 @@ const handleCardClick = (url) => {
 <template>
   <div class="container">
     <div v-if="!!Object.keys(docs).length">
-      <div class="title-wrapper">
-        <div class="title">
-          <span class="title-text">{{ typeArchive?.[route.path]?.text }}</span>
-          <span class="title-count">- 共 {{ docsLength }} 篇</span>
+      <div class="title-wrapper" style="background: none">
+        <div class="title" style="margin-top: 14px">
+          <span class="title-text" style="font-size: 24px; font-weight: 700">
+            {{ typeArchive?.[route.path]?.text }}
+          </span>
+          <span class="title-count" style="font-size: 15px">- 共 {{ docsLength }} 篇</span>
         </div>
       </div>
 
@@ -65,7 +67,7 @@ const handleCardClick = (url) => {
           <div>
             <div class="title-wrapper">
               <div class="title" style="left: 22%">
-                <span class="title-text">{{ month }}</span>
+                <span class="title-text" style="font-family: Georgia, sans-serif">{{ month }}</span>
                 <span class="title-count">- 共 {{ docs[month].length }} 篇</span>
               </div>
             </div>
