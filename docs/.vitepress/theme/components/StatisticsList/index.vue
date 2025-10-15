@@ -28,77 +28,61 @@ const allArticlesRes = {};
 window.docs.forEach(({ route, meta }) => (allArticlesRes[route.replace('index', '')] = meta));
 
 allDocs?.forEach((item) => {
-  if (item.url.startsWith(route.path)) {
+  if (route.path.startsWith('/notes/all')) {
+    allDocsRes.push({ ...item, ...allArticlesRes[item.url] });
+  } else if (item.url.startsWith(route.path)) {
     allDocsRes.push({ ...item, ...allArticlesRes[item.url] });
   }
 });
 
 docsLength.value = allDocsRes.length;
 
-// 文档按照月份分类
-const docsByMonth = {};
-allDocsRes.sort((a, b) => b.date.localeCompare(a.date));
+docs.value = allDocsRes;
 
-allDocsRes.forEach((item) => {
-  const date = item.date.substring(0, 7);
-  (docsByMonth[date] ||= []).push(item);
-});
-docs.value = docsByMonth;
-
-const handleCardClick = (url) => {
-  router.go(url);
+const handleCardClick = (route) => {
+  if (!route) return;
+  // 确保去掉末尾的 'index'
+  const path = String(route).replace(/index$/, '');
+  router.go(path);
 };
 </script>
 
 <template>
   <div class="container">
-    <div v-if="!!Object.keys(docs).length">
-      <div class="title-wrapper" style="background: none">
-        <div class="title" style="margin-top: 14px">
-          <span class="title-text" style="font-size: 24px; font-weight: 700">
+    <div v-if="!!docs.length">
+      <div class="title-wrapper">
+        <div class="title">
+          <span class="title-text">
             {{ typeArchive?.[route.path]?.text }}
           </span>
-          <span class="title-count" style="font-size: 15px">- 共 {{ docsLength }} 篇</span>
+          <span class="title-count">- 共 {{ docsLength }} 篇</span>
         </div>
       </div>
 
-      <div style="margin-top: 80px">
-        <template v-for="(month, i) in Object.keys(docs)" :key="i">
-          <div>
-            <div class="title-wrapper">
-              <div class="title" style="left: 22%">
-                <span class="title-text" style="font-family: Georgia, sans-serif">{{ month }}</span>
-                <span class="title-count">- 共 {{ docs[month].length }} 篇</span>
+      <div>
+        <div class="waterfall">
+          <template v-for="(doc, i) in docs" :key="i">
+            <div class="card" @click.stop="handleCardClick(doc?.url)">
+              <span class="card-title">{{ doc?.title }}</span>
+              <div class="card-description">
+                <span>{{ doc?.description }}</span>
+              </div>
+              <a v-for="(doch2, i) in doc?.extract.h2" :key="i" :href="doc?.url + '#' + doch2" class="card-text">
+                {{ doch2 }}
+              </a>
+              <div class="card-meta" style="margin-top: 10px">
+                <span>
+                  <ElIcon><UserFilled style="transform: translateY(1px)" /></ElIcon>
+                  Yòuyou
+                </span>
+                <span>
+                  <ElIcon><Timer style="transform: translateY(2px)" /></ElIcon>
+                  更新于：{{ doc?.date?.substring(0, 10) }}
+                </span>
               </div>
             </div>
-          </div>
-
-          <div class="waterfall">
-            <template v-for="(doc, i) in docs[month]" :key="i">
-              <div class="card" @click="() => handleCardClick(doc?.url)">
-                <span class="card-title">{{ doc?.title }}</span>
-                <div class="card-description">
-                  <span>{{ doc?.description }}</span>
-                </div>
-
-                <a v-for="(doch2, i) in doc?.extract.h2" :key="i" :href="doc?.url + '#' + doch2" class="card-text">
-                  {{ doch2 }}
-                </a>
-
-                <div class="card-meta" style="margin-top: 10px">
-                  <!-- <span>
-                    <ElIcon><UserFilled style="transform: translateY(1px)" /></ElIcon>
-                    Yòuyou
-                  </span> -->
-                  <!-- <span>
-                    <ElIcon><Timer style="transform: translateY(2px)" /></ElIcon>
-                    更新于：{{ doc?.date?.substring(0, 10) }}
-                  </span> -->
-                </div>
-              </div>
-            </template>
-          </div>
-        </template>
+          </template>
+        </div>
       </div>
     </div>
 

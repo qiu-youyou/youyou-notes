@@ -10,26 +10,35 @@ const docsLength = ref(0);
 
 // 处理所有文档生成摘要
 const allDocsRes = [...window.docs].filter((item) => !item.meta?.hidden) || [];
-const allArticlesRes = {};
-
-allDocsRes.forEach(({ route, meta }) => (allArticlesRes[route.replace('index', '')] = meta));
-
 docsLength.value = allDocsRes.length;
 
-const docsByYearMap = new Map();
+const docsByYearMonthMap = new Map();
 
 allDocsRes
   .sort((a, b) => (b.meta?.date || '').localeCompare(a.meta?.date || ''))
   .forEach((item) => {
-    const year = (item.meta?.date || '').substring(0, 4) || 'Unknown';
-    if (!docsByYearMap.has(year)) {
-      docsByYearMap.set(year, []);
+    const dateStr = item.meta?.date || '';
+    const year = dateStr.substring(0, 4) || 'Unknown';
+    const month = dateStr.substring(5, 7) || 'Unknown';
+
+    if (!docsByYearMonthMap.has(year)) {
+      docsByYearMonthMap.set(year, new Map());
     }
-    docsByYearMap.get(year).push(item);
+    const monthsMap = docsByYearMonthMap.get(year);
+    if (!monthsMap.has(month)) {
+      monthsMap.set(month, []);
+    }
+    monthsMap.get(month).push(item);
   });
 
 // 转成数组方便 Vue v-for 渲染
-docs.value = Array.from(docsByYearMap, ([year, posts]) => ({ year, posts }));
+docs.value = Array.from(docsByYearMonthMap, ([year, monthsMap]) => ({
+  year,
+  months: Array.from(monthsMap, ([month, posts]) => ({
+    month,
+    posts,
+  })),
+}));
 
 // 格式化为 MM-DD，兼容 'YYYY-MM-DD' 和带时区的 ISO 字符串
 const formatMMDD = (dateStr) => {
@@ -65,32 +74,45 @@ const handleCardClick = (route) => {
   <div class="archive-container">
     <div v-if="docs.length">
       <template v-for="(years, i) in docs" :key="i">
-        <h3 class="archive-year">{{ years.year }}</h3>
-        <ul class="archive-list">
-          <li
-            class="post-item"
-            v-for="(item, idx) in years.posts"
-            :key="idx"
-            @click.stop="handleCardClick(item.route)"
-            role="button"
-            tabindex="0">
-            <div class="post-row">
-              <div class="post-left">
-                <span class="dot" aria-hidden="true"></span>
-                <span class="post-title">
-                  {{ item.meta?.title || 'Untitled' }}
+        <h3 class="archive-year">
+          <p class="archive-year-left">{{ years.year }}</p>
+          <p class="archive-year-right">共 {{ docsLength }} 篇</p>
+        </h3>
+
+        <template v-for="(months, idx) in years.months" :key="idx">
+          <h4 class="archive-month">
+            <p class="archive-month-left">{{ months.month }}</p>
+            <p class="archive-month-right">{{ months.posts.length }} 篇</p>
+          </h4>
+          <ul class="archive-list">
+            <li
+              class="post-item"
+              v-for="(item, idx) in months.posts"
+              @click.stop="handleCardClick(item.route)"
+              role="button"
+              tabindex="0"
+              :key="idx">
+              <div class="post-row">
+                <div class="post-left">
+                  <span class="dot" aria-hidden="true"></span>
+                  <span class="post-title">
+                    <span class="post-date">{{ formatMMDD(item.meta?.date) }}</span>
+                    {{ item.meta?.title || 'Untitled' }}
+                  </span>
+                </div>
+
+                <div class="post-right">
                   <div class="post-tags" v-if="getTags(item.meta).length">
                     <span class="tag" v-for="(t, k) in getTags(item.meta)" :key="k">
                       {{ t }}
                       <span class="tag-point" v-if="k != getTags(item.meta).length - 1">·</span>
                     </span>
                   </div>
-                </span>
+                </div>
               </div>
-              <div class="post-right">{{ formatMMDD(item.meta?.date) }}</div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </template>
       </template>
     </div>
 
@@ -101,33 +123,72 @@ const handleCardClick = (route) => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 @import '../StatisticsList/index.scss';
 
 .archive-container {
-  width: 60vw;
-  margin: 10px auto 60px;
-  padding: 0 18px;
+  width: 70vw;
+  height: 100%;
+  padding: 14px 28px;
+  margin: 40px auto 180px auto;
+  border-radius: 12px;
+  background-color: var(--vp-c-bg);
+  box-shadow: var(--vp-shadow-4);
+  transition: all 0.35s;
 }
 
 .archive-year {
-  font-size: 26px;
-  font-weight: 700;
-  margin: 38px 12px 28px 0px;
-  color: var(--vp-c-gray);
+  margin: 10px 0px 10px 0px;
   font-family: Georgia, sans-serif;
+  border-bottom: 1px solid #e0e0e0;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-left {
+    font-size: 28px;
+    color: var(--vp-c-gray);
+    font-weight: 700;
+  }
+  &-right {
+    font-size: 16px;
+    color: var(--vp-c-gray);
+    transform: translateY(8px);
+  }
+}
+
+.archive-month {
+  margin: 10px 0px 10px 10px;
+  font-family: Georgia, sans-serif;
+  border-bottom: 1px solid #ededed;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-left {
+    font-size: 24px;
+    color: var(--vp-c-gray);
+    font-weight: 700;
+  }
+  &-right {
+    font-size: 13px;
+    color: var(--vp-c-gray);
+    transform: translateY(8px);
+  }
 }
 
 .archive-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0px 0 10px;
 }
 
 .post-item {
-  padding: 3px 8px;
+  padding: 4px 8px;
   display: block;
   cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.35s;
 }
 
 .post-row {
@@ -151,6 +212,7 @@ const handleCardClick = (route) => {
   border-radius: 50%;
   display: inline-block;
   margin-left: 4px;
+  transform: translateY(1px);
 }
 
 .post-title {
@@ -158,9 +220,17 @@ const handleCardClick = (route) => {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   font-family: 'PingFang SC', 'Microsoft Yahei', sans-serif;
+}
+
+.post-date {
+  color: var(--vp-c-text-2);
+  font-size: 15px;
+  min-width: 72px;
+  margin-right: 12px;
+  font-family: Georgia, sans-serif;
 }
 
 .post-right {
@@ -172,23 +242,21 @@ const handleCardClick = (route) => {
 }
 
 .post-tags {
-  margin-left: 20px;
   display: inline-block;
   flex-wrap: wrap;
   background-color: var(--vp-c-bg-soft);
   border-radius: 10px;
   padding: 0px 10px;
   height: 20px;
-  line-height: 18px;
+  line-height: 17px;
   transform: translateY(-1px);
 }
 
 .tag-point {
   font-weight: 700;
   font-size: 20px;
-  vertical-align: bottom;
-  margin-right: 4px;
-  /* padding: 0 8px; */
+  vertical-align: top;
+  margin: 0 4px 0 2px;
 }
 
 .tag {
@@ -197,8 +265,12 @@ const handleCardClick = (route) => {
   padding: 0;
 }
 
-.post-item:hover .post-title {
-  color: var(--vp-c-brand-1);
+.post-item:hover {
+  .post-title {
+    color: var(--vp-c-brand-1);
+  }
+  background-color: var(--vp-c-bg-soft);
+  transform: translateX(15px);
 }
 
 .empty-wrap {
@@ -207,9 +279,31 @@ const handleCardClick = (route) => {
   text-align: center;
 }
 
+@media (max-width: 1680px) {
+  .archive-container {
+    width: 70vw;
+  }
+}
+@media (max-width: 1200px) {
+  .archive-container {
+    width: 70vw;
+  }
+}
+@media (max-width: 960px) {
+  .archive-container {
+    width: 80vw;
+  }
+}
+@media (max-width: 600px) {
+  .archive-container {
+    width: 90vw;
+  }
+}
+
 @media (max-width: 720px) {
   .archive-container {
     padding: 0 12px;
+    width: 90vw;
   }
   .post-right {
     min-width: 56px;

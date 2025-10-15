@@ -1,13 +1,16 @@
 .container {
-  width: 100%;
+  width: 98vw;
   min-height: 100vh;
-  background-color: var(--vp-c-bg-soft);
   padding: 45px 10px;
+  border-radius: 12px;
+  background-color: var(--vp-c-bg);
+  // box-shadow: var(--vp-shadow-4);
+  margin: 0 auto;
 }
 
 .title-wrapper {
   width: 100%;
-  margin: 0 auto;
+  margin: 20px auto 70px auto;
   height: 1px;
   background: var(--vp-c-gray-2);
   position: relative;
@@ -16,28 +19,28 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%) translateY(-50%);
-    background: var(--vp-c-bg-soft);
+    background: var(--vp-c-bg);
     padding: 0 var(--weiz-spacing-8xl);
     font-size: var(--weiz-font-size-xl);
     font-weight: var(--weiz-font-weight-bold);
     line-height: var(--weiz-text-xl-line-height);
     text-align: center;
-    padding: 0 25px;
+    padding: 0 50px;
     .title-text {
-      font-size: 20px;
+      font-size: 26px;
       font-weight: 700;
     }
     .title-count {
       color: var(--vp-c-text-3);
       font-weight: 500;
-      font-size: 13px;
+      font-size: 14px;
       margin: 0 4px;
     }
   }
 }
 
 .waterfall {
-  width: 98%;
+  width: 100%;
   margin: 40px auto;
   column-count: 5;
   column-gap: 15px;
@@ -58,14 +61,14 @@
 .card {
   break-inside: avoid;
   border-radius: 8px;
-  margin-bottom: 16px;
-  padding: 16px;
+  margin-bottom: 15px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   --nav-icon-box-size: 45px;
   --nav-icon-size: 40px;
   --nav-box-gap: 12px;
-  border: 1px solid var(--vp-c-bg);
+  border: 1px solid var(--vp-c-gray-3);
   border-radius: 12px;
   height: 100%;
   background-color: var(--vp-c-bg);
@@ -77,14 +80,16 @@
 .card:hover {
   text-decoration: initial;
   // border-color: var(--vp-c-brand);
-  transform: scale(1.03);
+  transform: scale(1.02);
+  box-shadow: var(--vp-shadow-4);
 }
 
 .card-title {
   font-size: 16px;
   font-weight: bold;
   text-decoration: none;
-  margin-bottom: 4px;
+  margin-top: 4px;
+  margin-bottom: 6px;
   transition: color 0.35s;
   &:hover {
     color: var(--vp-c-brand-1);

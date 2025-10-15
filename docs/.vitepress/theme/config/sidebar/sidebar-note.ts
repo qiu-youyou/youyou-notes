@@ -68,4 +68,10 @@ export const sidebarNote: SidebarItem[] = [
     collapsed: false,
     items: [],
   },
+  // {
+  //   text: 'All',
+  //   link: '/notes/all/',
+  //   collapsed: false,
+  //   items: [],
+  // },
 ];

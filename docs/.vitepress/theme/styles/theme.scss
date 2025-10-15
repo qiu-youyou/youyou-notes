@@ -153,3 +153,9 @@ div [command-dialog-wrapper] {
 .VPDoc > .container > .content {
   padding: 0 !important;
 }
+
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  border-radius: 50% !important;
+}
