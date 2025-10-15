@@ -89,11 +89,6 @@
   border-top: 1px solid var(--vp-c-divider);
 }
 
-.VPSidebar {
-  padding: 32px 32px 96px;
-  padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 0px)) / 2)) !important;
-}
-
 .VPSidebarItem.level-0 {
   padding-bottom: 14px !important;
 }
@@ -151,11 +146,19 @@ div [command-dialog-wrapper] {
 }
 
 .VPDoc > .container > .content {
-  padding: 0 !important;
+  // padding: 0 !important;
 }
 
 .el-pagination.is-background .btn-next,
 .el-pagination.is-background .btn-prev,
 .el-pagination.is-background .el-pager li {
   border-radius: 50% !important;
+}
+@media (min-width: 1440px) {
+}
+
+@media (min-width: 1440px) {
+}
+
+@media (min-width: 1440px) {
 }
