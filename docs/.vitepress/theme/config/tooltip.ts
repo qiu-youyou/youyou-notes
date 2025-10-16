@@ -73,7 +73,15 @@ export default {
   //   icon: 'aliPay',
   // },
 
-  recommend: { nextText: '换一组', pageSize: 9 },
+  recommend: {
+    title: '🔍 相关文章推荐',
+    nextText: '换一组',
+    empty: '暂无相关文章',
+    pageSize: 5,
+    sort: 'date',
+    showDate: true,
+    showNum: false,
+  },
 
   search: {
     btnPlaceholder: '搜索',

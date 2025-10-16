@@ -133,10 +133,10 @@
   // }
 }
 
-.VPSidebar,
-.VPNavBar.has-sidebar .title {
-  padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 0px)) / 2)) !important;
-}
+// .VPSidebar,
+// .VPNavBar.has-sidebar .title {
+// padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 0px)) / 2)) !important;
+// }
 
 .VPSidebar {
   padding-right: 10px !important;
@@ -144,4 +144,14 @@
 
 .VPDoc.has-aside .content-container {
   max-width: 100% !important;
+}
+
+@media (min-width: 1440px) {
+  .VPSidebar {
+    padding-left: max(32px, calc((100% - (var(--vp-layout-max-width))) / 2)) !important;
+    // padding-left: 20px !important;
+  }
+  .VPContent.has-sidebar[data-v-3da4a633] {
+    padding-right: calc((100vw - var(--vp-layout-max-width) - 70px) / 2);
+  }
 }

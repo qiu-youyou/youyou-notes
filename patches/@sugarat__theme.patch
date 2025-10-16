@@ -5,7 +5,7 @@ index 3e3e57f4173bbe4b5a93965eca1a6c294ff7fc4f..d31e307ff17cd127edd73d5685dc2cba
 @@ -21,6 +21,12 @@ import CommentArtalk from './CommentArtalk.vue'
  import BlogButtonAfterArticle from './BlogButtonAfterArticle.vue'
  import BlogCommentWrapper from './BlogCommentWrapper.vue'
-
+ 
 +import { useArticles } from '../composables/config/blog'
 +
 +if(typeof window !== 'undefined') {
@@ -15,6 +15,27 @@ index 3e3e57f4173bbe4b5a93965eca1a6c294ff7fc4f..d31e307ff17cd127edd73d5685dc2cba
  const { frontmatter } = useData()
  const layout = computed(() => frontmatter.value.layout)
  const isBlogTheme = useBlogThemeMode()
+diff --git a/src/components/BlogHomeInfo.vue b/src/components/BlogHomeInfo.vue
+index 8e4cafa53b268eb81452ce52683d2ce88a804c3c..4c940710f0c3bb9b196af073fdbb927212bce296 100644
+--- a/src/components/BlogHomeInfo.vue
++++ b/src/components/BlogHomeInfo.vue
+@@ -13,13 +13,14 @@ import BlogFriendLink from './BlogFriendLink.vue'
+     <!-- 置顶的一些文章 -->
+     <BlogHotArticle />
+ 
++    <!-- 标签 -->
++    <BlogHomeTags />
++
+     <!-- 友链 -->
+     <ClientOnly>
+       <BlogFriendLink />
+     </ClientOnly>
+ 
+-    <!-- 标签 -->
+-    <BlogHomeTags />
+   </div>
+ </template>
+ 
 diff --git a/src/components/BlogHomeTags.vue b/src/components/BlogHomeTags.vue
 index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9898af14a 100644
 --- a/src/components/BlogHomeTags.vue
@@ -26,11 +47,11 @@ index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9
 -  return [...new Set(docs.value.map(v => v.meta.tag || []).flat(3))]
 +  return [...new Set(docs.value.map(v => v.meta.tag || []).flat(3))].filter(v => !!v)
  })
-
+ 
  const activeTag = useActiveTag()
 @@ -32,6 +32,25 @@ const isDark = useDark({
  const colorMode = computed(() => (isDark.value ? 'light' : 'dark'))
-
+ 
  const tagType: any = ['', 'info', 'success', 'warning', 'danger']
 +
 +const colorType: any = ['#00a7d5', '#00a6dc', '#00a6e2', '#00a4e7', '#00a3ec',
@@ -53,11 +74,11 @@ index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9
 +
  const currentPage = useCurrentPageNum()
  const router = useRouter()
-
+ 
 @@ -57,6 +76,11 @@ function handleTagClick(tag: string, type: string) {
    )
  }
-
+ 
 +const getStableRandomColor = (key) => {
 +  const hash = Array.from(key).reduce((acc, char) => acc + char.charCodeAt(0), 0)
 +  return colorType[hash % colorType.length]
@@ -120,7 +141,7 @@ index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9
    </div>
 @@ -151,9 +198,13 @@ watch(
    margin-top: 10px;
-
+ 
    li {
 -    margin-right: 10px;
 -    margin-bottom: 10px;
@@ -134,3 +155,78 @@ index 2140149e2113c530c122a2d3f6b5e11acbf7b12f..711234787ff1fb1dc1ee09eff04517c9
    }
  }
  </style>
+diff --git a/src/components/BlogRecommendArticle.vue b/src/components/BlogRecommendArticle.vue
+index 891d99cc94deb73c236fe2fef2ab1ec27280832d..f3a9a5c667c75c15d4d97b585ba3e72acea65e6b 100644
+--- a/src/components/BlogRecommendArticle.vue
++++ b/src/components/BlogRecommendArticle.vue
+@@ -19,6 +19,7 @@ const sidebarStyle = computed(() =>
+ const showDate = computed(() => recommend.value?.showDate ?? true)
+ const showNum = computed(() => recommend.value?.showNum ?? true)
+ 
++const icon = `<span class="svg-icon">${recommendSVG}</span>`
+ const title = computed(() => recommend.value?.title ?? (`<span class="svg-icon">${recommendSVG}</span>` + '相关文章'))
+ const pageSize = computed(() => recommend.value?.pageSize || 9)
+ const nextText = computed(() => recommend.value?.nextText || '换一组')
+@@ -139,11 +140,11 @@ const showChangeBtn = computed(() => {
+ 
+ onMounted(() => {
+   // 更新当前页，确保访问页面在列表中
+-  const currentPageIndex = recommendList.value.findIndex(v => isCurrentDoc(v.route))
+-  if (currentPageIndex === -1)
+-    return
+-  const currentPageNum = Math.floor(currentPageIndex / pageSize.value) + 1
+-  currentPage.value = currentPageNum
++  // const currentPageIndex = recommendList.value.findIndex(v => isCurrentDoc(v.route))
++  // if (currentPageIndex === -1)
++    // return
++  // const currentPageNum = Math.floor(currentPageIndex / pageSize.value) + 1
++  // currentPage.value = currentPageNum
+ })
+ 
+ const cleanUrls = useCleanUrls()
+@@ -177,6 +178,7 @@ function handleLinkClick(link: string) {
+       >
+         <!-- 序号 -->
+         <i v-if="showNum" class="num">{{ startIdx + idx + 1 }}</i>
++        <i style="transform: translateY(4px);" v-html="icon"></i>
+         <!-- 简介 -->
+         <div class="des">
+           <!-- title -->
+@@ -269,14 +271,16 @@ function handleLinkClick(link: string) {
+     }
+ 
+     .title {
+-      font-size: 14px;
+-      color: var(--vp-c-text-1);
++      font-size: 13px;
++      color: var(--vp-c-text-2);
+       word-break: break-all;
+       white-space: break-spaces;
+-      font-weight: 500;
++      font-weight: 400;
+       position: relative;
+       cursor: pointer;
+       transition: color .25s;
++      letter-spacing: -0.5px;
++      font-family: Georgia, sans-serif;
+       &.current,&:hover {
+         color: var(--vp-c-brand-1);
+       }
+@@ -295,6 +299,9 @@ function handleLinkClick(link: string) {
+     .suffix {
+       font-size: 12px;
+       color: var(--vp-c-text-2);
++      .tag {
++        font-family: Georgia, sans-serif;
++      }
+     }
+   }
+ }
+@@ -308,6 +315,7 @@ function handleLinkClick(link: string) {
+ 
+   .title {
+     font-size: 14px;
++    font-weight: 500;
+     display: flex;
+     align-items: center;
+   }
