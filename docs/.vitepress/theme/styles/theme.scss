@@ -61,7 +61,6 @@
 
 .VPPage {
   width: 100%;
-  border-top: 1px solid var(--vp-c-divider);
 }
 
 .VPSidebarItem.level-0 {
@@ -96,7 +95,7 @@
 }
 
 .VPNavBarTitle.has-sidebar .title {
-  // border-bottom: none;
+  border-bottom: none;
 }
 
 .el-pagination.is-background .btn-next,
