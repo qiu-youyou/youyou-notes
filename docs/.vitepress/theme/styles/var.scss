@@ -94,8 +94,8 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
-// siderbar 宽度
 :root {
-  // --vp-layout-max-width: 1440px + 100px;
-  // --vp-sidebar-width: 240px;
+  --medium-zoom-z-index: 100;
+  --medium-zoom-c-bg: var(--vp-c-bg);
+  // --vp-sidebar-width: 340px;
 }

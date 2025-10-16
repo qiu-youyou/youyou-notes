@@ -11,7 +11,7 @@ export const pressTheme: DefaultTheme.Config = {
   lastUpdatedText: '最后更新于',
   lightModeSwitchTitle: '切换到浅色模式',
   darkModeSwitchTitle: '切换到深色模式',
-  outline: { level: [2, 3], label: '目录' },
+  outline: { level: [2, 3], label: '本页导航' },
   docFooter: { prev: '上一篇', next: '下一篇' },
   lastUpdated: {
     formatOptions: { dateStyle: 'short', timeStyle: 'medium' },
