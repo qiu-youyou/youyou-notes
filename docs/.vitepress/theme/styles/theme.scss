@@ -150,7 +150,7 @@
     padding-left: max(32px, calc((100% - (var(--vp-layout-max-width))) / 2)) !important;
     // padding-left: 20px !important;
   }
-  .VPContent.has-sidebar[data-v-3da4a633] {
-    padding-right: calc((100vw - var(--vp-layout-max-width) - 70px) / 2);
+  .VPContent.has-sidebar {
+    padding-right: calc((100vw - var(--vp-layout-max-width) - 60px) / 2) !important;
   }
 }
