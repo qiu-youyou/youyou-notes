@@ -17,6 +17,8 @@ date: 2024-07-08 11:27:51
 
 ## 🎄 number 数值类型
 
+::: code-group
+
 ```ts
 let num: number = 123;
 num = 0b1111011; // 二进制的123
@@ -24,11 +26,15 @@ num = 0o173; // 八进制的123
 num = 0x7b; // 十六进制的123
 ```
 
+:::
+
 ::: tip
 TS 中指定类型的时候要用 `number` ，这个是 `TypeScript` 的类型关键字。而 `Number` 为 `JavaScript` 的原生构造函数，用它来创建数值类型的值。
 :::
 
 ## 🎄 string 字符串
+
+::: code-group
 
 ```ts
 let str: string = 'hello';
@@ -36,14 +42,22 @@ const str2 = 'typescript';
 str = `${str} ${str2}`; // hello typescript
 ```
 
+:::
+
 ## 🎄 boolean 布尔类型
+
+::: code-group
 
 ```ts
 let bool: boolean = false;
 let bool1: boolean = !!0; // false
 ```
 
+:::
+
 ## 🎄 null 和 undefined
+
+::: code-group
 
 ```ts
 const u: undefined = undefined;
@@ -52,6 +66,8 @@ let str: string | null = 'abc';
 str = null;
 str = undefined; // 不能将类型“undefined”分配给类型“string | null”
 ```
+
+:::
 
 ::: tip undefined 和 null
 在 JavaScript 中，undefined 和 null 是两个基本数据类型。
@@ -79,6 +95,8 @@ sum(1, null); // error Argument of type 'null' is not assignable to parameter of
 
 ## 🎄 symbol
 
+::: code-group
+
 ```ts
 // symbol是 ES6 新增的一种基本数据类型，用来表示独一无二的值。
 const s1 = Symbol('s1');
@@ -91,6 +109,8 @@ let name = Symbol();
 let obj = { [name]: 'walawala' };
 console.log(obj); // { Symbol(): 'walawala' }
 ```
+
+:::
 
 ::: tip symbol
 symbol 类型值作为属性名，这个属性不会被 for…in 遍历到,
@@ -137,6 +157,8 @@ ES6 提供了 11 个内置的 Symbol 值，可自行搜索查看。
 
 ## 🎄 `Array<any>` 或 []
 
+::: code-group
+
 ```ts
 // 字面量创建
 const arr: [] = [];
@@ -158,7 +180,11 @@ type User = { name: string; age: number };
 const objectArr: User[] = [{ name: 'ls', age: 18 }];
 ```
 
+:::
+
 ## 🎄 object 或 {}
+
+::: code-group
 
 ```ts
 // 字面量创建
@@ -172,6 +198,8 @@ function getKeys(obj: object) {
   return Object.keys(obj);
 }
 ```
+
+:::
 
 ::: tip {}、object 和 Object
 

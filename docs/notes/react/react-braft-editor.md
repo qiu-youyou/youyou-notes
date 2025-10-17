@@ -17,13 +17,19 @@ date: 2024-06-25 19:55:37
 
 ## 😊 安装 BraftEditor
 
+::: code-group
+
 ```sh
 yarn add braft-editor
 ```
 
+:::
+
 ## 😊 实现 基础的富文本组件
 
 1. 创建组件
+
+::: code-group
 
 ```sh
 mkdir RichText
@@ -31,8 +37,12 @@ cd RichiText
 touch index.tsx controls.ts
 ```
 
+:::
+
 2. controls.ts
    这里主要是富文本编辑器的一些默认配置，更多配置可以查询[（文档）](https://www.yuque.com/braft-editor/be/gz44tn?inner=228cedf3)
+
+::: code-group
 
 ```ts
 export const richTextControls: any = [
@@ -83,7 +93,11 @@ export const richTextControls: any = [
 ];
 ```
 
+:::
+
 3. index.tsx
+
+::: code-group
 
 ```tsx
 
@@ -176,9 +190,13 @@ export default (props: Props) => {
 };
 ```
 
+:::
+
 ## 😊 createEditorState 方法
 
 可以使用 `BraftEditor.createEditorState` 方法来将 `raw`或者 `html`格式的数据转换成 `editorState` 数据
+
+::: code-group
 
 ```tsx
 // 引入EditorState
@@ -193,7 +211,11 @@ const htmlString = `<p>Hello <b>World!</b></p>`;
 const editorState2 = BraftEditor.createEditorState(htmlString);
 ```
 
+:::
+
 将 `editorState` 数据转换成 `raw` 或者 `html`
+
+::: code-group
 
 ```tsx
 // 将editorState数据转换成RAW字符串
@@ -205,6 +227,8 @@ const rawJSON = editorState.toRAW(true);
 // 将editorState数据转换成html字符串
 const htmlString = editorState.toHTML();
 ```
+
+:::
 
 :::tip
 在实际项目中，`editorState` 对象无法用于展示也无法用于持久化存储,

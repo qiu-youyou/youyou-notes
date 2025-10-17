@@ -11,6 +11,8 @@ date: 2024-06-19 22:38:15
 
 ## 🔋 完整代码
 
+::: code-group
+
 ```tsx
 import { useState } from 'react';
 import { message, Upload } from 'antd';
@@ -73,3 +75,5 @@ export default (props: Props) => {
   );
 };
 ```
+
+:::

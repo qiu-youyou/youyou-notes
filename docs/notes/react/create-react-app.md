@@ -276,6 +276,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 - 一个请求示例
 
+::: code-group
 
 ```ts [src/store/slice/demo.ts]
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
@@ -326,6 +327,10 @@ export const { set_demo_select_data } = demoSlice.actions;
 export default demoSlice.reducer;
 ```
 
+:::
+
+::: code-group
+
 ```tsx [scr/pages/demo/index.tsx]
 import { useEffect } from 'react';
 import styles from './index.module.scss';
@@ -361,6 +366,8 @@ function Demo() {
 export default Demo;
 ```
 
+:::
+
 ::: tip 项目的数据流向梳理 > 组件设计
 数据清晰 组件写的烂很好重构。 数据乱即使组件优雅，也没法重构。
 :::
@@ -374,6 +381,8 @@ export default Demo;
 ## 🔦 渲染错误捕捉
 
 - ErrorBoundary
+
+::: code-group
 
 ```tsx [src/components/ErrorBoundary.tsx]
 import React from 'react';
@@ -413,8 +422,12 @@ class ErrorBoundary extends React.Component {
 export default ErrorBoundary;
 ```
 
+:::
+
 - 全局引入， 简单粗暴。
 - 如果某些组件不稳定， 可以单独对这个组件进行 包装。
+
+::: code-group
 
 ```tsx{1,6,8} [src/index.tsx]
 import ErrorBoundary from '@/components/ErrorBoundary';
@@ -430,9 +443,13 @@ root.render(
 );
 ```
 
+:::
+
 ## 🔦 检测渲染次数
 
 - 自定义 hook useRenderCheck 检测组件渲染次数
+
+::: code-group
 
 ```tsx [@/hooks/useRenderCheck]
 import { useRef } from 'react';
@@ -447,6 +464,8 @@ function useRenderCheck(cp_name: string) {
 export default useRenderCheck;
 ```
 
+:::
+
 ::: tip
 
 - `react` 的最大的性能损耗其实就是 `render` 的调用。
@@ -459,6 +478,8 @@ export default useRenderCheck;
 ## 🔦 解决多次渲染
 
 - useMemo、useCallback 结合 React.memo
+
+::: code-group
 
 ```tsx{11} [使用 React.memo]
 import React from 'react';
@@ -474,7 +495,13 @@ function TestMemo() {
 export default React.memo(TestMemo);
 ```
 
-```tsx{11} [使用 useMemo、useCallback]
+:::
+
+- 使用 useMemo、useCallback
+
+::: code-group
+
+```tsx{11} []
 import React from 'react';
 
 function Test() {
@@ -490,6 +517,8 @@ function Test() {
 export default React.memo(Test);
 ```
 
+:::
+
 ::: tip
 useMemo、useCallback 进行渲染次数优化，要结合 React.memo。
 使用 memo 的原则，一定是你已经发现这个组件有性能问题，不要轻易使用，本身就有性能消耗。
@@ -504,6 +533,8 @@ useMemo, 和 useCallback 是优化组要接受 props 的组件。
 
 - 使用 `useDeferredValue` 开启并发更新。可以让你延迟更新 `UI` 的某些部分。
 
+::: code-group
+
 ```tsx
 import { useState, useDeferredValue } from 'react';
 
@@ -514,7 +545,11 @@ function SearchPage() {
 }
 ```
 
+:::
+
 - 使用 `useTransition` 在不阻塞 `UI` 的情况下更新状态，将状态更新标记为非阻塞的。
+
+::: code-group
 
 ```tsx
 function TabContainer() {
@@ -530,6 +565,8 @@ function TabContainer() {
 }
 ```
 
+:::
+
 ::: tip useDeferredValue 和 useTransition 的区别
 
 - `useTransition` 适合用于对 `setState` 引起的渲染进行优化。
@@ -542,6 +579,8 @@ function TabContainer() {
 ## 🔦 分包加载
 
 - 分包对页面进行懒加载。可以加速 `spa` 项目的加载速度。
+
+::: code-group
 
 ```tsx
 const AsyncDemoPage1 = lazy(() => import(/* webpackChunkName: "demo_page_1" */ './pages/demo_page_1'));
@@ -563,6 +602,8 @@ function DemoPage2() {
   );
 }
 ```
+
+:::
 
 - 分包前后打包后的静态文件：
 

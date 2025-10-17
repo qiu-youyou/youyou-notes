@@ -11,6 +11,8 @@ date: 2024-06-12 16:12:28
 
 ## 🛀 完整代码
 
+::: code-group
+
 ```tsx
 import { Mentions } from 'antd';
 import { useCallback, useState } from 'react';
@@ -79,3 +81,5 @@ export default (props: MentionsProps) => {
   );
 };
 ```
+
+:::

@@ -75,6 +75,7 @@ class Person {
 ```
 
 :::
+
 子继承父类并使用 `constructor` ，就必须使用 `super()` 调用父类的 `constructor`, 并按照父类的参数规则使用。
 
 ::: code-group
@@ -357,6 +358,7 @@ class FoodClass implements FoodInterface {
 ```
 
 :::
+
 ::: tip
 
 接口检测的是使用该接口定义的类创建的实例: (属性不会添加到实例上)

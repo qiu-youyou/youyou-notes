@@ -15,6 +15,8 @@ date: 2024-08-03 12:15:40
 
 - 泛型：在定义函数、接口或类的时候不预先指定数据类型，而是在使用时再指定类型的 特性。
 
+::: code-group
+
 ```ts
 // before
 const pushStrArr = (arr: string[], item: string): string[] => {
@@ -38,12 +40,16 @@ pushArr<number>([1, 2, 3, 4], 5);
 pushArr<string>(['a', 'b', 'c', 'd'], 'e');
 ```
 
+:::
+
 > 在调用 pushArr 的时候，在方法名后面使用<>传入了 泛型变量 T 的类型 number，那么在定义 pushArr 函数时使用 T 指定类型的地方，都会使用 number 指定。
 
 ## 🎐 泛型变量
 
 - 泛型变量，这是一种特殊的变量，只用于表示类型而不是值。
   > 其实可以把这个 T U 当作是一个 所有的可能 的一种类型，这个类型是使用者决定的。
+
+::: code-group
 
 ```ts
 function swapGeneric<T, U>(tuple: [T, U]): [U, T] {
@@ -57,11 +63,15 @@ result2[0].toFixed(2);
 result2[1].toLocaleUpperCase();
 ```
 
+:::
+
 ## 🎐 泛型约束
 
 - 属性约束
 
 使用一个类型和 extends 对泛型进行约束。
+
+::: code-group
 
 ```ts
 // 使用接口定义一个对象必须有哪些属性：
@@ -79,9 +89,13 @@ getLength({ length: 3 }); // 3
 getLength(123); // 类型“number”的参数不能赋给类型“ValueWithLength”的参数。
 ```
 
+:::
+
 - 类型参数约束
 
 当定义一个对象，想要对 只能访问对象上存在的属性 做要求时 比如：
+
+::: code-group
 
 ```ts
 const getProps = (object, propName) => {
@@ -91,7 +105,11 @@ const obj = { a: 'aa', b: 'bb' };
 getProps(obj, 'c'); // undefined 访问这个对象的c属性时，这个属性是没有的
 ```
 
+:::
+
 需要用到索引类型 keyof 结合泛型来实现对这个问题的检查：
+
+::: code-group
 
 ```ts
 const getProp = <T, K extends keyof T>(object: T, propName: K) => {
@@ -104,11 +122,15 @@ const obj = { a: 'aa', b: 'bb' };
 getProp(obj, 'c'); // 类型“"c"”的参数不能赋给类型“"a" | "b"”的参数
 ```
 
+:::
+
 可以理解为 keyof 的 T 相当于一个由泛型变量 T 的属性名构成的联合类型。
 
 ## 🎐 泛型函数
 
 - 简单定义
+
+::: code-group
 
 ```ts
 const getArray: <T>(arg: T, times: number) => T[] = (arg, times) => {
@@ -116,7 +138,12 @@ const getArray: <T>(arg: T, times: number) => T[] = (arg, times) => {
 };
 ```
 
+:::
+
 - 使用类型别名
+
+
+::: code-group
 
 ```ts
 type GetArray = <T>(arg: T, times: number) => T[];
@@ -125,7 +152,13 @@ const getArray: GetArray = <T>(arg: T, times: number): T[] => {
 };
 ```
 
+
+:::
+
 - 使用接口
+
+::: code-group
+
 
 ```ts
 interface GetArray {
@@ -136,9 +169,13 @@ const getArray: GetArray = <T>(arg: T, times: number): T[] => {
 };
 ```
 
+:::
+
 ## 🎐 泛型类
 
 - 定义一个类，实现被 push 入的队列元素与 pop 出的元素的类型一致:
+
+::: code-group
 
 ```ts
 class Queue<T> {
@@ -157,9 +194,13 @@ queue.push(1);
 queue.push('str'); // Error: 类型“string”的参数不能赋给类型“number”的参数。
 ```
 
+:::
+
 ## 🎐 泛型接口
 
 - 泛型接口描述的对象:
+
+::: code-group
 
 ```ts
 interface KeyPair<T, U> {
@@ -171,7 +212,12 @@ let kp1: KeyPair<number, string> = { key: 123, value: 'str' };
 let kp2: KeyPair<string, number> = { key: 'test', value: 123 };
 ```
 
+
+:::
+
 - 泛型接口的描述函数
+
+::: code-group
 
 ```ts
 interface Plus<T> {
@@ -191,3 +237,5 @@ const b: Plus<string> = concat;
 
 const c: Plus<number> = concat; // 不能将类型“(a: string, b: string) => string”分配给类型“Plus<number>”。 参数“a”和“a” 的类型不兼容。
 ```
+
+:::

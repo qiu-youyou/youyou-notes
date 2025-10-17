@@ -19,13 +19,19 @@ date: 2024-07-15 18:36:04
 
 - 普通函数
 
+::: code-group
+
 ```ts
 function addFun(arg1: number, arg2: number): number {
   return arg1 + arg2;
 }
 ```
 
+:::
+
 - 箭头函数
+
+::: code-group
 
 ```ts
 const addFun = (arg1: number, arg2: number): number => {
@@ -33,7 +39,11 @@ const addFun = (arg1: number, arg2: number): number => {
 };
 ```
 
+:::
+
 - 匿名函数
+
+::: code-group
 
 ```ts
 let addFun: (arg1: number, arg2: number) => number;
@@ -44,6 +54,8 @@ addFun = (arg1, arg2) => {
   return arg1 + arg2;
 };
 ```
+
+:::
 
 ::: tip
 
@@ -58,6 +70,8 @@ addFun = (arg1, arg2) => {
 
 #### 使用接口
 
+::: code-group
+
 ```ts
 interface AddFun {
   (x: number, y: number): number;
@@ -66,7 +80,11 @@ let addFun: AddFun = (arg1: string, arg2: string): string => arg1 + arg2;
 // error 不能将类型“(arg1: string, arg2: string) => string”分配给类型“AddFun”
 ```
 
+:::
+
 #### 使用类型别名
+
+::: code-group
 
 ```ts
 type AddFun = (x: number, y: number) => number;
@@ -74,11 +92,15 @@ let addFun: AddFun = (arg1: string, arg2: string): string => arg1 + arg2;
 // error 不能将类型“(arg1: string, arg2: string) => string”分配给类型“AddFun”
 ```
 
+:::
+
 ## 🎏 函数参数
 
 #### 可选参数
 
 可选参数 需在参数名后跟随一个 `?`。
+
+::: code-group
 
 ```ts
 let add = (arg1: number, arg2?: number): number => arg1 + arg2;
@@ -86,6 +108,8 @@ add(1);
 add(1, 2);
 type AddFun = (x?: number, y: number) => number; // error 必选参数不能位于可选参数后。
 ```
+
+:::
 
 ::: tip
 
@@ -99,12 +123,16 @@ type AddFun = (x?: number, y: number) => number; // error 必选参数不能位�
 
 定义函数时 直接在参数后面使用 `=` 连接默认值。
 
+::: code-group
+
 ```ts
 const addFun = (arg1: number, arg2: number = 2): number => {
   return arg1 + arg2;
 };
 addFun(1); // 3
 ```
+
+:::
 
 ::: tip
 
@@ -118,6 +146,8 @@ addFun(1); // 3
 
 使用 `ES6` 的 `…` 拓展运算符 用来处理任意数量的参数。
 
+::: code-group
+
 ```ts
 const handleArgs = (arg1: number, ...args: number[]) => {
   console.log(args);
@@ -125,6 +155,8 @@ const handleArgs = (arg1: number, ...args: number[]) => {
 handleArgs(1, 2, 3, 4, 5); // [ 2, 3, 4, 5 ]
 handleArgs(1, 'a'); // 类型“string”的参数不能赋给类型“number”的参数
 ```
+
+:::
 
 ::: tip
 
@@ -144,6 +176,8 @@ handleArgs(1, 'a'); // 类型“string”的参数不能赋给类型“number”
 
 - `TS`函数重载不能使用箭头函数, 重载只能用 `function` 来定义，不能使用接口、类型别名等。
 
+::: code-group
+
 ```ts
 // 指定当参数类型为string时，返回值为string类型的元素构成的数组
 function handleData(x: string): string[];
@@ -161,3 +195,5 @@ andleData('abc').join('_');
 handleData(123).join('_'); // error 类型"string"上不存在属性"join"
 handleData(false); // error 类型"boolean"的参数不能赋给类型"number"的参数。
 ```
+
+::::

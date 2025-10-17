@@ -25,32 +25,36 @@ date: 2024-06-03 13:18:12
   - view：基于当前状态的视图声明性描述。
   - actions：根据用户输入在应用程序中发生的事件，并触发状态更新。
 
-  ```jsx
-  function Counter() {
-    // State: counter 值
-    const [counter, setCounter] = useState(0);
+::: code-group
 
-    // Action: 当事件发生后，触发状态更新的代码
-    const increment = () => {
-      setCounter((prevCounter) => prevCounter + 1);
-    };
+```jsx
+function Counter() {
+  // State: counter 值
+  const [counter, setCounter] = useState(0);
 
-    // View: 视图定义
-    return (
-      <div>
-        Value: {counter} <button onClick={increment}>Increment</button>
-      </div>
-    );
-  }
-  ```
+  // Action: 当事件发生后，触发状态更新的代码
+  const increment = () => {
+    setCounter((prevCounter) => prevCounter + 1);
+  };
 
-  - 如果当有多个组件需要共享和使用相同 `state` 时，会变得很复杂，有时可以通过 `提升 state` 到父组件解决。当组件关系复杂庞大时，这并不是一个好方法。
+  // View: 视图定义
+  return (
+    <div>
+      Value: {counter} <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+```
 
-  - 解决这个问题的一种方法是从组件中提取共享 `state`，并将其放入组件树之外的一个集中位置。这样，我们的组件树就变成了一个大 `view`，任何组件都可以访问 `state` 或触发 `action`，无论它们在树中的哪个位置。
+:::
 
-  - 通过定义和分离 `state` 管理中涉及的概念并强制执行维护 `view` 和 `state` 之间独立性的规则，代码变得更结构化和易于维护。
+- 如果当有多个组件需要共享和使用相同 `state` 时，会变得很复杂，有时可以通过 `提升 state` 到父组件解决。当组件关系复杂庞大时，这并不是一个好方法。
 
-  - 这就是 `Redux` 背后的基本思想：应用中使用集中式的全局状态来管理，并明确更新状态的模式，以便让代码具有可预测性。
+- 解决这个问题的一种方法是从组件中提取共享 `state`，并将其放入组件树之外的一个集中位置。这样，我们的组件树就变成了一个大 `view`，任何组件都可以访问 `state` 或触发 `action`，无论它们在树中的哪个位置。
+
+- 通过定义和分离 `state` 管理中涉及的概念并强制执行维护 `view` 和 `state` 之间独立性的规则，代码变得更结构化和易于维护。
+
+- 这就是 `Redux` 背后的基本思想：应用中使用集中式的全局状态来管理，并明确更新状态的模式，以便让代码具有可预测性。
 
 #### Immutability 不可变性
 
@@ -59,6 +63,8 @@ date: 2024-06-03 13:18:12
 - `Redux` 期望所有状态更新都是使用不可变的方式(Immutability)。
 
 - `JavaScript` 的对象（object）和数组（array）默认都是 `mutable` 的:
+
+::: code-group
 
 ```js
 const obj = { a: 1, b: 2 };
@@ -71,6 +77,8 @@ arr.push('c');
 arr[1] = 'd';
 ```
 
+:::
+
 ### Redux 术语
 
 > `State`，`Actions`，和 `Reducers` 是 `Redux` 的构建模块。每个 `Redux` 应用都有 `state` 值，创建 `actions` 来描述发生的事情，并使用 `reducer` 函数根据之前的 `state` 和 `action` 计算新的状态值。
@@ -79,9 +87,13 @@ arr[1] = 'd';
 
 `action` 是一个带有 `type` 并且描述发生了什么的普通对象:
 
+::: code-group
+
 ```js
 const addTodoAction = { type: 'counter/increment', payload: 'ok ok' };
 ```
+
+:::
 
 - type: 字符串。用来描述 `action`。通常写为 `域/事件名称` `feature/eventName`。
 - payload: 通常用用描述发生的事情的附加信息。
@@ -93,6 +105,8 @@ const addTodoAction = { type: 'counter/increment', payload: 'ok ok' };
 
 `Reducers` 函数。接收当前的 `state` 和一个 `action`。通常用于决定如何更新状态，并返回新状态:
 
+::: code-group
+
 ```js
 const initialState = { value: 0 };
 
@@ -103,6 +117,8 @@ function counterReducer(state = initialState, action) {
   return state;
 }
 ```
+
+:::
 
 Reducer 必需符合以下规则：
 
@@ -174,6 +190,8 @@ export default rootReducer;
 
 当前 `Redux` 应用的状态存在于一个名为 `store` 的对象中。 `store` 是通过传入一个 `reducer` 来创建的。
 
+::: code-group
+
 ```js
 import { createStore } from 'redux';
 import rootReducer from './reducer';
@@ -182,6 +200,8 @@ const store = createStore(rootReducer);
 
 export default store;
 ```
+
+:::
 
 - `Redux store` 汇集了构成应用程序的 `state`、`actions` 和 `reducers`:
 
@@ -211,10 +231,14 @@ Redux 应用程序中只有一个 store。当你想要拆分数据处理逻辑�
 
 `Redux store` 有一个方法叫 `dispatch`。更新 `state` 的唯一方法是调用 `store.dispatch()` 并传入一个 `action` 对象。
 
+::: code-group
+
 ```js
 store.dispatch({ type: 'counter/incremented' });
 store.dispatch({ type: 'counter/incremented', payload: 'Learn about stores' });
 ```
+
+:::
 
 `dispatch` 一个 `action` 可以形象的理解为 "触发一个事件"。每次我们调用 store.dispatch(action) 时：
 
@@ -227,11 +251,15 @@ store.dispatch({ type: 'counter/incremented', payload: 'Learn about stores' });
 
 `Selector` 函数可以从 `store` 状态树中提取指定的片段。
 
+::: code-group
+
 ```js
 const selectCounterValue = (state) => state.value;
 
 const currentValue = selectCounterValue(store.getState());
 ```
+
+:::
 
 ### Redux 原则
 
@@ -280,7 +308,9 @@ Redux 使用 "单向数据流"，可以将这些步骤分解为更详细的内�
 
 ![](http://images.qiuyouyou.cn/notes/get-started-redux-1.gif)
 
-```html [代码实现]
+::: code-group
+
+```html
 <body>
   <div>
     <span id="value">0</span>
@@ -337,6 +367,8 @@ Redux 使用 "单向数据流"，可以将这些步骤分解为更详细的内�
 </body>
 ```
 
+:::
+
 ![](http://images.qiuyouyou.cn/notes/get-started-redux-2.jpg)
 
 ## 🚪 Redux Toolkit
@@ -360,6 +392,8 @@ Redux 使用 "单向数据流"，可以将这些步骤分解为更详细的内�
 
 - `toolkit` 其实只是对 `redux` 进行了封装，实际上 `store` 和 `redux` 中的是一样的。
 
+::: code-group
+
 ```jsx
 import { configureStore } from '@reduxjs/toolkit';
 
@@ -377,6 +411,8 @@ const store = configureStore({
 export default store;
 ```
 
+:::
+
 `configureStore` 为我们完成了所有工作：
 
 - 自动组合 slice reducers 来创建根 reducer
@@ -390,6 +426,8 @@ export default store;
 - 根据 `slice/reducer` 名称自动生成 `action creators`
 
 - `Reducers` 可以使用 `Immer` 在 `createSlice` 中 `“改变”（mutate）state`
+
+::: code-group
 
 ```jsx
 import { createSlice } from '@reduxjs/toolkit';
@@ -425,6 +463,8 @@ export const { todoAdded, todoToggled, todosLoading } = todosSlice.actions;
 export default todosSlice.reducer;
 ```
 
+:::
+
 - `createSlice` 接收一个包含三个主要选项字段的对象：
   - `name`：一个字符串，将用作生成的 `action types` 的前缀
   - `initialState`：`reducer` 的初始 `state`
@@ -440,6 +480,8 @@ export default todosSlice.reducer;
 - `createAsyncThunk` 接收两个参数：
   - 一个字符串，用作生成的 `action types` 的前缀
   - 一个 `payload creator` 回调函数，应该返回一个 `Promise`。这通常使用 `async/await` 语法编写，因为 `async` 函数会自动返回一个 `Promise`。
+
+::: code-group
 
 ```jsx
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
@@ -475,6 +517,8 @@ const todosSlice = createSlice({
 // 省略 exports
 ```
 
+:::
+
 ### createEntityAdapter
 
 `createEntityAdapter` 为标准化 `state` 提供了 `reducers + selectors`
@@ -502,6 +546,8 @@ const todosSlice = createSlice({
   - `replaceReducer(nextReducer)`
 
 以下代码实现的测试都基于该计数器代码：
+
+::: code-group
 
 ```html [redux-learn.html]
 <!DOCTYPE html>
@@ -566,6 +612,8 @@ const todosSlice = createSlice({
 </html>
 ```
 
+:::
+
 ### 实现 `createStore`
 
 - `store` 内部有当前的 `state`
@@ -573,6 +621,8 @@ const todosSlice = createSlice({
 - `dispatch` 调用 `reducer`，保存 `state`，并运行监听器
 - `store` 在启动时 `dispatch` 一个 `action` 来初始化 `reducers` 的 `state`
 - `store API` 是一个对象，里面有 { `dispatch`, `subscribe`, `getState` }
+
+::: code-group
 
 ```js [redux-learn.js]
 function createStore(reducer) {
@@ -609,7 +659,11 @@ function createStore(reducer) {
 }
 ```
 
+:::
+
 - 测试：
+
+::: code-group
 
 ```html{4,7} [redux-learn.html]
 <!-- ... 省略以上代码 ... -->
@@ -625,11 +679,15 @@ function createStore(reducer) {
 <!-- ... 省略以下代码 ... -->
 ```
 
+:::
+
 ### 实现 combineReducers
 
 - `combineReducers` 就是把多个 `reducer` ，合并成一个 `reducer` 函数，传递给 `createStore`使用。
 - 参数：一个 `reducers` 对象，对象的 `value` 对应不同的 `reducer`。
 - 返回：调用了 `reducers` 对象里所有 `reducer` 后的一个 `reducer` 函数，并且构造一个与 `reducers` 对象结构相同的 `state` 对象。
+
+::: code-group
 
 ```js [redux-learn.js]
 function combineReducers(reducers) {
@@ -657,7 +715,11 @@ function combineReducers(reducers) {
 }
 ```
 
+:::
+
 - 测试：
+
+::: code-group
 
 ```js [redux-learn.html]
 // ... 省略以上代码 ...
@@ -694,6 +756,8 @@ console.log(store.getState());
 // ... 省略以下代码 ...
 ```
 
+:::
+
 ![](http://images.qiuyouyou.cn/notes/get-started-redux-3.jpg)
 
 ### 实现 applyMiddleware
@@ -705,6 +769,8 @@ console.log(store.getState());
 - `middleware` 在 `dispatch action` 和 `reducer` 之间提供扩展点。一般用来进行日志记录、崩溃报告、异步 API 通信、路由等。
 - `middleware` 被写成三个相互嵌套的函数 每次 `dispatch action` 时都会运行 `middleware`。
 - 自定义 `middleware` 示例：
+
+::: code-group
 
 ```js [redux-learn.html]
 // 外层 function:
@@ -733,6 +799,8 @@ const anotherLogger = (storeAPI) => (next) => (action) => {
 };
 ```
 
+:::
+
 `applyMiddleware` 是什么：
 
 - `Middleware` 并不需要和 `createStore` 绑在一起使用，也不是 `Redux` 架构的基础组成部分。
@@ -741,6 +809,8 @@ const anotherLogger = (storeAPI) => (next) => (action) => {
 - 参数: 遵循 `Redux middleware API` 的函数。
 - 返回: 一个应用了 `middleware` 后的 `store enhancer`。
 - 实现 `applyMiddleware`：
+
+::: code-group
 
 ```js [redux-learn.js]
 // 首先 createStore 接收一个 enhancer 函数
@@ -782,7 +852,11 @@ function applyMiddleware(middleware) {
 }
 ```
 
+:::
+
 - 测试 `applyMiddleware`：
+
+::: code-group
 
 ```js [redux-learn.html]
 // ... 省略以上代码 ...
@@ -812,6 +886,8 @@ const store = createStore(reducer, applyMiddleware(logger));
 // ... 省略以下代码 ...
 ```
 
+:::
+
 - 每次 `dispatch action` 时都会运行 `middleware`：
 
 ![](http://images.qiuyouyou.cn/notes/get-started-redux-4.jpg)
@@ -820,12 +896,16 @@ const store = createStore(reducer, applyMiddleware(logger));
 
 - 想要使用多个 `store enhancer`，可以使用 `compose()` 方法：
 
-```js [例]
+::: code-group
+
+```js
 // applyMiddleware 中的连续调用：
 const store = createStore(reducer, applyMiddleware(middleware1, middleware2, middleware3));
 //  或: 这个 store 与 applyMiddleware 和 redux-devtools 一起使用:
 const store = createStore(reducer, compose(applyMiddleware(thunk), DevTools.instrument()));
 ```
+
+:::
 
 - 用来从右到左来组合多个函数。
 - 参数：需要合成的多个函数。预计每个函数都接收一个参数。它的返回值将作为一个参数提供给它左边的函数，以此类推。
@@ -833,6 +913,8 @@ const store = createStore(reducer, compose(applyMiddleware(thunk), DevTools.inst
 - 函数式编程思想，Redux 中应用很多。
 - compose(funcA, funcB, funcC) 形象为 compose(funcA(funcB(funcC())))。
 - 实现 `compose`：
+
+::: code-group
 
 ```js [redux-learn.js]
 // 定义 compose 函数 接收 需要合成的多个函数
@@ -850,7 +932,11 @@ function compose() {
 }
 ```
 
+:::
+
 - 改写 `applyMiddleware` 支持 多个中间件：
+
+::: code-group
 
 ```js{12,13,18-21} [redux-learn.js]
 // before : function applyMiddleware(middleware) {
@@ -882,7 +968,11 @@ function applyMiddleware(...middlewares) {
 }
 ```
 
+:::
+
 - 测试 `applyMiddleware`：
+
+::: code-group
 
 ```js{46} [redux-learn.html]
 // ... 省略以上代码 ...
@@ -931,5 +1021,7 @@ const store = createStore(reducer, applyMiddleware(middleware1, middleware2, mid
 
 // ... 省略以下代码 ...
 ```
+
+:::
 
 ![](http://images.qiuyouyou.cn/notes/get-started-redux-5.jpg)
