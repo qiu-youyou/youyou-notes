@@ -23,7 +23,7 @@ date: 2024-01-05 19:42:31
 
 ::: code-group
 
-```bash
+```sh
 brew install redis
 ```
 
@@ -33,7 +33,7 @@ brew install redis
 
 ::: code-group
 
-```bash
+```sh
 vim /usr/local/etc/redis.conf
 ```
 
@@ -43,7 +43,7 @@ vim /usr/local/etc/redis.conf
 
 ::: code-group
 
-```bash
+```sh
 brew services start redis
 # or
 redis-server /usr/local/etc/redis.conf
@@ -55,7 +55,7 @@ redis-server /usr/local/etc/redis.conf
 
 ::: code-group
 
-```bash
+```sh
 brew services stop redis
 ```
 
@@ -65,7 +65,7 @@ brew services stop redis
 
 ::: code-group
 
-```bash
+```sh
 brew services restart redis
 ```
 
@@ -81,7 +81,7 @@ brew services restart redis
 
 ::: code-group
 
-```bash
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -93,7 +93,7 @@ brew services restart redis
 
 ::: code-group
 
-```bash
+```sh
 /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 ```
 
@@ -125,7 +125,7 @@ brew services restart redis
 
 ::: code-group
 
-```bash
+```sh
 /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)"
 ```
 
@@ -143,7 +143,7 @@ brew services restart redis
 
 ::: code-group
 
-```bash
+```sh
 git -C "$(brew --repo)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 
 git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
@@ -157,7 +157,7 @@ git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.tuna
 
 ::: code-group
 
-```bash
+```sh
 git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew.git
 
 git -C "$(brew --repo homebrew/core)" remote set-url origin https://github.com/Homebrew/homebrew-core.git
@@ -175,7 +175,7 @@ git -C "$(brew --repo homebrew/cask)" remote set-url origin https://github.com/H
 
 ::: code-group
 
-```bash
+```sh
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 # 重载 zshrc
 source ~/.zshrc
@@ -189,7 +189,7 @@ source ~/.zshrc
 
 ::: code-group
 
-```bash
+```sh
 # 查找包
 brew search <package>
 # 安装默认最新版
@@ -204,7 +204,7 @@ brew install <package>@版本号
 
 ::: code-group
 
-```bash
+```sh
 # 指定包名卸载
 brew upgrade <package>
 # 更新 brew 所有包
@@ -217,7 +217,7 @@ brew upgrade
 
 ::: code-group
 
-```bash
+```sh
 # 指定包名卸载
 brew uninstall <package>
 ```
@@ -228,7 +228,7 @@ brew uninstall <package>
 
 ::: code-group
 
-```bash
+```sh
 # 获取services列表
 brew services list 
 brew services start/stop/restart serverName
@@ -246,7 +246,7 @@ brew services stop mysql
 
 ::: code-group
 
-```bash
+```sh
 # 更新 Homebrew
 brew update
 # 查看已安装软件

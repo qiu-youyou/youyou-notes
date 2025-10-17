@@ -250,7 +250,7 @@ Python 中并没有严格的私有变量/方法，这种命名约定只是一种
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 mkdir first-demo && cd first-demo
 python3 -m venv venv
 ```
@@ -300,7 +300,7 @@ python3 -m venv venv
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 pip install flask
 pip install injector
 ```
@@ -493,7 +493,7 @@ if __name__ == "__main__":
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 pip freeze > requirements.txt
 ```
 
@@ -509,7 +509,7 @@ pip freeze > requirements.txt
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 pip install --no-deps pipreqs
 pip install yarg==0.1.9 docopt==0.6.2
 ```
@@ -521,7 +521,7 @@ pip install yarg==0.1.9 docopt==0.6.2
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 pipreqs --ignore .venv --force
 ```
 
@@ -543,7 +543,7 @@ injector==0.22.0
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 pip install -r requirements.txt
 ```
 

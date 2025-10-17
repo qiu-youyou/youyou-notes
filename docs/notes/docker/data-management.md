@@ -45,7 +45,7 @@ sticky: 9995
 
 ::: code-group
 
-```bash [] {}
+```shell [] {}
 # 创建 my_volume 的数据卷
 docker volume create my_volume
 
@@ -67,7 +67,7 @@ docker volume rm my_volume
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 # 创建一个 MySQL 容器，并将数据目录挂载到数据卷
 docker volume create mysql_data
 
@@ -102,7 +102,7 @@ docker volume inspect mysql_data
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 # 使用宿主机上的 Nginx 配置文件和日志目录
 mkdir -p ~/nginx/conf ~/nginx/logs
 echo "<h1>Hello Docker</h1>" > ~/nginx/index.html
@@ -146,7 +146,7 @@ docker run -d --name nginx_server \
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
  docker run -d --name redis_tmpfs \
   --tmpfs /data:rw,size=64m \
   redis:7.0 --save "" --appendonly no
@@ -169,7 +169,7 @@ docker run -d --name nginx_server \
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 # 1. 确认已有数据卷
 docker ps
 
@@ -193,7 +193,7 @@ docker run --rm \
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 # 创建新的数据卷
 docker volume create mysql_restore
 
@@ -222,7 +222,7 @@ docker run -d --name mysql_restore_server \
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 # 在源主机导出数据卷
 docker run --rm -v mysql_data:/var/lib/mysql alpine \
   tar czf - -C /var/lib/mysql . > mysql_data.tar.gz

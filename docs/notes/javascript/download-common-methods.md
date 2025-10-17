@@ -15,7 +15,7 @@ date: 2024-01-29 21:15:53
 
 ::: code-group
 
-```js [示例代码]
+```js
 <button id="downloadBtn">下载 PDF</button>
 
 <script>
@@ -52,7 +52,7 @@ date: 2024-01-29 21:15:53
 
 ::: code-group
 
-```js [示例代码]
+```js
 function downloadJsonFile() {
   const data = { name: '张三', age: 28 };
   const blob = new Blob([JSON.stringify(data, null, 2)], {
@@ -84,7 +84,7 @@ downloadJsonFile();
 
 ::: code-group
 
-```js [示例代码]
+```js
 async function downloadExcel() {
   const response = await fetch('/api/export', {
     method: 'POST',
@@ -129,7 +129,7 @@ downloadExcel();
 
 ::: code-group
 
-```js [示例代码]
+```js
 import { saveAs } from 'file-saver';
 
 const blob = new Blob(['Hello, FileSaver!'], {
@@ -146,7 +146,7 @@ saveAs(blob, 'hello.txt');
 
 ::: code-group
 
-```js [示例代码]
+```js
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 

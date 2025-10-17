@@ -25,7 +25,7 @@ date: 2024-07-02 09:41:22
 
 `tsc` 是 `typescript compiler` 的缩写，即 `ts` 的编译器。
 
-```bash
+```sh
 # npm 全局安装 TypeScript
 npm install typescript -g
 
@@ -44,7 +44,7 @@ tsc *
 
 上方的例子分为了两步（先转换在运行），可以通过 `ts-node`，来进行合并操作：
 
-```bash
+```sh
 # npm 项目中安装 ts-node
 npm install ts-node -D
 

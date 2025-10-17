@@ -43,7 +43,7 @@ semver 是语义化版本[（Semantic Versioning）](https://semver.org/)规范 
 
 ::: code-group
 
-```bash
+```sh
 ➜  test git:(main) npm version --help
 Bump a package version
 
@@ -78,7 +78,7 @@ Run "npm help version" for more info
 
 ::: code-group
 
-```bash
+```sh
 ➜  test npm init -y
 Wrote to /Users/shuang/Documents/work/mine/test/package.json:
 {
@@ -111,7 +111,7 @@ Initialized empty Git repository in /Users/shuang/Documents/work/mine/test/.git/
 
 ::: code-group
 
-```bash
+```sh
 ➜  test git:(main) npm version patch
 v1.0.1 # 升级一个小版本
 
@@ -129,7 +129,7 @@ v1.0.1 # 自创建了tag
 
 ::: code-group
 
-```bash
+```sh
 # 进入 alpha
 ➜  test git:(main) npm version prepatch --preid=alpha
 v1.0.2-alpha.0

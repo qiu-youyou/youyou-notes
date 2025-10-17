@@ -127,7 +127,7 @@ export default mergeConfig(
 
 **创建测试文件 `__test__` 测试 `Card.vue` 组件：**
 
-```bash
+```sh
 mkdir src/components/__test__
 ```
 
@@ -154,7 +154,7 @@ describe('Card.vue', () => {
 
 **测试覆盖率：**
 
-```bash
+```sh
 pnpm test:coverage
 ```
 
@@ -188,7 +188,7 @@ pnpm test:coverage
 
 **安装 cypress:**
 
-```bash
+```sh
 pnpm add -D cypress # 安装
 ```
 

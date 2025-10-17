@@ -27,16 +27,15 @@ date: 2025-10-10 13:32:10
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('成功')
+    resolve('成功');
     // reject("失败"); // 只会触发一次，状态不可逆
-  }, 1000)
-})
+  }, 1000);
+});
 
-promise.then((result) => console.log('Fulfilled:', result))
-       .catch((error) => console.log('Rejected:', error))
+promise.then((result) => console.log('Fulfilled:', result)).catch((error) => console.log('Rejected:', error));
 ```
 
 :::

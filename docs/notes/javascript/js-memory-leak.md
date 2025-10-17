@@ -33,13 +33,12 @@ CPU 负载升高；
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 let arr = [];
 function add() {
   arr.push(new Array(1000000).fill('*'));
 }
 setInterval(add, 1000);
-
 ```
 
 :::
@@ -90,12 +89,11 @@ Chrome DevTools 提供了非常强大的内存分析工具。
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 function foo() {
   bar = 'I am global'; // 忘记写 var / let / const！
 }
 foo();
-
 ```
 
 :::
@@ -107,9 +105,8 @@ foo();
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 'use strict'; // 启用严格模式防止隐式全局变量
-
 ```
 
 :::
@@ -118,13 +115,12 @@ foo();
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 function start() {
   setInterval(() => {
     console.log('still running');
   }, 1000);
 }
-
 ```
 
 :::
@@ -136,7 +132,7 @@ function start() {
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 const timer = setInterval(...);
 clearInterval(timer); // 清理定时器
 
@@ -152,7 +148,7 @@ window.removeEventListener('scroll', handleScroll);
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 function outer() {
   const bigData = new Array(1000000).fill('*');
   return function inner() {
@@ -160,7 +156,6 @@ function outer() {
   };
 }
 const leak = outer(); // bigData 永远无法释放
-
 ```
 
 :::
@@ -172,8 +167,8 @@ const leak = outer(); // bigData 永远无法释放
 
 ::: code-group
 
-```JS [] {}
-leak = null
+```js [] {}
+leak = null;
 ```
 
 :::
@@ -182,12 +177,11 @@ leak = null
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 const el = document.getElementById('app');
 const cache = [];
 cache.push(el);
 document.body.removeChild(el); // 已删除 DOM
-
 ```
 
 :::
@@ -198,7 +192,7 @@ document.body.removeChild(el); // 已删除 DOM
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 cache.length = 0; // 清空引用
 ```
 
@@ -208,7 +202,7 @@ cache.length = 0; // 清空引用
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 const map = new Map();
 const key = {};
 map.set(key, new Array(100000).fill('*'));
@@ -224,9 +218,8 @@ map.set(key, new Array(100000).fill('*'));
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 const weakMap = new WeakMap();
-
 ```
 
 :::

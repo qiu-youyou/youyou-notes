@@ -15,7 +15,7 @@ date: 2024-05-15 21:07:36
 
 ::: code-group
 
-```bash
+```sh
 npx create-react-app project-name
 cd project-name
 npm start

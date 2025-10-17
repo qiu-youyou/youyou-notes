@@ -19,7 +19,7 @@ date: 2024-05-21 20:44:50
 
 ::: code-group
 
-```bash
+```sh
 npx create-react-app project-name
 cd project-name
 npm start
@@ -31,7 +31,7 @@ npm start
 
 ::: code-group
 
-```bash
+```sh
 npm install react-router-dom
 ```
 

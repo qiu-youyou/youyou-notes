@@ -13,7 +13,7 @@ date: 2025-08-30 16:48:33
 
 ::: code-group
 
-```bash
+```sh
 # 修改最近一条的 commit message
 git commit --amend
 
@@ -30,7 +30,7 @@ git reabase -i <commit-hash>
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 git revert <commit-hash>
 ```
 
@@ -43,7 +43,7 @@ git revert <commit-hash>
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 git stash           # 保存修改
 git stash list      # 查看保存的内容
 git stash apply     # 恢复最近一次修改
@@ -59,7 +59,7 @@ git stash pop       # 恢复并删除记录
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 git cherry-pick <commit-hash>
 ```
 
@@ -72,7 +72,7 @@ git cherry-pick <commit-hash>
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 git blame app.js
 git blame -L 10,20 app.js   # 只看 10-20 行
 ```
@@ -86,7 +86,7 @@ git blame -L 10,20 app.js   # 只看 10-20 行
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 git shortlog
 git shortlog -sn
 ```
@@ -100,7 +100,7 @@ git shortlog -sn
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 git worktree add ../feature-branch feature-branch
 ```
 
@@ -110,7 +110,7 @@ git worktree add ../feature-branch feature-branch
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 # 查看当前远程仓库
 git remote -v
 
@@ -129,7 +129,7 @@ git remote set-url --fetch origin <fetch-url>
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 git config --global user.name "your name"
 git config --global user.email "you email"
 ```

@@ -27,7 +27,7 @@ date: 2024-01-05 19:42:31
 
 ::: code-group
 
-```bash
+```sh
 /usr/libexec/java_home -V
 ```
 
@@ -47,7 +47,7 @@ date: 2024-01-05 19:42:31
 
 ::: code-group
 
-```bash
+```sh
 vim ~/.zshrc # 推荐 使用 vim
 # or
 open ~/.zshrc
@@ -59,7 +59,7 @@ open ~/.zshrc
 
 ::: code-group
 
-```bash
+```sh
 # java
 # 一定先把JAVA_HOME 清空
 unset JAVA_HOME
@@ -95,7 +95,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/lib:$JAVA_HOME/jre/bin
 
 ::: code-group
 
-```bash
+```sh
 # 重新加载
 source ~/.zshrc
 # 查看当前版本
@@ -115,7 +115,7 @@ java --version
 
 ::: code-group
 
-```bash
+```sh
 # 设置默认版本（这里就是以上 四选一）
 export JAVA_HOME=$JAVA_21_HOME
 ```

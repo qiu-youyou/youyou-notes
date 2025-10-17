@@ -41,7 +41,7 @@ pnpm install
 
 ::: code-group
 
-```bash
+```sh
 rm -rf src/components/icons src/components/__tests__
 
 rm src/components/HelloWorld.vue src/components/TheWelcome.vue src/components/WelcomeItem.vue
@@ -948,7 +948,7 @@ export default defineConfig({
 
 ::: code-group
 
-```bash
+```sh
 touch src/components/HelloWorld.vue
 # 同样也支持子目录的组件
 mkdir src/components/user

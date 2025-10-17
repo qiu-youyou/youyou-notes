@@ -15,25 +15,39 @@ date: 2024-06-07 10:59:43
 
 - 使用 `create-react-app` 创建项目
 
-```bash
+::: code-group
+
+```sh
 npx create-react-app your-app-name --template redux-typescript
 ```
 
+:::
+
 - 安装需要的依赖
 
-```bash
+::: code-group
+
+```sh
 npm install react-router-dom @types/react-router-dom antd
 npm install axios -S
 npm install sass -D
 ```
 
+:::
+
 - 释放 `config`
 
-```bash
+::: code-group
+
+```sh
 npm run eject
 ```
 
+:::
+
 ## 🔦 配置别名
+
+::: code-group
 
 ```ts{2} [webpack.config.ts]
 alias: {
@@ -48,7 +62,11 @@ alias: {
 }
 ```
 
+:::
+
 ## 🔦 配置路由
+
+::: code-group
 
 ```tsx{3,15,17} [src/index.tsx]
 import { createRoot } from 'react-dom/client';
@@ -77,6 +95,10 @@ root.render(
 reportWebVitals();
 ```
 
+:::
+
+::: code-group
+
 ```tsx [src/App.tsx]
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { routersData } from './app/config';
@@ -104,13 +126,21 @@ function App() {
 export default App;
 ```
 
+:::
+
 ## 🔦 配置 Axios
 
 - `create-react-app` 配置 `Proxy`
 
+::: code-group
+
 ```json [package.json]
   "proxy": "http://localhost:4000",
 ```
+
+:::
+
+::: code-group
 
 ```ts [http.ts]
 import axios from 'axios';
@@ -171,6 +201,8 @@ export type ResData<T = any> = {
 export default instance;
 ```
 
+:::
+
 ::: tip axios 可以拿到 403 请求的返回值吗？
 使用 `validateStatus` 配置选项，可以自定义抛出错误的 `HTTP Code`。
 
@@ -198,6 +230,8 @@ axios.get('/user/12345').catch(function (error) {
 
 - createSlice
 
+::: code-group
+
 ```ts [src/store/slice/demo.ts]
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -213,7 +247,11 @@ const demoSlice = createSlice({
 export default demoSlice.reducer;
 ```
 
+:::
+
 - configureStore
+
+::: code-group
 
 ```tsx [src/store/index.ts]
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
@@ -234,7 +272,10 @@ export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 ```
 
+:::
+
 - 一个请求示例
+
 
 ```ts [src/store/slice/demo.ts]
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';

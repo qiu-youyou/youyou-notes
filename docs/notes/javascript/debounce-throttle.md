@@ -25,7 +25,7 @@ date: 2024-02-14 13:42:33
 
 ::: code-group
 
-```js [JS]
+```js
 function debounce(func, delay) {
   let timeout;
   return function () {
@@ -44,7 +44,7 @@ function debounce(func, delay) {
 
 ::: code-group
 
-```js [JS]
+```js
 function debounce(fn, delay) {
   let timer;
 
@@ -69,7 +69,7 @@ function debounce(fn, delay) {
 
 ::: code-group
 
-```js [JS]
+```js
 function debounce(fn, delay, immediate) {
   let timer;
 
@@ -112,7 +112,7 @@ function debounce(fn, delay, immediate) {
 
 ::: code-group
 
-```js [JS]
+```js
 function throttle(fn, wait) {
   let timer;
   return function () {
@@ -134,7 +134,7 @@ function throttle(fn, wait) {
 
 ::: code-group
 
-```js [JS]
+```js
 function throttle(fn, wait) {
   let previous = 0;
   return function () {

@@ -20,7 +20,7 @@ date: 2024-03-06 09:27:42
 首先，我们需要建立一个数字到汉字的映射表。这通常是一个包含 0 到 9 的中文大写数字的数组。
 ::: code-group
 
-```js [javascript]
+```js
 const cnNumerals = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
 ```
 
@@ -31,7 +31,7 @@ const cnNumerals = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌
 接下来，我们需要处理整数部分和小数部分的单位。整数部分通常包括“元”、“万”、“亿”等单位，而小数部分则包括“角”、“分”等单位。
 ::: code-group
 
-```js [javascript]
+```js
 const bigUnits = ['', '万', '亿', '兆'];
 const units = ['', '拾', '佰', '仟'];
 const decimalUnits = ['角', '分'];
@@ -45,7 +45,7 @@ const yuan = '元';
 我们需要处理不同位数的数字和对应的单位。我们可以从低位到高位遍历整数部分的每一位数字，并根据其位置添加相应的单位。
 ::: code-group
 
-```js [javascript]
+```js
 function convertIntegerPart(integerPart) {
   let result = '';
   if (integerPart !== '0') {
@@ -88,7 +88,7 @@ function convertIntegerPart(integerPart) {
 需要遍历小数部分的每一位数字，并根据其位置添加相应的单位即可。
 ::: code-group
 
-```js [javascript]
+```js
 function convertDecimalPart(decimalPart) {
   let result = '';
   // 小数部分处理
@@ -117,7 +117,7 @@ function convertDecimalPart(decimalPart) {
 最后，我们将整数部分和小数部分合并起来，并在中间添加“元”字。并对输入进行验证，确保它是一个有效的数字。
 ::: code-group
 
-```js [javascript]
+```js
 export function convertAmountToCapital(money) {
   // 输入验证
   if (typeof money !== 'number' || isNaN(money) || !isFinite(money)) {

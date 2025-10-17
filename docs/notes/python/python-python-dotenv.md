@@ -15,7 +15,7 @@ python-dotenv 是一个用于在 Python 项目中加载和管理环境变量的�
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 pip install python-dotenv
 ```
 

@@ -16,7 +16,7 @@ sticky: 9993
 
 ::: code-group
 
-```bash
+```sh
 # 官方安装升级脚本
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
@@ -31,7 +31,7 @@ docker --help    # 查看帮助
 
 ::: code-group
 
-```bash
+```sh
 
 systemctl list-units --type=service     # 查看服务
 systemctl start docker                  # 启动 Docker
@@ -48,7 +48,7 @@ service docker status                   # 查看 docker 运行状态
 
 ::: code-group Docker 镜像命令
 
-```bash
+```sh
 docker pull [镜像名]                      # 从仓库拉取镜像
 docker build -t [镜像名:tag] [路径]        # 根据 Dockerfile 构建镜像
 docker images                            # 查看本地镜像列表
@@ -66,7 +66,7 @@ docker inspect [镜像名]                   # 查看镜像详细信息
 
 ::: code-group
 
-```bash
+```sh
 docker run -it --name [容器名] [镜像名]  # 启动一个容器并进入交互模式
 docker run -d --name [容器名] [镜像名]   # 后台启动容器
 docker ps                              # 查看运行中的容器
@@ -91,7 +91,7 @@ docker rmi -f $(docker images -aq)     # 一键删除所有镜像
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 docker rm -f $(docker ps -aq)         # 一键删除所有容器
 docker rmi -f $(docker images -aq)    # 一键删除所有镜像
 docker system prune -a                # 删除所有未使用的容器、网络、镜像（慎用）
@@ -103,7 +103,7 @@ docker system prune -a                # 删除所有未使用的容器、网络�
 
 ::: code-group
 
-```bash
+```sh
 docker compose up                # 启动 docker-compose.yml 中的服务
 docker compose up -d             # 后台启动服务
 docker compose down              # 停止并删除容器、网络、卷（保留镜像）
@@ -126,7 +126,7 @@ docker compose config            # 查看组合服务的最终配置
 
 ::: code-group
 
-```bash [] {}
+```sh [] {}
 docker compose up --build                    # 启动服务前先构建镜像
 docker compose up -d --remove-orphans        # 启动服务并删除孤立容器
 docker compose down -v                       # 停止服务并删除关联卷
@@ -142,7 +142,7 @@ docker compose stop && docker compose rm -v  # 停止并删除所有服务容器
 
 ::: code-group
 
-```bash
+```sh
 cd /home/
 mkdir mysql
 cd mysql

@@ -15,23 +15,23 @@ date: 2024-03-10 12:46:14
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 function compose(...fns) {
-  if (fns.length === 0) return (arg) => arg
-  if (fns.length === 1) return fns[0]
+  if (fns.length === 0) return (arg) => arg;
+  if (fns.length === 1) return fns[0];
 
   return fns.reduce(
     (a, b) =>
       (...args) =>
         a(b(...args))
-  )
+  );
 }
 
 // 使用示例
-const add1 = (x) => x + 1
-const multiply2 = (x) => x * 2
-const addThenMultiply = compose(multiply2, add1)
-console.log(addThenMultiply(5)) // (5 + 1) * 2 = 12
+const add1 = (x) => x + 1;
+const multiply2 = (x) => x * 2;
+const addThenMultiply = compose(multiply2, add1);
+console.log(addThenMultiply(5)); // (5 + 1) * 2 = 12
 ```
 
 :::
@@ -40,29 +40,29 @@ console.log(addThenMultiply(5)) // (5 + 1) * 2 = 12
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 async function composeAsync(...fns) {
-  if (fns.length === 0) return (arg) => arg
-  if (fns.length === 1) return fns[0]
+  if (fns.length === 0) return (arg) => arg;
+  if (fns.length === 1) return fns[0];
 
   return fns.reduce((a, b) => async (...args) => {
-    const result = await b(...args)
-    return a(result)
-  })
+    const result = await b(...args);
+    return a(result);
+  });
 }
 
 // 使用示例
 const asyncAdd = async (x) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000))
-  return x + 1
-}
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return x + 1;
+};
 const asyncMultiply = async (x) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000))
-  return x * 2
-}
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return x * 2;
+};
 
-const asyncOperation = composeAsync(asyncMultiply, asyncAdd)
-asyncOperation(5).then((result) => console.log(result)) // 12 (after 2 seconds)
+const asyncOperation = composeAsync(asyncMultiply, asyncAdd);
+asyncOperation(5).then((result) => console.log(result)); // 12 (after 2 seconds)
 ```
 
 :::
@@ -71,23 +71,23 @@ asyncOperation(5).then((result) => console.log(result)) // 12 (after 2 seconds)
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 function pipe(...fns) {
-  if (fns.length === 0) return (arg) => arg
-  if (fns.length === 1) return fns[0]
+  if (fns.length === 0) return (arg) => arg;
+  if (fns.length === 1) return fns[0];
 
   return fns.reduce(
     (a, b) =>
       (...args) =>
         b(a(...args))
-  )
+  );
 }
 
 // 使用示例
-const addOne = (x) => x + 1
-const multiplyTwo = (x) => x * 2
-const addThenMultiplyPipe = pipe(addOne, multiplyTwo)
-console.log(addThenMultiplyPipe(5)) // (5 + 1) * 2 = 12
+const addOne = (x) => x + 1;
+const multiplyTwo = (x) => x * 2;
+const addThenMultiplyPipe = pipe(addOne, multiplyTwo);
+console.log(addThenMultiplyPipe(5)); // (5 + 1) * 2 = 12
 ```
 
 :::
@@ -96,35 +96,35 @@ console.log(addThenMultiplyPipe(5)) // (5 + 1) * 2 = 12
 
 ::: code-group
 
-```JS [] {}
+```js [] {}
 function composeWithError(...fns) {
-  if (fns.length === 0) return (arg) => arg
-  if (fns.length === 1) return fns[0]
+  if (fns.length === 0) return (arg) => arg;
+  if (fns.length === 1) return fns[0];
 
   return fns.reduce((a, b) => (...args) => {
     try {
-      const result = b(...args)
-      return a(result)
+      const result = b(...args);
+      return a(result);
     } catch (error) {
-      console.error('Error in compose:', error)
-      throw error
+      console.error('Error in compose:', error);
+      throw error;
     }
-  })
+  });
 }
 
 // 使用示例
 const divide = (x) => {
-  if (x === 0) throw new Error('Cannot divide by zero')
-  return 10 / x
-}
-const square = (x) => x * x
+  if (x === 0) throw new Error('Cannot divide by zero');
+  return 10 / x;
+};
+const square = (x) => x * x;
 
-const divideAndSquare = composeWithError(square, divide)
-console.log(divideAndSquare(2)) // (10 / 2)² = 25
+const divideAndSquare = composeWithError(square, divide);
+console.log(divideAndSquare(2)); // (10 / 2)² = 25
 try {
-  divideAndSquare(0) // 抛出错误
+  divideAndSquare(0); // 抛出错误
 } catch (e) {
-  console.log('Caught error:', e.message)
+  console.log('Caught error:', e.message);
 }
 ```
 
@@ -136,13 +136,13 @@ try {
 
 ::: code-group
 
-```JS [] {}
-const toLowerCase = (str) => str.toLowerCase()
-const removeSpaces = (str) => str.replace(/\s/g, '')
-const addPrefix = (str) => `prefix_${str}`
+```js [] {}
+const toLowerCase = (str) => str.toLowerCase();
+const removeSpaces = (str) => str.replace(/\s/g, '');
+const addPrefix = (str) => `prefix_${str}`;
 
-const processString = compose(addPrefix, removeSpaces, toLowerCase)
-console.log(processString('Hello World')) // 'prefix_helloworld'
+const processString = compose(addPrefix, removeSpaces, toLowerCase);
+console.log(processString('Hello World')); // 'prefix_helloworld'
 ```
 
 :::
@@ -151,13 +151,13 @@ console.log(processString('Hello World')) // 'prefix_helloworld'
 
 ::: code-group
 
-```JS [] {}
-const filterEven = (arr) => arr.filter((x) => x % 2 === 0)
-const multiplyAll = (arr) => arr.map((x) => x * 2)
-const sum = (arr) => arr.reduce((a, b) => a + b, 0)
+```js [] {}
+const filterEven = (arr) => arr.filter((x) => x % 2 === 0);
+const multiplyAll = (arr) => arr.map((x) => x * 2);
+const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
-const processNumbers = compose(sum, multiplyAll, filterEven)
-console.log(processNumbers([1, 2, 3, 4, 5, 6])) // 2*2 + 4*2 + 6*2 = 24
+const processNumbers = compose(sum, multiplyAll, filterEven);
+console.log(processNumbers([1, 2, 3, 4, 5, 6])); // 2*2 + 4*2 + 6*2 = 24
 ```
 
 :::

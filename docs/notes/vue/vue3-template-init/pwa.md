@@ -240,7 +240,7 @@ const updateServiceWorker = useRegisterSW({
 
 ::: code-group
 
-```bash [npm]
+```sh [npm]
 npm run build-only
 
 npm run preview

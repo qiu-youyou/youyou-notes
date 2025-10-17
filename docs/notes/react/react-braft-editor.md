@@ -17,7 +17,7 @@ date: 2024-06-25 19:55:37
 
 ## 😊 安装 BraftEditor
 
-```bash
+```sh
 yarn add braft-editor
 ```
 
@@ -25,7 +25,7 @@ yarn add braft-editor
 
 1. 创建组件
 
-```bash
+```sh
 mkdir RichText
 cd RichiText
 touch index.tsx controls.ts

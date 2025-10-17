@@ -18,7 +18,7 @@ date: 2024-04-05 22:18:55
 
 ::: code-group
 
-```bash
+```sh
 npm init
 ```
 
@@ -72,7 +72,7 @@ node_modules
 
 ::: code-group
 
-```bash
+```sh
 npm login
 ```
 
@@ -82,7 +82,7 @@ npm login
 
 ::: code-group
 
-```bash
+```sh
 npm publish
 + your-package-name@1.0.0
 ```
