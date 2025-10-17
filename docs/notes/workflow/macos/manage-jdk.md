@@ -24,7 +24,8 @@ date: 2024-01-05 19:42:31
 检查已安装 JDK 的版本及路径
 
 - 使用命令可以查看本机上 安装过的 `JDK`
-  ::: code-group
+
+::: code-group
 
 ```bash
 /usr/libexec/java_home -V

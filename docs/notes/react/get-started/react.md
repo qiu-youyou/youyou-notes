@@ -13,11 +13,15 @@ date: 2024-05-15 21:07:36
 
 ## 💣 初始化
 
+::: code-group
+
 ```bash
 npx create-react-app project-name
 cd project-name
 npm start
 ```
+
+:::
 
 ## 💣 入口文件
 
@@ -53,6 +57,8 @@ npm start
 
 - 函数式组件
 
+::: code-group
+
 ```jsx
 function App() {
   return (
@@ -64,6 +70,8 @@ function App() {
 export default App;
 ```
 
+:::
+
 ::: warning
 通过 function Profile() { } 形式，你定义了一个名为 Profile 的 JavaScript 函数。
 
@@ -71,6 +79,8 @@ React 组件就是普通的 JavaScript 函数，但 函数名必须以大写字�
 :::
 
 - 类组件 (官方已推荐废弃)
+
+::: code-group
 
 ```jsx
 class App extends React.Component {
@@ -88,6 +98,8 @@ class App extends React.Component {
 
 export default App;
 ```
+
+:::
 
 ::: warning
 `render()` 方法是 `class` 组件中唯一必须实现的方法。
@@ -127,11 +139,11 @@ export default App;
 
 ![](http://images.qiuyouyou.cn/notes/get-started-react-3.jpg)
 
->
-
 类组件的生命周期:
 
 > 其实 react 的运行过程就是它的类的实例过程：
+
+::: code-group
 
 ```jsx
 import React from 'react';
@@ -193,6 +205,8 @@ class App extends React.Component {
 
 export default App;
 ```
+
+:::
 
 ![](http://images.qiuyouyou.cn/notes/get-started-react-4.jpg)
 
@@ -257,7 +271,7 @@ export default App;
 
 ### useState
 
-::: details const [state, setState] = useState(initialState)
+::: info const [state, setState] = useState(initialState)
 
 - 参数：
 
@@ -301,7 +315,7 @@ export default App;
 
 ### useEffect
 
-::: details useEffect(setup, dependencies?)
+::: info useEffect(setup, dependencies?)
 
 - 参数：
 
@@ -396,7 +410,7 @@ hooks 是用链表这种数据结构来进行连接的，通过 next 属性保�
 
 ### useLayoutEffect
 
-::: details useLayoutEffect(setup, dependencies?)
+::: info useLayoutEffect(setup, dependencies?)
 
 - `useLayoutEffect` 是 `useEffect` 的一个版本，在浏览器重新绘制屏幕之前触发。
 
@@ -415,7 +429,7 @@ hooks 是用链表这种数据结构来进行连接的，通过 next 属性保�
 
 ### useMemo
 
-::: details const cachedValue = useMemo(calculateValue, dependencies)
+::: info const cachedValue = useMemo(calculateValue, dependencies)
 
 - 用于 `react` 渲染过程中的性能优化。
 - 它在每次重新渲染的时候能够缓存计算的结果。
@@ -429,7 +443,7 @@ hooks 是用链表这种数据结构来进行连接的，通过 next 属性保�
 
 ### useCallback
 
-::: details const cachedFn = useCallback(fn, dependencies)
+::: info const cachedFn = useCallback(fn, dependencies)
 
 - 用于 `react` 渲染过程中的性能优化。
 - 允许你在多次渲染中缓存函数，对函数引用的缓存。
@@ -451,7 +465,7 @@ hooks 是用链表这种数据结构来进行连接的，通过 next 属性保�
 
 ### useRef
 
-::: details const ref = useRef(initialValue)
+::: info const ref = useRef(initialValue)
 
 - 用 `ref` 引用一个值，改变 `ref` 不会触发重新渲染。（储存一些不影响组件视图输出信息的完美选择）
 
@@ -467,7 +481,7 @@ hooks 是用链表这种数据结构来进行连接的，通过 next 属性保�
 
 ### forwardRef
 
-::: details const SomeComponent = forwardRef(render)
+::: info const SomeComponent = forwardRef(render)
 
 - 允许组件使用 `ref` 将 `DOM` 节点暴露给父组件， 默认情况下，组件不会将它们的 `DOM` 节点暴露给父组件。。
 - 函数式组件是没有 `ref` 的，可以通过 `forwardRef` 转发出去。
@@ -484,7 +498,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 ### useContext
 
-::: details const value = useContext(SomeContext)
+::: info const value = useContext(SomeContext)
 
 - 可以让你读取和订阅组件中的 `context`。向组件树深层传递数据。主要用于跨组件传值。
 - 父组件使用`Provider`包裹，给所有子组件注入上下文（值）。子孙组件就可以通过`useContext`拿到顶层组件注入的值。
@@ -516,7 +530,7 @@ function App() {
 
 ### useTransition
 
-::: details const [isPending, startTransition] = useTransition()
+::: info const [isPending, startTransition] = useTransition()
 
 - 在不阻塞 UI 的情况下更新状态。(并发更新。fiber 架构)。
 - 用于优化耗时组件造成的性能影响。
@@ -599,7 +613,7 @@ function TabContainer() {
 
 ### useId
 
-::: details const id = useId()
+::: info const id = useId()
 
 - 组件渲染过程中生成一个 `ID`。
 - 可以生成传递给无障碍属性的唯一 `ID`。
@@ -610,7 +624,7 @@ function TabContainer() {
 
 ### useImperativeHandle
 
-::: details useImperativeHandle(ref, createHandle, dependencies?)
+::: info useImperativeHandle(ref, createHandle, dependencies?)
 
 - 向父组件暴露一个自定义的 `ref`，通过 `forwardRef` 转发出去。
 - 我不希望开发者直接操作 `dom`，我只提供方法，你用我给你定义的方法就好。
@@ -635,7 +649,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 ### useInsertionEffect
 
-::: details useInsertionEffect(setup, dependencies?)
+::: info useInsertionEffect(setup, dependencies?)
 
 - 可以在布局副作用触发之前将元素插入到 `DOM` 中。
 - 是为 `CSS-in-JS` 库的作者特意打造的。除非你正在使用 `CSS-in-JS` 库并且需要注入样式，否则你应该使用 `useEffect` 或者 `useLayoutEffect`。
@@ -645,7 +659,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 ### useSyncExternalStore
 
-::: details const snapshot = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?)
+::: info const snapshot = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?)
 
 - 一个让你订阅外部 `store` 的 `React Hook`，也是为库的作者使用的。
 - 解决 `react`并发更新带来的问题 ，`tearing` 状态撕裂的问题。

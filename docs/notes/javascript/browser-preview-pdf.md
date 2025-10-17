@@ -11,6 +11,8 @@ date: 2024-04-01 15:03:21
 
 ## 🎉 完整代码
 
+::: code-group
+
 ```tsx
 import { Tooltip } from 'antd';
 import { FileTextOutlined } from '@ant-design/icons';
@@ -41,3 +43,5 @@ export default (props: Props) => {
   return trigger;
 };
 ```
+
+:::

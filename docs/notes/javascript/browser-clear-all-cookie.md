@@ -11,6 +11,8 @@ date: 2024-03-28 13:29:10
 
 ## 🎁 完整代码
 
+::: code-group
+
 ```js
 export const clearAllCookie = () => {
   const keys = document.cookie.match(/[^ =;]+(?=\=)/g);
@@ -19,3 +21,5 @@ export const clearAllCookie = () => {
   }
 };
 ```
+
+:::

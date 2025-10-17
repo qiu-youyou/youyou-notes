@@ -11,6 +11,8 @@ date: 2024-01-10 14:25:00
 
 ## 📠 完整代码
 
+::: code-group
+
 ```ts
 import COS from 'cos-js-sdk-v5';
 
@@ -61,3 +63,5 @@ export const upload_imgs = function (files: any) {
   });
 };
 ```
+
+:::

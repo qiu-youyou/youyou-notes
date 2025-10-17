@@ -17,17 +17,25 @@ date: 2024-05-21 20:44:50
 
 - [create-react-app](https://github.com/facebook/create-react-app) 初始化项目
 
+::: code-group
+
 ```bash
 npx create-react-app project-name
 cd project-name
 npm start
 ```
 
+:::
+
 - [react-router](https://github.com/remix-run/react-router) 安装
+
+::: code-group
 
 ```bash
 npm install react-router-dom
 ```
+
+:::
 
 ::: tip react-router 和 react-router-dom 的区别：
 
@@ -61,6 +69,8 @@ npm install react-router-dom
 
 > `http://localhost:3000/page`
 
+::: code-group
+
 ```jsx {6,11-17}
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -82,6 +92,8 @@ root.render(
 );
 ```
 
+:::
+
 ::: tip basename
 配置 `basename` 可以 使其在 `URL` 中的特定前缀下运行
 :::
@@ -99,6 +111,8 @@ root.render(
 
 > `<HashRouter>` 用于 Web 浏览器，当 URL 因某些原因不应（或不能）发送到服务器时。可以将当前位置存储在当前 URL 的 hash 部分，因此永远不会发送到服务器。
 
+::: code-group
+
 ```jsx {3,6-8}
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -107,11 +121,15 @@ import { HashRouter } from 'react-router-dom';
 ReactDOM.render(<HashRouter>{/* The rest of your app goes here */}</HashRouter>, root);
 ```
 
+:::
+
 - 不建议使用，改造服务端渲染很麻烦。
 
 ### MemoryRouter
 
 > 内存型路。将其位置存储在内部数组中。非常适合需要完全控制历史堆栈的情况。如用于单元测试。
+
+::: code-group
 
 ```jsx {3,8-14}
 import * as React from 'react';
@@ -135,9 +153,13 @@ describe('My app', () => {
 });
 ```
 
+:::
+
 ### NativeRouter
 
 > 是在 React Native 应用程序中运行 React Router 的推荐接口。
+
+::: code-group
 
 ```jsx {2,6-8}
 import * as React from 'react';
@@ -148,9 +170,13 @@ function App() {
 }
 ```
 
+:::
+
 ### StaticRouter
 
 > 静态路由。一般用于在 node 中渲染 React Router Web 应用程序。node 环境中没有 window 不能使用 BrowserRouter。
+
+::: code-group
 
 ```jsx {2,3,7-11}
 import * as React from 'react';
@@ -170,9 +196,13 @@ function requestHandler(req, res) {
 http.createServer(requestHandler).listen(3000);
 ```
 
+:::
+
 ### Outlet 组件
 
 > 父路由元素中应使用 `<Outlet>` 来呈现其子路由元素。这样就可以在呈现子路由时显示嵌套用户界面。如果父路由完全匹配，则会呈现子索引路由；如果没有索引路由，则不会呈现任何内容。子页面的占位符。
+
+::: code-group
 
 ```jsx {1,9,17-20}
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
@@ -200,17 +230,21 @@ root.render(
 );
 ```
 
+:::
+
 ## 💊 常用 Hooks
 
 ### useNavigate
 
-::: details 此钩子会返回一个函数，让您以编程方式导航。
+::: info 此钩子会返回一个函数，让您以编程方式导航。
 
 - 第一个参数 `To` 值（与 `<Link to>` 相同）
 - 第二个可选参数 `options?` 参数（与 `Link` 可以传递的属性类似）。
 - 也可以在历史堆栈中传递对应值 `navigate(-1)`。
 
 :::
+
+::: code-group
 
 ```jsx {2,6-8}
 function CommonHeader() {
@@ -227,11 +261,15 @@ function CommonHeader() {
 }
 ```
 
+:::
+
 ### useLocation
 
-::: details 此钩子返回当前 location 对象。 可以获取一些 navigate 路由过来的状态。
+::: info 此钩子返回当前 location 对象。 可以获取一些 navigate 路由过来的状态。
 
 :::
+
+::: code-group
 
 ```jsx
 function PageB() {
@@ -241,15 +279,19 @@ function PageB() {
 }
 ```
 
+:::
+
 ![](http://images.qiuyouyou.cn/notes/get-started-react-router-1.jpg)
 
 ### useSearchParams
 
-::: details 此钩子用于读取和修改当前位置 URL 中的查询字符串。
+::: info 此钩子用于读取和修改当前位置 URL 中的查询字符串。
 
 - 返回一个包含两个值的数组：当前位置的搜索参数和一个可用于更新这些参数的函数。
 
 :::
+
+::: code-group
 
 ```jsx {2,4,5,11-13}
 function PageA() {
@@ -268,11 +310,13 @@ function PageA() {
 }
 ```
 
+:::
+
 ![](http://images.qiuyouyou.cn/notes/get-started-react-router-2.jpg)
 
 ### useMatch
 
-::: details 返回给定路径上的路由相对于当前位置的匹配数据
+::: info 返回给定路径上的路由相对于当前位置的匹配数据
 
 - 将路由路径模式与 URL 路径名进行匹配，并返回匹配信息。
 - 当您需要手动运行路由器的匹配算法来确定路由路径是否匹配时，这个功能就非常有用。
@@ -280,12 +324,16 @@ function PageA() {
 
 :::
 
+::: code-group
+
 ```jsx
 const match1 = useMatch('/pageA');
 const match2 = useMatch('/pageB');
 console.log(match1);
 console.log(match2);
 ```
+
+:::
 
 ![](http://images.qiuyouyou.cn/notes/get-started-react-router-3.jpg)
 
@@ -298,7 +346,7 @@ console.log(match2);
 
 Router V6.4 解决的核心问题就是 可以实现并行加载资源，解决了单页面瀑布流的问题。
 
-::: details Before: 假设 CommonHeader 组件渲染了两秒，PageA 中接口请求了两秒 那 username 的显示，至少大于四秒。
+::: info Before: 假设 CommonHeader 组件渲染了两秒，PageA 中接口请求了两秒 那 username 的显示，至少大于四秒。
 
 ```jsx [App.js]
 root.render(
@@ -335,7 +383,7 @@ function PageA() {
 
 :::
 
-::: details After: 假设 CommonHeader 组件渲染了两秒，PageA 接口请求了两秒，那么获取到的时间只接近于接口的时间。
+::: info After: 假设 CommonHeader 组件渲染了两秒，PageA 接口请求了两秒，那么获取到的时间只接近于接口的时间。
 
 ```jsx{1,2,7-10,17} [App.js 使用 createBrowserRouter]
 const router = createBrowserRouter(
