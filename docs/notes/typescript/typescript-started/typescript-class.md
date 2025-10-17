@@ -13,6 +13,8 @@ date: 2024-07-26 14:47:58
 
 ## 🎒 定义
 
+::: code-group
+
 ```ts
 class Person {
   name = 'ZS';
@@ -25,9 +27,13 @@ const person = new Person();
 person.getName(); // "ZS"
 ```
 
+:::
+
 ## 🎒 继承
 
 继承类，继承类属于子类，被继承的属于父类。
+
+::: code-group
 
 ```ts
 class LSPerson extends Person {
@@ -47,9 +53,13 @@ const lsperson = new LSPerson();
 console.log(lsperson.getName()); // "LS"
 ```
 
+:::
+
 ## 🎒 构建函数
 
 `constructor` 构建函数，会在 `new` 实例的时候自动执行。
+
+::: code-group
 
 ```ts
 class Person {
@@ -64,7 +74,10 @@ class Person {
 }
 ```
 
+:::
 子继承父类并使用 `constructor` ，就必须使用 `super()` 调用父类的 `constructor`, 并按照父类的参数规则使用。
+
+::: code-group
 
 ```ts
 class Person {
@@ -78,9 +91,13 @@ class Teacher extends Person {
 }
 ```
 
+:::
+
 ## 🎒 修饰符
 
 `public` : 公共的。类定义的外部可以访问的属性和方法（默认）。
+
+::: code-group
 
 ```ts
 class Point {
@@ -98,7 +115,11 @@ class Point {
 }
 ```
 
+:::
+
 `private` : 在类内部使用。类的定义外无法访问。
+
+::: code-group
 
 ```ts
 class Parent {
@@ -126,7 +147,10 @@ class Child extends Parent {
 new Child(18);
 ```
 
+:::
 `protected` : 受保护的。允许在类内及继承的子类中使用。
+
+::: code-group
 
 ```ts
 class Parent {
@@ -147,6 +171,8 @@ class Child extends Parent {
 }
 new Child(18);
 ```
+
+:::
 
 ::: tip
 
@@ -171,6 +197,8 @@ class Child extends Parent {
 
 `readonly` : 设置为只读的属性。实例只能读取这个属性值，但不能修改。
 
+::: code-group
+
 ```ts
 class UserInfo {
   readonly name: string;
@@ -183,11 +211,15 @@ const user = new UserInfo('ZS');
 user.name = 'haha'; // error 无法为“name”赋值，因为它是只读属性。
 ```
 
+:::
+
 ## 🎒 参数属性
 
 - 静态属性
 
 > 用 `static` 关键字来指定属性或方法是静态的，实例将不会添加这个静态属性，也不会继承这个静态方法，可以使用修饰符和 `static` 来指定一个属性或方法。
+
+::: code-group
 
 ```ts
 class Parent {
@@ -200,9 +232,13 @@ console.log(p.age); // error 属性“age”在类型“Parent”上不存在。
 console.log(Parent.age); // error 属性“age”为私有属性，只能在类“Parent”中访问。
 ```
 
+:::
+
 - 可选类属性
 
 > 可选类属性，也是使用 `?` 符号来标记。
+
+::: code-group
 
 ```ts
 class Info {
@@ -219,9 +255,13 @@ const info2 = new Info('ZS', 18);
 const info3 = new Info('ZS', 18, 'man');
 ```
 
+:::
+
 ## 🎒 存储器
 
 与 `ES6` 标准中的存值函数和取值函数一致。
+
+::: code-group
 
 ```ts
 class UserInfo {
@@ -240,12 +280,16 @@ user.fullName = 'LS'; // "setter: LS"
 console.log(user.fullName); // "LS"
 ```
 
+:::
+
 ## 🎒 抽象类
 
 - 抽象类和类内部定义抽象方法，使用 `abstract` 关键字。
 - 只能被继承，不能实例化。
 - 抽象类里的抽象方法，在子类中是不继承，所以在子类中必须实现该方法的定义。
 - 抽象方法和抽象存取器都不能包含实际的代码块。
+
+::: code-group
 
 ```ts
 abstract class People {
@@ -268,10 +312,14 @@ class Man extends People {
 }
 ```
 
+:::
+
 ## 🎒 实例类型
 
 - 当我们定义一个类，并创建实例后，这个实例的类型就是创建他的类
 - 如果你想实现对创建实例的类进行判断，需要用到 instanceof 关键字
+
+::: code-group
 
 ```ts
 class People {
@@ -287,11 +335,15 @@ class Animal {
 p = new Animal('DOG'); // 同样实现的类 是被允许的
 ```
 
+:::
+
 ## 🎒 类类型接口
 
 - 使用接口可以强制一个类的定义必须包含某些内容
 - 指定一个类要继承的接口，使用关键字 `implements`
 - 接口和接口、类和类的继承，使用 `extends`
+
+::: code-group
 
 ```ts
 interface FoodInterface {
@@ -304,6 +356,7 @@ class FoodClass implements FoodInterface {
 }
 ```
 
+:::
 ::: tip
 
 接口检测的是使用该接口定义的类创建的实例: (属性不会添加到实例上)
@@ -329,6 +382,8 @@ class FoodClass implements FoodInterface {
 - 接口也会继承 `private` 和 `protected` 修饰的成员，但这接口 只能被这个类或者这个类的子类实现。
 - 接口继承类 使用 `extends`。
 
+::: code-group
+
 ```ts
 class A {
   protected name: string;
@@ -352,3 +407,5 @@ class D extends A implements I {
   }
 }
 ```
+
+:::

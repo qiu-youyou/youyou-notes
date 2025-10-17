@@ -40,9 +40,13 @@ e2e 测试工具：`Cypress`、`Nightwatch`。
 
 否则手动安装并创建 `vitest.config.ts`。
 
-```bash
+::: code-group
+
+```sh[pnpm]
 pnpm add -D vitest
 ```
+
+:::
 
 ::: code-group
 

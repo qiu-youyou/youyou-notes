@@ -144,6 +144,8 @@ date: 2025-08-06 10:42:36
 
 如何配置 nginx 代理到一台服务器 80%的流量，另外一台 20%的流量，这种如何配置，如何实现？
 
+::: code-group
+
 ```json
 worker_processes 1;
 
@@ -170,7 +172,11 @@ http {
 }
 ```
 
+:::
+
 前端服务：
+
+::: code-group
 
 ```json
 {
@@ -193,7 +199,11 @@ http {
 }
 ```
 
+:::
+
 运行 Nginx:
+
+::: code-group
 
 ```yaml
 version: '3'
@@ -206,3 +216,5 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf #宿主机文件已创建
     restart: always
 ```
+
+:::

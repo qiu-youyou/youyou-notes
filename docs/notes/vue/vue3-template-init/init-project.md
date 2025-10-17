@@ -16,20 +16,30 @@ date: 2025-02-19 22:03:10
 
 [vite](https://cn.vite.dev/) 创建项目:
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm create vite youyou-vue3-template
 ```
+
+:::
 
 ![](http://images.qiuyouyou.cn/notes/init-project.jpg)
 
 安装项目依赖:
 
-```bash
+::: code-group
+
+```sh [pnpm]
 cd youyou-vue3-template
 pnpm install
 ```
 
+:::
+
 删除不必要的文件:
+
+::: code-group
 
 ```bash
 rm -rf src/components/icons src/components/__tests__
@@ -38,6 +48,8 @@ rm src/components/HelloWorld.vue src/components/TheWelcome.vue src/components/We
 
 rm src/views/AboutView.vue src/stores/counter.ts src/assets/base.css
 ```
+
+:::
 
 修改默认文件代码如下:
 
@@ -90,9 +102,13 @@ import { RouterView } from 'vue-router';
 
 安装并引入 [reset-css](https://www.npmjs.com/package/reset-css) 重置默认样式:
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm install reset-css
 ```
+
+:::
 
 ::: code-group
 
@@ -140,9 +156,13 @@ app.mount('#app')
 
 安装 `unplugin-vue-router` 插件：
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm install -D unplugin-vue-router
 ```
+
+:::
 
 在 `vite.config.ts` 中配置 `unplugin-vue-router`：
 
@@ -270,9 +290,13 @@ export default router;
 
 安装并配置 [vite-plugin-vue-layouts](https://github.com/johncampionjr/vite-plugin-vue-layouts) :
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm install -D vite-plugin-vue-layouts
 ```
+
+:::
 
 ::: code-group
 
@@ -463,9 +487,13 @@ CSS 框架：搭建一个通用的框架 推荐使用 CSS 框架(原子化 CSS �
 
 根据需求选择合适的重置样式表、以确保网页的一致性和可靠性 (比如选择 [Tailwind compat](https://unocss.dev/guide/style-reset#tailwind-compat))。
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm add @unocss/reset
 ```
+
+:::
 
 ::: code-group
 
@@ -488,9 +516,13 @@ import '@unocss/reset/tailwind-compat.css';
 文档也提供了更多 Presets [官方 Presets](https://unocss.dev/presets/#official-packages) 和 [社区 Presets](https://unocss.dev/presets/community#community-presets)
 :::
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm add -D unocss @unocss/preset-wind
 ```
+
+:::
 
 ::: code-group
 
@@ -649,17 +681,25 @@ export default defineConfig({
 
 安装配置 [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)：
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm i -D unplugin-auto-import
 ```
+
+:::
 
 安装 [VueUse](https://vueuse.org/) 并配置 `AutoImport` :
 
 `AutoImport` 更多配置请阅读 [官方文档](https://github.com/unplugin/unplugin-auto-import?tab=readme-ov-file#configuration)。
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm i @vueuse/core
 ```
+
+:::
 
 ::: code-group
 
@@ -797,9 +837,13 @@ DRY (Don't Repeat Yourself 不要重复你自己)
 
 安装配置 [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) ：
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm i -D unplugin-vue-components
 ```
+
+:::
 
 ::: code-group
 
@@ -902,12 +946,16 @@ export default defineConfig({
 
 我们在项目中新建两个组件：
 
+::: code-group
+
 ```bash
 touch src/components/HelloWorld.vue
 # 同样也支持子目录的组件
 mkdir src/components/user
 touch src/components/user/UserComponent.vue
 ```
+
+:::
 
 ::: code-group
 
@@ -991,9 +1039,13 @@ UserComponent: typeof import('./src/components/user/UserComponent.vue')['default
 
 安装并配置 [vite-plugin-mock](https://github.com/vbenjs/vite-plugin-mock) :
 
-```bash
+::: code-group
+
+```sh [pnpm]
 pnpm add mockjs vite-plugin-mock  -D
 ```
+
+:::
 
 ::: warning
 这里如果你想在线上使用的话那就把 `mockjs` 安装到 `dependencies`。

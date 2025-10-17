@@ -24,10 +24,13 @@ date: 2024-01-05 19:42:31
 检查已安装 JDK 的版本及路径
 
 - 使用命令可以查看本机上 安装过的 `JDK`
+  ::: code-group
 
 ```bash
 /usr/libexec/java_home -V
 ```
+
+:::
 
 ![](http://images.qiuyouyou.cn/notes/jdk-version.jpg)
 
@@ -41,13 +44,19 @@ date: 2024-01-05 19:42:31
 
 - 打开你正在使用的 `shell配置文件`，我这里使用的是 `.zshrc`
 
+::: code-group
+
 ```bash
 vim ~/.zshrc # 推荐 使用 vim
 # or
 open ~/.zshrc
 ```
 
+:::
+
 - 在配置文件中 合适的位置 添加如下配置
+
+::: code-group
 
 ```bash
 # java
@@ -73,6 +82,8 @@ export JAVA_HOME=$JAVA_21_HOME
 export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/lib:$JAVA_HOME/jre/bin
 ```
 
+:::
+
 ::: tip
 在 `shell配置文件` 中 , 上面的 `#使用vim` 和 `#java`, 代表注释，这样你可以给你的 `shell文件` 添加说明了。
 :::
@@ -81,12 +92,16 @@ export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/lib:$JAVA_HOME/jre/bin
 
 - 保存重新加载你的 shell 配置文件
 
+::: code-group
+
 ```bash
 # 重新加载
 source ~/.zshrc
 # 查看当前版本
 java --version
 ```
+
+:::
 
 ## 🔌 切换版本
 
@@ -97,10 +112,14 @@ java --version
 
 - 当然，也可以通过编辑 `shell配置文件`，保存后重新加载
 
+::: code-group
+
 ```bash
 # 设置默认版本（这里就是以上 四选一）
 export JAVA_HOME=$JAVA_21_HOME
 ```
+
+:::
 
 ::: tip 关于 Vim
 上文中 提到 `vim ***` VIM 是 Linux 系统上一款文本编辑，使用起来也非常简单，可以自行搜索-下

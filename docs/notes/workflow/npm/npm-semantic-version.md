@@ -41,6 +41,8 @@ semver 是语义化版本[（Semantic Versioning）](https://semver.org/)规范 
 
 可以使用 `npm version --help` 命令 查看帮助：
 
+::: code-group
+
 ```bash
 ➜  test git:(main) npm version --help
 Bump a package version
@@ -59,6 +61,8 @@ alias: verison
 Run "npm help version" for more info
 ```
 
+:::
+
 - Usage 可以看到一些版本信息 `major` 主版本 、 `minor` 次版本 、 `patch` 修订号。
 - Options 中的 `--preid` 表示在前面版本号后面 加上先行版本号。
 
@@ -71,6 +75,8 @@ Run "npm help version" for more info
 ## 📮 Npm Version 使用
 
 1. 初始化 `npm` 、 `git仓库` 进行第一次提交
+
+::: code-group
 
 ```bash
 ➜  test npm init -y
@@ -99,7 +105,11 @@ Initialized empty Git repository in /Users/shuang/Documents/work/mine/test/.git/
  create mode 100644 package.json
 ```
 
+:::
+
 2. 使用 `npm version` 会自动 `commit` 和创建 `tag`
+
+::: code-group
 
 ```bash
 ➜  test git:(main) npm version patch
@@ -113,7 +123,11 @@ f637d43 HEAD@{1}: commit (initial): first commit # 第一次手动 commit
 v1.0.1 # 自创建了tag
 ```
 
+:::
+
 3. 参数 `--preid` 的使用
+
+::: code-group
 
 ```bash
 # 进入 alpha
@@ -140,6 +154,8 @@ v1.1.0
 ➜  test git:(main) npm version major
 v2.0.0
 ```
+
+:::
 
 ::: tip Tips:
 一般来说 通常在大版本号 如：1.0 - 2.0 的时候, 在 2.0 上才会使用先行版 ,再去发布 bate 或者 rc

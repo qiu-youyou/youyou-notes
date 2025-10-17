@@ -270,3 +270,10 @@
     display: none;
   }
 }
+
+@media (max-width: 960px) {
+  .archive-container {
+    width: 99vw;
+    padding: 20px;
+  }
+}
