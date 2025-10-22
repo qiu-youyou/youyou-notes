@@ -9,6 +9,8 @@ date: 2024-06-12 16:12:28
 
 # React + Antd Mentions 实现艾特(@)
 
+基于 `React` 和 `Ant Design Mentions` 组件实现的 @艾特功能，支持用户模糊搜索与防抖优化，动态展示搜索结果并格式化输出选中值。
+
 ## 🛀 完整代码
 
 ::: code-group

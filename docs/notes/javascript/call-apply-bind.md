@@ -9,6 +9,8 @@ date: 2024-03-23 22:12:37
 
 # 手写 call、apply、bind
 
+介绍了如何手写实现 `JavaScript` 中的 `call`、`apply` 和 `bind` 方法，包括实现思路与代码示例。
+
 ## 📟 call
 
 `call` 和 `apply` 实现思路主要是：

@@ -11,6 +11,8 @@ date: 2025-08-06 10:42:36
 
 # Python 学习笔记（一） - 简介
 
+使用 `Python` 快速实现一个 `Hello World`，认识 `Python`。
+
 ## 💬 Pythone 简介
 
 Python 的设计哲学强调：简洁、可读性强、开发效率高。

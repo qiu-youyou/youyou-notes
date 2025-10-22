@@ -9,6 +9,8 @@ date: 2024-06-25 19:55:37
 
 # React + BraftEditor 实现基础富文本
 
+本文记录了在 `React` 项目中集成 `BraftEditor` 富文本编辑器的完整过程，包括组件封装、内容回显、媒体上传处理，以及 `editorState` 数据格式的转换与存储策略。
+
 ## 😊 BraftEditor
 
 [（BraftEditor）](https://www.npmjs.com/package/braft-editor)一个基于 draft-js 的 Web 富文本编辑器，适用于 React 框架，兼容主流现代浏览器。

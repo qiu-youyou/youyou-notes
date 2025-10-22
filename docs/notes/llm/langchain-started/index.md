@@ -12,6 +12,8 @@ sticky: 9998
 
 # 一杯咖啡的时间 上手 LangChain
 
+`LangChain` 核心组件与用法，包括 `Prompt`、`Message`、`Model`、`OutputParser` 及 `LCEL/Runnable`。通过示例展示如何从提示设计、模型调用到结果解析，再到链式组合，以快速上手并构建可扩展的 `LLM` 应用。
+
 ## 🌵 LangChain 是什么
 
 `LangChain` 是一个 面向大语言模型 `（LLM）` 的应用开发框架，它的核心目标是：

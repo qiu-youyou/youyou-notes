@@ -9,6 +9,8 @@ date: 2025-09-05 09:33:12
 
 # Python 开发环境配置
 
+配置 `Python` 开发环境，包括 `Python` 版本选择、`Python` 虚拟环境、`Python` 包管理工具，以及 `VSCode` 配置。
+
 ## 🐜 Python 版本介绍
 
 prerelease 为预发布版本，security 为安全版本，bugfix 为 bug 修复版本。

@@ -9,6 +9,8 @@ date: 2024-03-28 13:29:10
 
 # JS 清除所有 cookie
 
+使用 `JavaScript` 清除当前页面下的所有 `cookie`，完整的实现方法。
+
 ## 🎁 完整代码
 
 ::: code-group

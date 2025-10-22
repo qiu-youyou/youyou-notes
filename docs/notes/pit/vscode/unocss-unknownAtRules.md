@@ -4,12 +4,14 @@ tag:
 tags:
   - VSCode
 
-description: 在 VSCode 中使用 Tailwind CSS 时，遇到 `@apply` 等指令被识别为未知 at 规则的警告，两种解决方法。
+description: 在 VSCode 中使用 Tailwind CSS 时，遇到 @apply 等指令被识别为未知 at 规则的警告，两种解决方法。
 
 date: 2025-05-17 21:03:55
 ---
 
 # VSCode 对 Tailwind 指令的警告
+
+在 `VSCode` 中使用 `Tailwind CSS` 时，遇到 `@apply` 等指令被识别为未知 `at` 规则的警告，两种解决方法。
 
 ## ➿ 问题描述
 

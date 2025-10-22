@@ -9,6 +9,8 @@ date: 2024-06-19 22:38:15
 
 # React + Antd Upload 头像上传
 
+基于 `React` 和 `Ant Design` 的头像上传组件示例，演示了如何使用 `Upload` 进行 `PNG` 格式和大小校验、将图片转为 `Base64` 并实时预览。
+
 ## 🔋 完整代码
 
 ::: code-group

@@ -11,6 +11,8 @@ date: 2024-08-03 12:15:40
 
 # TypeScript 语法用法 - Generics 泛型
 
+本页简要介绍了 `TypeScript` 泛型（Generics）的基本用法，包括泛型的定义、变量、约束、函数、类和接口等常见场景，理解如何通过泛型提升代码的灵活性和类型安全性。
+
 ## 🎐 定义
 
 - 泛型：在定义函数、接口或类的时候不预先指定数据类型，而是在使用时再指定类型的 特性。
@@ -142,7 +144,6 @@ const getArray: <T>(arg: T, times: number) => T[] = (arg, times) => {
 
 - 使用类型别名
 
-
 ::: code-group
 
 ```ts
@@ -152,13 +153,11 @@ const getArray: GetArray = <T>(arg: T, times: number): T[] => {
 };
 ```
 
-
 :::
 
 - 使用接口
 
 ::: code-group
-
 
 ```ts
 interface GetArray {
@@ -211,7 +210,6 @@ interface KeyPair<T, U> {
 let kp1: KeyPair<number, string> = { key: 123, value: 'str' };
 let kp2: KeyPair<string, number> = { key: 'test', value: 123 };
 ```
-
 
 :::
 

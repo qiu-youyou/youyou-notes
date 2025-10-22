@@ -9,6 +9,8 @@ date: 2025-10-10 13:32:10
 
 # Promise 的三种状态
 
+`Promise` 的三种状态：`Pending`（进行中）、`Fulfilled`（已完成）、`Rejected`（已拒绝）
+
 ## ⚾ Promise 的三种状态
 
 | 状态                | 说明                        | 是否可变更  |

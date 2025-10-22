@@ -11,6 +11,8 @@ date: 2024-07-02 09:41:22
 
 # TypeScript 语法用法 - 相关概念
 
+`TypeScript` 基础语法与类型系统概念，包括类型推断、类型注解、类型断言、类型保护及类型兼容性等核心知识点，快速入门和理解 `TypeScript` 的静态类型特性。
+
 ## 🎓 typescript 介绍
 
 [TypeScript](https://www.typescriptlang.org/)：是 JavaScript 的超集，拥有类型机制，不能在浏览器直接执行，而是编译成 JavaScript 后才会运行。
