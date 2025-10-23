@@ -13,7 +13,6 @@ export const sidebarNote: SidebarItem[] = [
     collapsed: false,
     items: [],
   },
-
   {
     text: 'TypeScript',
     link: '/notes/typescript/',
@@ -23,6 +22,18 @@ export const sidebarNote: SidebarItem[] = [
   {
     text: 'JavaScript',
     link: '/notes/javascript/',
+    collapsed: false,
+    items: [],
+  },
+  {
+    text: 'Webpack',
+    link: '/notes/webpack/',
+    collapsed: false,
+    items: [],
+  },
+  {
+    text: 'Node.js',
+    link: '/notes/node/',
     collapsed: false,
     items: [],
   },
@@ -51,6 +62,12 @@ export const sidebarNote: SidebarItem[] = [
     items: [],
   },
   {
+    text: 'Vite',
+    link: '/notes/vite/',
+    collapsed: false,
+    items: [],
+  },
+  {
     text: 'Vue',
     link: '/notes/vue/',
     collapsed: false,
@@ -62,16 +79,4 @@ export const sidebarNote: SidebarItem[] = [
     collapsed: false,
     items: [],
   },
-  {
-    text: 'PIT',
-    link: '/notes/pit/',
-    collapsed: false,
-    items: [],
-  },
-  // {
-  //   text: 'All',
-  //   link: '/notes/all/',
-  //   collapsed: false,
-  //   items: [],
-  // },
 ];

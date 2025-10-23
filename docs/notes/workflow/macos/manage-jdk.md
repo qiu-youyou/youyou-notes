@@ -1,6 +1,6 @@
 ---
 tag:
-  - 环境配置
+  - ENV
 tags:
   - MacOS
 
