@@ -138,6 +138,11 @@
 .cloud-tag:hover {
   transform: translate(-50%, -50%) scale(1.15) rotate(0deg) !important;
   z-index: 10;
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
 
   &::before {
     opacity: 1;
@@ -152,7 +157,9 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-color: transparent;
   color: #ffffff;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.5), 0 0 0 3px rgba(102, 126, 234, 0.2);
+  box-shadow:
+    0 8px 32px rgba(102, 126, 234, 0.5),
+    0 0 0 3px rgba(102, 126, 234, 0.2);
   z-index: 5;
 
   &::before {
@@ -426,4 +433,3 @@
     font-size: 20px;
   }
 }
-

@@ -47,6 +47,9 @@ const categoryCounts = computed(() => {
 // 选中的分类
 const selectedCategories = ref([]);
 
+// 标签云是否已初始化（用于控制入场动画）
+const isCloudInitialized = ref(false);
+
 // 从 URL 参数初始化选中状态
 const initFromUrl = () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -240,13 +243,14 @@ const cloudTags = computed(() => {
     const count = categoryCounts.value[cat.name] || 0;
     const isActive = selectedCategories.value.includes(cat.name);
     const { x, y } = getTagPosition(index, categories.value.length);
+    const rotation = getTagRotation(index);
 
     return {
       ...cat,
       count,
       isActive,
       position: { x, y },
-      rotation: getTagRotation(index),
+      rotation,
       delay: getTagDelay(index),
       styles: {
         fontSize: getTagFontSize(count) + 'px',
@@ -256,8 +260,9 @@ const cloudTags = computed(() => {
         boxShadow: getTagShadow(count, isActive),
         left: x + '%',
         top: y + '%',
-        transform: `translate(-50%, -50%) rotate(${getTagRotation(index)}deg)`,
-        animationDelay: getTagDelay(index) + 'ms',
+        transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
+        // 只在初始化时应用入场动画
+        animationDelay: isCloudInitialized.value ? '0ms' : getTagDelay(index) + 'ms',
       },
     };
   });
@@ -265,6 +270,10 @@ const cloudTags = computed(() => {
 
 onMounted(() => {
   initFromUrl();
+  // 标记标签云已初始化，后续更新不再触发入场动画
+  setTimeout(() => {
+    isCloudInitialized.value = true;
+  }, 1000); // 等待所有标签入场动画完成
 });
 </script>
 

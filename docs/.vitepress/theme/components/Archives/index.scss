@@ -1,50 +1,90 @@
 .archive-container {
   height: 100%;
-  padding: 14px 48px;
+  padding: 24px 48px;
   margin: 40px auto 180px auto;
-  border-radius: 12px;
-  background-color: var(--vp-c-bg);
-  box-shadow: var(--vp-shadow-4);
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--vp-c-bg) 0%, rgba(102, 126, 234, 0.03) 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: all 0.35s;
   width: 1200px;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.02) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .archive-year {
-  margin: 10px 0px 10px 0px;
+  margin: 20px 0px 10px 0px;
   font-family: Georgia, sans-serif;
-  border-bottom: 1px solid #e0e0e0;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  &-left {
-    font-size: 28px;
-    color: var(--vp-c-gray);
-    font-weight: 700;
-  }
-  &-right {
-    font-size: 16px;
-    color: var(--vp-c-gray);
-    transform: translateY(8px);
-  }
-}
-
-.archive-month {
-  margin: 10px 0px 10px 10px;
-  font-family: Georgia, sans-serif;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 2px solid transparent;
+  background:
+    linear-gradient(var(--vp-c-bg), var(--vp-c-bg)) padding-box,
+    linear-gradient(90deg, #667eea 0%, #764ba2 100%) border-box;
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 1;
+
+  &-left {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  &-right {
+    font-size: 16px;
+    color: var(--vp-c-text-3);
+    transform: translateY(0);
+  }
+}
+
+.archive-month {
+  margin: 15px 0px 10px 10px;
+  font-family: Georgia, sans-serif;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.15);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
   &-left {
     font-size: 24px;
-    color: var(--vp-c-gray);
     font-weight: 700;
+    color: var(--vp-c-text-1);
   }
   &-right {
     font-size: 13px;
-    color: var(--vp-c-gray);
-    transform: translateY(8px);
+    color: var(--vp-c-text-3);
+    transform: translateY(0);
+    padding: 4px 12px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
   }
 }
 
@@ -77,13 +117,14 @@
 }
 
 .dot {
-  width: 5px;
-  height: 5px;
-  background: var(--vp-c-brand-1);
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 50%;
   display: inline-block;
   margin-left: 4px;
   transform: translateY(1px);
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.4);
 }
 
 .post-title {
@@ -138,10 +179,11 @@
 
 .post-item:hover {
   .post-title {
-    color: var(--vp-c-brand-1);
+    color: #667eea;
   }
-  background-color: var(--vp-c-bg-soft);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
   transform: translateX(15px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
 }
 
 .empty-wrap {
@@ -214,7 +256,9 @@
   height: 14px;
   border-radius: 3px;
   background: #efefef;
-  transition: transform 0.12s, box-shadow 0.12s;
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
 }
 .contrib-day:hover {
   transform: translateY(-1px);
@@ -245,21 +289,22 @@
   color: var(--vp-c-text-2);
 }
 
-/* 颜色等级（可根据需要调整） */
+/* 颜色等级（蓝紫渐变） */
 .contrib-day.level-0 {
-  background: #f1f3f5;
+  background: rgba(102, 126, 234, 0.05);
 }
 .contrib-day.level-1 {
-  background: #d6f5c4;
+  background: rgba(102, 126, 234, 0.25);
 }
 .contrib-day.level-2 {
-  background: #8fdc6b;
+  background: rgba(102, 126, 234, 0.45);
 }
 .contrib-day.level-3 {
-  background: #3fb043;
+  background: rgba(118, 75, 162, 0.65);
 }
 .contrib-day.level-4 {
-  background: #1f6f2d;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
 }
 
 @media (max-width: 1200px) {
