@@ -10,7 +10,7 @@ const route = useRoute();
 const router = useRouter();
 
 // 获取所有文档数据（从 window.docs 获取，由 @sugarat/theme 提供）
-const docs = computed(() => window.docs || []);
+const docs = computed(() => window.docs.filter((item) => !item.meta?.hidden) || []);
 
 // 分类数据
 const categories = computed(() => {
