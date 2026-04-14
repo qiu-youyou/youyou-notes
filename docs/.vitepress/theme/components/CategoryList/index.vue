@@ -50,6 +50,9 @@ const selectedCategories = ref([]);
 // 标签云是否已初始化（用于控制入场动画）
 const isCloudInitialized = ref(false);
 
+// 缓存每个标签的旋转角度和位置，避免每次 computed 重新计算时变化
+const tagCache = ref(new Map());
+
 // 从 URL 参数初始化选中状态
 const initFromUrl = () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -202,8 +205,13 @@ const getTagShadow = (count, isActive) => {
   return `0 4px ${blur}px rgba(102, 126, 234, ${alpha})`;
 };
 
-// 螺旋分布算法 - 计算标签位置
+// 螺旋分布算法 - 计算标签位置（带缓存）
 const getTagPosition = (index, total) => {
+  const cacheKey = `pos-${index}`;
+  if (tagCache.value.has(cacheKey)) {
+    return tagCache.value.get(cacheKey);
+  }
+
   const centerX = 50; // 百分比
   const centerY = 50; // 百分比
   const maxRadius = 40; // 最大半径百分比
@@ -223,13 +231,22 @@ const getTagPosition = (index, total) => {
   const x = centerX + radius * Math.cos(angle) + offsetX;
   const y = centerY + radius * Math.sin(angle) + offsetY;
 
-  return { x, y };
+  const result = { x, y };
+  tagCache.value.set(cacheKey, result);
+  return result;
 };
 
-// 计算标签的旋转角度
+// 计算标签的旋转角度（带缓存）
 const getTagRotation = (index) => {
+  const cacheKey = `rot-${index}`;
+  if (tagCache.value.has(cacheKey)) {
+    return tagCache.value.get(cacheKey);
+  }
+
   // 随机旋转 -10 到 10 度
-  return (Math.random() - 0.5) * 20;
+  const rotation = (Math.random() - 0.5) * 20;
+  tagCache.value.set(cacheKey, rotation);
+  return rotation;
 };
 
 // 计算标签的入场延迟
@@ -252,6 +269,8 @@ const cloudTags = computed(() => {
       position: { x, y },
       rotation,
       delay: getTagDelay(index),
+      // 是否应该播放入场动画
+      shouldAnimate: !isCloudInitialized.value,
       styles: {
         fontSize: getTagFontSize(count) + 'px',
         color: getTagColor(count, isActive).color,
@@ -261,8 +280,7 @@ const cloudTags = computed(() => {
         left: x + '%',
         top: y + '%',
         transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
-        // 只在初始化时应用入场动画
-        animationDelay: isCloudInitialized.value ? '0ms' : getTagDelay(index) + 'ms',
+        '--tag-rotation': `${rotation}deg`,
       },
     };
   });
@@ -271,9 +289,11 @@ const cloudTags = computed(() => {
 onMounted(() => {
   initFromUrl();
   // 标记标签云已初始化，后续更新不再触发入场动画
+  // 等待所有标签入场动画完成（最后一个标签延迟 = (categories.length - 1) * 50ms + 600ms动画时长）
+  const totalDelay = (categories.value.length - 1) * 50 + 600;
   setTimeout(() => {
     isCloudInitialized.value = true;
-  }, 1000); // 等待所有标签入场动画完成
+  }, totalDelay);
 });
 </script>
 
@@ -293,7 +313,10 @@ onMounted(() => {
             v-for="tag in cloudTags"
             :key="tag.name"
             class="cloud-tag"
-            :class="{ active: tag.isActive }"
+            :class="{
+              active: tag.isActive,
+              'animate-in': tag.shouldAnimate,
+            }"
             :style="tag.styles"
             @click="toggleCategory(tag.name)">
             <span class="tag-name">{{ tag.text }}</span>

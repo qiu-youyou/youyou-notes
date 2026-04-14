@@ -93,12 +93,15 @@
   border: 1px solid rgba(102, 126, 234, 0.2);
   color: var(--vp-c-text-1);
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              background 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease;
   font-family: 'PingFang SC', 'Microsoft Yahei', sans-serif;
   font-weight: 500;
   white-space: nowrap;
   z-index: 1;
-  animation: fadeInUp 0.6s ease-out backwards;
 
   &::before {
     content: '';
@@ -124,14 +127,19 @@
   }
 }
 
+/* 只在初始化时应用入场动画 */
+.cloud-tag.animate-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) translateY(20px) scale(0.8);
+    transform: translate(-50%, -50%) translateY(20px) scale(0.8) rotate(0deg);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) translateY(0) scale(1);
+    transform: translate(-50%, -50%) translateY(0) scale(1) rotate(var(--tag-rotation, 0deg));
   }
 }
 
