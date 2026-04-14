@@ -7,8 +7,8 @@
 
 /* 分类标签区域 */
 .categories-wrapper {
-  margin-bottom: 20px;
-  padding: 24px;
+  margin-bottom: 16px;
+  padding: 20px;
   border-radius: 24px;
   background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, rgba(102, 126, 234, 0.05) 100%);
   border: 1px solid var(--vp-c-divider);
@@ -41,13 +41,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 12px;
   position: relative;
   z-index: 1;
 }
 
 .categories-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   margin: 0;
   color: var(--vp-c-text-1);
@@ -68,10 +68,10 @@
 .tag-cloud-container {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 300px;
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
-  border: 1px solid rgba(102, 126, 234, 0.1);
+  // border: 1px solid rgba(102, 126, 234, 0.1);
   overflow: hidden;
 }
 
@@ -93,11 +93,12 @@
   border: 1px solid rgba(102, 126, 234, 0.2);
   color: var(--vp-c-text-1);
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.3s ease,
-              background 0.3s ease,
-              color 0.3s ease,
-              border-color 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
   font-family: 'PingFang SC', 'Microsoft Yahei', sans-serif;
   font-weight: 500;
   white-space: nowrap;
@@ -129,7 +130,7 @@
 
 /* 只在初始化时应用入场动画 */
 .cloud-tag.animate-in {
-  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
 }
 
 @keyframes fadeInUp {
@@ -199,8 +200,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  margin-bottom: 20px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
   border-radius: 16px;
   background-color: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
@@ -224,7 +225,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: 24px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #ffffff;
@@ -252,7 +253,7 @@
 }
 
 .clear-btn {
-  padding: 8px 20px;
+  padding: 6px 12px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 24px;
   background-color: var(--vp-c-bg);

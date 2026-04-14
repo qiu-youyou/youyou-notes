@@ -163,7 +163,7 @@ const getWeight = (count) => {
 const getTagFontSize = (count) => {
   const weight = getWeight(count);
   const minSize = 12;
-  const maxSize = 36;
+  const maxSize = 24;
   return minSize + weight * (maxSize - minSize);
 };
 
