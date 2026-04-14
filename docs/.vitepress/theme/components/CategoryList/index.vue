@@ -136,6 +136,133 @@ const getH2Headings = (doc) => {
   return [];
 };
 
+// ========== 标签云相关 ==========
+
+// 获取最大和最小文章数量
+const countRange = computed(() => {
+  const counts = Object.values(categoryCounts.value);
+  const max = Math.max(...counts, 1);
+  const min = Math.min(...counts, 0);
+  return { max, min };
+});
+
+// 计算标签的权重（0-1）
+const getWeight = (count) => {
+  const { max, min } = countRange.value;
+  if (max === min) return 0.5;
+  return (count - min) / (max - min);
+};
+
+// 计算标签的字体大小（12px - 36px）
+const getTagFontSize = (count) => {
+  const weight = getWeight(count);
+  const minSize = 12;
+  const maxSize = 36;
+  return minSize + weight * (maxSize - minSize);
+};
+
+// 计算标签的颜色（HSL）
+const getTagColor = (count, isActive) => {
+  if (isActive) {
+    return { color: '#ffffff', bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' };
+  }
+
+  const weight = getWeight(count);
+  // 根据权重调整色相（200-280，蓝色到紫色）
+  const hue = 200 + weight * 80;
+  // 根据权重调整饱和度（60-90%）
+  const saturation = 60 + weight * 30;
+  // 根据权重调整亮度（35-55%）
+  const lightness = 35 + weight * 20;
+
+  return {
+    color: `hsl(${hue}, ${saturation}%, ${lightness}%)`,
+    bg: 'transparent',
+  };
+};
+
+// 计算标签的透明度
+const getTagOpacity = (count) => {
+  const weight = getWeight(count);
+  return 0.6 + weight * 0.4;
+};
+
+// 计算标签的阴影
+const getTagShadow = (count, isActive) => {
+  if (isActive) {
+    return '0 8px 32px rgba(102, 126, 234, 0.4), 0 0 0 2px rgba(102, 126, 234, 0.3)';
+  }
+
+  const weight = getWeight(count);
+  const alpha = 0.1 + weight * 0.2;
+  const blur = 8 + weight * 16;
+  return `0 4px ${blur}px rgba(102, 126, 234, ${alpha})`;
+};
+
+// 螺旋分布算法 - 计算标签位置
+const getTagPosition = (index, total) => {
+  const centerX = 50; // 百分比
+  const centerY = 50; // 百分比
+  const maxRadius = 40; // 最大半径百分比
+
+  // 使用黄金角度（137.5度）使分布更均匀
+  const goldenAngle = 137.5 * (Math.PI / 180);
+  const angle = index * goldenAngle;
+
+  // 使用平方根缩放使标签分布更均匀
+  const radius = Math.sqrt(index / total) * maxRadius;
+
+  // 添加随机偏移使分布更自然
+  const randomOffset = 3;
+  const offsetX = (Math.random() - 0.5) * randomOffset;
+  const offsetY = (Math.random() - 0.5) * randomOffset;
+
+  const x = centerX + radius * Math.cos(angle) + offsetX;
+  const y = centerY + radius * Math.sin(angle) + offsetY;
+
+  return { x, y };
+};
+
+// 计算标签的旋转角度
+const getTagRotation = (index) => {
+  // 随机旋转 -10 到 10 度
+  return (Math.random() - 0.5) * 20;
+};
+
+// 计算标签的入场延迟
+const getTagDelay = (index) => {
+  return index * 50; // 每个标签延迟 50ms
+};
+
+// 标签云数据
+const cloudTags = computed(() => {
+  return categories.value.map((cat, index) => {
+    const count = categoryCounts.value[cat.name] || 0;
+    const isActive = selectedCategories.value.includes(cat.name);
+    const { x, y } = getTagPosition(index, categories.value.length);
+
+    return {
+      ...cat,
+      count,
+      isActive,
+      position: { x, y },
+      rotation: getTagRotation(index),
+      delay: getTagDelay(index),
+      styles: {
+        fontSize: getTagFontSize(count) + 'px',
+        color: getTagColor(count, isActive).color,
+        background: getTagColor(count, isActive).bg,
+        opacity: getTagOpacity(count),
+        boxShadow: getTagShadow(count, isActive),
+        left: x + '%',
+        top: y + '%',
+        transform: `translate(-50%, -50%) rotate(${getTagRotation(index)}deg)`,
+        animationDelay: getTagDelay(index) + 'ms',
+      },
+    };
+  });
+});
+
 onMounted(() => {
   initFromUrl();
 });
@@ -143,22 +270,27 @@ onMounted(() => {
 
 <template>
   <div class="category-container">
-    <!-- 分类标签区域 -->
+    <!-- 分类标签云区域 -->
     <div class="categories-wrapper">
       <div class="categories-header">
         <h2 class="categories-title">分类</h2>
         <span class="categories-count">共 {{ categories.length }} 个分类</span>
       </div>
-      <div class="categories-list">
-        <button
-          v-for="cat in categories"
-          :key="cat.name"
-          class="category-tag"
-          :class="{ active: selectedCategories.includes(cat.name) }"
-          @click="toggleCategory(cat.name)">
-          <span class="category-name">{{ cat.text }}</span>
-          <span class="category-count">({{ categoryCounts[cat.name] || 0 }})</span>
-        </button>
+
+      <!-- 标签云容器 -->
+      <div class="tag-cloud-container">
+        <div class="tag-cloud">
+          <button
+            v-for="tag in cloudTags"
+            :key="tag.name"
+            class="cloud-tag"
+            :class="{ active: tag.isActive }"
+            :style="tag.styles"
+            @click="toggleCategory(tag.name)">
+            <span class="tag-name">{{ tag.text }}</span>
+            <span class="tag-count">{{ tag.count }}</span>
+          </button>
+        </div>
       </div>
     </div>
 
