@@ -10,4 +10,4 @@ hidden: true
 layout: page
 ---
 
-<StatisticList />
+<CategoryList />

@@ -6,5 +6,5 @@ export type SidebarItem = DefaultTheme.SidebarItem & {
 };
 
 export const sidebar: DefaultTheme.Config['sidebar'] = {
-  '/note': sidebarNote,
+  '/notes': sidebarNote,
 };

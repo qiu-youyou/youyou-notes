@@ -2,7 +2,7 @@ import type { SidebarItem } from './';
 
 export const sidebarNote: SidebarItem[] = [
   {
-    text: 'WROKFLOW',
+    text: 'WORKFLOW',
     link: '/notes/workflow/',
     collapsed: false,
     items: [],
