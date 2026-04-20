@@ -5,13 +5,20 @@ import { useRoute, useRouter } from 'vitepress';
 import { Timer, UserFilled, Close } from '@element-plus/icons-vue';
 
 import { sidebarNote } from '../../config/sidebar/sidebar-note';
-
+import { data as allDocs } from '../StatisticsList/docs.data';
+console.log(allDocs);
 const route = useRoute();
 const router = useRouter();
 
+// 创建 allDocs 映射，用于获取 H2 数据
+const allDocsMap = {};
+allDocs?.forEach((item) => {
+  allDocsMap[item.url] = item;
+});
+
 // 获取所有文档数据（从 window.docs 获取，由 @sugarat/theme 提供）
 const docs = computed(() => window.docs.filter((item) => !item.meta?.hidden) || []);
-
+console.log(docs);
 // 分类数据
 const categories = computed(() => {
   return sidebarNote.map((item) => ({
@@ -101,18 +108,30 @@ const clearSelection = () => {
 
 // 筛选后的文档
 const filteredDocs = computed(() => {
+  let result = [];
+
   if (selectedCategories.value.length === 0) {
-    return docs.value || [];
+    result = docs.value || [];
+  } else {
+    result = (docs.value || []).filter((doc) => {
+      const docUrl = doc.route || '';
+      const match = docUrl.match(/\/notes\/([^/]+)\//);
+      if (match) {
+        const categoryName = match[1].toLowerCase();
+        return selectedCategories.value.includes(categoryName);
+      }
+      return false;
+    });
   }
 
-  return (docs.value || []).filter((doc) => {
+  // 合并 allDocsMap 中的 extract 数据（包含 H2）
+  return result.map((doc) => {
     const docUrl = doc.route || '';
-    const match = docUrl.match(/\/notes\/([^/]+)\//);
-    if (match) {
-      const categoryName = match[1].toLowerCase();
-      return selectedCategories.value.includes(categoryName);
-    }
-    return false;
+    const allDocsData = allDocsMap[docUrl];
+    return {
+      ...doc,
+      extract: allDocsData?.extract || { h1: '', h2: [] },
+    };
   });
 });
 
@@ -136,8 +155,8 @@ const handleCardClick = (docUrl) => {
 
 // 获取文档的二级标题
 const getH2Headings = (doc) => {
-  if (doc?.meta?.extract?.h2) {
-    return doc.meta.extract.h2;
+  if (doc?.extract?.h2) {
+    return doc.extract.h2;
   }
   return [];
 };
@@ -374,7 +393,7 @@ onMounted(() => {
     <!-- 空状态 -->
     <div v-else class="empty-state">
       <p class="empty-text">这里空空如也......</p>
-      <p class="empty-text">没有找到相关文章</p>
+      <p class="empty-text">作者比较懒 什么也没写 连样式都没写......</p>
     </div>
   </div>
 </template>

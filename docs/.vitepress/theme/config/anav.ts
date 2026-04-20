@@ -12,9 +12,9 @@ const getNavItemsBySidebar = (siderbar: SidebarItem[]) => {
 
 export const nav: DefaultTheme.Config['nav'] = [
   { text: 'Home', link: '/' },
-  { text: 'Insights', activeMatch: '/insights/', link: '/insights/' },
+  // { text: 'Insights', activeMatch: '/insights/', link: '/insights/' },
   { text: 'Category', activeMatch: '/categories/', link: '/categories/' },
   { text: 'Archives', activeMatch: '/archives/', link: '/archives/' },
   // { text: 'ChangeLog', link: '/changelog/', activeMatch: '/changeLog/' },
-  { text: 'Nav', activeMatch: '/nav/', link: '/nav/' },
+  // { text: 'Nav', activeMatch: '/nav/', link: '/nav/' },
 ];
