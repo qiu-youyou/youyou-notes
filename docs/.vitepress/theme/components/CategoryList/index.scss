@@ -10,7 +10,7 @@
   margin-bottom: 16px;
   padding: 20px;
   border-radius: 24px;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, rgba(var(--vp-c-brand-rgb), 0.05) 100%);
+  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, rgba(102, 126, 234, 0.05) 100%);
   border: 1px solid var(--vp-c-divider);
   position: relative;
   overflow: hidden;
@@ -22,7 +22,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(var(--vp-c-brand-rgb), 0.03) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.03) 0%, transparent 70%);
     animation: rotate 20s linear infinite;
     pointer-events: none;
   }
