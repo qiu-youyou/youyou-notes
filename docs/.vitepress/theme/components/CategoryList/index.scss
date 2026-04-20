@@ -315,25 +315,25 @@
 
 @media (max-width: 1680px) {
   .docs-waterfall {
-    column-count: 4;
+    column-count: 4 !important;
   }
 }
 
 @media (max-width: 1200px) {
   .docs-waterfall {
-    column-count: 3;
+    column-count: 3 !important;
   }
 }
 
 @media (max-width: 960px) {
   .docs-waterfall {
-    column-count: 2;
+    column-count: 2 !important;
   }
 }
 
 @media (max-width: 600px) {
   .docs-waterfall {
-    column-count: 1;
+    column-count: 1 !important;
   }
 }
 

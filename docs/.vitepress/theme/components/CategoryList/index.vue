@@ -383,7 +383,7 @@ onMounted(() => {
     </div>
 
     <!-- 文档瀑布流 -->
-    <div v-if="filteredDocs.length > 0" class="docs-waterfall">
+    <div v-if="filteredDocs.length > 0" class="docs-waterfall" style="column-count: 5; column-gap: 20px">
       <div v-for="(doc, index) in filteredDocs" :key="index" class="doc-card" @click="handleCardClick(doc.route)">
         <h3 class="doc-title">{{ doc.meta?.title || 'Untitled' }}</h3>
         <p v-if="doc.meta?.description" class="doc-description">
