@@ -2,6 +2,7 @@
 @use './theme.scss';
 @use './marker.scss';
 @use './rainbow.scss';
+@use '../components/CategoryList/index.scss' as *;
 
 // 置灰
 // html {

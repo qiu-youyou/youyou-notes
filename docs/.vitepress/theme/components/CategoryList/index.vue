@@ -420,6 +420,3 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
-@import './index.scss';
-</style>
