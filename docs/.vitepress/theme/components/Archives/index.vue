@@ -9,7 +9,7 @@ const docs = ref([]);
 const docsLength = ref(0);
 
 // 处理所有文档生成摘要
-const allDocsRes = [...window.docs].filter((item) => !item.meta?.hidden) || [];
+const allDocsRes = !import.meta.env.SSR ? [...window.docs].filter((item) => !item.meta?.hidden) || [] : [];
 docsLength.value = allDocsRes.length;
 
 const docsByYearMonthMap = new Map();

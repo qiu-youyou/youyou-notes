@@ -17,9 +17,11 @@ import { ElTag } from 'element-plus';
 
 const logList = ref([])
 
-const allDocs = [...window.docs].filter(item => !item.meta.hidden)
-                .sort((a, b) => b.meta.date.localeCompare(a.meta.date))
-                .map(item => ({ ...item, ...item.meta,date: item.meta.date.slice(0, 10) }));
+const allDocs = !import.meta.env.SSR
+  ? [...window.docs].filter(item => !item.meta.hidden)
+      .sort((a, b) => b.meta.date.localeCompare(a.meta.date))
+      .map(item => ({ ...item, ...item.meta,date: item.meta.date.slice(0, 10) }))
+  : [];
 
 
 const allDocsRes = {};
@@ -55,4 +57,3 @@ const tagType = ['primary', 'success', 'warning', 'danger']
     </li>
   </ul>
 </template>
-  

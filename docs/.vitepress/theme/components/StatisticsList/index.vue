@@ -25,7 +25,10 @@ typeArchive.value = sidebarRes;
 const allDocsRes = [];
 const allArticlesRes = {};
 
-window.docs.forEach(({ route, meta }) => (allArticlesRes[route.replace('index', '')] = meta));
+// SSR 兼容：服务端跳过 window.docs 处理
+if (!import.meta.env.SSR) {
+  window.docs?.forEach(({ route, meta }) => (allArticlesRes[route.replace('index', '')] = meta));
+}
 
 allDocs?.forEach((item) => {
   if (route.path.startsWith('/notes/all')) {

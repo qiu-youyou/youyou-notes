@@ -7,7 +7,13 @@ import { Timer, UserFilled } from '@element-plus/icons-vue';
 const router = useRouter();
 
 // 获取所有文档数据
-const docs = computed(() => window.docs || []);
+const docs = computed(() => {
+  // SSR 兼容：服务端返回空数组，客户端从 window.docs 获取
+  if (import.meta.env.SSR) {
+    return [];
+  }
+  return window.docs || [];
+});
 
 // 筛选 insights 目录下的文档
 const insightsDocs = computed(() => {

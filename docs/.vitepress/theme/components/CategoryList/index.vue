@@ -6,7 +6,7 @@ import { Timer, UserFilled, Close } from '@element-plus/icons-vue';
 
 import { sidebarNote } from '../../config/sidebar/sidebar-note';
 import { data as allDocs } from '../StatisticsList/docs.data';
-console.log(allDocs);
+
 const route = useRoute();
 const router = useRouter();
 
@@ -17,8 +17,14 @@ allDocs?.forEach((item) => {
 });
 
 // 获取所有文档数据（从 window.docs 获取，由 @sugarat/theme 提供）
-const docs = computed(() => window.docs.filter((item) => !item.meta?.hidden) || []);
-console.log(docs);
+const docs = computed(() => {
+  // SSR 兼容：服务端返回空数组，客户端从 window.docs 获取
+  if (import.meta.env.SSR) {
+    return [];
+  }
+  return window.docs?.filter((item) => !item.meta?.hidden) || [];
+});
+
 // 分类数据
 const categories = computed(() => {
   return sidebarNote.map((item) => ({
@@ -62,6 +68,7 @@ const tagCache = ref(new Map());
 
 // 从 URL 参数初始化选中状态
 const initFromUrl = () => {
+  if (import.meta.env.SSR) return;
   const urlParams = new URLSearchParams(window.location.search);
   const catsParam = urlParams.get('categories');
   if (catsParam) {
@@ -71,6 +78,7 @@ const initFromUrl = () => {
 
 // 更新 URL 参数
 const updateUrl = () => {
+  if (import.meta.env.SSR) return;
   const url = new URL(window.location.href);
   if (selectedCategories.value.length > 0) {
     url.searchParams.set('categories', selectedCategories.value.join(','));
