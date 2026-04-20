@@ -299,19 +299,20 @@
 
 /* 颜色等级（主题色渐变） */
 .contrib-day.level-0 {
-  background: rgba(var(--vp-c-brand-rgb), 0.05);
+  background: #f2f3f5;
+  // background: rgba(var(--vp-c-brand-rgb), 0.05);
 }
 .contrib-day.level-1 {
-  background: rgba(var(--vp-c-brand-rgb), 0.25);
+  background: linear-gradient(135deg, var(--vp-c-brand) 0%, var(--vp-c-brand-dark) 100%);
 }
 .contrib-day.level-2 {
-  background: rgba(var(--vp-c-brand-rgb), 0.45);
+  background: linear-gradient(135deg, var(--vp-c-brand) 0%, var(--vp-c-brand-dark) 70%);
 }
 .contrib-day.level-3 {
-  background: rgba(var(--vp-c-brand-dark-rgb), 0.65);
+  background: linear-gradient(135deg, var(--vp-c-brand) 0%, var(--vp-c-brand-dark) 40%);
 }
 .contrib-day.level-4 {
-  background: linear-gradient(135deg, var(--vp-c-brand) 0%, var(--vp-c-brand-dark) 100%);
+  background: linear-gradient(135deg, var(--vp-c-brand) 0%, var(--vp-c-brand-dark) 10%);
   box-shadow: 0 0 8px rgba(var(--vp-c-brand-rgb), 0.5);
 }
 
