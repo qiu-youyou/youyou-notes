@@ -10,6 +10,9 @@ import { data as allDocs } from '../StatisticsList/docs.data';
 const route = useRoute();
 const router = useRouter();
 
+// 模块级状态：避免组件因 URL 变化重建后重复播放入场动画
+let hasPlayedCloudIntro = false;
+
 // 创建 allDocs 映射，用于获取 H2 数据
 const allDocsMap = {};
 allDocs?.forEach((item) => {
@@ -85,7 +88,8 @@ const updateUrl = () => {
   } else {
     url.searchParams.delete('categories');
   }
-  router.go(url.pathname + url.search);
+  // 仅更新地址栏参数，不触发路由跳转，避免标签云组件重建导致动画重播
+  window.history.replaceState({}, '', url.pathname + url.search + url.hash);
 };
 
 // 监听 URL 变化
@@ -190,7 +194,7 @@ const getWeight = (count) => {
 const getTagFontSize = (count) => {
   const weight = getWeight(count);
   const minSize = 12;
-  const maxSize = 20;
+  const maxSize = 18;
   return minSize + weight * (maxSize - minSize);
 };
 
@@ -217,7 +221,7 @@ const getTagColor = (count, isActive) => {
 // 计算标签的透明度
 const getTagOpacity = (count) => {
   const weight = getWeight(count);
-  return 0.6 + weight * 0.4;
+  return 0.8 + weight * 0.4;
 };
 
 // 计算标签的阴影
@@ -316,8 +320,17 @@ const cloudTags = computed(() => {
 
 onMounted(() => {
   initFromUrl();
-  // 标记标签云已初始化，后续更新不再触发入场动画
-  // 等待所有标签入场动画完成（最后一个标签延迟 = (categories.length - 1) * 50ms + 1000ms动画时长）
+
+  // 若本页面生命周期内已经播放过一次入场动画，后续挂载直接禁用动画
+  if (hasPlayedCloudIntro) {
+    isCloudInitialized.value = true;
+    return;
+  }
+
+  // 首次挂载允许播放入场动画；立即标记，防止点击 tag 导致重挂载后再次播放
+  hasPlayedCloudIntro = true;
+
+  // 等待首次入场动画完成后，切换到稳定态（去掉 animate-in class）
   const totalDelay = (categories.value.length - 1) * 50 + 1000;
   setTimeout(() => {
     isCloudInitialized.value = true;
