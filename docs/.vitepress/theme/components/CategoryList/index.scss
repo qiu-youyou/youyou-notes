@@ -10,7 +10,7 @@
   margin-bottom: 16px;
   padding: 20px;
   border-radius: 24px;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, rgba(102, 126, 234, 0.05) 100%);
+  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, rgba(var(--vp-c-brand-rgb), 0.05) 100%);
   border: 1px solid var(--vp-c-divider);
   position: relative;
   overflow: hidden;
@@ -22,7 +22,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(102, 126, 234, 0.03) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--vp-c-brand-rgb), 0.03) 0%, transparent 70%);
     animation: rotate 20s linear infinite;
     pointer-events: none;
   }
@@ -106,7 +106,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 20px;
+  padding: 7px 14px;
   border-radius: 30px;
   background: var(--vp-c-bg);
   border: 1px solid rgba(var(--vp-c-brand-rgb), 0.2);
@@ -157,7 +157,8 @@
 
 /* 只在初始化时应用入场动画 */
 .cloud-tag.animate-in {
-  animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-iteration-count: 1;
 }
 
 @keyframes fadeInUp {
@@ -172,12 +173,12 @@
 }
 
 .cloud-tag:hover {
-  transform: translate(-50%, -50%) scale(1.15) rotate(0deg) !important;
+  transform: translate(-50%, -50%) scale(1.1) rotate(0deg) !important;
   z-index: 10;
   transition:
-    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.3s ease,
-    background 0.3s ease,
+    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.7s ease,
+    background 0.7s ease,
     color 0.3s ease;
 
   &::before {
@@ -190,12 +191,12 @@
 }
 
 .cloud-tag.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--vp-c-brand) 0%, var(--vp-c-brand-dark) 100%);
   border-color: transparent;
   color: #ffffff;
   box-shadow:
-    0 8px 32px rgba(102, 126, 234, 0.5),
-    0 0 0 3px rgba(102, 126, 234, 0.2);
+    0 8px 32px rgba(var(--vp-c-brand-rgb), 0.5),
+    0 0 0 3px rgba(var(--vp-c-brand-rgb), 0.2);
   z-index: 5;
 
   &::before {
@@ -227,7 +228,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: 7px 16px;
   margin-bottom: 16px;
   border-radius: 16px;
   background-color: var(--vp-c-bg-soft);
@@ -238,7 +239,7 @@
 .filter-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
@@ -252,7 +253,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 4px 10px;
   border-radius: 24px;
   background: linear-gradient(135deg, var(--vp-c-brand) 0%, var(--vp-c-brand-dark) 100%);
   color: #ffffff;
@@ -280,7 +281,7 @@
 }
 
 .clear-btn {
-  padding: 6px 12px;
+  padding: 4px 10px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 24px;
   background-color: var(--vp-c-bg);
@@ -421,7 +422,7 @@
 
 .doc-heading-link:hover {
   color: var(--vp-c-brand);
-  background-color: rgba(102, 126, 234, 0.1);
+  background-color: rgba(var(--vp-c-brand-rgb), 0.1);
 }
 
 .doc-meta {

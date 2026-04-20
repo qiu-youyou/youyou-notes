@@ -190,14 +190,14 @@ const getWeight = (count) => {
 const getTagFontSize = (count) => {
   const weight = getWeight(count);
   const minSize = 12;
-  const maxSize = 24;
+  const maxSize = 20;
   return minSize + weight * (maxSize - minSize);
 };
 
 // 计算标签的颜色（HSL）
 const getTagColor = (count, isActive) => {
   if (isActive) {
-    return { color: '#ffffff', bg: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' };
+    return { color: '#ffffff', bg: 'linear-gradient(135deg, var(--vp-c-brand) 0%, var(--vp-c-brand-dark) 100%)' };
   }
 
   const weight = getWeight(count);
@@ -223,7 +223,7 @@ const getTagOpacity = (count) => {
 // 计算标签的阴影
 const getTagShadow = (count, isActive) => {
   if (isActive) {
-    return '0 8px 32px rgba(102, 126, 234, 0.4), 0 0 0 2px rgba(102, 126, 234, 0.3)';
+    return '0 8px 32px rgba(var(--vp-c-brand-rgb), 0.4), 0 0 0 2px rgba(var(--vp-c-brand-rgb), 0.3)';
   }
 
   const weight = getWeight(count);
@@ -308,6 +308,7 @@ const cloudTags = computed(() => {
         top: y + '%',
         transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
         '--tag-rotation': `${rotation}deg`,
+        animationDelay: !isCloudInitialized.value ? `${getTagDelay(index)}ms` : '0ms',
       },
     };
   });
@@ -316,8 +317,8 @@ const cloudTags = computed(() => {
 onMounted(() => {
   initFromUrl();
   // 标记标签云已初始化，后续更新不再触发入场动画
-  // 等待所有标签入场动画完成（最后一个标签延迟 = (categories.length - 1) * 50ms + 600ms动画时长）
-  const totalDelay = (categories.value.length - 1) * 50 + 600;
+  // 等待所有标签入场动画完成（最后一个标签延迟 = (categories.length - 1) * 50ms + 1000ms动画时长）
+  const totalDelay = (categories.value.length - 1) * 50 + 1000;
   setTimeout(() => {
     isCloudInitialized.value = true;
   }, totalDelay);
