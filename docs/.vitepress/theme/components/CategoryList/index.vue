@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { ElIcon } from 'element-plus';
 import { useRoute, useRouter } from 'vitepress';
 import { Timer, UserFilled, Close } from '@element-plus/icons-vue';
@@ -10,9 +10,6 @@ import { data as allDocs } from '../StatisticsList/docs.data';
 const route = useRoute();
 const router = useRouter();
 
-// 模块级状态：避免组件因 URL 变化重建后重复播放入场动画
-let hasPlayedCloudIntro = false;
-
 // 创建 allDocs 映射，用于获取 H2 数据
 const allDocsMap = {};
 allDocs?.forEach((item) => {
@@ -21,10 +18,7 @@ allDocs?.forEach((item) => {
 
 // 获取所有文档数据（从 window.docs 获取，由 @sugarat/theme 提供）
 const docs = computed(() => {
-  // SSR 兼容：服务端返回空数组，客户端从 window.docs 获取
-  if (import.meta.env.SSR) {
-    return [];
-  }
+  if (import.meta.env.SSR) return [];
   return window.docs?.filter((item) => !item.meta?.hidden) || [];
 });
 
@@ -33,7 +27,6 @@ const categories = computed(() => {
   return sidebarNote.map((item) => ({
     text: item.text,
     link: item.link,
-    // 提取分类名称（如 /notes/javascript/ -> javascript）
     name: item.link.replace(/\/notes\/([^/]+)\/$/, '$1').toLowerCase(),
   }));
 });
@@ -47,7 +40,6 @@ const categoryCounts = computed(() => {
 
   docs.value?.forEach((doc) => {
     const docUrl = doc.route || '';
-    // 匹配 /notes/category/xxx.md 格式
     const match = docUrl.match(/\/notes\/([^/]+)\//);
     if (match) {
       const categoryName = match[1].toLowerCase();
@@ -63,10 +55,10 @@ const categoryCounts = computed(() => {
 // 选中的分类
 const selectedCategories = ref([]);
 
-// 标签云是否已初始化（用于控制入场动画）
+// 标签云是否已初始化（用于控制入场动画）- 改为组件级状态
 const isCloudInitialized = ref(false);
 
-// 缓存每个标签的旋转角度和位置，避免每次 computed 重新计算时变化
+// 缓存每个标签的旋转角度和位置
 const tagCache = ref(new Map());
 
 // 从 URL 参数初始化选中状态
@@ -88,7 +80,6 @@ const updateUrl = () => {
   } else {
     url.searchParams.delete('categories');
   }
-  // 仅更新地址栏参数，不触发路由跳转，避免标签云组件重建导致动画重播
   window.history.replaceState({}, '', url.pathname + url.search + url.hash);
 };
 
@@ -136,7 +127,6 @@ const filteredDocs = computed(() => {
     });
   }
 
-  // 合并 allDocsMap 中的 extract 数据（包含 H2）
   return result.map((doc) => {
     const docUrl = doc.route || '';
     const allDocsData = allDocsMap[docUrl];
@@ -150,12 +140,7 @@ const filteredDocs = computed(() => {
 // 格式化日期
 const formatDate = (dateStr) => {
   if (!dateStr) return '';
-  try {
-    const d = String(dateStr).slice(0, 10);
-    return d;
-  } catch (e) {
-    return '';
-  }
+  return String(dateStr).slice(0, 10);
 };
 
 // 处理卡片点击
@@ -167,10 +152,7 @@ const handleCardClick = (docUrl) => {
 
 // 获取文档的二级标题
 const getH2Headings = (doc) => {
-  if (doc?.extract?.h2) {
-    return doc.extract.h2;
-  }
-  return [];
+  return doc?.extract?.h2 || [];
 };
 
 // ========== 标签云相关 ==========
@@ -190,28 +172,21 @@ const getWeight = (count) => {
   return (count - min) / (max - min);
 };
 
-// 计算标签的字体大小（12px - 36px）
+// 计算标签的字体大小（12px - 18px）
 const getTagFontSize = (count) => {
   const weight = getWeight(count);
-  const minSize = 12;
-  const maxSize = 18;
-  return minSize + weight * (maxSize - minSize);
+  return 12 + weight * 6;
 };
 
-// 计算标签的颜色（HSL）
+// 计算标签的颜色
 const getTagColor = (count, isActive) => {
   if (isActive) {
     return { color: '#ffffff', bg: 'linear-gradient(135deg, var(--vp-c-brand) 0%, var(--vp-c-brand-dark) 100%)' };
   }
-
   const weight = getWeight(count);
-  // 根据权重调整色相（200-280，蓝色到紫色）
   const hue = 200 + weight * 80;
-  // 根据权重调整饱和度（60-90%）
   const saturation = 60 + weight * 30;
-  // 根据权重调整亮度（35-55%）
   const lightness = 35 + weight * 20;
-
   return {
     color: `hsl(${hue}, ${saturation}%, ${lightness}%)`,
     bg: 'transparent',
@@ -229,7 +204,6 @@ const getTagShadow = (count, isActive) => {
   if (isActive) {
     return '0 8px 32px rgba(var(--vp-c-brand-rgb), 0.4), 0 0 0 2px rgba(var(--vp-c-brand-rgb), 0.3)';
   }
-
   const weight = getWeight(count);
   const alpha = 0.1 + weight * 0.2;
   const blur = 8 + weight * 16;
@@ -243,18 +217,12 @@ const getTagPosition = (index, total) => {
     return tagCache.value.get(cacheKey);
   }
 
-  const centerX = 50; // 百分比
-  const centerY = 50; // 百分比
-  const maxRadius = 40; // 最大半径百分比
-
-  // 使用黄金角度（137.5度）使分布更均匀
+  const centerX = 50;
+  const centerY = 50;
+  const maxRadius = 40;
   const goldenAngle = 137.5 * (Math.PI / 180);
   const angle = index * goldenAngle;
-
-  // 使用平方根缩放使标签分布更均匀
   const radius = Math.sqrt(index / total) * maxRadius;
-
-  // 添加随机偏移使分布更自然
   const randomOffset = 3;
   const offsetX = (Math.random() - 0.5) * randomOffset;
   const offsetY = (Math.random() - 0.5) * randomOffset;
@@ -273,17 +241,13 @@ const getTagRotation = (index) => {
   if (tagCache.value.has(cacheKey)) {
     return tagCache.value.get(cacheKey);
   }
-
-  // 随机旋转 -10 到 10 度
   const rotation = (Math.random() - 0.5) * 20;
   tagCache.value.set(cacheKey, rotation);
   return rotation;
 };
 
 // 计算标签的入场延迟
-const getTagDelay = (index) => {
-  return index * 50; // 每个标签延迟 50ms
-};
+const getTagDelay = (index) => index * 50;
 
 // 标签云数据
 const cloudTags = computed(() => {
@@ -297,10 +261,6 @@ const cloudTags = computed(() => {
       ...cat,
       count,
       isActive,
-      position: { x, y },
-      rotation,
-      delay: getTagDelay(index),
-      // 是否应该播放入场动画
       shouldAnimate: !isCloudInitialized.value,
       styles: {
         fontSize: getTagFontSize(count) + 'px',
@@ -318,23 +278,26 @@ const cloudTags = computed(() => {
   });
 });
 
+let animationTimer = null;
+
 onMounted(() => {
   initFromUrl();
 
-  // 若本页面生命周期内已经播放过一次入场动画，后续挂载直接禁用动画
-  if (hasPlayedCloudIntro) {
-    isCloudInitialized.value = true;
-    return;
-  }
+  // 每次组件挂载都重新播放入场动画
+  isCloudInitialized.value = false;
 
-  // 首次挂载允许播放入场动画；立即标记，防止点击 tag 导致重挂载后再次播放
-  hasPlayedCloudIntro = true;
-
-  // 等待首次入场动画完成后，切换到稳定态（去掉 animate-in class）
+  // 等待入场动画完成后切换到稳定态
   const totalDelay = (categories.value.length - 1) * 50 + 1000;
-  setTimeout(() => {
+  animationTimer = setTimeout(() => {
     isCloudInitialized.value = true;
   }, totalDelay);
+});
+
+onBeforeUnmount(() => {
+  if (animationTimer) {
+    clearTimeout(animationTimer);
+    animationTimer = null;
+  }
 });
 </script>
 
@@ -383,7 +346,7 @@ onMounted(() => {
     </div>
 
     <!-- 文档瀑布流 -->
-    <div v-if="filteredDocs.length > 0" class="docs-waterfall" style="column-count: 5; column-gap: 20px">
+    <div v-if="filteredDocs.length > 0" class="docs-waterfall">
       <div v-for="(doc, index) in filteredDocs" :key="index" class="doc-card" @click="handleCardClick(doc.route)">
         <h3 class="doc-title">{{ doc.meta?.title || 'Untitled' }}</h3>
         <p v-if="doc.meta?.description" class="doc-description">
